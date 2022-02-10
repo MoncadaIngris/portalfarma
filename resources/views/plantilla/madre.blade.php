@@ -57,8 +57,8 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-user-circle"></i> Empleado <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Nuevo Empleado</a></li>
-                      <li><a href="#">Empleados Activos</a></li>
+                      <li><a href="{{route('empleados.create')}}">Nuevo Empleado</a></li>
+                      <li><a href="{{route('empleados.index')}}">Empleados Activos</a></li>
                       <li><a href="#">Empleados Desactivados</a></li>
                     </ul>
                   </li>

@@ -12,10 +12,13 @@ class EmpleadoController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index()
     {
-        //
+        $empleados = Empleado::paginate(10); 
+
+        return view('empleados/index')->with('empleados', $empleados);
+
     }
 
     /**
@@ -25,7 +28,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('empleados/create');
+
     }
 
     /**
