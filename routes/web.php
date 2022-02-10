@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +12,13 @@ use App\Http\Controllers\EmpleadoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Cambiar idioma. En este caso "en":
+App::setLocale("es");
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 //ruta index
 Route::get('/empleados', [EmpleadoController::class, 'index'])
     ->name('empleados.index');

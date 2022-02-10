@@ -23,6 +23,11 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/scroller.bootstrap.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -39,7 +44,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.png" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('images/img.png') }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -104,7 +109,7 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.png" alt="">User
+                      <img src="{{ asset('images/img.png') }}" alt="">User
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -189,10 +194,25 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-
-            <h1><center>@yield('titulo')</center></h1>
-            
-            @yield('contenido')
+            <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                      <h1><center>@yield('titulo')</center></h1>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    @yield('contenido')
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
           </div>
@@ -234,5 +254,21 @@
     <script src="{{ asset('js/custom.min.js') }}"></script>
 
     <script src="{{ asset('js/all.js') }}"></script>
+    <!-- Datatables -->
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('js/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('js/jszip.min.js') }}"></script>
+    <script src="{{ asset('js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('js/vfs_fonts.js') }}"></script>
   </body>
 </html>

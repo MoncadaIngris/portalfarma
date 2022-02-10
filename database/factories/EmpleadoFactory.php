@@ -19,7 +19,7 @@ class EmpleadoFactory extends Factory
             'correo_electronico'=> $this -> faker -> email(), 
             'telefono_personal' => $this-> faker -> numerify('########'),
             'telefono_alternativo'=> $this -> faker -> numerify('########') ,
-            'fecha de nacimiento'=> $this -> faker ->date($format='Y-m-d', $max= 'now'),
+            'fecha_de_nacimiento'=> $this -> faker ->date($format='Y-m-d', $max= 'now'),
              'direccion'=> $this -> faker -> text(50),
              'DNI' => $this-> faker ->  numerify('#############'), 
              'fotografia' => $this->faker -> imageUrl($width = 640, $height = 480),

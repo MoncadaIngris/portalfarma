@@ -20,7 +20,7 @@ class CreateEmpleadosTable extends Migration
             $table->string("correo_electronico");
             $table->string("telefono_personal");
             $table->string("telefono_alternativo");
-            $table->string("fecha de nacimiento");
+            $table->string("fecha_de_nacimiento");
             $table->string("direccion");
             $table->string("DNI");
             $table->string("fotografia");

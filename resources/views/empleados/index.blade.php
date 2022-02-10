@@ -1,36 +1,38 @@
 @extends('plantilla.madre')
 @section('titulo')
-listado de empleados 
+Listado de Empleados
 @stop
 @section('contenido')
-<table class="table table-striped">
+  @if(session('mensaje'))
+        <div class="alert alert-success">
+            {{session('mensaje')}}
+        </div>
+    @endif
+<button class="btn btn-info" onclick="window.location='{{route('empleados.create')}}'">Crear Nuevo</button>
+<table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">DNI</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Detalles</th>
+        <th scope="col">Desactivar</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      @foreach ($empleados as $empleado)
+        <tr>
+          <td>{{$empleado->DNI}}</td>
+          <td>{{$empleado->nombres}}</td>
+          <td>{{$empleado->apellidos}}</td>
+          <td>{{$empleado->telefono_personal}}</td>
+          <td><button class="btn btn-warning">Editar</button></td>
+          <td><button class="btn btn-success">Detalles</button></td>
+          <td><button class="btn btn-danger">Desactivar</button></td>
+        </tr>        
+      @endforeach
     </tbody>
   </table>
 @stop
