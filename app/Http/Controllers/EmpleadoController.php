@@ -13,7 +13,7 @@ class EmpleadoController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function index()
     {
         $empleados = Empleado::where('estado',0)->get();
@@ -132,9 +132,10 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleado $empleado)
+    public function edit($id)
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+        return view("empleados.update")->with("empleado", $empleado);
     }
 
     /**
@@ -144,9 +145,66 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEmpleadoRequest $request, Empleado $empleado)
+    public function update(UpdateEmpleadoRequest $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombres' => 'required|max:100',
+            'apellidos' => 'required|max:100',
+            "correo_electronico" => "required|unique:empleados,correo_electronico," . $id,
+            "telefono_personal" => "required|unique:empleados,telefono_personal," . $id,
+            "telefono_alternativo" => "required|unique:empleados,telefono_alternativo," . $id,
+            'fecha_de_nacimiento'=>'required|date',
+            "DNI" => "required|unique:empleados,DNI," . $id,
+            'foto' => '',
+            'direccion'=>'required|max:200',
+        ], [
+            'nombres.required' => 'El campo de nombres no puede ser vació',
+            'nombres.max' => 'El campo nombres es muy extenso',
+            'apellidos.required' => 'El campo de apellidos no puede ser vació',
+            'apellidos.max' => 'El campo apellidos es muy extenso',
+            'correo_electronico.required' => 'El campo de correo electrónico no puede ser vació',
+            'correo_electronico.max' => 'El campo correo electrónico es muy extenso',
+            'correo_electronico.email' => 'En el campo correo electrónico debe de ingresar un correo valido',
+            'correo_electronico.unique' => 'El correo electrónico ya esta en uso',
+            'telefono_personal.required' => 'El campo de teléfono personal no puede ser vació',
+            'telefono_personal.max' => 'El campo teléfono personal debe contener 8 caracteres',
+            'telefono_personal.min' => 'El campo teléfono personal debe contener 8 caracteres',
+            'telefono_personal.numeric' => 'En el campo teléfono personal debe de ser números',
+            'telefono_personal.unique' => 'El teléfono personal ya esta en uso',
+            'telefono_alternativo.required' => 'El campo de teléfono emergencia no puede ser vació',
+            'telefono_alternativo.max' => 'El campo teléfono emergencia debe contener 8 caracteres',
+            'telefono_alternativo.min' => 'El campo teléfono emergencia debe contener 8 caracteres',
+            'telefono_alternativo.numeric' => 'En el campo teléfono emergencia debe de ser números',
+            'telefono_alternativo.unique' => 'El teléfono emergencia ya esta en uso',
+            'fecha_de_nacimiento.required' => 'El campo de fecha de nacimiento no puede ser vació',
+            'fecha_de_nacimiento.date' => 'El campo fecha de nacimiento debe de ser una fecha',
+            'DNI.required' => 'El campo de DNI no puede ser vació',
+            'DNI.max' => 'El campo DNI debe contener 13 caracteres',
+            'DNI.min' => 'El campo DNI debe contener 13 caracteres',
+            'DNI.numeric' => 'En el campo DNI debe de ser números',
+            'DNI.unique' => 'El DNI ya esta en uso',
+            'direccion.required' => 'El campo de dirección no puede ser vació',
+            'direccion.max' => 'El campo dirección es muy extenso',
+        ]);
+
+        $empleado= Empleado::findOrFail($id);
+        $empleado->nombres= $request->input("nombres");
+        $empleado->apellidos= $request->input('apellidos');
+        $empleado->correo_electronico = $request->input('correo_electronico');
+        $empleado->telefono_personal= $request->input('telefono_personal');
+        $empleado->telefono_alternativo = $request->input('telefono_alternativo');
+        $empleado->fecha_de_nacimiento= $request->input('fecha_de_nacimiento');
+        $empleado->direccion = $request->input('direccion');
+        $empleado->DNI= $request->input('DNI');
+
+        $creado = $empleado->save();
+
+        if ($creado) {
+            return redirect()->route('empleados.index')
+                ->with('mensaje', 'El empleado fue editado exitosamente');
+        } else {
+
+        }
     }
 
     /**

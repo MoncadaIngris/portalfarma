@@ -27,4 +27,9 @@ Route::get('/empleados/nuevo',[EmpleadoController::class, 'create'])
     ->name('empleados.create');
 //ruta guardar
 Route::post('/empleados/nuevo',[EmpleadoController::class, 'store'])
-    ->name('empleados.store'); 
+    ->name('empleados.store');
+Route::get("/empleados/{id}/edit", [EmpleadoController::class, "edit"])
+    ->name("empleado.edit")->where('id', '[0-9]+');
+
+Route::put("/empleados/{id}/edit", [EmpleadoController::class, "update"])
+    ->name("empleado.edit")->where('id', '[0-9]+');

@@ -28,10 +28,10 @@ Listado de Empleados
           <td>{{$empleado->nombres}}</td>
           <td>{{$empleado->apellidos}}</td>
           <td>{{$empleado->telefono_personal}}</td>
-          <td><button class="btn btn-warning">Editar</button></td>
+          <td><a class="btn btn-warning" href="{{route("empleado.edit",["id"=>$empleado->id])}}">Editar</a></td>
           <td><button class="btn btn-success">Detalles</button></td>
           <td><button class="btn btn-danger">Desactivar</button></td>
-        </tr>        
+        </tr>
       @endforeach
     </tbody>
   </table>
