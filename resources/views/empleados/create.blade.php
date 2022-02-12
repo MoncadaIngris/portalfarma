@@ -48,7 +48,9 @@ Crear Empleado
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="8" type="number" id="personal" name="personal" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('personal')}}">
+                value="{{old('personal')}}"
+                pattern="^[9|8|3|2]\d{7}$"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9">
                 
             </div>
         </div>
@@ -58,7 +60,9 @@ Crear Empleado
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="8" type="number" id="emergencia" name="emergencia" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('emergencia')}}">
+                value="{{old('emergencia')}}"
+                pattern="^[9|8|3|2]\d{7}$"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9">
             </div>
         </div>
         <?php $fecha_actual = date("d-m-Y");?>
@@ -68,6 +72,7 @@ Crear Empleado
             <div class="col-md-6 col-sm-6 ">
                 <input id="birthday" name="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" 
                 max="<?php echo date('Y-m-d',strtotime($fecha_actual."- 18 year"));?>"
+                min="<?php echo date('Y-m-d',strtotime($fecha_actual."- 65 year"));?>"
                 value="{{old('birthday')}}"
                 type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
                 <script>
@@ -85,7 +90,9 @@ Crear Empleado
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="13" type="number" id="dni" name="dni" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('dni')}}">
+                value="{{old('dni')}}"
+                pattern="[0-1]{1}[0-8]{1}[0-9]{11}"
+                title="Ingrese un numero de DNI valido">
             </div>
         </div>
         <div class="item form-group">
@@ -94,7 +101,7 @@ Crear Empleado
             <div class="col-md-6 col-sm-6 ">
                 <input type="file" id="foto" name="foto" accept="image/*" name="imagen" >
                 <!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
-                <img  class="rounded float-start"   id="imagenPrevisualizacion" src=""  width="200px" height="200px" alt=" ">
+                <img  class="rounded float-start"   id="imagenPrevisualizacion" src="{{old('imagenPrevisualizacion')}}"  width="200px" height="200px" alt=" ">
             </div>
         </div>
         <div class="item form-group">

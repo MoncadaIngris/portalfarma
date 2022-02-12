@@ -17,12 +17,12 @@ class CreateEmpleadosTable extends Migration
             $table->id();
             $table->string("nombres");
             $table->string("apellidos");
-            $table->string("correo_electronico");
-            $table->string("telefono_personal");
-            $table->string("telefono_alternativo");
-            $table->string("fecha_de_nacimiento");
+            $table->string("correo_electronico")->unique();
+            $table->string("telefono_personal")->unique();
+            $table->string("telefono_alternativo")->unique();
+            $table->string("fecha_de_nacimiento")->unique();
             $table->string("direccion");
-            $table->string("DNI");
+            $table->string("DNI")->unique();
             $table->string("fotografia");
             $table->boolean("estado")->default(0);
             $table->timestamps();
