@@ -21,6 +21,7 @@ class CreateProveedorsTable extends Migration
             $table->string('nombre_proveedor');
             $table->string('telefono_proveedor')->unique();
             $table->string('dia_de_entrega');
+            $table->boolean("estado")->default(0);
             $table->timestamps();
         });
     }
