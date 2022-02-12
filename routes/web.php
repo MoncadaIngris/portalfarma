@@ -15,10 +15,6 @@ use App\Http\Controllers\EmpleadoController;
 // Cambiar idioma. En este caso "en":
 
 
-Route::get('/j', function () {
-    return 'jorge';
-});
-
 
 Route::get('/', function () {
     return view('welcome');
