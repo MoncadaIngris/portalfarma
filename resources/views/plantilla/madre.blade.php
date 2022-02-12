@@ -64,12 +64,12 @@
                     <ul class="nav child_menu">
                       <li><a href="{{route('empleados.create')}}">Nuevo Empleado</a></li>
                       <li><a href="{{route('empleados.index')}}">Empleados Activos</a></li>
-                      <li><a href="#">Empleados Desactivados</a></li>
+                      <li><a href="{{route('empleados.desactivado')}}">Empleados Desactivados</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa-solid fa-box-open"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Nuevo Proveedor</a></li>
+                      <li><a href="{{route('proveedor.create')}}">Nuevo Proveedor</a></li>
                       <li><a href="#">Proveedores Activos</a></li>
                       <li><a href="#">Proveedores Desactivados</a></li>
                     </ul>

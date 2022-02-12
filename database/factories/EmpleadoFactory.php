@@ -23,7 +23,7 @@ class EmpleadoFactory extends Factory
              'direccion'=> $this -> faker -> text(50),
              'DNI' => $this-> faker ->  numerify('#############'),
              'fotografia' => $this->faker -> imageUrl($width = 640, $height = 480),
-
+             'estado' => $this->faker ->randomElement([0,1]),
         ];
     }
 }

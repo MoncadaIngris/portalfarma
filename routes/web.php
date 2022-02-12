@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProveedorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,18 @@ Route::put("/empleados/{id}/edit", [EmpleadoController::class, "update"])
 
 Route::get("/empleados/{id}", [EmpleadoController::class, "show"])
     ->name("empleado.show")->where('id', '[0-9]+');
+
+//ruta lista desactivados
+Route::get('/empleados/desactivados', [EmpleadoController::class, 'desactivados'])
+    ->name('empleados.desactivado');
+
+//ruta activar empleados
+Route::get('/empleados/{id}/activar', [EmpleadoController::class, 'activar'])
+    ->name('empleados.activar')->where('id', '[0-9]+');
+
+//ruta  create
+Route::get('/proveedor/nuevo',[ProveedorController::class, 'create'])
+->name('proveedor.create');
+//ruta guardar
+Route::post('/proveedor/nuevo',[ProveedorController::class, 'store'])
+->name('proveedor.store');
