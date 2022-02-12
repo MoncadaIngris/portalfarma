@@ -33,3 +33,6 @@ Route::get("/empleados/{id}/edit", [EmpleadoController::class, "edit"])
 
 Route::put("/empleados/{id}/edit", [EmpleadoController::class, "update"])
     ->name("empleado.edit")->where('id', '[0-9]+');
+
+Route::get("/empleados/{id}", [EmpleadoController::class, "show"])
+    ->name("empleado.show")->where('id', '[0-9]+');
