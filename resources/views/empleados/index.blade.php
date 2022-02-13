@@ -8,11 +8,11 @@ Listado de Empleados
             {{session('mensaje')}}
         </div>
     @endif
-<button class="btn btn-info" onclick="window.location='{{route('empleados.create')}}'">Crear Nuevo</button>
+<button class="btn btn-info" onclick="window.location='{{route('empleados.create')}}'">Agregar Empleado</button>
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">DNI</th>
+        <th scope="col">Identidad</th>
         <th scope="col">Nombres</th>
         <th scope="col">Apellidos</th>
         <th scope="col">Teléfono</th>

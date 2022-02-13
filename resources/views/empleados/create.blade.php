@@ -46,11 +46,11 @@ Crear Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Personal: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="personal" name="personal" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="personal" name="personal" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('personal')}}"
-                pattern="^[9|8|3|2]\d{7}$"
-                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9">
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
                 
             </div>
         </div>
@@ -58,11 +58,11 @@ Crear Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Emergencia: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="emergencia" name="emergencia" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="emergencia" name="emergencia" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('emergencia')}}"
-                pattern="^[9|8|3|2]\d{7}$"
-                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9">
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
             </div>
         </div>
         <?php $fecha_actual = date("d-m-Y");?>
@@ -74,25 +74,25 @@ Crear Empleado
                 max="<?php echo date('Y-m-d',strtotime($fecha_actual."- 18 year"));?>"
                 min="<?php echo date('Y-m-d',strtotime($fecha_actual."- 65 year"));?>"
                 value="{{old('birthday')}}"
-                type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                type="date" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='date'" onmouseout="timeFunctionLong(this)">
                 <script>
                     function timeFunctionLong(input) {
                         setTimeout(function() {
-                            input.type = 'text';
+                            input.type = 'date';
                         }, 60000);
                     }
                 </script>
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">DNI: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="13" type="number" id="dni" name="dni" required="required" class="form-control"
+                <input maxlength="13" type="string" id="dni" name="dni" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('dni')}}"
                 pattern="[0-1]{1}[0-8]{1}[0-9]{11}"
-                title="Ingrese un numero de DNI valido">
+                title="Ingrese un numero de identidad valido">
             </div>
         </div>
         <div class="item form-group">
