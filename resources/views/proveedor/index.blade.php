@@ -8,6 +8,11 @@ Listado de Proveedores
             {{session('mensaje')}}
         </div>
     @endif
+    <style>
+      #prueba {
+          overflow:auto;
+      }
+    </style>
 <button class="btn btn-info" onclick="window.location='{{route('proveedor.create')}}'">Crear Nuevo</button>
 <table  id="datatable" class="table table-striped">
     <thead>

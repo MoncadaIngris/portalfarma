@@ -41,8 +41,9 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         $fecha_actual = date("d-m-Y");
-        $maxima = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
+        $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
         $minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
+        $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
             'nombres' => 'required|max:100',
@@ -51,7 +52,7 @@ class EmpleadoController extends Controller
             'personal'=> 'required|unique:empleados,telefono_personal|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'emergencia'=> 'required|unique:empleados,telefono_alternativo|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'birthday'=>'required|date|before:'.$maxima.'|after:'.$minima,
-            'dni'=> 'required|unique:empleados,DNI|numeric|regex:([0-1]{1}[0-8]{1}[0-9]{11})',
+            'dni'=> 'required|unique:empleados,DNI|numeric|regex:([0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9})',
             'foto' => 'required|mimes:jpeg,bmp,png',
             'direccion'=>'required|max:200',
         ];

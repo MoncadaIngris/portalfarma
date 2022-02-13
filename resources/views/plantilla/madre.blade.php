@@ -207,13 +207,14 @@
                       <h1><center>@yield('titulo')</center></h1>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <div class="x_content"  id="prueba">
                     @yield('contenido')
                   </div>
                 </div>
               </div>
             </div>
 
+            
 
           </div>
         </div>

@@ -16,6 +16,7 @@ Crear Empleado
             </ul>
         </div>
     @endif
+
     <form method="post" enctype="multipart/form-data">
         @csrf
         <div class="item form-group">
@@ -88,10 +89,10 @@ Crear Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="13" type="string" id="dni" name="dni" required="required" class="form-control"
+                <input maxlength="13" type="text" id="dni" name="dni" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('dni')}}"
-                pattern="[0-1]{1}[0-8]{1}[0-9]{11}"
+                pattern="[0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
                 title="Ingrese un numero de identidad valido">
             </div>
         </div>
@@ -99,7 +100,7 @@ Crear Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fotografía: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="file" id="foto" name="foto" accept="image/*" name="imagen" >
+                <input type="file" id="foto" name="foto" accept="image/*" name="imagen" value="{{old('imagenPrevisualizacion')}}">
                 <!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
                 <img  class="rounded float-start"   id="imagenPrevisualizacion" src="{{old('imagenPrevisualizacion')}}"  width="200px" height="200px" alt=" ">
             </div>
