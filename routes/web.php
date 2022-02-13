@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProveedorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +35,38 @@ Route::get("/empleados/{id}/edit", [EmpleadoController::class, "edit"])
 
 Route::put("/empleados/{id}/edit", [EmpleadoController::class, "update"])
     ->name("empleado.edit")->where('id', '[0-9]+');
+
+Route::get("/empleados/{id}", [EmpleadoController::class, "show"])
+    ->name("empleado.show")->where('id', '[0-9]+');
+
+//ruta lista desactivados
+Route::get('/empleados/desactivados', [EmpleadoController::class, 'desactivados'])
+    ->name('empleados.desactivado');
+
+//ruta activar empleados
+Route::get('/empleados/{id}/activar', [EmpleadoController::class, 'activar'])
+    ->name('empleados.activar')->where('id', '[0-9]+');
+
+
+//ruta  create
+Route::get('/proveedor/nuevo',[ProveedorController::class, 'create'])
+->name('proveedor.create');
+//ruta guardar
+Route::post('/proveedor/nuevo',[ProveedorController::class, 'store'])
+->name('proveedor.store');
+
+
+//Ruta Formulario proveedor
+Route::get('/proveedor', [ProveedorController::class, 'index'])
+->name('proveedor.index');
+
+//Ruta editar proveedor
+Route::get("/proveedor/{id}/edit", [ProveedorController::class, "edit"])
+    ->name("proveedor.edit")->where('id', '[0-9]+');
+
+Route::put("/proveedor/{id}/edit", [ProveedorController::class, "update"])
+    ->name("proveedor.edit")->where('id', '[0-9]+');
+
+    //Ruta detalle proveedor
+Route::get("/proveedor/{id}", [ProveedorController::class, "show"])
+    ->name("proveedor.show")->where('id', '[0-9]+');

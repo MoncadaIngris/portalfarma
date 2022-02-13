@@ -121,9 +121,10 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleado $empleado)
+    public function show($id)
     {
-        //
+        $empleado= Empleado::findOrFail($id);
+        return view('empleados.show')->with('empleado', $empleado);
     }
 
     /**
@@ -217,4 +218,24 @@ class EmpleadoController extends Controller
     {
         //
     }
+
+    public function desactivados()
+    {
+        $empleados = Empleado::where('estado',1)->get();
+
+        return view('empleados/desactivados')->with('empleados', $empleados);
+    }
+
+    public function activar(UpdateEmpleadoRequest $request, $id)
+    {
+
+        $empleado= Empleado::findOrFail($id);
+        $empleado->estado= 0;
+
+        $creado = $empleado->save();
+
+        return redirect()->route('empleados.desactivado')
+            ->with('mensaje', 'El empleado fue activado exitosamente');
+    }
+
 }
