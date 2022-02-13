@@ -210,7 +210,7 @@ class ProveedorController extends Controller
         $creado = $proveedor->save();
 
         return redirect()->route('proveedor.desactivado')
-            ->with('mensaje', 'El empleado fue activado exitosamente');
+            ->with('mensaje', 'El proveedor fue activado exitosamente');
     }
 
 
