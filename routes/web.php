@@ -70,3 +70,11 @@ Route::put("/proveedor/{id}/edit", [ProveedorController::class, "update"])
     //Ruta detalle proveedor
 Route::get("/proveedor/{id}", [ProveedorController::class, "show"])
     ->name("proveedor.show")->where('id', '[0-9]+');
+
+    //ruta lista desactivados de proveedor
+Route::get('/proveedor/desactivados', [ProveedorController::class, 'desactivados'])
+->name('proveedor.desactivado');
+
+//ruta activar proveedor
+Route::get('/proveedor/{id}/activar', [ProveedorController::class, 'activar'])
+    ->name('proveedor.activar')->where('id', '[0-9]+');

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProveedorRequest;
 use App\Http\Requests\UpdateProveedorRequest;
 
+
+
 class ProveedorController extends Controller
 {
     /**
@@ -190,4 +192,28 @@ class ProveedorController extends Controller
     {
         //
     }
+
+
+    public function desactivados()
+    {
+        $proveedor = Proveedor::where('estado',1)->get();
+
+        return view('proveedor/desactivados')->with('proveedor',$proveedor);
+    }
+
+    public function activar(UpdateProveedorRequest $request, $id)
+    {
+
+        $proveedor= Proveedor::findOrFail($id);
+        $proveedor->estado= 0;
+
+        $creado = $proveedor->save();
+
+        return redirect()->route('proveedor.desactivado')
+            ->with('mensaje', 'El empleado fue activado exitosamente');
+    }
+
+
+
+
 }
