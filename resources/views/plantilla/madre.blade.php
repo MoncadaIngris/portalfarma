@@ -70,7 +70,7 @@
                   <li><a><i class="fa-solid fa-box-open"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('proveedor.create')}}">Nuevo Proveedor</a></li>
-                      <li><a href="#">Proveedores Activos</a></li>
+                      <li><a href="{{route('proveedor.index')}}">Proveedores Activos</a></li>
                       <li><a href="#">Proveedores Desactivados</a></li>
                     </ul>
                   </li>
