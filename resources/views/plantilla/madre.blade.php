@@ -71,7 +71,7 @@
                     <ul class="nav child_menu">
                       <li><a href="{{route('proveedor.create')}}">Nuevo Proveedor</a></li>
                       <li><a href="{{route('proveedor.index')}}">Proveedores Activos</a></li>
-                      <li><a href="#">Proveedores Desactivados</a></li>
+                      <li><a href="{{route('proveedor.desactivado')}}">Proveedores Desactivados</a></li>
                     </ul>
                   </li>
                 </ul>
