@@ -46,9 +46,11 @@ Crear Proveedor
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Repartidor: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="telefono_repartidor" name="telefono_repartidor" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="telefono_repartidor" name="telefono_repartidor" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('telefono_repartidor')}}">
+                value="{{old('telefono_repartidor')}}"
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
                 
             </div>
         </div>
@@ -56,9 +58,11 @@ Crear Proveedor
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Proveedor: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('telefono_proveedor')}}">
+                value="{{old('telefono_proveedor')}}"
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
             </div>
         </div>
         <div class="item form-group">
@@ -79,7 +83,7 @@ Crear Proveedor
         </div>
         <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
-                <button class="btn btn-primary" type="button" onclick="window.location='#'">Cancelar</button>
+                <button class="btn btn-primary" type="button" onclick="window.location='{{route('proveedor.index')}}'">Cancelar</button>
                 <button type="submit" class="btn btn-success">Guardar</button>
             </div>
         </div>
