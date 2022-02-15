@@ -115,7 +115,6 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-
             $proveedor = Proveedor::findOrFail($id);
             return view("proveedor.update")->with("proveedor", $proveedor);
 

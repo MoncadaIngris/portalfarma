@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Datos del Proveedor {{$proveedor->id}}
+Datos del Proveedor {{$proveedor->nombre_proveedor}}
 @stop
 @section('contenido')
     @if(session('mensaje'))
