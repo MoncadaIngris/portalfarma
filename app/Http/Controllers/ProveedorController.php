@@ -115,10 +115,10 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        {
+
             $proveedor = Proveedor::findOrFail($id);
             return view("proveedor.update")->with("proveedor", $proveedor);
-        }
+
     }
 
     /**
@@ -161,6 +161,7 @@ class ProveedorController extends Controller
             'dia_de_entrega.required' => 'El dia de entrega es obligatorio',
             'dia_de_entrega.in' => 'El dia de entrega no es valido',
         ]);
+
         $proveedor= Proveedor::findOrFail($id);
 
         $proveedor->nombre_repartidor = $request->input('nombre_repartidor');

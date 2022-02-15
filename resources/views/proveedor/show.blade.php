@@ -17,7 +17,9 @@ Datos del Proveedor {{$proveedor->id}}
                     <tr>
                     <p style="color: white; margin-left: 250px">Nombre Repartidor: <strong style="color: white">{{$proveedor->nombre_repartidor}} </strong></p>
                         <p style="color: white; margin-left: 250px">Nombre Proveedor: <strong style="color: white">{{$proveedor->nombre_proveedor}}</strong></p>
+                        <p style="color: white; margin-left: 250px">Correo Electronico: <strong style="color: white">{{$proveedor->correo_electronico}}</strong></p>
                         <p style="color: white; margin-left: 250px">Teléfono Repartidor: <strong style="color: white">{{$proveedor->telefono_repartidor}} </strong> </p>
+                        <p style="color: white; margin-left: 250px">Teléfono Proveedor: <strong style="color: white">{{$proveedor->telefono_proveedor}} </strong> </p>
                         <p style="color: white; margin-left: 250px">Dia de Entrega: <strong style="color: white">{{$proveedor->dia_de_entrega}} </strong> </p>
                     </div
                     </div>
@@ -28,6 +30,11 @@ Datos del Proveedor {{$proveedor->id}}
                 <hr>
                 <hr>
                 <hr>
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+
                     <a type="button" class="btn btn-primary" href="{{route('proveedor.index')}}">Regresar</a>
 
             </div>
