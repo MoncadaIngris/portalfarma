@@ -22,9 +22,14 @@ Datos del Proveedor {{$proveedor->id}}
                     </div
                     </div>
                 <hr>
-                <div class="ln_solid" style="margin: 0 auto;">
-                    <button class="btn btn-primary" type="button" onclick="window.location='{{route('proveedor.index')}}'">Regresar</button>
-                </div>
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+                    <a type="button" class="btn btn-primary" href="{{route('proveedor.index')}}">Regresar</a>
+
             </div>
         </div>
 @stop
