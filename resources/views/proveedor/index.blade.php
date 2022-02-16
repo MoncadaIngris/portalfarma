@@ -13,7 +13,7 @@ Listado de Proveedores
           overflow:auto;
       }
     </style>
-<button class="btn btn-info" onclick="window.location='{{route('proveedor.create')}}'">Crear Nuevo</button>
+<button class="btn btn-info" onclick="window.location='{{route('proveedor.create')}}'">Agregar Proveedores</button>
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
