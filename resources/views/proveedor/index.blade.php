@@ -31,7 +31,7 @@ Listado de Proveedores
           <td>{{$proveedor->dia_de_entrega}}</td>
           <td><a class="btn btn-warning" href="{{route("proveedor.edit",["id"=>$proveedor->id])}}">Editar</a></td>
           <td><a class="btn btn-success" href="{{route("proveedor.show",["id"=>$proveedor->id])}}">Detalles</a></td>
-          <td><button class="btn btn-danger" href= "{{route("proveedor.desactivar",["id"=>$proveedor->id])}}">Desactivar</button></td>
+          <td><button class="btn btn-danger">Desactivar</button></td>
         </tr>
       @endforeach
     </tbody>
