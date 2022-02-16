@@ -29,11 +29,11 @@ Listado de Empleados Desactivados
             <center>
               <a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
             
-              <button onclick="activar();" class="btn btn-info"><i class="fa-solid fa-eye"></i> Activar</button>
+              <button onclick="activar{{$empleado->id}}();" class="btn btn-info"><i class="fa-solid fa-eye"></i> Activar</button>
             </center>
 
             <script>
-              function activar(){
+              function activar{{$empleado->id}}(){
                   Swal.fire({
                   title: '<strong>Activar Empleado</strong>',
                   text: "¿Desea activar el empleado seleccionado?",

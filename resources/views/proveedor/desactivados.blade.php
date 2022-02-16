@@ -31,11 +31,11 @@ Listado de Proveedores Desactivados
             <center>
               <a class="btn btn-success" href="{{route("proveedor.show",["id"=>$proveedor->id])}}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
 
-              <button onclick="activar();" class="btn btn-info"><i class="fa-solid fa-eye"></i> Activar</button>
+              <button onclick="activar{{$proveedor->id}}();" class="btn btn-info"><i class="fa-solid fa-eye"></i> Activar</button>
             </center>
 
             <script>
-              function activar(){
+              function activar{{$proveedor->id}}(){
                   Swal.fire({
                   title: '<strong>Activar Proveedor</strong>',
                   text: "¿Desea activar el proveedor seleccionado?",

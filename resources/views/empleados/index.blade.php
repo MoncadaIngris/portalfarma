@@ -35,8 +35,31 @@ Listado de Empleados
             <center>
               <a class="btn btn-warning" href="{{route("empleado.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
               <a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
-              <button class="btn btn-danger"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
+              <button onclick="desactivar{{$empleado->id}}();" class="btn btn-danger"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
             </center>
+            <script>
+              function desactivar{{$empleado->id}}(){
+                  Swal.fire({
+                  title: '<strong>Desactivar Empleado</strong>',
+                  text: "¿Desea desactivar el empleado seleccionado?",
+                  icon: 'question',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Aceptar'
+                  }).then((result) => {
+                  if (result.isConfirmed) {
+                      Swal.fire(
+                      'Desactivado',
+                      'El empleado fue desactivado exitosamente',
+                      'success'
+                      )
+                      window.location='{{route("empleados.desactivar",["id"=>$empleado->id])}}'
+                  }
+                  })
+                  
+              }
+          </script>
           </td>
         </tr>
       @endforeach
