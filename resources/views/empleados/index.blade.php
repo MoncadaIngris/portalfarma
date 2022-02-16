@@ -13,17 +13,15 @@ Listado de Empleados
           overflow:auto;
       }
     </style>
-<button class="btn btn-info" onclick="window.location='{{route('empleados.create')}}'">Agregar Empleado</button>
+<button class="btn btn-info" onclick="window.location='{{route('empleados.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Empleado</button>
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Identidad</th>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Detalles</th>
-        <th scope="col">Desactivar</th>
+        <th scope="col" style="width: 15%; text-align: center">Identidad</th>
+        <th scope="col" style="width: 15%; text-align: center">Nombres</th>
+        <th scope="col" style="width: 15%; text-align: center">Apellidos</th>
+        <th scope="col" style="width: 15%; text-align: center">Teléfono</th>
+        <th scope="col" style="width: 40%; text-align: center">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -33,9 +31,13 @@ Listado de Empleados
           <td>{{$empleado->nombres}}</td>
           <td>{{$empleado->apellidos}}</td>
           <td>{{$empleado->telefono_personal}}</td>
-          <td><a class="btn btn-warning" href="{{route("empleado.edit",["id"=>$empleado->id])}}">Editar</a></td>
-          <td><a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}">Detalles</a></td>
-          <td><button class="btn btn-danger">Desactivar</button></td>
+          <td>
+            <center>
+              <a class="btn btn-warning" href="{{route("empleado.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+              <a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
+              <button class="btn btn-danger"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
+            </center>
+          </td>
         </tr>
       @endforeach
     </tbody>

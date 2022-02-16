@@ -11,12 +11,11 @@ Listado de Empleados Desactivados
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">DNI</th>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Detalles</th>
-        <th scope="col">Activar</th>
+        <th scope="col" style="width: 17%; text-align: center">DNI</th>
+        <th scope="col" style="width: 17%; text-align: center">Nombres</th>
+        <th scope="col" style="width: 17%; text-align: center">Apellidos</th>
+        <th scope="col" style="width: 17%; text-align: center">Teléfono</th>
+        <th scope="col" style="width: 32%; text-align: center">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -26,9 +25,12 @@ Listado de Empleados Desactivados
           <td>{{$empleado->nombres}}</td>
           <td>{{$empleado->apellidos}}</td>
           <td>{{$empleado->telefono_personal}}</td>
-          <td><a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}">Detalles</a></td>
           <td>
-            <button onclick="activar();" class="btn btn-info">Activar</button>
+            <center>
+              <a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+            
+              <button onclick="activar();" class="btn btn-info"><i class="fa-solid fa-eye"></i> Activar</button>
+            </center>
 
             <script>
               function activar(){
