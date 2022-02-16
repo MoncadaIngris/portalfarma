@@ -194,13 +194,14 @@ class ProveedorController extends Controller
     }
 
 
+    // funcion para lista de desact
     public function desactivados()
     {
         $proveedor = Proveedor::where('estado',1)->get();
 
         return view('proveedor/desactivados')->with('proveedor',$proveedor);
     }
-
+// funcion para activar 
     public function activar(UpdateProveedorRequest $request, $id)
     {
 
@@ -213,6 +214,17 @@ class ProveedorController extends Controller
             ->with('mensaje', 'El proveedor fue activado exitosamente');
     }
 
+    // funcion para desactivar 
+    public function desactivar(UpdateProveedorRequest $request, $id)
+    {
+
+        $proveedor= Proveedor::findOrFail($id);
+        $proveedor->estado= 1;
+
+        $creado = $proveedor->save();
+
+        return redirect()->route('proveedor.index');
+    }
 
 
 

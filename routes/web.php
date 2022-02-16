@@ -78,3 +78,7 @@ Route::get('/proveedor/desactivados', [ProveedorController::class, 'desactivados
 //ruta activar proveedor
 Route::get('/proveedor/{id}/activar', [ProveedorController::class, 'activar'])
     ->name('proveedor.activar')->where('id', '[0-9]+');
+
+// Ruta desactivar proveedor
+    Route::get('/proveedor/{id}/desactivado', [ProveedorController::class, 'desactivar'])
+    ->name('proveedor.desactivar')->where('id', '[0-9]+');
