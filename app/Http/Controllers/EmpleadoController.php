@@ -257,8 +257,9 @@ class EmpleadoController extends Controller
 
         $creado = $empleado->save();
 
-        return redirect()->route('empleados.desactivado')
-            ->with('mensaje', 'El empleado fue activado exitosamente');
+        return redirect()->route('empleados.desactivado');
     }
+
+
 
 }
