@@ -8,17 +8,20 @@ Listado de Proveedores
             {{session('mensaje')}}
         </div>
     @endif
-<button class="btn btn-info" onclick="window.location='{{route('proveedor.create')}}'">Crear Nuevo</button>
+    <style>
+      #prueba {
+          overflow:auto;
+      }
+    </style>
+<button class="btn btn-info" onclick="window.location='{{route('proveedor.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Proveedores</button>
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Nombre Repartidor</th>
-        <th scope="col">Nombre Proveedor</th>
-        <th scope="col">Teléfono Repartidor</th>
-        <th scope="col">Dia de Entrega</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Detalles</th>
-        <th scope="col">Desactivar</th>
+        <th scope="col" style="width: 15%; text-align: center">Nombre Repartidor</th>
+        <th scope="col" style="width: 15%; text-align: center">Nombre Proveedor</th>
+        <th scope="col" style="width: 15%; text-align: center">Teléfono Repartidor</th>
+        <th scope="col" style="width: 15%; text-align: center">Dia de Entrega</th>
+        <th scope="col" style="width: 40%; text-align: center">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -29,9 +32,36 @@ Listado de Proveedores
           <td>{{$proveedor->nombre_proveedor}}</td>
           <td>{{$proveedor->telefono_repartidor}}</td>
           <td>{{$proveedor->dia_de_entrega}}</td>
-          <td><a class="btn btn-warning" href="{{route("proveedor.edit",["id"=>$proveedor->id])}}">Editar</a></td>
-          <td><a class="btn btn-success" href="{{route("proveedor.show",["id"=>$proveedor->id])}}">Detalles</a></td>
-          <td><button class="btn btn-danger">Desactivar</button></td>
+          <td>
+            <center>
+              <a class="btn btn-warning" href="{{route("proveedor.edit",["id"=>$proveedor->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+              <a class="btn btn-success" href="{{route("proveedor.show",["id"=>$proveedor->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
+              <button onclick="desactivar{{$proveedor->id}}();" class="btn btn-danger"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
+            </center>
+            <script>
+              function desactivar{{$proveedor->id}}(){
+                  Swal.fire({
+                  title: '<strong>Desactivar Proveedor</strong>',
+                  text: "¿Desea desactivar el proveedor seleccionado?",
+                  icon: 'question',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Aceptar'
+                  }).then((result) => {
+                  if (result.isConfirmed) {
+                      Swal.fire(
+                      'Desactivado',
+                      'El proveedor fue desactivado exitosamente',
+                      'success'
+                      )
+                      window.location='#'
+                  }
+                  })
+                  
+              }
+          </script>
+          </td>
         </tr>
       @endforeach
     </tbody>

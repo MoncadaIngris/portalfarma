@@ -68,7 +68,9 @@
                            value="{{old("telefono_personal")}}"
                            @else
                            value="{{$empleado->telefono_personal}}"
-                        @endif>
+                        @endif
+                        pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
 
                 </div>
             </div>
@@ -76,13 +78,15 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Emergencia: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="8" type="number" id="telefono_alternativo" name="telefono_alternativo" required="required" class="form-control"
+                    <input maxlength="8" type="tel" id="telefono_alternativo" name="telefono_alternativo" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            @if(old("telefono_alternativo"))
                            value="{{old("telefono_alternativo")}}"
                            @else
                            value="{{$empleado->telefono_alternativo}}"
-                        @endif>
+                        @endif
+                        pattern="[9,8,3,2]{1}[0-9]{7}"
+                        title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
                 </div>
             </div>
             <?php $fecha_actual = date("d-m-Y");?>
@@ -97,7 +101,7 @@
                            @else
                            value="{{$empleado->fecha_de_nacimiento}}"
                            @endif
-                           type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                           type="date" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='date'" onmouseout="timeFunctionLong(this)">
                     <script>
                         function timeFunctionLong(input) {
                             setTimeout(function() {
@@ -111,13 +115,15 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">DNI: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="13" type="number" id="DNI" name="DNI" required="required" class="form-control"
+                    <input maxlength="13" type="text" id="DNI" name="DNI" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            @if(old("DNI"))
                            value="{{old("DNI")}}"
                            @else
                            value="{{$empleado->DNI}}"
-                        @endif>
+                        @endif
+                        pattern="[0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
+                title="Ingrese un numero de identidad valido">
                 </div>
             </div>
             <div class="item form-group">
@@ -126,7 +132,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input type="file" id="foto" name="foto" accept="image/*" >
                     <!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
-                    <img  class="rounded float-start"   id="imagenPrevisualizacion" src=""  width="200px" height="200px" alt=" ">
+                    <img  class="rounded float-start"   id="imagenPrevisualizacion" src="{{asset($empleado->fotografia)}}"  width="200px" height="200px" alt=" ">
                 </div>
             </div>
             <div class="item form-group">

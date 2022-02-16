@@ -13,6 +13,7 @@
 
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
+    <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
@@ -28,6 +29,10 @@
     <link href="{{ asset('css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
   </head>
 
   <body class="nav-md">
@@ -207,13 +212,14 @@
                       <h1><center>@yield('titulo')</center></h1>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <div class="x_content"  id="prueba">
                     @yield('contenido')
                   </div>
                 </div>
               </div>
             </div>
 
+            
 
           </div>
         </div>
@@ -270,5 +276,6 @@
     <script src="{{ asset('js/jszip.min.js') }}"></script>
     <script src="{{ asset('js/pdfmake.min.js') }}"></script>
     <script src="{{ asset('js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
   </body>
 </html>

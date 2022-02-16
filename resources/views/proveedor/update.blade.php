@@ -27,7 +27,11 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="100" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
-                value="{{old('nombre_repartidor')}}">
+                @if(old('nombre_repartidor'))
+                    value="{{old('nombre_repartidor')}}"
+                @else
+                    value="{{$proveedor->nombre_repartidor}}"
+                @endif>
             </div>
         </div>
         <div class="item form-group">
@@ -35,7 +39,11 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="100" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
-                value="{{old('nombre_proveedor')}}">
+                @if(old('nombre_proveedor'))
+                    value="{{old('nombre_proveedor')}}"
+                @else
+                    value="{{$proveedor->nombre_proveedor}}"
+                @endif>
             </div>
         </div>
         <div class="item form-group">
@@ -43,16 +51,26 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="100" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
-                value="{{old('correo_electronico')}}">
+                @if(old('correo_electronico'))
+                    value="{{old('correo_electronico')}}"
+                @else
+                    value="{{$proveedor->correo_electronico}}"
+                @endif>
             </div>
         </div>
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Repartidor: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="telefono_repartidor" name="telefono_repartidor" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="telefono_repartidor" name="telefono_repartidor" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('telefono_repartidor')}}">
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                @if(old('telefono_repartidor'))
+                    value="{{old('telefono_repartidor')}}"
+                @else
+                    value="{{$proveedor->telefono_repartidor}}"
+                @endif>
 
             </div>
         </div>
@@ -60,9 +78,15 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Proveedor: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('telefono_proveedor')}}">
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                @if(old('telefono_proveedor'))
+                    value="{{old('telefono_proveedor')}}"
+                @else
+                    value="{{$proveedor->telefono_proveedor}}"
+                @endif>
             </div>
         </div>
         <div class="item form-group">
@@ -70,7 +94,7 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <select name="dia_de_entrega" id="dia_de_entrega" required="required" class="form-control">
-                    <option value="" style="display: none"><--Seleccione una opción--></option>
+                    <option value="{{$proveedor->dia_de_entrega}}" style="display: none">{{$proveedor->dia_de_entrega}}</option>
                     <option value="Lunes">Lunes</option>
                     <option value="Martes">Martes</option>
                     <option value="Miércoles">Miércoles</option>
