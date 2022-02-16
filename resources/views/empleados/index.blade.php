@@ -54,7 +54,7 @@ Listado de Empleados
                       'El empleado fue desactivado exitosamente',
                       'success'
                       )
-                      window.location='{{route("empleados.desactivar",["id"=>$empleado->id])}}'
+                      window.location='#'
                   }
                   })
                   
