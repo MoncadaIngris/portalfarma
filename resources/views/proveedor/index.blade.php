@@ -55,7 +55,7 @@ Listado de Proveedores
                       'El proveedor fue desactivado exitosamente',
                       'success'
                       )
-                      window.location='#'
+                      window.location='{{route("empleados.desactivar",["id"=>$empleado->id])}}'
                   }
                   })
                   
