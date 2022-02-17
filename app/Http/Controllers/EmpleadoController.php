@@ -241,15 +241,15 @@ class EmpleadoController extends Controller
     {
         //funcion de desactivar
     }
-    public function desactivar (UpdateEmpleadoRequest $request, $id)
-    {
-        $empleado= Empleado::findOrFail($id);
-        $empleado->estado= 1;
+    //public function desactivar (UpdateEmpleadoRequest $request, $id)
+    //{
+    //$empleado= Empleado::findOrFail($id);
+    //$empleado->estado= 1;
 
-        $creado = $empleado->save();
+    // $creado = $empleado->save();
 
-        return redirect()->route('empleados.index');
-    }
+    //return redirect()->route('empleados.index');
+    //}
 
 
     public function desactivados()

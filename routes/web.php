@@ -41,8 +41,7 @@ Route::get("/empleados/{id}", [EmpleadoController::class, "show"])
     ->name("empleado.show")->where('id', '[0-9]+');
 
 //ruta desactivar
-Route::get('/empleados/{id}/desactivado', [EmpleadoController::class, 'desactivar'])
-    ->name('empleados.desactivar')->where('id', '[0-9]+');
+
 
 //ruta lista desactivados
 Route::get('/empleados/desactivados', [EmpleadoController::class, 'desactivados'])
