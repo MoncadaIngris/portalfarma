@@ -33,33 +33,34 @@ Listado de Proveedores Desactivados
 
               <button onclick="activar{{$proveedor->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i> Activar</button>
             </center>
-
-            <script>
-              function activar{{$proveedor->id}}(){
-                  Swal.fire({
-                  title: '<strong>Activar Proveedor</strong>',
-                  text: "¿Desea activar el proveedor seleccionado?",
-                  icon: 'question',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Aceptar'
-                  }).then((result) => {
-                  if (result.isConfirmed) {
-                      Swal.fire(
-                      'Desactivado',
-                      'El proveedor fue activado exitosamente',
-                      'success'
-                      )
-                      window.location='{{route("proveedor.activar",["id"=>$proveedor->id])}}'
-                  }
-                  })
-                  
-              }
-          </script>
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
+  @foreach ($provee as $proveedor)
+  <script>
+    function activar{{$proveedor->id}}(){
+        Swal.fire({
+        title: '<strong>Activar Proveedor</strong>',
+        text: "¿Desea activar el proveedor seleccionado?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Desactivado',
+            'El proveedor fue activado exitosamente',
+            'success'
+            )
+            window.location='{{route("proveedor.activar",["id"=>$proveedor->id])}}'
+        }
+        })
+        
+    }
+</script>
+  @endforeach
 @stop

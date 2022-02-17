@@ -21,6 +21,7 @@ class CreateEmpleadosTable extends Migration
             $table->string("telefono_personal")->unique();
             $table->string("telefono_alternativo")->unique();
             $table->string("fecha_de_nacimiento");
+            $table->string("fecha_de_ingreso");
             $table->string("direccion");
             $table->string("DNI")->unique();
             $table->string("fotografia");

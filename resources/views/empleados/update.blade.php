@@ -25,7 +25,7 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="100" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                    <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
                            @if(old("nombres"))
                            value="{{old("nombres")}}"
                            @else
@@ -38,8 +38,9 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Apellidos: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="100" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
-                           @if(old("apellidos"))
+                    <input maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
+                    placeholder="Ingrese los nombres"   
+                        @if(old("apellidos"))
                            value="{{old("apellidos")}}"
                            @else
                            value="{{$empleado->apellidos}}"
@@ -50,8 +51,9 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Correo Electrónico: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="100" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
-                           @if(old("correo_electronico"))
+                    <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
+                    placeholder="Ingrese el correo electrónico"       
+                    @if(old("correo_electronico"))
                            value="{{old("correo_electronico")}}"
                            @else
                            value="{{$empleado->correo_electronico}}"
@@ -64,6 +66,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="8" type="number" id="telefono_personal" name="telefono_personal" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                           placeholder="Ingrese el teléfono personal"
                            @if(old("telefono_personal"))
                            value="{{old("telefono_personal")}}"
                            @else
@@ -80,6 +83,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="8" type="tel" id="telefono_alternativo" name="telefono_alternativo" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                           placeholder="Ingrese los nombres"
                            @if(old("telefono_alternativo"))
                            value="{{old("telefono_alternativo")}}"
                            @else
@@ -96,6 +100,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input id="fecha_de_nacimiento" name="fecha_de_nacimiento" class="date-picker form-control" placeholder="dd-mm-yyyy"
                            max="<?php echo date('Y-m-d',strtotime($fecha_actual."- 18 year"));?>"
+                           placeholder="Ingrese el teléfono emergencia"
                            @if(old("fecha_de_nacimiento"))
                            value="{{old("fecha_de_nacimiento")}}"
                            @else
@@ -106,6 +111,28 @@
                         function timeFunctionLong(input) {
                             setTimeout(function() {
                                 input.type = 'text';
+                            }, 60000);
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align">Fecha de Ingreso: <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input id="ingreso" name="ingreso" class="date-picker form-control" placeholder="dd-mm-yyyy" 
+                    max="<?php echo date('Y-m-d',strtotime($fecha_actual));?>"
+                    min="<?php echo date('Y-m-d',strtotime($fecha_actual."- 1 month"));?>"
+                    @if(old("ingreso"))
+                           value="{{old("ingreso")}}"
+                           @else
+                           value="{{$empleado->fecha_de_ingreso}}"
+                           @endif
+                    type="date" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='date'" onmouseout="timeFunctionLong(this)">
+                    <script>
+                        function timeFunctionLong(input) {
+                            setTimeout(function() {
+                                input.type = 'date';
                             }, 60000);
                         }
                     </script>
@@ -123,7 +150,8 @@
                            value="{{$empleado->DNI}}"
                         @endif
                         pattern="[0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
-                title="Ingrese un numero de identidad valido">
+                title="Ingrese un numero de identidad valido"
+                placeholder="Ingrese la identidad sin guiones">
                 </div>
             </div>
             <div class="item form-group">
@@ -139,7 +167,7 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <textarea maxlength="200" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
+                    <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
                     >@if(old("direccion")){{old("direccion")}}@else{{$empleado->direccion}}@endif</textarea>
 
                 </div>
@@ -149,7 +177,7 @@
             <div class="item form-group">
                 <div class="col-md-6 col-sm-6 offset-md-3">
                     <button class="btn btn-regresar" type="button" onclick="window.location='{{route('empleados.index')}}'">Cancelar</button>
-                    <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
+                    <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Restaurar</a>
                     <button type="submit" class="btn btn-guardar">Guardar</button>
                 </div>
             </div>

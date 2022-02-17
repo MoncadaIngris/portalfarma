@@ -13,7 +13,7 @@ class EmpleadoFactory extends Factory
      */
     public function definition()
     {
-        $fecha_actual = date("d-m-Y");
+        $fecha_actual = date("Y-m-d");
         $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
         $minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
@@ -25,6 +25,7 @@ class EmpleadoFactory extends Factory
             'telefono_personal'  => $this-> faker -> randomElement([2,3,8,9]).$this-> faker ->unique() -> numerify('#######'),
             'telefono_alternativo' => $this-> faker -> randomElement([2,3,8,9]).$this-> faker ->unique() -> numerify('#######'),
             'fecha_de_nacimiento'=> $this -> faker ->date($format='Y-m-d', $max= $maxima, $min= $minima),
+            'fecha_de_ingreso' => $fecha_actual,
              'direccion'=> $this -> faker -> text(50),
              'DNI'  =>substr(str_repeat(0, 2).$this-> faker -> numberBetween($min = 1, $max = 18), - 2).substr(str_repeat(0, 2).$this-> faker -> numberBetween($min = 1, $max = 28), - 2).$this-> faker -> numberBetween($min =1957, $max = 2004).$this-> faker ->unique()-> numerify('#####'),
              'fotografia' => 'images/'.$this->faker -> numberBetween($min = 1, $max = 14).'.jpg',

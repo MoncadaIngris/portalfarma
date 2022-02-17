@@ -31,33 +31,35 @@ Listado de Empleados Desactivados
             
               <button onclick="activar{{$empleado->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i> Activar</button>
             </center>
-
-            <script>
-              function activar{{$empleado->id}}(){
-                  Swal.fire({
-                  title: '<strong>Activar Empleado</strong>',
-                  text: "¿Desea activar el empleado seleccionado?",
-                  icon: 'question',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Aceptar'
-                  }).then((result) => {
-                  if (result.isConfirmed) {
-                      Swal.fire(
-                      'Desactivado',
-                      'El empleado fue activado exitosamente',
-                      'success'
-                      )
-                      window.location='{{route("empleados.activar",["id"=>$empleado->id])}}'
-                  }
-                  })
-                  
-              }
-          </script>
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
+  
+  @foreach($empleados as $empleado)
+  <script>
+    function activar{{$empleado->id}}(){
+        Swal.fire({
+        title: '<strong>Activar Empleado</strong>',
+        text: "¿Desea activar el empleado seleccionado?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Desactivado',
+            'El empleado fue activado exitosamente',
+            'success'
+            )
+            window.location='{{route("empleados.activar",["id"=>$empleado->id])}}'
+        }
+        })
+        
+    }
+</script>
+  @endforeach
 @stop

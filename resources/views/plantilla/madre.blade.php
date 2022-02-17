@@ -206,6 +206,7 @@
           }
           .btn-detalles{
             background: #7be2c3;
+            content: " Detalles"
           }
           .btn-desactivar{
             background: #f75666;

@@ -20,7 +20,7 @@ Listado de Proveedores
         <th scope="col" style="width: 15%; text-align: center">Nombre Repartidor</th>
         <th scope="col" style="width: 15%; text-align: center">Nombre Proveedor</th>
         <th scope="col" style="width: 15%; text-align: center">Teléfono Repartidor</th>
-        <th scope="col" style="width: 15%; text-align: center">Dia de Entrega</th>
+        <th scope="col" style="width: 15%; text-align: center">Día de Entrega</th>
         <th scope="col" style="width: 40%; text-align: center">Acción</th>
       </tr>
     </thead>
@@ -38,32 +38,35 @@ Listado de Proveedores
               <a class="btn btn-detalles" href="{{route("proveedor.show",["id"=>$proveedor->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
               <button onclick="desactivar{{$proveedor->id}}();" class="btn btn-desactivar"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
             </center>
-            <script>
-              function desactivar{{$proveedor->id}}(){
-                  Swal.fire({
-                  title: '<strong>Desactivar Proveedor</strong>',
-                  text: "¿Desea desactivar el proveedor seleccionado?",
-                  icon: 'question',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Aceptar'
-                  }).then((result) => {
-                  if (result.isConfirmed) {
-                      Swal.fire(
-                      'Desactivado',
-                      'El proveedor fue desactivado exitosamente',
-                      'success'
-                      )
-                      window.location='{{route("proveedor.desactivar",["id"=>$proveedor->id])}}'
-                  }
-                  })
-                  
-              }
-          </script>
+
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
+  @foreach ($provee as $proveedor)
+  <script>
+    function desactivar{{$proveedor->id}}(){
+        Swal.fire({
+        title: '<strong>Desactivar Proveedor</strong>',
+        text: "¿Desea desactivar el proveedor seleccionado?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Desactivado',
+            'El proveedor fue desactivado exitosamente',
+            'success'
+            )
+            window.location='{{route("proveedor.desactivar",["id"=>$proveedor->id])}}'
+        }
+        })
+        
+    }
+</script>
+  @endforeach
 @stop

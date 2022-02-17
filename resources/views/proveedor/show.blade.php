@@ -17,10 +17,10 @@ Datos del Proveedor {{$proveedor->nombre_proveedor}}
 
                         <p style="color: black; margin-left: 250px">Nombre Repartidor: <strong style="color: black">{{$proveedor->nombre_repartidor}} </strong></p>
                         <p style="color: black; margin-left: 250px">Nombre Proveedor: <strong style="color: black">{{$proveedor->nombre_proveedor}}</strong></p>
-                        <p style="color: black; margin-left: 250px">Correo Electronico: <strong style="color: black">{{$proveedor->correo_electronico}}</strong></p>
+                        <p style="color: black; margin-left: 250px">Correo Electrónico: <strong style="color: black">{{$proveedor->correo_electronico}}</strong></p>
                         <p style="color: black; margin-left: 250px">Teléfono Repartidor: <strong style="color: black">{{$proveedor->telefono_repartidor}} </strong> </p>
                         <p style="color: black; margin-left: 250px">Teléfono Proveedor: <strong style="color: black">{{$proveedor->telefono_proveedor}} </strong> </p>
-                        <p style="color: black; margin-left: 250px">Dia de Entrega: <strong style="color: black">{{$proveedor->dia_de_entrega}} </strong> </p>
+                        <p style="color: black; margin-left: 250px">Día de Entrega: <strong style="color: black">{{$proveedor->dia_de_entrega}} </strong> </p>
                     </div>
                     </div>
                     <hr>

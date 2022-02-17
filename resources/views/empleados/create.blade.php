@@ -23,24 +23,27 @@ Añadir Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="text" id="nombres" name="nombres" required="required" class="form-control "
-                value="{{old('nombres')}}">
+                <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                value="{{old('nombres')}}"
+                placeholder="Ingrese los nombres">
             </div>
         </div>
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Apellidos: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
-                value="{{old('apellidos')}}">
+                <input maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
+                value="{{old('apellidos')}}"
+                placeholder="Ingrese los apellidos">
             </div>
         </div>
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Correo Electrónico: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="email" id="email" name="email" required="required" class="form-control"
-                value="{{old('email')}}">
+                <input maxlength="60" type="email" id="email" name="email" required="required" class="form-control"
+                value="{{old('email')}}"
+                placeholder="Ingrese el correo electrónico">
             </div>
         </div>
         <div class="item form-group">
@@ -51,7 +54,8 @@ Añadir Empleado
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('personal')}}"
                 pattern="[9,8,3,2]{1}[0-9]{7}"
-                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                placeholder="Ingrese el teléfono personal">
                 
             </div>
         </div>
@@ -63,7 +67,8 @@ Añadir Empleado
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('emergencia')}}"
                 pattern="[9,8,3,2]{1}[0-9]{7}"
-                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                placeholder="Ingrese el teléfono emergencia">
             </div>
         </div>
         <?php $fecha_actual = date("d-m-Y");?>
@@ -86,6 +91,24 @@ Añadir Empleado
             </div>
         </div>
         <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align">Fecha de Ingreso: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+                <input id="ingreso" name="ingreso" class="date-picker form-control" placeholder="dd-mm-yyyy" 
+                max="<?php echo date('Y-m-d',strtotime($fecha_actual));?>"
+                min="<?php echo date('Y-m-d',strtotime($fecha_actual."- 1 month"));?>"
+                value="{{old('birthday')}}"
+                type="date" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='date'" onmouseout="timeFunctionLong(this)">
+                <script>
+                    function timeFunctionLong(input) {
+                        setTimeout(function() {
+                            input.type = 'date';
+                        }, 60000);
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
@@ -93,7 +116,8 @@ Añadir Empleado
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('dni')}}"
                 pattern="[0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
-                title="Ingrese un numero de identidad valido">
+                title="Ingrese un numero de identidad valido"
+                placeholder="Ingrese la identidad sin guiones">
             </div>
         </div>
         <div class="item form-group">
@@ -109,7 +133,7 @@ Añadir Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <textarea maxlength="200" name="direccion" id="direccion" name="direccion" cols="1" rows="3" required="required" class="form-control">{{old('direccion')}}</textarea>
+                <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion" name="direccion" cols="1" rows="3" required="required" class="form-control">{{old('direccion')}}</textarea>
             </div>
         </div>
         <div class="ln_solid"></div>

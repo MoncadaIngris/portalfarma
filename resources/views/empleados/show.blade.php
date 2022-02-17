@@ -23,12 +23,13 @@
 
                     <div style="float: left; display: inline-block; margin-top: 10px">
                         <p style="color: black; margin-left: 20px">Nombre: <strong style="color: black">{{$empleado->nombres}} {{$empleado->apellidos}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Correo Electronico: <strong style="color: black">{{$empleado->correo_electronico}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Telefono Personal: <strong style="color: black">{{$empleado->telefono_personal}} </strong> </p>
-                        <p style="color: black; margin-left: 20px">Telefono Alternativo: <strong style="color: black">{{$empleado->telefono_alternativo}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Correo Electrónico: <strong style="color: black">{{$empleado->correo_electronico}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Teléfono Personal: <strong style="color: black">{{$empleado->telefono_personal}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Teléfono Alternativo: <strong style="color: black">{{$empleado->telefono_alternativo}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Fecha de Nacimiento: <strong style="color: black">{{\Carbon\Carbon::parse($empleado->fecha_de_nacimiento)->locale("es")->isoFormat("DD MMMM, YYYY")}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Fecha de Ingreso: <strong style="color: black">{{\Carbon\Carbon::parse($empleado->fecha_de_ingreso)->locale("es")->isoFormat("DD MMMM, YYYY")}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Identidad: <strong style="color: black">{{$empleado->DNI}} </strong> </p>
-                        <p style="color: black; margin-left: 20px">Direccion: <strong style="color: black">{{$empleado->direccion}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Dirección: <strong style="color: black">{{$empleado->direccion}} </strong> </p>
 
                     </div>
 

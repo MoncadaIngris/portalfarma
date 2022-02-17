@@ -26,7 +26,8 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre Repartidor: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
+                <input maxlength="50" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
+                placeholder="Ingrese el nombre del repartidor"
                 @if(old('nombre_repartidor'))
                     value="{{old('nombre_repartidor')}}"
                 @else
@@ -38,7 +39,8 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nombre Proveedor: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
+                <input maxlength="50" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
+                placeholder="Ingrese el nombre del proveedor"
                 @if(old('nombre_proveedor'))
                     value="{{old('nombre_proveedor')}}"
                 @else
@@ -50,7 +52,8 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Correo Electrónico: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
+                <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
+                placeholder="Ingrese su correo electrónico"
                 @if(old('correo_electronico'))
                     value="{{old('correo_electronico')}}"
                 @else
@@ -66,6 +69,7 @@
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 pattern="[9,8,3,2]{1}[0-9]{7}"
                 title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                placeholder="Ingrese el teléfono del repartidor"
                 @if(old('telefono_repartidor'))
                     value="{{old('telefono_repartidor')}}"
                 @else
@@ -82,6 +86,7 @@
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 pattern="[9,8,3,2]{1}[0-9]{7}"
                 title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                placeholder="Ingrese el teléfono del proveedor"
                 @if(old('telefono_proveedor'))
                     value="{{old('telefono_proveedor')}}"
                 @else

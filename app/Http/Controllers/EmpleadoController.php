@@ -17,7 +17,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::where('estado',0)->get();
+        $empleados = Empleado::where('estado',0)->select("id","nombres", "apellidos", "DNI","telefono_personal")->get();
 
         return view('empleados/index')->with('empleados', $empleados);
 
@@ -99,6 +99,7 @@ class EmpleadoController extends Controller
         $empleado->telefono_personal= $request->input('personal');
         $empleado->telefono_alternativo = $request->input('emergencia');
         $empleado->fecha_de_nacimiento= $request->input('birthday');
+        $empleado->fecha_de_ingreso= $request->input('ingreso');
         $empleado->direccion = $request->input('direccion');
         $empleado->DNI= $request->input('dni');
 
@@ -218,6 +219,7 @@ class EmpleadoController extends Controller
         $empleado->telefono_personal= $request->input('telefono_personal');
         $empleado->telefono_alternativo = $request->input('telefono_alternativo');
         $empleado->fecha_de_nacimiento= $request->input('fecha_de_nacimiento');
+        $empleado->fecha_de_ingreso= $request->input('ingreso');
         $empleado->direccion = $request->input('direccion');
         $empleado->DNI= $request->input('DNI');
 
@@ -254,7 +256,7 @@ class EmpleadoController extends Controller
 
     public function desactivados()
     {
-        $empleados = Empleado::where('estado',1)->get();
+        $empleados = Empleado::where('estado',1)->select("id","nombres", "apellidos", "DNI","telefono_personal")->get();
 
         return view('empleados/desactivados')->with('empleados', $empleados);
     }

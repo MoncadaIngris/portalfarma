@@ -19,9 +19,10 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        $proveedor = Proveedor::where('estado',0)->get();
+        $proveedor = Proveedor::where('estado',0)->select("id","nombre_repartidor", "telefono_repartidor", "nombre_proveedor", "dia_de_entrega")->get();
+        $provee = Proveedor::where('estado',0)->get();
 
-        return view('proveedor/index')->with('proveedor', $proveedor);
+        return view('proveedor/index')->with('proveedor', $proveedor)->with('provee', $provee);
     }
 
     /**
@@ -195,9 +196,9 @@ class ProveedorController extends Controller
     // funcion para lista de desact
     public function desactivados()
     {
-        $proveedor = Proveedor::where('estado',1)->get();
-
-        return view('proveedor/desactivados')->with('proveedor',$proveedor);
+        $proveedor = Proveedor::where('estado',1)->select("id","nombre_repartidor", "telefono_repartidor", "nombre_proveedor", "dia_de_entrega")->get();
+        $provee = Proveedor::where('estado',1)->get();
+        return view('proveedor/desactivados')->with('proveedor',$proveedor)->with('provee', $provee);
     }
 // funcion para activar 
     public function activar(UpdateProveedorRequest $request, $id)
