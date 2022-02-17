@@ -47,8 +47,8 @@ class EmpleadoController extends Controller
         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
-            'nombres' => 'required|max:10',
-            'apellidos' => 'required|max:10',
+            'nombres' => 'required|max:100',
+            'apellidos' => 'required|max:100',
             'email' => 'required|max:100|email|unique:empleados,correo_electronico',
             'personal'=> 'required|unique:empleados,telefono_personal|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'emergencia'=> 'required|unique:empleados,telefono_alternativo|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
