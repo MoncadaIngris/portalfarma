@@ -11,7 +11,7 @@ Listado de Empleados Desactivados
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col" style="width: 17%; text-align: center">DNI</th>
+        <th scope="col" style="width: 17%; text-align: center">Identidad</th>
         <th scope="col" style="width: 17%; text-align: center">Nombres</th>
         <th scope="col" style="width: 17%; text-align: center">Apellidos</th>
         <th scope="col" style="width: 17%; text-align: center">Teléfono</th>

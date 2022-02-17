@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="item form-group">
-                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">DNI: <span class="required">*</span>
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="13" type="text" id="DNI" name="DNI" required="required" class="form-control"
