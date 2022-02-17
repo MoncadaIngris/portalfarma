@@ -33,7 +33,7 @@ Listado de Proveedores Desactivados
 
               <button onclick="activar{{$proveedor->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i> Activar</button>
             </center>
-            //funcion 
+            
 
             <script>
               function activar{{$proveedor->id}}(){
