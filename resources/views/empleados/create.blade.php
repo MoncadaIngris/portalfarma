@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Crear Empleado
+Añadir Empleado
 @stop
 @section('contenido')
 <div class="x_content">

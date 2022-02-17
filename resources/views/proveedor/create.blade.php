@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Crear Proveedor
+Añadir Proveedor
 @stop
 @section('contenido')
 <div class="x_content">
