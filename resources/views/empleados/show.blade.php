@@ -35,7 +35,7 @@
                 </div>
                 <hr>
                 <div  style="margin: 0 auto;">
-                    <button class="btn btn-primary" type="button" onclick="window.location='javascript: history.go(-1)'">Regresar</button>
+                    <button class="btn btn-regresar" type="button" onclick="window.location='javascript: history.go(-1)'">Regresar</button>
                 </div>
             </div>
         </div>

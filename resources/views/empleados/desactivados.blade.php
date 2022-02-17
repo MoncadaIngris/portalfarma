@@ -27,9 +27,9 @@ Listado de Empleados Desactivados
           <td>{{$empleado->telefono_personal}}</td>
           <td>
             <center>
-              <a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+              <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
             
-              <button onclick="activar{{$empleado->id}}();" class="btn btn-info"><i class="fa-solid fa-eye"></i> Activar</button>
+              <button onclick="activar{{$empleado->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i> Activar</button>
             </center>
 
             <script>

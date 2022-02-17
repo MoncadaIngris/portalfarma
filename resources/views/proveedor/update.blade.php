@@ -107,8 +107,9 @@
         </div>
             <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
-                <button class="btn btn-primary" type="button" onclick="window.location='{{route('proveedor.index')}}'">Cancelar</button>
-                <button type="submit" class="btn btn-success">Guardar</button>
+                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('proveedor.index')}}'">Cancelar</button>
+                <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
+                <button type="submit" class="btn btn-guardar">Guardar</button>
             </div>
         </div>
 
