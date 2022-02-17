@@ -27,7 +27,7 @@ class EmpleadoFactory extends Factory
             'fecha_de_nacimiento'=> $this -> faker ->date($format='Y-m-d', $max= $maxima, $min= $minima),
              'direccion'=> $this -> faker -> text(50),
              'DNI'  =>substr(str_repeat(0, 2).$this-> faker -> numberBetween($min = 1, $max = 18), - 2).substr(str_repeat(0, 2).$this-> faker -> numberBetween($min = 1, $max = 28), - 2).$this-> faker -> numberBetween($min =1957, $max = 2004).$this-> faker ->unique()-> numerify('#####'),
-             'fotografia' => 'images/'.$this->faker -> numberBetween($min = 1, $max = 18).'.jpg',
+             'fotografia' => 'images/'.$this->faker -> numberBetween($min = 1, $max = 14).'.jpg',
              'estado' => $this->faker ->randomElement([0,1]),
         ];
     }

@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="item form-group">
-                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">DNI: <span class="required">*</span>
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="13" type="text" id="DNI" name="DNI" required="required" class="form-control"
@@ -148,8 +148,9 @@
             <div class="ln_solid"></div>
             <div class="item form-group">
                 <div class="col-md-6 col-sm-6 offset-md-3">
-                    <button class="btn btn-primary" type="button" onclick="window.location='{{route('empleados.index')}}'">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button class="btn btn-regresar" type="button" onclick="window.location='{{route('empleados.index')}}'">Cancelar</button>
+                    <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
+                    <button type="submit" class="btn btn-guardar">Guardar</button>
                 </div>
             </div>
 

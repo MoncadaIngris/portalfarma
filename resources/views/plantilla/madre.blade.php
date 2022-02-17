@@ -197,6 +197,33 @@
           </div>
         <!-- /top navigation -->
 
+        <style>
+          .btn-nuevo{
+            background: #4792e2;
+          }
+          .btn-editar{
+            background: #92e3ee;
+          }
+          .btn-detalles{
+            background: #7be2c3;
+          }
+          .btn-desactivar{
+            background: #f75666;
+          }
+          .btn-regresar{
+            background: #f8b6ed;
+          }
+          .btn-guardar{
+            background: #bae9f0;
+          }
+          .btn-activar{
+            background: #448edd;
+          }
+          .btn-limpiar{
+            background: #aff8bf;
+          }
+        </style>
+
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="row">

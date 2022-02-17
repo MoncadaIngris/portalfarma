@@ -13,7 +13,7 @@ Listado de Proveedores
           overflow:auto;
       }
     </style>
-<button class="btn btn-info" onclick="window.location='{{route('proveedor.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Proveedores</button>
+<button class="btn btn-nuevo" onclick="window.location='{{route('proveedor.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Proveedores</button>
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
@@ -34,9 +34,9 @@ Listado de Proveedores
           <td>{{$proveedor->dia_de_entrega}}</td>
           <td>
             <center>
-              <a class="btn btn-warning" href="{{route("proveedor.edit",["id"=>$proveedor->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
-              <a class="btn btn-success" href="{{route("proveedor.show",["id"=>$proveedor->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
-              <button onclick="desactivar{{$proveedor->id}}();" class="btn btn-danger"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
+              <a class="btn btn-editar" href="{{route("proveedor.edit",["id"=>$proveedor->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+              <a class="btn btn-detalles" href="{{route("proveedor.show",["id"=>$proveedor->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
+              <button onclick="desactivar{{$proveedor->id}}();" class="btn btn-desactivar"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
             </center>
             <script>
               function desactivar{{$proveedor->id}}(){
