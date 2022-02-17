@@ -9,6 +9,6 @@ class Empleado extends Model
 {
     use HasFactory;
     public function scopeSearch($query, $nombres){
-        return $query->where('nombres', 'LIKE', "$nombres%");
+        return $query->where('nombres', 'LIKE', "%$nombres%");
     }
 }
