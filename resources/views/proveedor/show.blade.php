@@ -11,7 +11,7 @@ Datos del Proveedor {{$proveedor->nombre_proveedor}}
     <div class="container">
         <div>
             <div class="card" style="border-style: none!important; margin-top: 25px">
-                <div class="container" style="border-style: none!important; background-color: #151E6D; border-radius: 5px; width: 42rem">
+                <div class="container" style="border-style: none!important; background-color: #151E6D; border-radius: 5px; width: 50em">
                     <hr style="border-top: 2px solid white; border-bottom: 2px solid white; border-left:none; border-right:none; height: 2px; ">
                     <div style="float: left; display: inline-block; margin-top: 5px">
 

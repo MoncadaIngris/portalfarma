@@ -211,16 +211,16 @@
             background: #f75666;
           }
           .btn-regresar{
-            background: #55a3f7;
+            background: #f8b6ed;
           }
           .btn-guardar{
-            background: #47d2e7;
+            background: #bae9f0;
           }
           .btn-activar{
             background: #448edd;
           }
           .btn-limpiar{
-            background: #47e269;
+            background: #aff8bf;
           }
         </style>
 

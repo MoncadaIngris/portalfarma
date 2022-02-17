@@ -8,7 +8,7 @@
             {{session('mensaje')}}
         </div>
     @endif
-    <button class="btn btn-info" onclick="window.location='{{route('empleados.create')}}'">Crear Nuevo</button>
+    <button class="btn btn-nuevo" onclick="window.location='{{route('empleados.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Empleado</button>
 
     <table  id="datatable" class="table table-striped">
         <thead>
@@ -30,9 +30,9 @@
                 <td>{{$empleado->telefono_personal}}</td>
                 <td>
                     <center>
-                        <a class="btn btn-warning" href="{{route("empleado.edit",["id"=>$empleado->id])}}">Editar</a>
-                        <a class="btn btn-success" href="{{route("empleado.show",["id"=>$empleado->id])}}">Detalles</a>
-                        <button onclick="desactivar{{$empleado->id}}();" class="btn btn-danger"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
+                        <a class="btn btn-editar" href="{{route("empleado.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+                        <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
+                        <button onclick="desactivar{{$empleado->id}}();" class="btn btn-desactivar"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
                     </center>
 
                     <script>
