@@ -45,8 +45,8 @@ class ProveedorController extends Controller
     {
         $rules=[
             'nombre_repartidor' => 'required|max:100',
-            'nombre_proveedor' => 'required|max:100',
-            'correo_electronico' => 'required|max:100|email|unique:proveedors,correo_electronico',
+            'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor',
+            'correo_electronico' => 'required|max:100|email|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)|unique:proveedors,correo_electronico',
             'telefono_repartidor'=> 'required|unique:proveedors,telefono_repartidor|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'telefono_proveedor'=> 'required|unique:proveedors,telefono_proveedor|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'dia_de_entrega' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
@@ -55,9 +55,11 @@ class ProveedorController extends Controller
         $mensaje=[
             'nombre_repartidor.required' => 'El nombre del repartidor no puede ser vacío',
             'nombre_repartidor.max' => 'El nombre del repartidor es muy extenso',
+            'nombre_proveedor.unique' => 'El nombre del proveedor ya esta en uso',
             'nombre_proveedor.required' => 'El nombre del proveedor no puede ser vacío',
             'nombre_proveedor.max' => 'El nombre del proveedor es muy extenso',
             'correo_electronico.required' => 'El correo electrónico no puede ser vacío',
+            'correo_electronico.regex' => 'El correo electrónico tiene un formato invalido',
             'correo_electronico.max' => 'El correo electrónico es muy extenso',
             'correo_electronico.email' => 'En correo electrónico debe de ingresar un correo valido',
             'correo_electronico.unique' => 'El correo electrónico ya esta en uso',
@@ -133,8 +135,8 @@ class ProveedorController extends Controller
     {
         $rules=[
             'nombre_repartidor' => 'required|max:100',
-            'nombre_proveedor' => 'required|max:100',
-            'correo_electronico' => 'required|max:100|email|unique:proveedors,correo_electronico,'.$id,
+            'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor,'.$id,
+            'correo_electronico' => 'required|max:100|email|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)|unique:proveedors,correo_electronico,'.$id,
             'telefono_repartidor'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:proveedors,telefono_repartidor,'.$id,
             'telefono_proveedor'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:proveedors,telefono_proveedor,'.$id,
             'dia_de_entrega' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
@@ -144,8 +146,10 @@ class ProveedorController extends Controller
             'nombre_repartidor.required' => 'El nombre del repartidor no puede ser vacío',
             'nombre_repartidor.max' => 'El nombre del repartidor es muy extenso',
             'nombre_proveedor.required' => 'El nombre del proveedor no puede ser vacío',
+            'nombre_proveedor.unique' => 'El nombre del proveedor ya esta en uso',
             'nombre_proveedor.max' => 'El nombre del proveedor es muy extenso',
             'correo_electronico.required' => 'El correo electrónico no puede ser vacío',
+            'correo_electronico.regex' => 'El correo electrónico tiene un formato invalido',
             'correo_electronico.max' => 'El correo electrónico es muy extenso',
             'correo_electronico.email' => 'En correo electrónico debe de ingresar un correo valido',
             'correo_electronico.unique' => 'El correo electrónico ya esta en uso',

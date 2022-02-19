@@ -49,11 +49,11 @@ class EmpleadoController extends Controller
         $rules=[
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',
-            'email' => 'required|max:100|email|unique:empleados,correo_electronico',
+            'email' => 'required|max:100|email|unique:empleados,correo_electronico|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)',
             'personal'=> 'required|unique:empleados,telefono_personal|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'emergencia'=> 'required|unique:empleados,telefono_alternativo|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'birthday'=>'required|date|before:'.$maxima.'|after:'.$minima,
-            'dni'=> 'required|unique:empleados,DNI|numeric|regex:([0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9})',
+            'dni'=> 'required|unique:empleados,DNI|numeric|regex:([0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9})',
             'foto' => 'required|mimes:jpeg,bmp,png',
             'direccion'=>'required|max:200',
         ];
@@ -64,6 +64,7 @@ class EmpleadoController extends Controller
             'apellidos.required' => 'El apellido no puede estar vacío',
             'apellidos.max' => 'El apellido es muy extenso',
             'email.required' => 'El correo electrónico no puede estar vacío',
+            'email.regex' => 'El correo electrónico tiene un formato invalido',
             'email.max' => 'El correo electrónico es muy extenso',
             'email.email' => 'En el campo correo electrónico debe de ingresar un correo valido',
             'email.unique' => 'El correo electrónico ingresado ya esta en uso',
@@ -163,7 +164,7 @@ class EmpleadoController extends Controller
         $this->validate($request, [
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',
-            "correo_electronico" => "required|max:100|email|unique:empleados,correo_electronico," . $id,
+            "correo_electronico" => "required|max:100|email|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)|unique:empleados,correo_electronico," . $id,
             "telefono_personal" => "required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:empleados,telefono_personal," . $id,
             "telefono_alternativo" => "required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:empleados,telefono_alternativo," . $id,
             'fecha_de_nacimiento'=>'required|date|before:'.$maxima.'|after:'.$minima,
@@ -176,6 +177,7 @@ class EmpleadoController extends Controller
             'apellidos.required' => 'El apellido no puede estar vacío',
             'apellidos.max' => 'El apellido es muy extenso',
             'correo_electronico.required' => 'El correo electrónico no puede estar vacío',
+            'correo_electronico.regex' => 'El correo electrónico tiene un formato invalido',
             'correo_electronico.max' => 'El correo electrónico es muy extenso',
             'correo_electronico.email' => 'En el campo correo electrónico debe de ingresar un correo valido',
             'correo_electronico.unique' => 'El correo electrónico ingresado ya esta en uso',
