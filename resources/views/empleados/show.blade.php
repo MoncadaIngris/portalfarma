@@ -36,7 +36,11 @@
                 </div>
                 <hr>
                 <div  style="margin: 0 auto;">
-                    <button class="btn btn-regresar" type="button" onclick="window.location='javascript: history.go(-1)'">Regresar</button>
+                    @if ($empleado->estado == 1)
+                    <button class="btn btn-regresar" type="button" onclick="window.location='{{route('empleados.desactivado')}}'">Regresar</button>
+                    @else
+                    <button class="btn btn-regresar" type="button" onclick="window.location='{{route('empleados.index')}}'">Regresar</button>
+                    @endif
                 </div>
             </div>
         </div>
