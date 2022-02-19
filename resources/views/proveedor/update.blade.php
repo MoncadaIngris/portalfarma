@@ -22,6 +22,53 @@
             method="post">
             @method("PUT")
             @csrf
+            <center><h3>Datos del proveedor</h3></center>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nombre Proveedor: <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input maxlength="50" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
+                    placeholder="Ingrese el nombre del proveedor"
+                    @if(old('nombre_proveedor'))
+                        value="{{old('nombre_proveedor')}}"
+                    @else
+                        value="{{$proveedor->nombre_proveedor}}"
+                    @endif>
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Correo Electrónico: <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
+                    placeholder="Ingrese su correo electrónico"
+                    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                    title="Ingrese un correo electronico valido"
+                    @if(old('correo_electronico'))
+                        value="{{old('correo_electronico')}}"
+                    @else
+                        value="{{$proveedor->correo_electronico}}"
+                    @endif>
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Proveedor: <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    pattern="[9,8,3,2]{1}[0-9]{7}"
+                    title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                    placeholder="Ingrese el teléfono del proveedor"
+                    @if(old('telefono_proveedor'))
+                        value="{{old('telefono_proveedor')}}"
+                    @else
+                        value="{{$proveedor->telefono_proveedor}}"
+                    @endif>
+                </div>
+            </div>
+            <center><h3>Datos del repartidor</h3></center>
             <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre Repartidor: <span class="required">*</span>
             </label>
@@ -35,32 +82,8 @@
                 @endif>
             </div>
         </div>
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nombre Proveedor: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
-                placeholder="Ingrese el nombre del proveedor"
-                @if(old('nombre_proveedor'))
-                    value="{{old('nombre_proveedor')}}"
-                @else
-                    value="{{$proveedor->nombre_proveedor}}"
-                @endif>
-            </div>
-        </div>
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Correo Electrónico: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
-                placeholder="Ingrese su correo electrónico"
-                @if(old('correo_electronico'))
-                    value="{{old('correo_electronico')}}"
-                @else
-                    value="{{$proveedor->correo_electronico}}"
-                @endif>
-            </div>
-        </div>
+        
+
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Repartidor: <span class="required">*</span>
             </label>
@@ -76,22 +99,6 @@
                     value="{{$proveedor->telefono_repartidor}}"
                 @endif>
 
-            </div>
-        </div>
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Proveedor: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                pattern="[9,8,3,2]{1}[0-9]{7}"
-                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
-                placeholder="Ingrese el teléfono del proveedor"
-                @if(old('telefono_proveedor'))
-                    value="{{old('telefono_proveedor')}}"
-                @else
-                    value="{{$proveedor->telefono_proveedor}}"
-                @endif>
             </div>
         </div>
         <div class="item form-group">
@@ -113,7 +120,7 @@
             <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
                 <button class="btn btn-regresar" type="button" onclick="window.location='{{route('proveedor.index')}}'">Cancelar</button>
-                <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
+                <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Restaurar</a>
                 <button type="submit" class="btn btn-guardar">Guardar</button>
             </div>
         </div>

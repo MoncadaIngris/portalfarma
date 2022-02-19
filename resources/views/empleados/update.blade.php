@@ -52,7 +52,9 @@
                 </label>
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
-                    placeholder="Ingrese el correo electrónico"       
+                    placeholder="Ingrese el correo electrónico"      
+                    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                title="Ingrese un correo electronico valido" 
                     @if(old("correo_electronico"))
                            value="{{old("correo_electronico")}}"
                            @else
@@ -149,7 +151,7 @@
                            @else
                            value="{{$empleado->DNI}}"
                         @endif
-                        pattern="[0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
+                        pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
                 title="Ingrese un numero de identidad valido"
                 placeholder="Ingrese la identidad sin guiones">
                 </div>

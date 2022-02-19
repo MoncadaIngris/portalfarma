@@ -18,15 +18,7 @@ Añadir Proveedor
     @endif
     <form method="post">
         @csrf
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre Repartidor: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
-                value="{{old('nombre_repartidor')}}"
-                placeholder="Ingrese el nombre del repartidor">
-            </div>
-        </div>
+        <center><h3>Datos del proveedor</h3></center>
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nombre Proveedor: <span class="required">*</span>
             </label>
@@ -42,7 +34,31 @@ Añadir Proveedor
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
                 value="{{old('correo_electronico')}}"
-                placeholder="Ingrese su correo electrónico">
+                placeholder="Ingrese el correo electrónico del proveedor"
+                pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                title="Ingrese un correo electronico valido">
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Proveedor: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+                <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                value="{{old('telefono_proveedor')}}"
+                pattern="[9,8,3,2]{1}[0-9]{7}"
+                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
+                placeholder="Ingrese el teléfono del proveedor">
+            </div>
+        </div>
+        <center><h3>Datos del repartidor</h3></center>
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre Repartidor: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+                <input maxlength="50" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
+                value="{{old('nombre_repartidor')}}"
+                placeholder="Ingrese el nombre del repartidor">
             </div>
         </div>
         <div class="item form-group">
@@ -56,18 +72,6 @@ Añadir Proveedor
                 title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
                 placeholder="Ingrese el teléfono del repartidor">
                 
-            </div>
-        </div>
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono Proveedor: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                value="{{old('telefono_proveedor')}}"
-                pattern="[9,8,3,2]{1}[0-9]{7}"
-                title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
-                placeholder="Ingrese el teléfono del proveedor">
             </div>
         </div>
         <div class="item form-group">

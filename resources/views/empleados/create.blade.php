@@ -43,7 +43,9 @@ Añadir Empleado
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="60" type="email" id="email" name="email" required="required" class="form-control"
                 value="{{old('email')}}"
-                placeholder="Ingrese el correo electrónico">
+                placeholder="Ingrese el correo electrónico"
+                pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                title="Ingrese un punto seguido de un dominio como por ejemplo .com .es .org">
             </div>
         </div>
         <div class="item form-group">
@@ -115,7 +117,7 @@ Añadir Empleado
                 <input maxlength="13" type="text" id="dni" name="dni" required="required" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('dni')}}"
-                pattern="[0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
+                pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
                 title="Ingrese un numero de identidad valido"
                 placeholder="Ingrese la identidad sin guiones">
             </div>
