@@ -18,11 +18,13 @@
     <table  id="datatable" class="table table-striped">
         <thead>
         <tr>
-            <th scope="col" style="width: 15%; text-align: center">Identidad</th>
-            <th scope="col" style="width: 15%; text-align: center">Nombres</th>
-            <th scope="col" style="width: 15%; text-align: center">Apellidos</th>
-            <th scope="col" style="width: 15%; text-align: center">Teléfono</th>
-            <th scope="col" style="width: 40%; text-align: center">Acción</th>
+            <th scope="col" style="text-align: center">Identidad</th>
+            <th scope="col" style="text-align: center">Nombres</th>
+            <th scope="col" style="text-align: center">Apellidos</th>
+            <th scope="col" style="text-align: center">Teléfono</th>
+            <th scope="col" style="text-align: center">Editar</th>
+            <th scope="col" style="text-align: center">Detalles</th>
+            <th scope="col" style="text-align: center">Desactivar</th>
         </tr>
         </thead>
 
@@ -35,9 +37,17 @@
                 <td>{{$empleado->telefono_personal}}</td>
                 <td>
                     <center>
-                        <a class="btn btn-editar" id="editar" href="{{route("empleado.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
-              <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i>Detalles</a>
-              <button onclick="desactivar{{$empleado->id}}();" class="btn btn-desactivar"><i class="fa-solid fa-eye-slash"></i>Desactivar</button>
+            <a class="btn btn-editar" href="{{route("empleado.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </center>
+                </td>
+                <td>
+                    <center>
+            <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i></a>
+                    </center>
+                </td>
+                <td>
+                    <center>
+            <button onclick="desactivar{{$empleado->id}}();" class="btn btn-desactivar"><i class="fa-solid fa-eye-slash"></i></button>
                     </center>
                 </td>
             </tr>

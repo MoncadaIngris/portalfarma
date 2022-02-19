@@ -11,11 +11,12 @@ Listado de Empleados Desactivados
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col" style="width: 17%; text-align: center">Identidad</th>
-        <th scope="col" style="width: 17%; text-align: center">Nombres</th>
-        <th scope="col" style="width: 17%; text-align: center">Apellidos</th>
-        <th scope="col" style="width: 17%; text-align: center">Teléfono</th>
-        <th scope="col" style="width: 32%; text-align: center">Acción</th>
+        <th scope="col" style="text-align: center">Identidad</th>
+        <th scope="col" style="text-align: center">Nombres</th>
+        <th scope="col" style="text-align: center">Apellidos</th>
+        <th scope="col" style="text-align: center">Teléfono</th>
+        <th scope="col" style="text-align: center">Detalles</th>
+        <th scope="col" style="text-align: center">Activar</th>
       </tr>
     </thead>
     <tbody>
@@ -27,9 +28,12 @@ Listado de Empleados Desactivados
           <td>{{$empleado->telefono_personal}}</td>
           <td>
             <center>
-              <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
-            
-              <button onclick="activar{{$empleado->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i> Activar</button>
+              <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i></a>
+            </center>
+          </td>
+          <td>
+            <center>
+              <button onclick="activar{{$empleado->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i></button>
             </center>
           </td>
         </tr>
