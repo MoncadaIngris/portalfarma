@@ -18,7 +18,7 @@ class CreateProveedorsTable extends Migration
             $table->string('nombre_repartidor');
             $table->string('correo_electronico')->unique();
             $table->string('telefono_repartidor')->unique();
-            $table->string('nombre_proveedor');
+            $table->string('nombre_proveedor')->unique();
             $table->string('telefono_proveedor')->unique();
             $table->string('dia_de_entrega');
             $table->boolean("estado")->default(0);
