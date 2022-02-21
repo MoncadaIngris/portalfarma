@@ -46,7 +46,7 @@ class ProveedorController extends Controller
         $rules=[
             'nombre_repartidor' => 'required|max:100',
             'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor',
-            'correo_electronico' => 'required|max:100|email|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)|unique:proveedors,correo_electronico',
+            'correo_electronico' => 'required|max:100|email|unique:proveedors,correo_electronico',
             'telefono_repartidor'=> 'required|unique:proveedors,telefono_repartidor|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'telefono_proveedor'=> 'required|unique:proveedors,telefono_proveedor|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'dia_de_entrega' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
@@ -136,7 +136,7 @@ class ProveedorController extends Controller
         $rules=[
             'nombre_repartidor' => 'required|max:100',
             'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor,'.$id,
-            'correo_electronico' => 'required|max:100|email|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)|unique:proveedors,correo_electronico,'.$id,
+            'correo_electronico' => 'required|max:100|email|unique:proveedors,correo_electronico,'.$id,
             'telefono_repartidor'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:proveedors,telefono_repartidor,'.$id,
             'telefono_proveedor'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:proveedors,telefono_proveedor,'.$id,
             'dia_de_entrega' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',

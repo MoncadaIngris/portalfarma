@@ -49,7 +49,7 @@ class EmpleadoController extends Controller
         $rules=[
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',
-            'email' => 'required|max:100|email|unique:empleados,correo_electronico|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)',
+            'email' => 'required|max:100|email|unique:empleados,correo_electronico',
             'personal'=> 'required|unique:empleados,telefono_personal|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'emergencia'=> 'required|unique:empleados,telefono_alternativo|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'birthday'=>'required|date|before:'.$maxima.'|after:'.$minima,
@@ -164,7 +164,7 @@ class EmpleadoController extends Controller
         $this->validate($request, [
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',
-            "correo_electronico" => "required|max:100|email|regex:(^[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$)|unique:empleados,correo_electronico," . $id,
+            "correo_electronico" => "required|max:100|email|unique:empleados,correo_electronico," . $id,
             "telefono_personal" => "required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:empleados,telefono_personal," . $id,
             "telefono_alternativo" => "required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:empleados,telefono_alternativo," . $id,
             'fecha_de_nacimiento'=>'required|date|before:'.$maxima.'|after:'.$minima,

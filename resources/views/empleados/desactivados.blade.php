@@ -8,6 +8,11 @@ Listado de Empleados Desactivados
             {{session('mensaje')}}
         </div>
     @endif
+    <style>
+      #prueba {
+          overflow:auto;
+      }
+    </style>
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
