@@ -21,7 +21,7 @@ class ProductoFactory extends Factory
             'receta' => $this -> faker -> text($maxNbChars = 100),
             'precio' => $this -> faker -> numberBetween(2,5000),
             'cantidad' => $this -> faker ->numberBetween(1,10000),
-            'estado' => $this->faker ->randomElement([0,1]),
+           
         ];
     }
 }

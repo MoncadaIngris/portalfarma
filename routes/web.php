@@ -31,6 +31,7 @@ Route::get('/empleados/nuevo',[EmpleadoController::class, 'create'])
 //ruta guardar
 Route::post('/empleados/nuevo',[EmpleadoController::class, 'store'])
     ->name('empleados.store');
+
 Route::get("/empleados/{id}/edit", [EmpleadoController::class, "edit"])
     ->name("empleado.edit")->where('id', '[0-9]+');
 
@@ -94,3 +95,11 @@ Route::get('/proveedor/{id}/activar', [ProveedorController::class, 'activar'])
     //ruta index productos
 Route::get('/productos', [ProductoController::class, 'index'])
 ->name('productos.index');
+
+//ruta  create
+Route::get('/productos/nuevo',[ProductoController::class, 'create'])
+->name('productos.create');
+
+//ruta guardar
+Route::post('/productos/nuevo',[ProductoController::class, 'store'])
+    ->name('productos.store');

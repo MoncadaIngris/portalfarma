@@ -21,7 +21,7 @@ class CreateProductosTable extends Migration
             $table->string("receta");
             $table->double("precio");
             $table->double("cantidad");
-            $table->boolean("estado")->default(0);
+      
             $table->timestamps();
         });
     }

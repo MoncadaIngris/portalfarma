@@ -13,8 +13,7 @@
             overflow:auto;
         }
       </style>
-    <button class="btn btn-nuevo"  class="fa-solid fa-folder-plus"></i> Agregar Producto</button>
-
+    <button class="btn btn-nuevo" onclick="window.location='{{route('productos.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Productos</button>
     <table  id="datatable" class="table table-striped">
         <thead>
         <tr>
@@ -44,10 +43,7 @@
                     <center>
             <a class="btn btn-detalles" href=""><i class="fa-solid fa-circle-info"></i></a>
                     </center>
-                </td>
-                <td>
-                    <center>
-           
+                </td>           
             </tr>
         @endforeach
     
