@@ -15,10 +15,13 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        
+        /*
             $productos = Producto::where('estado',0)->select("nombre", "codigo", "concentracion","receta")->get();
     
-            return view('productos/index')->with('productos', $productos);
+            return view('productos/index')->with('productos', $productos);*/
+            $productos = Producto::paginate(10);
+            return view('productos/index')->with('productos',$productos);
+              
     
         }
     
