@@ -15,8 +15,13 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
-    }
+        
+            $productos = Producto::where('estado',0)->select("id","nombre", "codigo", "concentracion","receta")->get();
+    
+            return view('productos/index')->with('productos', $productos);
+    
+        }
+    
 
     /**
      * Show the form for creating a new resource.
