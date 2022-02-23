@@ -17,8 +17,8 @@ class ProductoController extends Controller
     {
         
             $productos = Producto::where('estado',0)->select("nombre", "codigo", "concentracion","receta")->get();
-            $produc = Producto::where('estado',0)->get();
-            return view('productos/index')->with('productos', $productos)->with('produc', $produc);
+           
+            return view('productos/index')->with('productos', $productos);
     
         }
     
