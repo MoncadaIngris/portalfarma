@@ -31,8 +31,8 @@
         <tbody>
         @foreach ($productos as $producto)
             <tr>
-                <td>{{$producto>nombre}}</td>
-                <td>{{$producto>codigo}}</td>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->codigo}}</td>
                 <td>{{$producto->concentracion}}</td>
                 <td>{{$producto->receta}}</td>
                 <td>
