@@ -16,7 +16,7 @@ class ProductoController extends Controller
     public function index()
     {
         
-            $productos = Producto::where('estado',0)->select("id","nombre", "codigo", "concentracion","receta")->get();
+            $productos = Producto::where('estado',0)->select("nombre", "codigo", "concentracion","receta")->get();
     
             return view('productos/index')->with('productos', $productos);
     
