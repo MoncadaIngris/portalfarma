@@ -13,7 +13,7 @@
             overflow:auto;
         }
       </style>
-    <button class="btn btn-nuevo" onclick="window.location='{{route('productos.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Producto</button>
+    <button class="btn btn-nuevo"  class="fa-solid fa-folder-plus"></i> Agregar Producto</button>
 
     <table  id="datatable" class="table table-striped">
         <thead>
