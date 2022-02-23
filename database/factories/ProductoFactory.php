@@ -13,8 +13,14 @@ class ProductoFactory extends Factory
      */
     public function definition()
     {
+     
         return [
-        
+            'nombre' => $this -> faker ->jobTitle(),
+            'codigo' => $this -> faker ->ean8(),
+            'concentracion' => $this -> faker ->sentence('20'),
+            'receta' => $this -> faker -> text($maxNbChars = 100),
+            'precio' => $this -> faker -> price($maxNbChars = 10),
+            'cantidad' => $this -> faker -> price($maxNbChars = 10),
         ];
     }
 }

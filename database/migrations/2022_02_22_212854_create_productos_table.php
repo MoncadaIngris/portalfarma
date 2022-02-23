@@ -19,8 +19,8 @@ class CreateProductosTable extends Migration
             $table->string("codigo")->unique();
             $table->string("concentracion");
             $table->string("receta");
-            $table->integer("precio");
-            $table->integer("cantidad");
+            $table->double("precio");
+            $table->double("cantidad");
             $table->timestamps();
         });
     }
