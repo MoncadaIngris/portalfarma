@@ -80,6 +80,13 @@
                     </ul>
                   </li>
                 </ul>
+                <li><a><i class="fa-solid fa-box-open"></i> Productos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="">Nuevo Producto</a></li>
+                      <li><a href=""> Lista De Productos</a></li>
+                    
+                    </ul>
+                  </li>
               </div>
 
             </div>
