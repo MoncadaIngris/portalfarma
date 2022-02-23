@@ -39,46 +39,37 @@ Añadir Producto
                 title="Ingrese un codigo valido">
             </div>
         </div>
-    
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Concentracion: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="concentracion" name="concentracion" required="required" class="form-control "
-                value="{{old('concentracion')}}"
-                placeholder="Ingrese la concentracion">
-            </div>
-        </div>
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Receta: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="receta" name="receta" required="required" class="form-control"
-                value="{{old('receta')}}"
-                placeholder="Ingrese la receta">
-            </div>
-        </div>
 
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Precio: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="number" id="precio" name="precio" required="required" class="form-control"
-                value="{{old('precio')}}"
-                placeholder="Ingrese el precio">
-            </div>
-        </div>
+       <div class="item form-group">   <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Concentracion: <span class="required">*</span>    
+      </label>   
+        <div class="col-md-6 col-sm-6 ">          
+    <Select required="required" class="form-control" id="concentracion" name="concentracion">               
+     <option value="sin concentracion">Sin concentracion</option>                
+      <option value="250mg">250mg</option>           
+      <option value="500mg">500mg</option>           
+      <option value="1000mg">1000mg</option>          
+       </Select>        
+    </div>       
+    </div>   
 
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Cantidad: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="number" id="cantidad" name="cantidad" required="required" class="form-control"
-                value="{{old('cantidad')}}"
-                placeholder="Ingrese la cantidad">
+      <div class="item form-group">     
+       <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Receta: <span class="required">*</span>      
+        </label> <div class="col-md-6 col-sm-6 ">    
+        <Select required="required" class="form-control" id="receta" name="receta">    
+        <option value="no">No</option>
+        <option value="si">Si</option>
+        </Select>
+        </div>       
+    </div>  
+    <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descripcion: <span class="required">*</span>
+            </label> <div class="col-md-6 col-sm-6 ">
+                <input maxlength="50" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
+                value="{{old('descripcion')}}"
+                placeholder="Ingrese la descripcion ">
             </div>
         </div>
-       <br>
+    <br>
         <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
                 <button class="btn btn-regresar" type="button" onclick="window.location='{{route('productos.index')}}'">Cancelar</button>

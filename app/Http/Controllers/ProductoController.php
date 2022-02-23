@@ -43,31 +43,34 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
      
-        $rules=[
-            'nombre' => 'required|max:100',
-            'codigo' => 'required|numeric|regex:([0-9])' ,
-            'codigo' => 'required|max:8|',
-            'concentracion' => 'required|max:100',
-            'receta'=> 'required|max:200',
-            'precio'=> 'required',
-            'cantidad'=>'required',
+    
+
+            $rules=[
+                'nombre' => 'required|max:100',
+                'codigo' => 'required|numeric|regex:([0-9])' ,
+                'codigo' => 'required|max:8|',
+                'concentracion' => 'required|max:100',
+                'receta'=> 'required|max:200',
+                'descripcion'=> 'required',
+              
+            
           
         ];
-
         $mensaje=[
             'nombre.required' => 'El nombre no puede estar vacío',
             'nombre.max' => 'El nombre es muy extenso',
-            'codigo.required' => 'El codigo no puede estar vacío',
+            'codigo.required' => 'El código no puede estar vacío',
             'codigo.max' => 'El codigo es muy extenso',
             'codigo.regex' => 'El codigo debe contener 8 dígitos ',
             'codigo.numeric' => 'En codigo no debe de incluir letras ni signos',
-            'concentracion.required' => 'La concentracion no puede estar vacío',
-            'concentracion.max' => 'La concentracion es muy extensa',
+            'concentracion.required' => 'La concentración no puede estar vacío',
+            'concentracion.max' => 'La concentración es muy extensa',
             'receta.required' => 'La receta no puede estar vacío',
             'receta.max' => 'La receta es muy extensa',
-            'precio.required' => 'El precio no puede estar vacío',
-            'cantidad.required' => 'La cantidad no puede estar vacío',
+            'descripcion.required' => 'El descripción no puede estar vacío',
 
+
+      
 
         ];
 
@@ -79,13 +82,9 @@ class ProductoController extends Controller
         $producto->codigo= $request->input('codigo');
         $producto->concentracion = $request->input('concentracion');
         $producto->receta= $request->input('receta');
-        $producto->precio = $request->input('precio');
-        $producto->cantidad= $request->input('cantidad');
+        $producto->descripcion = $request->input('descripcion');
         
         
-
-
-
         $creado =  $producto->save();
 
         if ($creado) {

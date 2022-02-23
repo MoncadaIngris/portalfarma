@@ -13,15 +13,15 @@ class ProductoFactory extends Factory
      */
     public function definition()
     {
+    
+
+            return [  
+            'nombre' => $this -> faker ->jobTitle(),   
+            'codigo' => $this -> faker ->ean8(),  
+            'concentracion' => $this -> faker ->randomElement(['Sin concentración', '250mg', '500mg','1000mg']),     
+            'receta' => $this -> faker -> randomElement([0,1]),   
+            'descripcion'=> $this -> faker -> text(50),             
+      ];
      
-        return [
-            'nombre' => $this -> faker ->jobTitle(),
-            'codigo' => $this -> faker ->ean8(),
-            'concentracion' => $this -> faker ->sentence('20'),
-            'receta' => $this -> faker -> text($maxNbChars = 100),
-            'precio' => $this -> faker -> numberBetween(2,5000),
-            'cantidad' => $this -> faker ->numberBetween(1,10000),
-           
-        ];
     }
 }

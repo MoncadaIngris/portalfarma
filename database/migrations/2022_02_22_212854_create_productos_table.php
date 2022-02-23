@@ -18,11 +18,11 @@ class CreateProductosTable extends Migration
             $table->string("nombre");
             $table->string("codigo")->unique();
             $table->string("concentracion");
-            $table->string("receta");
-            $table->double("precio");
-            $table->double("cantidad");
-      
+            $table->boolean("receta")->default(0);
+            $table->String("descripcion");
             $table->timestamps();
+
+    
         });
     }
 
