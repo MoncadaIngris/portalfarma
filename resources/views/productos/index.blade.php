@@ -22,7 +22,6 @@
             <th scope="col" style="text-align: center">Codigo</th>
             <th scope="col" style="text-align: center">Concentracion</th>
             <th scope="col" style="text-align: center">Receta</th>
-            <th scope="col" style="text-align: center">Codigo</th>
             <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Detalles</th>
           
