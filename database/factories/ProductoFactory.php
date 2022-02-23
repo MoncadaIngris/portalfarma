@@ -19,8 +19,8 @@ class ProductoFactory extends Factory
             'codigo' => $this -> faker ->ean8(),
             'concentracion' => $this -> faker ->sentence('20'),
             'receta' => $this -> faker -> text($maxNbChars = 100),
-            'precio' => $this -> faker -> price($maxNbChars = 10),
-            'cantidad' => $this -> faker -> price($maxNbChars = 10),
+            'precio' => $this -> faker -> numberBetween(2,5000),
+            'cantidad' => $this -> faker ->numberBetween(1,10000)
         ];
     }
 }
