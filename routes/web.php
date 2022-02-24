@@ -103,3 +103,6 @@ Route::get('/productos/nuevo',[ProductoController::class, 'create'])
 //ruta guardar
 Route::post('/productos/nuevo',[ProductoController::class, 'store'])
     ->name('productos.store');
+
+    Route::get("/productos/{id}", [ProductoController::class, "show"])
+    ->name("productos.show")->where('id', '[0-9]+');

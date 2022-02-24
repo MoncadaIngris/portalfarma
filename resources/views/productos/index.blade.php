@@ -23,7 +23,7 @@
             <th scope="col" style="text-align: center">Receta</th>
             <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Detalles</th>
-          
+
         </tr>
         </thead>
 
@@ -41,10 +41,10 @@
                 </td>
                 <td>
                     <center>
-            <a class="btn btn-detalles" href=""><i class="fa-solid fa-circle-info"></i></a>
+            <a class="btn btn-detalles" href="{{route("productos.show",["id"=>$producto->id])}}"><i class="fa-solid fa-circle-info"></i></a>
                     </center>
-                </td>           
+                </td>
             </tr>
         @endforeach
-    
+
 @stop

@@ -16,13 +16,13 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        
-            $productos = Producto::select("nombre", "codigo", "concentracion","receta")->get();
-           
+
+            $productos = Producto::select("id","nombre", "codigo", "concentracion","receta")->get();
+
             return view('productos/index')->with('productos', $productos);
-    
+
         }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,8 +42,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-     
-    
+
+
 
             $rules=[
                 'nombre' => 'required|max:100',
@@ -52,9 +52,9 @@ class ProductoController extends Controller
                 'concentracion' => 'required|max:100',
                 'receta'=> 'required|max:200',
                 'descripcion'=> 'required',
-              
-            
-          
+
+
+
         ];
         $mensaje=[
             'nombre.required' => 'El nombre no puede estar vacío',
@@ -70,7 +70,7 @@ class ProductoController extends Controller
             'descripcion.required' => 'El descripción no puede estar vacío',
 
 
-      
+
 
         ];
 
@@ -83,8 +83,8 @@ class ProductoController extends Controller
         $producto->concentracion = $request->input('concentracion');
         $producto->receta= $request->input('receta');
         $producto->descripcion = $request->input('descripcion');
-        
-        
+
+
         $creado =  $producto->save();
 
         if ($creado) {
@@ -93,7 +93,7 @@ class ProductoController extends Controller
         } else {
 
         }
-    
+
         //
     }
 
@@ -103,9 +103,12 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function show($id)
     {
-        //
+        {
+            $productos = Producto::findOrFail($id);
+            return view("productos.show")->with("productos", $productos);
+        }
     }
 
     /**
