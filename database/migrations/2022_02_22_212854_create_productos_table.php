@@ -17,9 +17,10 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string("nombre");
             $table->string("codigo")->unique();
-            $table->string("concentracion");
             $table->boolean("receta")->default(0);
             $table->String("descripcion");
+            $table->unsignedBigInteger('concentracion');
+            $table->foreign("concentracion")->references("id")->on("concentracions");
             $table->timestamps();
 
     
