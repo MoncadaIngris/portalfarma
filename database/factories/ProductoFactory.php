@@ -18,7 +18,7 @@ class ProductoFactory extends Factory
             return [  
             'nombre' => $this -> faker ->jobTitle(),   
             'codigo' => $this -> faker ->ean8(),  
-            'concentracion' => $this -> faker ->randomElement(['Sin concentración', '250mg', '500mg','1000mg']),     
+            'concentracion' => $this -> faker ->randomElement([1,2,3,4]),     
             'receta' => $this -> faker -> randomElement([0,1]),   
             'descripcion'=> $this -> faker -> text(50),             
       ];
