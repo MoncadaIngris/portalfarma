@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proveedor;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProveedorRequest;
 use App\Http\Requests\UpdateProveedorRequest;
@@ -30,9 +29,9 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($prov=-1)
     {
-        return view('proveedor/create');
+        return view('proveedor/create')->with('prov', $prov);
     }
 
     /**
@@ -41,7 +40,7 @@ class ProveedorController extends Controller
      * @param  \App\Http\Requests\StoreProveedorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $prov=-1)
     {
         $rules=[
             'nombre_repartidor' => 'required|max:100',
@@ -89,8 +88,13 @@ class ProveedorController extends Controller
         $creado = $proveedor->save();
 
         if ($creado) {
-            return redirect()->route('proveedor.index')
+            if ($prov != -1){
+                return redirect()->route('compras.create',["proveedor"=>$prov])
                 ->with('mensaje', 'El proveedor fue creado exitosamente');
+            }else{
+                return redirect()->route('proveedor.index')
+                ->with('mensaje', 'El proveedor fue creado exitosamente'.url()->previous());
+            }
         } else {
 
         }

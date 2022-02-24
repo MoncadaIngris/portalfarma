@@ -57,6 +57,9 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "dependencies": {
+        "select2": "~4.0"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

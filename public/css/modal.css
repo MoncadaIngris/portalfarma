@@ -8,8 +8,6 @@ body {
   background-color: #edeef6;
   font-family: 'Poppins', sans-serif;
   display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
   margin: 0;
 }
@@ -26,15 +24,13 @@ button {
 .modal-container {
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
-  align-items: center;
-  justify-content: center;
   position: fixed;
   pointer-events: none;
   opacity: 0;  
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 0;
+  width: 0;
   transition: opacity 0.3s ease;
 }
 
