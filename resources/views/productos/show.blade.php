@@ -14,7 +14,7 @@ Datos del Producto {{$productos->nombre}}
                 <div class="container" style="border-style: none!important; background-color: #53b4f5; border-radius: 5px; width: 50em">
                     <hr style="border-top: 2px solid white; border-bottom: 2px solid white; border-left:none; border-right:none; height: 2px; ">
                     <div  style="margin-top: 10px; width: 250px ; height: 250px; float: left; display: inline-block; margin-top: 10px; margin-bottom: 1px; margin-left: 20px; margin-right: 10px">
-                        <img src="{{asset('images/producdetalle.png')}}" class="card-img-top" alt="" height="90%" >
+                        <img src="{{asset('images/detall.jpeg')}}" class="card-img-top" alt="" height="90%" >
                     </div>
                     <div style="float: left; display: inline-block; margin-top: 40px">
 
