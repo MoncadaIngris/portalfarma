@@ -13,8 +13,8 @@ Datos del Proveedor {{$proveedor->nombre_proveedor}}
             <div class="card" style="border-style: none!important; margin-top: 25px">
                 <div class="container" style="border-style: none!important; background-color: #53b4f5; border-radius: 5px; width: 50em">
                     <hr style="border-top: 2px solid white; border-bottom: 2px solid white; border-left:none; border-right:none; height: 2px; ">
-                    <div  style="margin-top: 10px; width: 250px ; height: 250px; float: left; display: inline-block; margin-top: 10px; margin-bottom: 1px; margin-left: 20px; margin-right: 10px">
-                        <img src="{{asset('images/logodetalles.png')}}" class="card-img-top" alt="" height="90%" >
+                    <div  style="margin-top: 10px; width: 200px ; height: 200px; float: left; display: inline-block; margin-top: 10px; margin-bottom: 1px; margin-left: 20px; margin-right: 10px">
+                        <img src="{{asset('images/logodetalles.png')}}" class="card-img-top" alt="" height="80%" >
                     </div>
                     <div style="float: left; display: inline-block; margin-top: 15px">
 
