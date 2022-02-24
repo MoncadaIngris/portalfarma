@@ -32,8 +32,14 @@
             <tr>
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->codigo}}</td>
-                <td>{{$producto->concentracion}}</td>
-                <td>{{$producto->receta}}</td>
+                <td>{{$producto->concentraciones->descripcion}}</td>
+                <td>
+                    @if ($producto->receta==0)
+                        No
+                    @else
+                        Si
+                    @endif
+                </td>
                 <td>
                     <center>
             <a class="btn btn-editar" href=""><i class="fa-solid fa-pen-to-square"></i></a>

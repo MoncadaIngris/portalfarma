@@ -32,11 +32,11 @@ Añadir Producto
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Codigo: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="number" id="codigo" name="codigo" required="required" class="form-control"
+                <input maxlength="8" type="text" id="codigo" name="codigo" required="required" class="form-control"
                 value="{{old('codigo')}}"
-                placeholder="Ingrese el codigo del producto"
-                pattern="[0-9]"
-                title="Ingrese un codigo valido">
+                placeholder="Ingrese el codigo del producto el cual contiene 8 digitos"
+                pattern="[0-9]{8}"
+                title="Ingrese un codigo de 8 digitos">
             </div>
         </div>
 
@@ -44,10 +44,9 @@ Añadir Producto
       </label>   
         <div class="col-md-6 col-sm-6 ">          
     <Select required="required" class="form-control" id="concentracion" name="concentracion">               
-     <option value="sin concentracion">Sin concentracion</option>                
-      <option value="250mg">250mg</option>           
-      <option value="500mg">500mg</option>           
-      <option value="1000mg">1000mg</option>          
+     @foreach ($concentracion as $c)
+         <option value="{{$c->id}}">{{$c->descripcion}}</option>
+     @endforeach        
        </Select>        
     </div>       
     </div>   
@@ -56,17 +55,17 @@ Añadir Producto
        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Receta: <span class="required">*</span>      
         </label> <div class="col-md-6 col-sm-6 ">    
         <Select required="required" class="form-control" id="receta" name="receta">    
-        <option value="no">No</option>
-        <option value="si">Si</option>
+        <option value="0">No</option>
+        <option value="1">Si</option>
         </Select>
         </div>       
     </div>  
     <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descripcion: <span class="required">*</span>
             </label> <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
+                <textarea maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
                 value="{{old('descripcion')}}"
-                placeholder="Ingrese la descripcion ">
+                placeholder="Ingrese la descripcion ">{{old('descripcion')}}</textarea>
             </div>
         </div>
     <br>

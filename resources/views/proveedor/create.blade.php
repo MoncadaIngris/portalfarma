@@ -92,7 +92,11 @@ Añadir Proveedor
         </div>
         <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
+                @if ($prov != -1)
+                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('compras.create',['proveedor'=>$prov])}}'">Cancelar</button>
+                @else
                 <button class="btn btn-regresar" type="button" onclick="window.location='{{route('proveedor.index')}}'">Cancelar</button>
+                @endif
                 <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
                 <button type="submit" class="btn btn-guardar">Guardar</button>
             </div>
