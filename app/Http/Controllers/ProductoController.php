@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Concentracion;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
@@ -17,7 +18,7 @@ class ProductoController extends Controller
     public function index()
     {
 
-            $productos = Producto::select("id","nombre", "codigo", "concentracion","receta")->get();
+            $productos = Producto::select("id","nombre", "codigo", "concentracion","receta")->orderby('nombre')->get();
 
             return view('productos/index')->with('productos', $productos);
 
@@ -31,7 +32,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('productos/create');
+        $concentracion = Concentracion::all();
+        return view('productos/create')->with('concentracion', $concentracion);
     }
 
     /**
@@ -42,32 +44,30 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
             $rules=[
-                'nombre' => 'required|max:100',
-                'codigo' => 'required|numeric|regex:([0-9])' ,
-                'codigo' => 'required|max:8|',
-                'concentracion' => 'required|max:100',
-                'receta'=> 'required|max:200',
-                'descripcion'=> 'required',
+                'nombre' => 'required|max:50|unique:productos,nombre',
+                'codigo' => 'required|numeric|regex:([0-9]{8})|unique:productos,codigo',
+                'concentracion' => 'required|exists:concentracions,id',
+                'receta'=> 'required|in:0,1',
+                'descripcion'=> 'required|max:200',
 
 
 
         ];
         $mensaje=[
             'nombre.required' => 'El nombre no puede estar vacío',
+            'nombre.unique' => 'El nombre ya esta en uso',
             'nombre.max' => 'El nombre es muy extenso',
             'codigo.required' => 'El código no puede estar vacío',
-            'codigo.max' => 'El codigo es muy extenso',
+            'codigo.unique' => 'El código ya esta en uso',
             'codigo.regex' => 'El codigo debe contener 8 dígitos ',
             'codigo.numeric' => 'En codigo no debe de incluir letras ni signos',
             'concentracion.required' => 'La concentración no puede estar vacío',
-            'concentracion.max' => 'La concentración es muy extensa',
+            'concentracion.exists' => 'La concentración es invalida',
             'receta.required' => 'La receta no puede estar vacío',
-            'receta.max' => 'La receta es muy extensa',
+            'receta.in' => 'La receta es invalida',
             'descripcion.required' => 'El descripción no puede estar vacío',
+            'descripcion.max' => 'El descripción es muy extensa',
 
 
 
@@ -83,7 +83,6 @@ class ProductoController extends Controller
         $producto->concentracion = $request->input('concentracion');
         $producto->receta= $request->input('receta');
         $producto->descripcion = $request->input('descripcion');
-
 
         $creado =  $producto->save();
 
