@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CompraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +63,13 @@ Route::get('/proveedor/nuevo',[ProveedorController::class, 'create'])
 Route::post('/proveedor/nuevo',[ProveedorController::class, 'store'])
 ->name('proveedor.store');
 
+//ruta  create
+Route::get('/proveedor/nuevo/{prov?}',[ProveedorController::class, 'create'])
+->name('proveedor.create2')->where('prov', '[0-9]+');
+//ruta guardar
+Route::post('/proveedor/nuevo/{prov?}',[ProveedorController::class, 'store'])
+->name('proveedor.store2')->where('prov', '[0-9]+');
+
 
 //Ruta Formulario proveedor
 Route::get('/proveedor', [ProveedorController::class, 'index'])
@@ -106,3 +114,12 @@ Route::post('/productos/nuevo',[ProductoController::class, 'store'])
 
     Route::get("/productos/{id}", [ProductoController::class, "show"])
     ->name("productos.show")->where('id', '[0-9]+');
+
+    
+//ruta  create
+Route::get('/compra/nuevo/{proveedor?}',[compraController::class, 'create'])
+->name('compras.create')->where('proveedor', '[0-9]+');
+//ruta guardar
+Route::post('/compra/nuevo/{proveedor?}',[CompraController::class, 'store'])
+->name('compras.store')->where('proveedor', '[0-9]+');
+
