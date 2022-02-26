@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComprasTable extends Migration
+class CreateImpuestosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateComprasTable extends Migration
      */
     public function up()
     {
-        Schema::create('compras', function (Blueprint $table) {
+        Schema::create('impuestos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_proveedor');
-            $table->foreign("id_proveedor")->references("id")->on("proveedors");
-            $table->decimal('monto_total');
+            $table->string('descripcion');
+            $table->decimal('valor');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateComprasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compras');
+        Schema::dropIfExists('impuestos');
     }
 }
