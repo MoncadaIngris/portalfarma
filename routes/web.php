@@ -123,3 +123,18 @@ Route::get('/compra/nuevo/{proveedor?}',[compraController::class, 'create'])
 Route::post('/compra/nuevo/{proveedor?}',[CompraController::class, 'store'])
 ->name('compras.store')->where('proveedor', '[0-9]+');
 
+//ruta guardar
+Route::put('/compra/guardar/{proveedor}',[CompraController::class, 'save'])
+->name('compras.save')->where('proveedor', '[0-9]+');
+
+//ruta limpiar
+Route::put('/compra/limpiar/{proveedor}',[CompraController::class, 'limpiar'])
+->name('compras.limpiar')->where('proveedor', '[0-9]+');
+
+//ruta cancelar
+Route::put('/compra/cancelar',[CompraController::class, 'cancelar'])
+->name('compras.cancelar');
+
+//ruta borrar
+Route::delete('/compra/{id}/limpiar/{proveedor}',[CompraController::class, 'eliminar'])
+->name('compras.borrar')->where('proveedor', '[0-9]+')->where('id', '[0-9]+');
