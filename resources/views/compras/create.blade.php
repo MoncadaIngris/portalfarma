@@ -91,14 +91,14 @@ onchange="seleccionar()" data-live-search="true">
     <h2><center>Productos Facturados</center></h2>
 <table class="table table-striped">
     <tr>
-        <th>Eliminar</th> 
-       <th>Producto</th> 
-       <th>Codigo</th> 
-       <th>Precio de Compra</th> 
-       <th>Cantidad</th> 
-       <th>Tasa de Impuesto</th> 
-       <th>Sub Total</th> 
-       <th>Total</th> 
+        <th style="text-align: center">Eliminar</th> 
+       <th style="text-align: center">Producto</th> 
+       <th style="text-align: center">Codigo</th> 
+       <th style="text-align: center">Precio de Compra</th> 
+       <th style="text-align: center">Cantidad</th> 
+       <th style="text-align: center">Tasa de Impuesto</th> 
+       <th style="text-align: center">Sub Total</th> 
+       <th style="text-align: center">Total</th> 
     </tr>
         <?php 
         $subtotal =0;
@@ -106,7 +106,17 @@ onchange="seleccionar()" data-live-search="true">
         ?>
         @forelse ($temporal as $p)
             <tr>
-                <td></td>
+                <td>
+                    <form method="post" action="{{route('compras.borrar',['id'=>$p->id,"proveedor"=>$proveedor])}}">
+                        @csrf
+                        @method('delete')
+                        <center>
+                            <button type="submit" class="btn-desactivar">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </center>
+                    </form>
+                </td>
                 <td>{{$p->productos->nombre}}</td>
                 <td>{{$p->productos->codigo}}</td>
                 <td>{{$p->compra}}</td>
