@@ -56,18 +56,20 @@ class CompraController extends Controller
 
         $this->validate($request, [
             'productos' => 'required|exists:productos,id',
-            "venta" => "required|max:999999.99|min:".$request->input('compra'),
-            "compra" => 'required|min:0',
+            "venta" => 'required|numeric|max:999999.99|min:'.$request->input('compra'),
+            "compra" => 'required|numeric|min:0',
             "cantidad" => "required|min:1|numeric|max:999999999",
             "impuesto" => "required|exists:impuestos,id",
         ], [
             'productos.required' => 'Debe de seleccionar un producto',
             'productos.exists' => 'El producto seleccionado es invalido',
             'venta.required' => 'El precio de venta es obligatorio',
+            'venta.numeric' => 'El precio de venta es invalido',
             'venta.max' => 'El precio de venta ingresado es demasiado grande',
             'venta.min' => 'El precio de venta debe de ser mayor al precio de compra',
             'compra.required' => 'El precio de compra es obligatorio',
             'compra.min' => 'El precio de compra no puede ser negativo',
+            'compra.numeric' => 'El precio de compra es invalido',
             'cantidad.required' => 'La cantidad es obligatorio',
             'cantidad.max' => 'La cantidad ingresada es demasiado grande',
             'cantidad.min' => 'La cantidad no puede ser negativa',
