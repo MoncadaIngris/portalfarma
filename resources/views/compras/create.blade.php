@@ -4,10 +4,25 @@ Nueva Compra
 @stop
 @section('contenido')
 @if(session('mensaje'))
-<div class="alert alert-success">
+<div id="mensaje" class="alert alert-success">
     {{session('mensaje')}}
 </div>
 @endif
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $("#mensaje2").fadeOut(1500);
+        },3000);
+
+        setTimeout(function() {
+            $("#mensaje").fadeOut(1500);
+        },3000);
+
+        setTimeout(function() {
+            $("#error").fadeOut(3000);
+        },3000);
+    });
+    </script>
 <p style="width: 100%"><h3>proveedor:</h3><a href='{{route('proveedor.create2',["prov"=>$proveedor])}}'>¿Desea agregar un nuevo proveedor?</a></p>
 <select name="proveedor" id="proveedor" required="required" class="form-control selectpicker" 
 onchange="seleccionar()" data-live-search="true">
@@ -28,7 +43,7 @@ onchange="seleccionar()" data-live-search="true">
         <h2><center>Datos de la compra</center></h2>
         <br>
         @if($errors->any())
-        <div class="alert alert-danger">
+        <div id="error" class="alert alert-danger">
             <ul>
                 @foreach($errors->all() as $error)
                     <li>
@@ -37,6 +52,11 @@ onchange="seleccionar()" data-live-search="true">
                 @endforeach
             </ul>
         </div>
+    @endif
+    @if(session('mensaje2'))
+    <div id="mensaje2" class="alert alert-success">
+        {{session('mensaje2')}}
+    </div>
     @endif
         <div style="width: 24%; float: left;margin-right: 1%">
             <center><label for="">Producto:</label></center>

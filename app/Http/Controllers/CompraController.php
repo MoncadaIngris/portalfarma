@@ -101,7 +101,8 @@ class CompraController extends Controller
             $creado = $productos->save();
 
             if ($creado) {
-                return redirect()->route('compras.create',['proveedor'=>$proveedor]);
+                return redirect()->route('compras.create',['proveedor'=>$proveedor])
+                ->with('mensaje', 'El producto fue creada exitosamente');
             }
             
 
@@ -117,7 +118,7 @@ class CompraController extends Controller
             $creado = $productos->save();
 
             if ($creado) {
-                return redirect()->route('compras.create',['proveedor'=>$proveedor]);
+                return redirect()->route('compras.create',['proveedor'=>$proveedor])->with('mensaje2', 'El producto fue creada exitosamente');
             }
 
         }
@@ -140,7 +141,7 @@ class CompraController extends Controller
 
             $creado = $productos->save();
         }
-            $valor = 0;
+            $valor = 2;
             return $this->eliminartodo($valor);
     }
 
@@ -160,7 +161,8 @@ class CompraController extends Controller
 
     public function eliminar( $id, $proveedor){
         Producto_Temporal::destroy($id);
-        return redirect()->route('compras.create',['proveedor'=>$proveedor]);
+        return redirect()->route('compras.create',['proveedor'=>$proveedor])
+        ->with('mensaje2', 'El producto fue eliminado exitosamente');
     }
 
     public function cancelar(){
@@ -184,7 +186,12 @@ class CompraController extends Controller
         if($valor == 0){
             return redirect()->route('compras.create');
         }else{
+            if($valor == 2){
+                return redirect()->route('compras.create')
+                ->with('mensaje', 'La compra fue realizada exitosamente');
+            }else{
 
+            }
         }
 
     }
