@@ -79,23 +79,15 @@ class CompraController extends Controller
             
         ]);
 
-        $verificar = Producto_Temporal::find($request->input('productos'));
+        $verificar = Producto_Temporal::where('id_producto', $request->input('productos'))->get();
 
-        if($verificar == null){
+        foreach($verificar as $v){
+            $ver = $v->id;
+        }
 
-            $productos = new Producto_Temporal();
-
-            $productos->id_producto = $request->input('productos');
-            $productos->compra = $request->input('compra');
-            $productos->venta = $request->input('venta');
-            $productos->cantidad = $request->input('cantidad');
-            $productos->id_impuesto = $request->input('impuesto');
-
-            $creado = $productos->save();
-
-        }else{
-
-            $productos = Producto_Temporal::findOrFail($request->input('productos'));
+        if(isset($ver)){
+            
+            $productos = Producto_Temporal::findOrFail($ver);
 
             $cantidadtotal = $productos->cantidad + $request->input('cantidad');
             $valorcompra = $productos->cantidad*$productos->compra + $request->input('cantidad')*$request->input('compra');
@@ -108,11 +100,28 @@ class CompraController extends Controller
 
             $creado = $productos->save();
 
+            if ($creado) {
+                return redirect()->route('compras.create',['proveedor'=>$proveedor]);
+            }
+            
+
+        }else{
+            $productos = new Producto_Temporal();
+
+            $productos->id_producto = $request->input('productos');
+            $productos->compra = $request->input('compra');
+            $productos->venta = $request->input('venta');
+            $productos->cantidad = $request->input('cantidad');
+            $productos->id_impuesto = $request->input('impuesto');
+
+            $creado = $productos->save();
+
+            if ($creado) {
+                return redirect()->route('compras.create',['proveedor'=>$proveedor]);
+            }
+
         }
 
-        if ($creado) {
-            return redirect()->route('compras.create',['proveedor'=>$proveedor]);
-        }
     }
 
     public function cambiar($valor){
@@ -165,11 +174,12 @@ class CompraController extends Controller
     }
 
     public function eliminartodo($valor){
-        $val = Producto_Temporal::count();
+        $val = Producto_Temporal::all();
         
-        for ($i=1; $i <= $val; $i++) { 
-            Producto_Temporal::destroy($i);
+        foreach($val as $i){
+            Producto_Temporal::destroy($i->id);
         }
+        
 
         if($valor == 0){
             return redirect()->route('compras.create');
