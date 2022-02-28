@@ -14,7 +14,7 @@ class ConcentracionSeeder extends Seeder
     public function run()
     {
         $datos=[
-            ['descripcion' => 'Sin concentracion'],
+            ['descripcion' => 'Sin concentración'],
             ['descripcion' => '250 mg'],
             ['descripcion' => '500 mg'],
             ['descripcion' => '1000 mg'],

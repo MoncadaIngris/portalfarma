@@ -8,7 +8,7 @@ Nueva Compra
     {{session('mensaje')}}
 </div>
 @endif
-<p style="width: 100%"><h3>proveedor:</h3><a href='{{route('proveedor.create2',["prov"=>$proveedor])}}'>¿Desea agregar un proveedor?</a></p>
+<p style="width: 100%"><h3>proveedor:</h3><a href='{{route('proveedor.create2',["prov"=>$proveedor])}}'>¿Desea agregar un nuevo proveedor?</a></p>
 <select name="proveedor" id="proveedor" required="required" class="form-control selectpicker" 
 onchange="seleccionar()" data-live-search="true">
     @if ($proveedor!=0)
@@ -93,7 +93,7 @@ onchange="seleccionar()" data-live-search="true">
     <tr>
         <th style="text-align: center">Eliminar</th> 
        <th style="text-align: center">Producto</th> 
-       <th style="text-align: center">Codigo</th> 
+       <th style="text-align: center">Código</th> 
        <th style="text-align: center">Precio de Compra</th> 
        <th style="text-align: center">Cantidad</th> 
        <th style="text-align: center">Tasa de Impuesto</th> 

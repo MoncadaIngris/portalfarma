@@ -29,18 +29,18 @@ Añadir Producto
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Codigo: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Código: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="8" type="text" id="codigo" name="codigo" required="required" class="form-control"
                 value="{{old('codigo')}}"
-                placeholder="Ingrese el codigo del producto el cual contiene 8 digitos"
+                placeholder="Ingrese el código del producto el cual contiene 8 dígitos"
                 pattern="[0-9]{8}"
-                title="Ingrese un codigo de 8 digitos">
+                title="Ingrese un código de 8 dígitos">
             </div>
         </div>
 
-       <div class="item form-group">   <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Concentracion: <span class="required">*</span>    
+       <div class="item form-group">   <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Concentración: <span class="required">*</span>    
       </label>   
         <div class="col-md-6 col-sm-6 ">          
     <Select required="required" class="form-control" id="concentracion" name="concentracion">               
@@ -61,11 +61,11 @@ Añadir Producto
         </div>       
     </div>  
     <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descripcion: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descripción: <span class="required">*</span>
             </label> <div class="col-md-6 col-sm-6 ">
                 <textarea maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
                 value="{{old('descripcion')}}"
-                placeholder="Ingrese la descripcion ">{{old('descripcion')}}</textarea>
+                placeholder="Ingrese la descripción ">{{old('descripcion')}}</textarea>
             </div>
         </div>
     <br>
