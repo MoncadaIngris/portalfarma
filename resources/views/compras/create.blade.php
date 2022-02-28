@@ -53,11 +53,13 @@ onchange="seleccionar()" data-live-search="true">
             </ul>
         </div>
     @endif
+
     @if(session('mensaje2'))
     <div id="mensaje2" class="alert alert-success">
         {{session('mensaje2')}}
     </div>
     @endif
+    
         <div style="width: 24%; float: left;margin-right: 1%">
             <center><label for="">Producto:</label></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
