@@ -64,9 +64,6 @@ onchange="seleccionar()" data-live-search="true">
             <center><label for="">Producto:</label><a href='{{route('productos.create2',["prov"=>$proveedor])}}'>¿Desea agregar un producto?</a></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true">
-            @if ($producto_name != "")
-            <option value="{{$producto_id}}">{{$producto_name}}</option>
-            @endif
             @if(old('productos'))
             @foreach ($productos as $p)
                 @if (old('productos') == $p->id)

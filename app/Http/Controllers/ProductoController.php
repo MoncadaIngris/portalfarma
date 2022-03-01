@@ -88,7 +88,7 @@ class ProductoController extends Controller
 
         if ($creado) {
             if ($prov != -1){
-                return redirect()->route('compras.create',["proveedor"=>$prov, "producto"=>$producto->nombre, "producto_id"=>$producto->id])
+                return redirect()->route('compras.create')
                 ->with('mensaje2', 'El producto fue creado exitosamente');
             }else{
                 return redirect()->route('productos.index')
