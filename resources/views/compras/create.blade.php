@@ -61,7 +61,7 @@ onchange="seleccionar()" data-live-search="true">
     @endif
     
         <div style="width: 24%; float: left;margin-right: 1%">
-            <center><label for="">Producto:</label><a href='{{route('productos.create2',["prov"=>$proveedor])}}'>¿Desea agregar un producto?</a></center>
+            <center><label for="">Producto:</label><a style="font-size: 10px" href='{{route('productos.create2',["prov"=>$proveedor])}}'>¿Desea agregar un producto?</a></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true">
             @if(old('productos'))
@@ -195,7 +195,11 @@ method="post">
 @method("PUT")
 @csrf
 <input type="text" id="monto_total" name="monto_total" value="{{$subtotal+$impuesto}}" style="display: none">
+@if (count($temporal) != 0)
 <button type="submit" class="btn btn-guardar">Guardar</button>
+@else
+<button type="submit" class="btn btn-guardar" disabled>Guardar</button>
+@endif
 </form>
 </div>
 @endif
