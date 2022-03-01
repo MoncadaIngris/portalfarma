@@ -6,7 +6,7 @@ use App\Models\Compra;
 use App\Models\Proveedor;
 use App\Models\Producto;
 use App\Models\Producto_Temporal;
-use App\Models\Producto_Vendido;
+use App\Models\Producto_Comprado;
 use App\Models\Impuesto;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
@@ -132,7 +132,7 @@ class CompraController extends Controller
         $verifican = Producto_Temporal::all();
 
         foreach($verifican as $verificar){
-            $productos = new Producto_Vendido();
+            $productos = new Producto_Comprado();
 
             $productos->id_producto = $verificar->id_producto;
             $productos->compra = $verificar->compra;

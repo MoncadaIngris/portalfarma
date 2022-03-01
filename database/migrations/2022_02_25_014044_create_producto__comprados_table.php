@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductoVendidosTable extends Migration
+class CreateProductoCompradosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProductoVendidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('producto__vendidos', function (Blueprint $table) {
+        Schema::create('producto__comprados', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_compra');
             $table->foreign("id_compra")->references("id")->on("compras");
@@ -35,6 +35,6 @@ class CreateProductoVendidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producto__vendidos');
+        Schema::dropIfExists('producto__comprados');
     }
 }
