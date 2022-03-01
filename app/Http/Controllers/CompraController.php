@@ -30,7 +30,7 @@ class CompraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($proveedor=0)
+    public function create($proveedor=0, $producto = " ", $producto_id=0)
     {
         $prov = Proveedor::find($proveedor);
         $proveedors = Proveedor::all();
@@ -42,7 +42,9 @@ class CompraController extends Controller
         ->with('proveedor', $proveedor)
         ->with('productos', $productos)
         ->with('impuestos', $impuestos)
-        ->with('temporal', $temporal);
+        ->with('temporal', $temporal)
+        ->with('producto_name', $producto)
+        ->with('producto_id', $producto_id);
     }
 
     /**
@@ -56,8 +58,8 @@ class CompraController extends Controller
 
         $this->validate($request, [
             'productos' => 'required|exists:productos,id',
-            "venta" => 'required|numeric|max:999999.99|min:'.$request->input('compra'),
-            "compra" => 'required|numeric|min:0',
+            "venta" => 'required|numeric|max:999999.99|min:'.$request->input('compra')+0.01,
+            "compra" => 'required|numeric|min:1',
             "cantidad" => "required|min:1|numeric|max:999999999",
             "impuesto" => "required|exists:impuestos,id",
         ], [
@@ -68,7 +70,7 @@ class CompraController extends Controller
             'venta.max' => 'El precio de venta ingresado es demasiado grande',
             'venta.min' => 'El precio de venta debe de ser mayor al precio de compra',
             'compra.required' => 'El precio de compra es obligatorio',
-            'compra.min' => 'El precio de compra no puede ser negativo',
+            'compra.min' => 'El precio de compra debe de ser mayor a 0',
             'compra.numeric' => 'El precio de compra es invalido',
             'cantidad.required' => 'La cantidad es obligatorio',
             'cantidad.max' => 'La cantidad ingresada es demasiado grande',
@@ -102,7 +104,7 @@ class CompraController extends Controller
 
             if ($creado) {
                 return redirect()->route('compras.create',['proveedor'=>$proveedor])
-                ->with('mensaje', 'El producto fue creada exitosamente');
+                ->with('mensaje', 'El producto fue actualizado exitosamente');
             }
             
 
@@ -118,7 +120,7 @@ class CompraController extends Controller
             $creado = $productos->save();
 
             if ($creado) {
-                return redirect()->route('compras.create',['proveedor'=>$proveedor])->with('mensaje2', 'El producto fue creada exitosamente');
+                return redirect()->route('compras.create',['proveedor'=>$proveedor])->with('mensaje2', 'El producto fue agregado exitosamente');
             }
 
         }

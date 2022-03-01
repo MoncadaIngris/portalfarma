@@ -138,3 +138,11 @@ Route::put('/compra/cancelar',[CompraController::class, 'cancelar'])
 //ruta borrar
 Route::delete('/compra/{id}/limpiar/{proveedor}',[CompraController::class, 'eliminar'])
 ->name('compras.borrar')->where('proveedor', '[0-9]+')->where('id', '[0-9]+');
+
+//ruta  create
+Route::get('/productos/nuevo/{prov?}',[ProductoController::class, 'create'])
+->name('productos.create2');
+
+//ruta guardar
+Route::post('/productos/nuevo/{prov?}',[ProductoController::class, 'store'])
+    ->name('productos.store2');

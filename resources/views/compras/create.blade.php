@@ -61,10 +61,21 @@ onchange="seleccionar()" data-live-search="true">
     @endif
     
         <div style="width: 24%; float: left;margin-right: 1%">
-            <center><label for="">Producto:</label></center>
+            <center><label for="">Producto:</label><a href='{{route('productos.create2',["prov"=>$proveedor])}}'>¿Desea agregar un producto?</a></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true">
+            @if ($producto_name != "")
+            <option value="{{$producto_id}}">{{$producto_name}}</option>
+            @endif
+            @if(old('productos'))
+            @foreach ($productos as $p)
+                @if (old('productos') == $p->id)
+                    <option value="{{$p->id}}">{{$p->nombre}}</option>
+                @endif
+            @endforeach
+            @else
                 <option style="display: none" value="">Seleccione el producto</option>
+            @endif
                 @foreach ($productos as $p)
                     <option value="{{$p->id}}">{{$p->nombre}}</option>
                 @endforeach
@@ -111,7 +122,7 @@ onchange="seleccionar()" data-live-search="true">
 <div>
 
     <h2><center>Productos Facturados</center></h2>
-<table class="table table-striped">
+<table class="table table-bordered">
     <tr>
         <th style="text-align: center">Eliminar</th> 
        <th style="text-align: center">Producto</th> 
@@ -140,13 +151,13 @@ onchange="seleccionar()" data-live-search="true">
                     </form>
                 </td>
                 <td>{{$p->productos->nombre}}</td>
-                <td>{{$p->productos->codigo}}</td>
-                <td>{{$p->compra}}</td>
-                <td>{{$p->cantidad}}</td>
-                <td>{{$p->impuestos->descripcion}}</td>
-                <td>{{$p->compra * $p->cantidad}}</td>
+                <td style="text-align: center">{{$p->productos->codigo}}</td>
+                <td style="text-align: right">L.{{ number_format($p->compra,2)}}</td>
+                <td style="text-align: right">{{$p->cantidad}}</td>
+                <td style="text-align: center">{{$p->impuestos->descripcion}}</td>
+                <td style="text-align: right">L.{{ number_format($p->compra * $p->cantidad,2)}}</td>
                 <?php $subtotal += $p->compra * $p->cantidad;?>
-                <td>{{($p->compra * $p->cantidad)*(1+$p->impuestos->valor)}}</td>
+                <td style="text-align: right">L.{{ number_format(($p->compra * $p->cantidad)*(1+$p->impuestos->valor),2)}}</td>
                 <?php $impuesto += ($p->compra * $p->cantidad)*$p->impuestos->valor;?>
             </tr>
         @empty
@@ -155,16 +166,16 @@ onchange="seleccionar()" data-live-search="true">
             </tr>
         @endforelse
     <tr>
-        <td colspan="7">Sub Total</td>
-        <td>{{$subtotal}}</td>
+        <td style="text-align: right" colspan="7">Sub Total</td>
+        <td style="text-align: right">L.{{ number_format($subtotal,2)}}</td>
     </tr>
     <tr>
-        <td colspan="7">Impuesto</td>
-        <td>{{$impuesto}}</td>
+        <td style="text-align: right" colspan="7">Impuesto</td>
+        <td style="text-align: right">L.{{ number_format($impuesto,2)}}</td>
     </tr>
     <tr>
-        <td colspan="7">Total</td>
-        <td>{{$subtotal+$impuesto}}</td>
+        <td style="text-align: right" colspan="7">Total</td>
+        <td style="text-align: right">L.{{ number_format($subtotal+$impuesto,2)}}</td>
     </tr>
 </table>
 

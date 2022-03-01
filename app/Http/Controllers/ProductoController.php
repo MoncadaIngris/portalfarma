@@ -30,10 +30,10 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($prov=-1)
     {
         $concentracion = Concentracion::all();
-        return view('productos/create')->with('concentracion', $concentracion);
+        return view('productos/create')->with('concentracion', $concentracion)->with('prov', $prov);
     }
 
     /**
@@ -42,7 +42,7 @@ class ProductoController extends Controller
      * @param  \App\Http\Requests\StoreProductoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $prov=-1)
     {
             $rules=[
                 'nombre' => 'required|max:50|unique:productos,nombre',
@@ -87,8 +87,13 @@ class ProductoController extends Controller
         $creado =  $producto->save();
 
         if ($creado) {
-            return redirect()->route('productos.index')
+            if ($prov != -1){
+                return redirect()->route('compras.create',["proveedor"=>$prov, "producto"=>$producto->nombre, "producto_id"=>$producto->id])
+                ->with('mensaje2', 'El producto fue creado exitosamente');
+            }else{
+                return redirect()->route('productos.index')
                 ->with('mensaje', 'El producto fue agregado exitosamente');
+            }
         } else {
 
         }

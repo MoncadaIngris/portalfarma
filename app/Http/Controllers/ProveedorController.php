@@ -89,11 +89,11 @@ class ProveedorController extends Controller
 
         if ($creado) {
             if ($prov != -1){
-                return redirect()->route('compras.create',["proveedor"=>$prov])
+                return redirect()->route('compras.create',["proveedor"=>$proveedor->id])
                 ->with('mensaje', 'El proveedor fue creado exitosamente');
             }else{
                 return redirect()->route('proveedor.index')
-                ->with('mensaje', 'El proveedor fue creado exitosamente'.url()->previous());
+                ->with('mensaje', 'El proveedor fue creado exitosamente');
             }
         } else {
 
