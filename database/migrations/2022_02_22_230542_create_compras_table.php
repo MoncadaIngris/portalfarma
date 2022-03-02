@@ -17,10 +17,15 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_proveedor');
             $table->foreign("id_proveedor")->references("id")->on("proveedors");
-            $table->decimal('monto_total');
             $table->timestamps();
         });
     }
+    
+
+
+
+
+
 
     /**
      * Reverse the migrations.

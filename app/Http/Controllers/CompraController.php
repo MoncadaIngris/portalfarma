@@ -8,6 +8,7 @@ use App\Models\Producto;
 use App\Models\Producto_Temporal;
 use App\Models\Producto_Comprado;
 use App\Models\Impuesto;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
 use App\Http\Requests\UpdateCompraRequest;
@@ -15,6 +16,7 @@ use App\Http\Requests\UpdateCompraRequest;
 
 class CompraController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +24,16 @@ class CompraController extends Controller
      */
     public function index()
     {
-        //
+        $compras = Compra::select("compras.id", "id_proveedor", "compras.created_at", 
+        DB::raw("SUM(compra * cantidad) AS subtotal"), DB::raw("SUM(compra * cantidad * valor) AS impuesto"), 
+        DB::raw("SUM(compra * cantidad)+SUM(compra * cantidad * valor) AS total"))
+        ->join('producto__comprados', 'id_compra', '=', 'compras.id')
+        ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
+        ->groupby('compras.id')
+        ->orderby('compras.created_at')->get();
+
+        return view('compras/index')->with('compras', $compras);
+
     }
 
     /**
@@ -152,7 +163,6 @@ class CompraController extends Controller
         $compra = new Compra();
 
         $compra->id_proveedor = $proveedor;
-        $compra->monto_total = $request->input('monto_total');
 
         $creado = $compra->save();
 
@@ -198,48 +208,4 @@ class CompraController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Compra $compra)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Compra $compra)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCompraRequest  $request
-     * @param  \App\Models\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCompraRequest $request, Compra $compra)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Compra $compra)
-    {
-        //
-    }
 }

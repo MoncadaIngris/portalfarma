@@ -146,3 +146,13 @@ Route::get('/productos/nuevo/{prov?}',[ProductoController::class, 'create'])
 //ruta guardar
 Route::post('/productos/nuevo/{prov?}',[ProductoController::class, 'store'])
     ->name('productos.store2');
+
+    //ruta editar producto
+Route::get("/productos/{id}/edit", [ProductoController::class, "edit"])->where('id', '[0-9]+');
+
+Route::put("/productos/{id}/edit", [ProductoController::class, "update"])
+->name("productos.edit")->where('id', '[0-9]+');
+
+//ruta index
+Route::get('/compras', [CompraController::class, 'index'])
+    ->name('compras.index');

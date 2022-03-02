@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Compra extends Model
 {
     use HasFactory;
+
+    public function proveedores(){
+        return $this->belongsTo(Proveedor::class, 'id_proveedor', 'id');
+    }
 }

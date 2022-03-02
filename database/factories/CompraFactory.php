@@ -14,7 +14,12 @@ class CompraFactory extends Factory
     public function definition()
     {
         return [
-            //
+            
+                'codigo_producto' => $this -> faker ->jobTitle(),   
+                'nombre_producto' => $this -> faker ->ean8(),  
+                'precio_compra' => $this -> faker -> randomElement([0,1]),   
+                             
+          
         ];
     }
 }

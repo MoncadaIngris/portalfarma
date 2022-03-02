@@ -96,7 +96,7 @@
                   <li><a><i class="fa-solid fa-box-open"></i> Compras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('compras.create')}}">Nueva Compra</a></li>
-                      <li><a href="#">Listado de Compras</a></li>
+                      <li><a href="{{route('compras.index')}}">Listado de Compras</a></li>
                     </ul>
                   </li>
               </div>

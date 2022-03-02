@@ -109,10 +109,8 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        {
             $productos = Producto::findOrFail($id);
             return view("productos.show")->with("productos", $productos);
-        }
     }
 
     /**
@@ -121,9 +119,12 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit($id)
     {
-        //
+        $concentracion = Concentracion::all();
+        $producto = Producto::findOrFail($id);
+        return view("productos.update")->with("producto", $producto)
+        ->with("concentracion", $concentracion);
     }
 
     /**
@@ -133,10 +134,51 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductoRequest $request, Producto $producto)
+    public function update(Request $request, $id)
     {
-        //
+        $rules=[
+            'nombre' => 'required|max:50|unique:productos,nombre,'.$id, 
+            'codigo' => 'required|numeric|regex:([0-9]{8})|unique:productos,codigo,'.$id,
+            'concentracion' => 'required|exists:concentracions,id',
+            'receta'=> 'required|in:0,1',
+            'descripcion'=> 'required|max:200 ,'.$id
+        ];
+        $mensaje=[
+            'nombre.required' => 'El nombre no puede estar vacío',
+            'nombre.unique' => 'El nombre ya esta en uso',
+            'nombre.max' => 'El nombre es muy extenso',
+            'codigo.required' => 'El código no puede estar vacío',
+            'codigo.unique' => 'El código ya esta en uso',
+            'codigo.regex' => 'El codigo debe contener 8 dígitos ',
+            'codigo.numeric' => 'En codigo no debe de incluir letras ni signos',
+            'concentracion.required' => 'La concentración no puede estar vacío',
+            'concentracion.exists' => 'La concentración es invalida',
+            'receta.required' => 'La receta no puede estar vacío',
+            'receta.in' => 'La receta es invalida',
+            'descripcion.required' => 'El descripción no puede estar vacío',
+            'descripcion.max' => 'El descripción es muy extensa',
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+        
+        $producto = Producto::findOrFail($id);
+
+        $producto->nombre = $request->input('nombre');
+        $producto->codigo = $request->input('codigo');
+        $producto->concentracion = $request->input('concentracion');
+        $producto->receta = $request->input('receta');
+        $producto->descripcion = $request->input('descripcion');
+
+        $creado =  $producto->save();
+
+        if ($creado) {
+            return redirect()->route('productos.index')
+            ->with('mensaje', 'El producto fue editado exitosamente');
+        }
+
     }
+
+    
 
     /**
      * Remove the specified resource from storage.

@@ -20,8 +20,16 @@ Datos del Producto {{$productos->nombre}}
 
                         <p style="color: black; margin-left: 20px">Nombre: <strong style="color: black">{{$productos->nombre}} </strong></p>
                         <p style="color: black; margin-left: 20px">Codigo: <strong style="color: black">{{$productos->codigo}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Concentracion: <strong style="color: black">{{$productos->concentracion}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Receta: <strong style="color: black">{{$productos->receta}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Concentracion: <strong style="color: black">{{$productos->concentraciones->descripcion}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Receta: 
+                            <strong style="color: black">
+                                @if ($productos->receta==0)
+                                    No
+                                @else
+                                    Si
+                                @endif
+                            </strong> 
+                        </p>
                         <p style="color: black; margin-left: 20px">Descripcion: <strong style="color: black">{{$productos->descripcion}} </strong> </p>
                     </div>
                     </div>
