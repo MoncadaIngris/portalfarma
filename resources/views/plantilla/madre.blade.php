@@ -42,9 +42,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/selectsearch.js') }}"></script>
+    <script src="{{ asset('js/impresiones.js') }}"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+
+    <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script src="jspdf.debug.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+
   </head>
   <body class="nav-md">
     <div class="container body">
+      @yield('impresiones')
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -97,6 +109,11 @@
                     <ul class="nav child_menu">
                       <li><a href="{{route('compras.create')}}">Nueva Compra</a></li>
                       <li><a href="{{route('compras.index')}}">Listado de Compras</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa-solid fa-box-open"></i> Inventario <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('inventario')}}">Listado de Inventario</a></li>
                     </ul>
                   </li>
               </div>

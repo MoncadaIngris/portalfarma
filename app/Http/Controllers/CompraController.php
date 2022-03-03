@@ -12,10 +12,32 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
 use App\Http\Requests\UpdateCompraRequest;
-
+use PDF;
 
 class CompraController extends Controller
 {
+
+    public function createPDF(){
+        $compras = Compra::select("compras.id", "id_proveedor", "compras.created_at", 
+        DB::raw("SUM(compra * cantidad) AS subtotal"), DB::raw("SUM(compra * cantidad * valor) AS impuesto"), 
+        DB::raw("SUM(compra * cantidad)+SUM(compra * cantidad * valor) AS total"))
+        ->join('producto__comprados', 'id_compra', '=', 'compras.id')
+        ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
+        ->groupby('compras.id')
+        ->orderby('compras.created_at')->get();
+
+        $data = [
+            'title' => 'Listado de compras',
+            'date' => date('m/d/Y'),
+            'compras' =>$compras,
+        ];
+           
+        $pdf = PDF::loadView('compras/pdf', $data);
+     
+        return $pdf->download('Listado_de_compra_'.date('m_d_Y').'.pdf');
+
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -207,6 +229,14 @@ class CompraController extends Controller
             }
         }
 
+    }
+
+    public function show($id){
+        $compra = Compra::findOrFail($id);
+        $productos = Producto_Comprado::join('compras','compras.id','id_compra')
+        ->where('id_compra', $id)->get();
+
+        return view('compras/show')->with('productos', $productos)->with('compra', $compra);
     }
 
 }

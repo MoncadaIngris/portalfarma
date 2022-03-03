@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\InventarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -156,3 +157,18 @@ Route::put("/productos/{id}/edit", [ProductoController::class, "update"])
 //ruta index
 Route::get('/compras', [CompraController::class, 'index'])
     ->name('compras.index');
+
+    //ruta index
+Route::get('/compras/{id}', [CompraController::class, 'show'])
+->name('compras.show')->where('id', '[0-9]+');
+
+//ruta index
+Route::get('/inventario', [InventarioController::class, 'index'])
+    ->name('inventario');
+
+    Route::get('/inventario/{id}', [InventarioController::class, 'show'])
+    ->name('inventario.show')->where('id', '[0-9]+');;
+
+Route::get('/compras/pdf', [CompraController::class, 'createPDF'])->name('compra.pdf');
+
+Route::get('/inventario/pdf', [InventarioController::class, 'createPDF'])->name('inventario.pdf');
