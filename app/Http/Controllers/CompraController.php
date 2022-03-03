@@ -209,4 +209,12 @@ class CompraController extends Controller
 
     }
 
+    public function show($id){
+        $compra = Compra::findOrFail($id);
+        $productos = Producto_Comprado::join('compras','compras.id','id_compra')
+        ->where('id_compra', $id)->get();
+
+        return view('compras/show')->with('productos', $productos)->with('compra', $compra);
+    }
+
 }

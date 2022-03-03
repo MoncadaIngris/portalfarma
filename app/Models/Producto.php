@@ -16,4 +16,8 @@ class Producto extends Model
     public function productos_temporal(){
         return $this->hasMany(Producto_Temporal::class);
     }
+
+    public function productos_comprado(){
+        return $this->hasMany(Producto_Comprado::class);
+    }
 }

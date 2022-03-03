@@ -39,7 +39,7 @@
                 <td style="text-align: right">L.{{ number_format($compra->total,2)}}</td>
                 <td>
                     <center>
-                        <a class="btn btn-detalles" href="{{route("productos.show",["id"=>$compra->id])}}"><i class="fa-solid fa-circle-info"></i></a>
+                        <a class="btn btn-detalles" href="{{route("compras.show",["id"=>$compra->id])}}"><i class="fa-solid fa-circle-info"></i></a>
                     </center>
                 </td>
             </tr>

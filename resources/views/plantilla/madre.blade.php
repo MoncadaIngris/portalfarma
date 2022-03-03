@@ -99,6 +99,11 @@
                       <li><a href="{{route('compras.index')}}">Listado de Compras</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa-solid fa-box-open"></i> Inventario <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('inventario')}}">Listado de Inventario</a></li>
+                    </ul>
+                  </li>
               </div>
 
             </div>
