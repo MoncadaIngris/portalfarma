@@ -38,7 +38,6 @@ class InventarioController extends Controller
 
     }
 
-
     public function index()
     {
         $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", 
