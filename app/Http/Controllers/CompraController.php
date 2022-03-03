@@ -66,10 +66,11 @@ class CompraController extends Controller
      */
     public function store(Request $request, $proveedor=0)
     {
+        $compra = $request->input('compra')+0.01;
 
         $this->validate($request, [
             'productos' => 'required|exists:productos,id',
-            "venta" => 'required|numeric|max:999999.99|min:'.$request->input('compra'),
+            "venta" => 'required|numeric|max:999999.99|min:'.$compra,
             "compra" => 'required|numeric|min:1',
             "cantidad" => "required|min:1|numeric|max:999999999",
             "impuesto" => "required|exists:impuestos,id",
