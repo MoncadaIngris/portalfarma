@@ -19,18 +19,18 @@ Datos del Producto {{$productos->nombre}}
                     <div style="float: left; display: inline-block; margin-top: 40px">
 
                         <p style="color: black; margin-left: 20px">Nombre: <strong style="color: black">{{$productos->nombre}} </strong></p>
-                        <p style="color: black; margin-left: 20px">Codigo: <strong style="color: black">{{$productos->codigo}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Concentracion: <strong style="color: black">{{$productos->concentraciones->descripcion}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Receta: 
+                        <p style="color: black; margin-left: 20px">Código: <strong style="color: black">{{$productos->codigo}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Concentración: <strong style="color: black">{{$productos->concentraciones->descripcion}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Receta:
                             <strong style="color: black">
                                 @if ($productos->receta==0)
                                     No
                                 @else
                                     Si
                                 @endif
-                            </strong> 
+                            </strong>
                         </p>
-                        <p style="color: black; margin-left: 20px">Descripcion: <strong style="color: black">{{$productos->descripcion}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Descripción: <strong style="color: black">{{$productos->descripcion}} </strong> </p>
                     </div>
                     </div>
                     <hr>
