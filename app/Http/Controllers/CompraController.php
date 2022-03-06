@@ -225,7 +225,9 @@ class CompraController extends Controller
                 return redirect()->route('compras.create')
                 ->with('mensaje', 'La compra fue realizada exitosamente');
             }else{
-
+                if($valor == 1){
+                    return redirect()->route('compras.index');
+                }
             }
         }
 
