@@ -20,8 +20,8 @@ Datos del Producto {{$productos->nombre}}
                     <div style="float: left; display: inline-block; margin-top: 40px">
 
                         <p style="color: black; margin-left: 20px">Nombre: <strong style="color: black">{{$productos->nombre}} </strong></p>
-                        <p style="color: black; margin-left: 20px">Codigo: <strong style="color: black">{{$productos->codigo}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Concentracion: <strong style="color: black">{{$productos->concentraciones}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Código: <strong style="color: black">{{$productos->codigo}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Concentración: <strong style="color: black">{{$productos->concentraciones}}</strong></p>
                         <p style="color: black; margin-left: 20px">Receta: 
                             <strong style="color: black">
                                 @if ($productos->receta==0)
@@ -31,7 +31,7 @@ Datos del Producto {{$productos->nombre}}
                                 @endif
                             </strong> 
                         </p>
-                        <p style="color: black; margin-left: 20px">Descripcion: <strong style="color: black">{{$productos->descripcion}} </strong> </p>
+                        <p style="color: black; margin-left: 20px">Descripción: <strong style="color: black">{{$productos->descripcion}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Cantidad: <strong style="color: black">{{$productos->cantidad}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Precio de venta: <strong style="color: black">L.{{ number_format($productos->venta,2)}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Precio de compra: <strong style="color: black">L.{{ number_format($productos->compra,2)}} </strong> </p>
