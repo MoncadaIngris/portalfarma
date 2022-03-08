@@ -97,21 +97,27 @@
                       <li><a href="{{route('proveedor.desactivado')}}">Proveedores Desactivados</a></li>
                     </ul>
                   </li>
-                <li><a><i class="fa-solid fa-box-open"></i> Productos <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa-solid fa-box-archive"></i> Productos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('productos.create')}}">Nuevo Producto</a></li>
                       <li><a href="{{route('productos.index')}}"> Lista De Productos</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa-solid fa-box-open"></i> Compras <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa-solid fa-warehouse"></i> Compras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('compras.create')}}">Nueva Compra</a></li>
                       <li><a href="{{route('compras.index')}}">Listado de Compras</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa-solid fa-box-open"></i> Inventario <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa-solid fa-people-carry-box"></i> Inventario <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('inventario')}}">Listado de Inventario</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa-solid fa-user-clock"></i>Clientes <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('clientes.create')}}">Nuevo cliente</a></li>
+                      <li><a href="{{route('clientes.index')}}"> Lista De clientes</a></li>
                     </ul>
                   </li>
               </div>
