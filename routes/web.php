@@ -6,6 +6,7 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ClienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -172,3 +173,13 @@ Route::get('/inventario', [InventarioController::class, 'index'])
 Route::get('/compras/pdf', [CompraController::class, 'createPDF'])->name('compra.pdf');
 
 Route::get('/inventario/pdf', [InventarioController::class, 'createPDF'])->name('inventario.pdf');
+
+//ruta index
+Route::get('/clientes', [ClienteController::class, 'index'])
+    ->name('clientes.index');
+//ruta  create
+Route::get('/clientes/nuevo',[ClienteController::class, 'create'])
+    ->name('clientes.create');
+//ruta guardar
+Route::post('/clientes/nuevo',[ClienteController::class, 'store'])
+    ->name('clientes.store');
