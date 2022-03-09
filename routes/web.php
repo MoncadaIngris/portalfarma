@@ -5,8 +5,13 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\ClienteController;
+=======
+
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -117,7 +122,7 @@ Route::post('/productos/nuevo',[ProductoController::class, 'store'])
     Route::get("/productos/{id}", [ProductoController::class, "show"])
     ->name("productos.show")->where('id', '[0-9]+');
 
-    
+    //compras
 //ruta  create
 Route::get('/compra/nuevo/{proveedor?}',[compraController::class, 'create'])
 ->name('compras.create')->where('proveedor', '[0-9]+');
@@ -174,6 +179,7 @@ Route::get('/compras/pdf', [CompraController::class, 'createPDF'])->name('compra
 
 Route::get('/inventario/pdf', [InventarioController::class, 'createPDF'])->name('inventario.pdf');
 
+<<<<<<< Updated upstream
 //ruta index
 Route::get('/clientes', [ClienteController::class, 'index'])
     ->name('clientes.index');
@@ -183,3 +189,39 @@ Route::get('/clientes/nuevo',[ClienteController::class, 'create'])
 //ruta guardar
 Route::post('/clientes/nuevo',[ClienteController::class, 'store'])
     ->name('clientes.store');
+=======
+//Ventas
+
+//ruta  create
+Route::get('/venta/nuevo/{proveedor?}',[VentaController::class, 'create'])
+->name('ventas.create')->where('proveedor', '[0-9]+');
+//ruta guardar
+Route::post('/venta/nuevo/{proveedor?}',[VentaController::class, 'store'])
+->name('ventas.store')->where('proveedor', '[0-9]+');
+
+//ruta guardar
+Route::put('/venta/guardar/{proveedor}',[VentaController::class, 'save'])
+->name('ventas.save')->where('proveedor', '[0-9]+');
+
+//ruta limpiar
+Route::put('/venta/limpiar/{proveedor}',[VentaController::class, 'limpiar'])
+->name('ventas.limpiar')->where('proveedor', '[0-9]+');
+
+//ruta cancelar
+Route::put('/venta/cancelar',[VentaController::class, 'cancelar'])
+->name('ventas.cancelar');
+
+//ruta borrar
+Route::delete('/venta/{id}/limpiar/{proveedor}',[VentaController::class, 'eliminar'])
+->name('ventas.borrar')->where('proveedor', '[0-9]+')->where('id', '[0-9]+');
+
+//ruta index ventas
+Route::get('/ventas', [VentaController::class, 'index'])
+    ->name('ventas.index');
+
+    //ruta index
+Route::get('/ventas/{id}', [VentaController::class, 'show'])
+->name('ventas.show')->where('id', '[0-9]+');
+
+Route::get('/ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
+>>>>>>> Stashed changes
