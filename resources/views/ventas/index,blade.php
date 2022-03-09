@@ -8,4 +8,3 @@
             {{session('mensaje')}}
         </div>
     @endif
-    
