@@ -189,20 +189,29 @@ Route::post('/clientes/nuevo',[ClienteController::class, 'store'])
     ->name('clientes.store');
 
 //Ventas
+//ruta  create
+Route::get('/cliente/nuevo/{clie?}',[ClienteController::class, 'create'])
+->name('cliente.create2')->where('clie', '[0-9]+');
+//ruta guardar
+Route::post('/cliente/nuevo/{clie?}',[ClienteController::class, 'store'])
+->name('cliente.store2')->where('clie', '[0-9]+');
+
+
+
 
 //ruta  create
-Route::get('/venta/nuevo/{proveedor?}',[VentaController::class, 'create'])
+Route::get('/venta/nuevo/{cliente?}',[VentaController::class, 'create'])
 ->name('ventas.create')->where('proveedor', '[0-9]+');
 //ruta guardar
-Route::post('/venta/nuevo/{proveedor?}',[VentaController::class, 'store'])
+Route::post('/venta/nuevo/{cliente?}',[VentaController::class, 'store'])
 ->name('ventas.store')->where('proveedor', '[0-9]+');
 
 //ruta guardar
-Route::put('/venta/guardar/{proveedor}',[VentaController::class, 'save'])
-->name('ventas.save')->where('proveedor', '[0-9]+');
+Route::put('/venta/guardar/{cliente}',[VentaController::class, 'save'])
+->name('ventas.save')->where('cliente', '[0-9]+');
 
 //ruta limpiar
-Route::put('/venta/limpiar/{proveedor}',[VentaController::class, 'limpiar'])
+Route::put('/venta/limpiar/{cliente}',[VentaController::class, 'limpiar'])
 ->name('ventas.limpiar')->where('proveedor', '[0-9]+');
 
 //ruta cancelar
@@ -210,8 +219,8 @@ Route::put('/venta/cancelar',[VentaController::class, 'cancelar'])
 ->name('ventas.cancelar');
 
 //ruta borrar
-Route::delete('/venta/{id}/limpiar/{proveedor}',[VentaController::class, 'eliminar'])
-->name('ventas.borrar')->where('proveedor', '[0-9]+')->where('id', '[0-9]+');
+Route::delete('/venta/{id}/limpiar/{cliente}',[VentaController::class, 'eliminar'])
+->name('ventas.borrar')->where('cliente', '[0-9]+')->where('id', '[0-9]+');
 
 //ruta index ventas
 Route::get('/ventas', [VentaController::class, 'index'])

@@ -23,20 +23,20 @@ Nueva Venta
         },3000);
     });
     </script>
-<p style="width: 100%"><h3>cliente:</h3><a href='{{route('proveedor.create2',["prov"=>$proveedor])}}'>¿Desea agregar un nuevo cliente?</a></p>
-<select name="proveedor" id="proveedor" required="required" class="form-control selectpicker" 
+<p style="width: 100%"><h3>cliente:</h3><a href='{{route('cliente.create2',["clie"=>$cliente])}}'>¿Desea agregar un nuevo cliente?</a></p>
+<select name="cliente" id="cliente" required="required" class="form-control selectpicker" 
 onchange="seleccionar()" data-live-search="true">
-    @if ($proveedor!=0)
-    <option style="display: none" value="{{$prov->id}}">{{$prov->nombre_proveedor}}</option>
+    @if ($cliente!=0)
+    <option style="display: none" value="{{$clie->id}}">{{$clie->nombres}}</option>
     @else
     <option style="display: none" value="">Seleccione un cliente</option>
     @endif
-    @foreach ($proveedors as $p)
-        <option value="{{$p->id}}">{{$p->nombre_proveedor}}</option>
+    @foreach ($clientes as $clie)
+        <option value="{{$clie->id}}">{{$clie->nombres}}</option>
     @endforeach
 </select>
 <br>
-@if ($proveedor!=0)
+@if ($cliente !=0)
 <div style="width: 100%;">
     <form method="post">
         @csrf
@@ -61,7 +61,7 @@ onchange="seleccionar()" data-live-search="true">
     @endif
     
         <div style="width: 24%; float: left;margin-right: 1%">
-            <center><label for="">Producto:</label><a style="font-size: 10px" href='{{route('productos.create2',["prov"=>$proveedor])}}'>¿Desea agregar un producto?</a></center>
+            <center><label for="">Producto:</label><a style="font-size: 10px" href='{{route('productos.create2',["clie"=>$cliente])}}'>¿Desea agregar un producto?</a></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true">
             @if(old('productos'))
@@ -131,7 +131,7 @@ onchange="seleccionar()" data-live-search="true">
         @forelse ($temporalv as $p)
             <tr>
                 <td>
-                    <form method="post" action="{{route('ventas.borrar',['id'=>$p->id,"proveedor"=>$proveedor])}}">
+                    <form method="post" action="{{route('ventas.borrar',['id'=>$p->id,"cliente"=>$cliente])}}">
                         @csrf
                         @method('delete')
                         <center>
@@ -177,14 +177,14 @@ method="post">
 <button class="btn btn-regresar" type="submit">Cancelar</button>
 </form>
 
-<form style="float: left" action="{{route('ventas.limpiar',["proveedor"=>$proveedor])}}"
+<form style="float: left" action="{{route('ventas.limpiar',["cliente"=>$cliente])}}"
 method="post">
 @method("PUT")
 @csrf
 <button type="submit" class="btn btn-limpiar">Borrar todo</button>
 </form>
 
-<form style="float: left" action="{{route('ventas.save',["proveedor"=>$proveedor])}}"
+<form style="float: left" action="{{route('ventas.save',["cliente"=>$cliente])}}"
 method="post">
 @method("PUT")
 @csrf
@@ -203,8 +203,8 @@ method="post">
     function seleccionar(){
 
     location.href = url;
-        var select = document.getElementById("proveedor");
-        var url = "{{ route('ventas.create', ['proveedor' => 'temp']) }}";
+        var select = document.getElementById("cliente");
+        var url = "{{ route('ventas.create', ['cliente' => 'temp']) }}";
 
         url = url.replace('temp', select.value);
 

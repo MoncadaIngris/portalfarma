@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
 use App\Http\Requests\UpdateCompraRequest;
+use App\Models\Cliente;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use PDF;
 
@@ -22,7 +23,7 @@ class VentaController extends Controller
 {
     
     public function createPDF(){
-        $ventas = Venta::select("ventas.id", "id_proveedor", "ventas.created_at", 
+        $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at", 
         DB::raw("SUM(venta * cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"), 
         DB::raw("SUM(venta * cantidad)+SUM(venta * cantidad * valor) AS total"))
         ->join('producto__vendidos', 'id_venta', '=', 'ventas.id')
@@ -50,7 +51,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::select("compras.id", "id_proveedor", "compras.created_at", 
+        $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at", 
         DB::raw("SUM(venta* cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"), 
         DB::raw("SUM(venta* cantidad)+SUM(venta * cantidad * valor) AS total"))
         ->join('producto__vendidos', 'id_venta', '=', 'ventas.id')
@@ -67,16 +68,16 @@ class VentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($proveedor=0, $producto = " ", $producto_id=0)
+    public function create($cliente=0, $producto = " ", $producto_id=0)
     {
-        $prov = Proveedor::find($proveedor);
-        $proveedors = Proveedor::all();
+        $clie = Cliente::find($cliente);
+        $clientes = Cliente::all();
         $productos = Producto::all();
         $impuestos = Impuesto::all();
         $temporalv = Producto_Temporalv::all();
-        return view('ventas/create')->with('proveedors', $proveedors)
-        ->with('prov', $prov)
-        ->with('proveedor', $proveedor)
+        return view('ventas/create')->with('clientes', $clientes)
+        ->with('clie', $clie)
+        ->with('cliente', $cliente)
         ->with('productos', $productos)
         ->with('impuestos', $impuestos)
         ->with('temporalv', $temporalv)
@@ -90,7 +91,7 @@ class VentaController extends Controller
      * @param  \App\Http\Requests\StoreCompraRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $proveedor=0)
+    public function store(Request $request, $cliente=0)
     {
         $venta = $request->input('venta')+0.01;
 
@@ -137,7 +138,7 @@ class VentaController extends Controller
             $creado = $productos->save();
 
             if ($creado) {
-                return redirect()->route('ventas.create',['proveedor'=>$proveedor])
+                return redirect()->route('ventas.create',['cliente'=>$cliente])
                 ->with('mensaje', 'El producto fue actualizado exitosamente');
             }
             
@@ -154,7 +155,7 @@ class VentaController extends Controller
             $creado = $productos->save();
 
             if ($creado) {
-                return redirect()->route('ventas.create',['proveedor'=>$proveedor])->with('mensaje2', 'El producto fue agregado exitosamente');
+                return redirect()->route('ventas.create',['cliente'=>$cliente])->with('mensaje2', 'El producto fue agregado exitosamente');
             }
 
         }
@@ -181,11 +182,11 @@ class VentaController extends Controller
             return $this->eliminartodo($valor);
     }
 
-    public function save(Request $request,$proveedor){
+    public function save(Request $request,$cliente){
 
         $venta = new Venta();
 
-        $venta->id_proveedor = $proveedor;
+        $venta->id_cliente = $cliente;
 
         $creado = $venta->save();
 
@@ -194,9 +195,9 @@ class VentaController extends Controller
         return redirect()->route('ventas.create');
     }
 
-    public function eliminar( $id, $proveedor){
+    public function eliminar( $id, $cliente){
         Producto_Temporalv::destroy($id);
-        return redirect()->route('ventas.create',['proveedor'=>$proveedor])
+        return redirect()->route('ventas.create',['cliente'=>$cliente])
         ->with('mensaje2', 'El producto fue eliminado exitosamente');
     }
 
@@ -205,7 +206,7 @@ class VentaController extends Controller
         return $this->eliminartodo($valor);
     }
 
-    public function limpiar($proveedor){
+    public function limpiar($cliente){
         $valor = 0;
         return $this->eliminartodo($valor);
     }
