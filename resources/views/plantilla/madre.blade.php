@@ -114,20 +114,12 @@
                       <li><a href="{{route('inventario')}}">Listado de Inventario</a></li>
                     </ul>
                   </li>
-<<<<<<< Updated upstream
                   <li><a><i class="fa-solid fa-user-clock"></i>Clientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('clientes.create')}}">Nuevo cliente</a></li>
                       <li><a href="{{route('clientes.index')}}"> Lista De clientes</a></li>
                     </ul>
                   </li>
-=======
-                  <li><a><i class="fa-solid fa-box-open"></i> Ventas <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{route('ventas.create')}}">Nueva venta</a></li>
-                      <li><a href="">Listado de Ventas</a></li>
-                    </ul>
->>>>>>> Stashed changes
               </div>
 
             </div>
