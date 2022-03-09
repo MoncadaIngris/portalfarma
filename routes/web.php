@@ -177,7 +177,7 @@ Route::get('/compras/pdf', [CompraController::class, 'createPDF'])->name('compra
 
 Route::get('/inventario/pdf', [InventarioController::class, 'createPDF'])->name('inventario.pdf');
 
-<<<<<<< Updated upstream
+
 //ruta index
 Route::get('/clientes', [ClienteController::class, 'index'])
     ->name('clientes.index');
