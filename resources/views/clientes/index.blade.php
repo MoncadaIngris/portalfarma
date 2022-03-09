@@ -36,12 +36,12 @@
                 <td>{{$cliente->telefono}}</td>
                 <td>
                     <center>
-            <a class="btn btn-editar" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="btn btn-editar" href="{{route("clientes.edit",["id"=>$cliente->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                     </center>
                 </td>
                 <td>
                     <center>
-            <a class="btn btn-detalles" href="#"><i class="fa-solid fa-circle-info"></i></a>
+            <a class="btn btn-detalles" href="{{route("clientes.show",["id"=>$cliente->id])}}"><i class="fa-solid fa-circle-info"></i></a>
                     </center>
                 </td>
             </tr>

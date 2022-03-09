@@ -188,6 +188,18 @@ Route::get('/clientes/nuevo',[ClienteController::class, 'create'])
 Route::post('/clientes/nuevo',[ClienteController::class, 'store'])
     ->name('clientes.store');
 
+//ruta editar clientes
+Route::get("/clientes/{id}/edit", [ClienteController::class, "edit"])
+->name("clientes.edit")->where('id', '[0-9]+');
+
+ Route::put("/clientes/{id}/edit", [ClienteController::class, "update"])
+->name("clientes.edit")->where('id', '[0-9]+');
+
+Route::get('/clientes/{id}', [ClienteController::class, 'show'])
+->name('clientes.show')->where('id', '[0-9]+');;
+
+
+
 //Ventas
 //ruta  create
 Route::get('/cliente/nuevo/{clie?}',[ClienteController::class, 'create'])
@@ -231,3 +243,5 @@ Route::get('/ventas/{id}', [VentaController::class, 'show'])
 ->name('ventas.show')->where('id', '[0-9]+');
 
 Route::get('/ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
+ 
+
