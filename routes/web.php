@@ -7,11 +7,9 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
-<<<<<<< Updated upstream
-use App\Http\Controllers\ClienteController;
-=======
 
->>>>>>> Stashed changes
+use App\Http\Controllers\ClienteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -189,7 +187,7 @@ Route::get('/clientes/nuevo',[ClienteController::class, 'create'])
 //ruta guardar
 Route::post('/clientes/nuevo',[ClienteController::class, 'store'])
     ->name('clientes.store');
-=======
+
 //Ventas
 
 //ruta  create
@@ -224,4 +222,3 @@ Route::get('/ventas/{id}', [VentaController::class, 'show'])
 ->name('ventas.show')->where('id', '[0-9]+');
 
 Route::get('/ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
->>>>>>> Stashed changes
