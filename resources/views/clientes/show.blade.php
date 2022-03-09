@@ -20,7 +20,7 @@ Datos del Cliente {{$clientes->nombre}}
 
                         <p style="color: black; margin-left: 20px">Nombre: <strong style="color: black">{{$clientes->nombres}} </strong></p>
                         <p style="color: black; margin-left: 20px">Apellidos: <strong style="color: black">{{$clientes->apellidos}}</strong></p>
-                        <p style="color: black; margin-left: 20px">Telefono: <strong style="color: black">{{$clientes->telefono}}</strong></p>
+                        <p style="color: black; margin-left: 20px">Teléfono: <strong style="color: black">{{$clientes->telefono}}</strong></p>
                         <p style="color: black; margin-left: 20px">Identidad: <strong style="color: black">{{$clientes->DNI}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Dirección: <strong style="color: black">{{$clientes->direccion}} </strong> </p>
 
