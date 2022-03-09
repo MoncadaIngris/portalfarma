@@ -123,7 +123,7 @@ class ClienteController extends Controller
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',
             'personal'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:clientes,telefono,'.$id,
-            'dni'=> 'required|numeric|regex:([0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9})|unique:clientes,telefono,'.$id,
+            "dni" => "required|numeric|regex:([0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9})|unique:clientes,dni," . $id,
             'direccion'=>'required|max:200',
         ];
 
