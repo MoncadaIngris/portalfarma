@@ -60,14 +60,14 @@ onchange="seleccionar()" data-live-search="true">
     </div>
     @endif
     
-        <div style="width: 24%; float: left;margin-right: 1%">
+        <div style="width: 30%; float: left;margin-right: 1%">
             <center><label for="">Producto:</label><a style="font-size: 10px" href='{{route('productos.create2',["clie"=>$cliente])}}'>¿Desea agregar un producto?</a></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
-            data-live-search="true">
+            data-live-search="true" onchange="ventas()">
             @if(old('productos'))
             @foreach ($productos as $p)
                 @if (old('productos') == $p->id)
-                    <option value="{{$p->id}}">{{$p->nombre}}</option>
+                    <option style="display: none" value="{{$p->id}}">{{$p->nombre}}</option>
                 @endif
             @endforeach
             @else
@@ -78,31 +78,43 @@ onchange="seleccionar()" data-live-search="true">
                 @endforeach
             </select>
         </div>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            function ventas(){
+                var select = document.getElementById("productos");
+                var options=document.getElementsByTagName("option");
+
+                var valor = select.value;
+
+                @foreach ($productos as $p)
+                    if(valor == {{$p->id}}){
+                        var inputNombre = document.getElementById("venta");
+                        inputNombre.value = "L.{{ number_format($p->venta,2)}}";
+
+                        var inputDato = document.getElementById("impuesto");
+                        inputDato.value = "{{$p->impuesto}}";
+                    }
+                @endforeach
+            }
+        </script>  
         
-  
-        
-        <div style="width: 15%; float: left;margin-right: 1%">
+        <div style="width: 20%; float: left;margin-right: 1%">
             <center><label for="" >Precio de Venta:</label></center>
-            <input placeholder="0.00" class="form-control" id="venta" name="venta"
-            min="0" max="999999.99" maxlength="10" type="number" step="any" required
-            title="Formato de precio incorrecto" value="{{old("venta")}}"
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            <input readonly type="text" placeholder="0.00" class="form-control" 
+            id="venta" name="venta" style="text-align: right" value="{{old('venta')}}">
         </div>
         
-        <div style="width: 13%; float: left;margin-right: 1%">
+        <div style="width: 15%; float: left;margin-right: 1%">
             <center><label for="" >Cantidad:</label></center>
             <input type="number" placeholder="0" class="form-control" id="cantidad" name="cantidad"
             min="0" maxlength="7" max="999999999" required value="{{old("cantidad")}}"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
-        
-        <div style="width: 13%; float: left;margin-right: 1%">
+
+        <div style="width: 15%; float: left;margin-right: 1%">
             <center><label for="" >Impuesto:</label></center>
-            <select name="impuesto" id="impuesto" class="form-control">
-                @foreach ($impuestos as $imp)
-                    <option value="{{$imp->id}}">{{$imp->descripcion}}</option>
-                @endforeach
-            </select>
+            <input readonly type="text" placeholder="Porcentaje" 
+            name="impuesto" id="impuesto" class="form-control" style="text-align: right" value="{{old('impuesto')}}">
         </div>
         <div style="width: 15%; float: left">
             <label for="" style="color: white">boton</label>

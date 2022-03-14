@@ -9,6 +9,9 @@ use App\Models\Proveedor;
 use App\Models\Producto;
 use App\Models\Producto_Temporalv;
 use App\Models\Producto_vendido;
+use App\Models\Compra;
+use App\Models\Producto_Temporal;
+use App\Models\Producto_Comprado;
 use App\Models\Impuesto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -72,7 +75,13 @@ class VentaController extends Controller
     {
         $clie = Cliente::find($cliente);
         $clientes = Cliente::all();
-        $productos = Producto::all();
+        $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", 
+        DB::raw("sum(cantidad) AS cantidad"), DB::raw("(SUM(venta*cantidad)/sum(cantidad)) AS venta"), 
+        DB::raw("sum(cantidad*venta*(1+valor)) AS total"),DB::raw("max(impuestos.descripcion) AS impuesto"))
+        ->join('productos', 'productos.id', '=', 'id_producto')
+        ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
+        ->groupby('id_producto')
+        ->orderby('productos.nombre')->get();
         $impuestos = Impuesto::all();
         $temporalv = Producto_Temporalv::all();
         return view('ventas/create')->with('clientes', $clientes)
@@ -93,22 +102,52 @@ class VentaController extends Controller
      */
     public function store(Request $request, $cliente=0)
     {
-        $venta = $request->input('venta')+0.01;
+        $datos = Producto_Comprado::select("producto__comprados.id_producto as id", "productos.nombre", "productos.codigo", 
+        DB::raw("sum(producto__comprados.cantidad) AS cantidad"), 
+        DB::raw("(SUM(producto__comprados.venta*producto__comprados.cantidad)/sum(producto__comprados.cantidad)) AS venta"), 
+        DB::raw("sum(producto__comprados.cantidad*producto__comprados.venta*(1+valor)) AS total"),DB::raw("max(impuestos.id) AS impuesto"))
+        ->join('productos', 'productos.id', '=', 'producto__comprados.id_producto')
+        ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
+        ->where('productos.id',$request->input('productos'))
+        ->groupby('producto__comprados.id_producto')
+        ->orderby('productos.nombre')->get();
+
+        $val2 = Producto_Temporalv::select(DB::raw("ISNULL(SUM(cantidad)) AS valor"))
+        ->where('id_producto',$request->input('productos'))->first();
+
+        $val3 = Producto_Vendido::select(DB::raw("ISNULL(SUM(cantidad)) AS valor"))
+        ->where('id_producto',$request->input('productos'))->first();
+
+        $can2 = 0;
+        if($val2->valor == 0){
+            $dato2 = Producto_Temporalv::select(DB::raw("SUM(cantidad) AS cantidad"))
+            ->where('id_producto',$request->input('productos'))->first();
+
+            $can2 = $dato2->cantidad;
+
+        }
+
+        $productos = new Producto_Temporalv();
+
+        $cantidad = 0;
+
+        foreach($datos as $d){
+            $cantidad = ($d->cantidad)-$can2;
+        }
+
 
         $this->validate($request, [
             'productos' => 'required|exists:productos,id',
-            "venta" => 'required|numeric|max:999999.99|min:',
-            "cantidad" => "required|min:1|numeric|max:999999999",
-            "impuesto" => "required|exists:impuestos,id",
+            "cantidad" => "required|min:1|numeric|max:".$cantidad,
         ], [
             'productos.required' => 'Debe de seleccionar un producto',
             'productos.exists' => 'El producto seleccionado es invalido',
             'venta.required' => 'El precio de venta es obligatorio',
             'venta.numeric' => 'El precio de venta es invalido',
-            'venta.max' => 'El precio de venta ingresado es demasiado grande',
+            'venta.max' => 'El precio de venta ingresado es mayor a la existencia',
             'venta.min' => 'El precio de venta debe de ser mayor al precio de compra',
             'cantidad.required' => 'La cantidad es obligatorio',
-            'cantidad.max' => 'La cantidad ingresada es demasiado grande',
+            'cantidad.max' => 'La cantidad ingresada es demasiado grande actualmente tiene en existencia '.$cantidad.' unidades de ese producto',
             'cantidad.min' => 'La cantidad no puede ser negativa',
             'cantidad.numeric' => 'La cantidad debe de ser un valor numérico',
             'impuesto.required' => 'El impuesto es obligatorio',
@@ -127,13 +166,7 @@ class VentaController extends Controller
             $productos = Producto_Temporalv::findOrFail($ver);
 
             $cantidadtotal = $productos->cantidad + $request->input('cantidad');
-           // $valorventa = $productos->cantidad*$productos->compra + $request->input('cantidad')*$request->input('venta');//
-            $valorventa = $productos->cantidad*$productos->venta + $request->input('cantidad')*$request->input('venta');
-
-
-            $productos->venta = $valorventa/$cantidadtotal;
             $productos->cantidad = $cantidadtotal;
-            $productos->id_impuesto = $request->input('impuesto');
 
             $creado = $productos->save();
 
@@ -144,13 +177,13 @@ class VentaController extends Controller
 
 
         }else{
-            $productos = new Producto_Temporalv();
 
-            $productos->id_producto = $request->input('productos');
-           // $productos->compra = $request->input('compra');
-            $productos->venta = $request->input('venta');
-            $productos->cantidad = $request->input('cantidad');
-            $productos->id_impuesto = $request->input('impuesto');
+            foreach($datos as $dat){
+                $productos->id_producto = $request->input('productos');
+                $productos->venta = $dat->venta;
+                $productos->cantidad = $request->input('cantidad');
+                $productos->id_impuesto = $dat->impuesto;
+            }
 
             $creado = $productos->save();
 
