@@ -4,13 +4,9 @@ Detalles de Venta
 @stop
 @section('contenido')
 <br>
-
-<div style="float: right;margin-right: 10px; width: 250px">
-    <p><center>Descargar reporte:</center></p>
-</div>
-<table  id="datatable-buttons" class="table table-striped">
-    <thead>
-<div>
+<div id="GFG">
+    <link href="{{ asset('css/bootstrapcdn.css') }}" rel="stylesheet">
+    <div>
     <div style="float: left; font-size: 20px">
         <label for="">Fecha: </label>
         {{date_format($venta->created_at,"d/m/Y")}}
@@ -21,6 +17,7 @@ Detalles de Venta
     </div>
 </div>
 <br><br>
+
 <table class="table table-bordered">
     <tr>
        <th style="text-align: center">Producto</th>
@@ -65,5 +62,24 @@ Detalles de Venta
         <td style="text-align: right">L.{{ number_format($subtotal+$impuesto,2)}}</td>
     </tr>
 </table>
+</div>
 <a type="button" class="btn btn-regresar" href="{{route('ventas.index')}}">Regresar</a>
+<button type="button" onclick="printDiv()" class="btn btn-guardar">Imprimir</button>
+
+<script>
+    function printDiv() {
+        var divContents = document.getElementById("GFG").innerHTML;
+        var a = window.open('', '', 'height=1000, width=1000');
+        a.document.write('<html>');
+        a.document.write('<body > <h1><center>Detalles de Venta<br>');
+        a.document.write(divContents);
+        a.document.write('</body></html>');
+        a.document.close();
+        a.focus();
+        a.print();
+        a.close();
+
+    }
+</script>
+
 @stop
