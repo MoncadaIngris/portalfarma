@@ -21,10 +21,10 @@ use PDF;
 
 class VentaController extends Controller
 {
-    
+
     public function createPDF(){
-        $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at", 
-        DB::raw("SUM(venta * cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"), 
+        $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at",
+        DB::raw("SUM(venta * cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"),
         DB::raw("SUM(venta * cantidad)+SUM(venta * cantidad * valor) AS total"))
         ->join('producto__vendidos', 'id_venta', '=', 'ventas.id')
         ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
@@ -36,9 +36,9 @@ class VentaController extends Controller
             'date' => date('m/d/Y'),
             'ventas' =>$ventas,
         ];
-           
+
         $pdf =PDF::loadView('ventas/pdf', $data);
-     
+
         return $pdf->download('Listado_de_venta_'.date('m_d_Y').'.pdf');
 
     }
@@ -51,8 +51,8 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at", 
-        DB::raw("SUM(venta* cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"), 
+        $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at",
+        DB::raw("SUM(venta* cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"),
         DB::raw("SUM(venta* cantidad)+SUM(venta * cantidad * valor) AS total"))
         ->join('producto__vendidos', 'id_venta', '=', 'ventas.id')
         ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
@@ -113,7 +113,7 @@ class VentaController extends Controller
             'cantidad.numeric' => 'La cantidad debe de ser un valor numérico',
             'impuesto.required' => 'El impuesto es obligatorio',
             'impuesto.exists' => 'El impuesto seleccionado es invalido',
-            
+
         ]);
 
         $verificar = Producto_Temporalv::where('id_producto', $request->input('productos'))->get();
@@ -123,14 +123,14 @@ class VentaController extends Controller
         }
 
         if(isset($ver)){
-            
+
             $productos = Producto_Temporalv::findOrFail($ver);
 
             $cantidadtotal = $productos->cantidad + $request->input('cantidad');
            // $valorventa = $productos->cantidad*$productos->compra + $request->input('cantidad')*$request->input('venta');//
             $valorventa = $productos->cantidad*$productos->venta + $request->input('cantidad')*$request->input('venta');
 
-          
+
             $productos->venta = $valorventa/$cantidadtotal;
             $productos->cantidad = $cantidadtotal;
             $productos->id_impuesto = $request->input('impuesto');
@@ -141,7 +141,7 @@ class VentaController extends Controller
                 return redirect()->route('ventas.create',['cliente'=>$cliente])
                 ->with('mensaje', 'El producto fue actualizado exitosamente');
             }
-            
+
 
         }else{
             $productos = new Producto_Temporalv();
@@ -213,11 +213,11 @@ class VentaController extends Controller
 
     public function eliminartodo($valor){
         $val = Producto_Temporalv::all();
-        
+
         foreach($val as $i){
             Producto_Temporalv::destroy($i->id);
         }
-        
+
 
         if($valor == 0){
             return redirect()->route('ventas.create');
@@ -241,7 +241,6 @@ class VentaController extends Controller
 
         return view('ventas/show')->with('productos', $productos)->with('venta', $venta);
     }
-
 }
 
 

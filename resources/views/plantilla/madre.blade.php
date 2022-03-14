@@ -124,7 +124,7 @@
                   <li><a><i class="fa-solid fa-box-open"></i> Ventas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('ventas.create')}}">Nueva venta</a></li>
-                      <li><a href="">Listado de Ventas</a></li>
+                      <li><a href="{{route('ventas.index')}}">Listado de Ventas</a></li>
                     </ul>
 
               </div>
@@ -220,7 +220,7 @@
               </div>
             </div>
 
-            
+
 
           </div>
         </div>
@@ -256,7 +256,7 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
-    
+
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('js/custom.min.js') }}"></script>
 

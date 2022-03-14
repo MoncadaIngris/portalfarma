@@ -243,5 +243,5 @@ Route::get('/ventas/{id}', [VentaController::class, 'show'])
 ->name('ventas.show')->where('id', '[0-9]+');
 
 Route::get('/ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
- 
 
+Route::get('/show-ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
