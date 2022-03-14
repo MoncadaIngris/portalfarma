@@ -127,12 +127,21 @@ class VentaController extends Controller
 
         }
 
+        $can3 = 0;
+        if($val3->valor == 0){
+            $dato3 = Producto_Vendido::select(DB::raw("SUM(cantidad) AS cantidad"))
+            ->where('id_producto',$request->input('productos'))->first();
+
+            $can3 = $dato3->cantidad;
+
+        }
+
         $productos = new Producto_Temporalv();
 
         $cantidad = 0;
 
         foreach($datos as $d){
-            $cantidad = ($d->cantidad)-$can2;
+            $cantidad = ($d->cantidad)-$can2-$can3;
         }
 
 
