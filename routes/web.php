@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
-
+use App\Http\Controllers\KardexController;
 use App\Http\Controllers\ClienteController;
 
 /*
@@ -245,3 +245,10 @@ Route::get('/ventas/{id}', [VentaController::class, 'show'])
 Route::get('/ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
 
 Route::get('/show-ventas/pdf', [VentaController::class, 'createPDF'])->name('venta.pdf');
+
+Route::get('/kardex', [KardexController::class, 'index'])
+    ->name('kardex');
+
+Route::get('/kardex/pdf', [KardexController::class, 'createPDF'])->name('kardex.pdf');
+Route::get('/kardex/xlsx', [KardexController::class, 'exportxlsx'])->name('kardex.xlsx');
+Route::get('/kardex/csv', [KardexController::class, 'exportcsv'])->name('kardex.csv');
