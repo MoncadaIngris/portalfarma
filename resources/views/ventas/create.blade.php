@@ -27,12 +27,12 @@ Nueva Venta
 <select name="cliente" id="cliente" required="required" class="form-control selectpicker" 
 onchange="seleccionar()" data-live-search="true">
     @if ($cliente!=0)
-    <option style="display: none" value="{{$clie->id}}">{{$clie->nombres}}</option>
+    <option style="display: none" value="{{$clie->id}}">{{$clie->nombres}} {{$clie->apellidos}}</option>
     @else
     <option style="display: none" value="">Seleccione un cliente</option>
     @endif
     @foreach ($clientes as $clie)
-        <option value="{{$clie->id}}">{{$clie->nombres}}</option>
+        <option value="{{$clie->id}}">{{$clie->nombres}} {{$clie->apellidos}}</option>
     @endforeach
 </select>
 <br>
@@ -61,7 +61,7 @@ onchange="seleccionar()" data-live-search="true">
     @endif
     
         <div style="width: 30%; float: left;margin-right: 1%">
-            <center><label for="">Producto:</label><a style="font-size: 10px" href='{{route('productos.create2',["clie"=>$cliente])}}'>¿Desea agregar un producto?</a></center>
+            <center><label for="">Producto:</label></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true" onchange="ventas()">
             @if(old('productos'))
@@ -202,9 +202,9 @@ method="post">
 @csrf
 <input type="text" id="monto_total" name="monto_total" value="{{$subtotal+$impuesto}}" style="display: none">
 @if (count($temporalv) != 0)
-<button type="submit" class="btn btn-guardar">Guardar</button>
+<button type="submit" class="btn btn-guardar">Vender</button>
 @else
-<button type="submit" class="btn btn-guardar" disabled>Guardar</button>
+<button type="submit" class="btn btn-guardar" disabled>Vender</button>
 @endif
 </form>
 </div>
