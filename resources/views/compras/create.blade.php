@@ -196,9 +196,9 @@ method="post">
 @csrf
 <input type="text" id="monto_total" name="monto_total" value="{{$subtotal+$impuesto}}" style="display: none">
 @if (count($temporal) != 0)
-<button type="submit" class="btn btn-guardar">Guardar</button>
+<button type="submit" class="btn btn-guardar">Comprar</button>
 @else
-<button type="submit" class="btn btn-guardar" disabled>Guardar</button>
+<button type="submit" class="btn btn-guardar" disabled>Comprar</button>
 @endif
 </form>
 </div>
