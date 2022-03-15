@@ -40,13 +40,12 @@ class InventarioController extends Controller
 
     public function index()
     {
-        $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", 
-        DB::raw("sum(cantidad) AS cantidad"), DB::raw("(SUM(venta*cantidad)/sum(cantidad)) AS venta"), 
-        DB::raw("sum(cantidad*venta*(1+valor)) AS total"))
-        ->join('productos', 'productos.id', '=', 'id_producto')
-        ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
-        ->groupby('id_producto')
-        ->orderby('productos.nombre')->get();
+        $productos = DB::table('inventario')
+        ->select("inventario.id AS id","nombre", "codigo", 
+        DB::raw("MAX(venta) AS venta, SUM(cantidad) - SUM(vendido) AS cantidad, ((SUM(cantidad) - SUM(vendido))*MAX(venta)) AS total"))
+        ->join("productos", "productos.id","=","inventario.id")
+        ->groupby("inventario.id")
+        ->get();
 
         return view('inventario/index')->with('productos', $productos);
 
