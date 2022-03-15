@@ -26,9 +26,9 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($clie=-1)
     {
-        return view('clientes/create');
+        return view('clientes/create')->with('clie', $clie);;
     }
 
     /**
@@ -37,7 +37,7 @@ class ClienteController extends Controller
      * @param  \App\Http\Requests\StoreClienteRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$clie=-1)
     {
         $rules=[
             'nombres' => 'required|max:100',
@@ -77,8 +77,14 @@ class ClienteController extends Controller
         $creado = $cliente->save();
 
         if ($creado) {
-            return redirect()->route('clientes.index')
+
+            if ($clie != -1){
+                return redirect()->route('ventas.create',["cliente"=>$cliente->id])
+                ->with('mensaje', 'El cliente fue creado exitosamente');
+            }else{
+                return redirect()->route('clientes.index')
                 ->with('mensaje', 'El cliente fue añadido exitosamente');
+            }
         } else {
 
         }
