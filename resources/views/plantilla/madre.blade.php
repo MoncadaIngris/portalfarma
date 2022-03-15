@@ -126,7 +126,7 @@
                       <li><a href="{{route('ventas.create')}}">Nueva venta</a></li>
                       <li><a href="{{route('ventas.index')}}">Listado de Ventas</a></li>
                     </ul>
-
+                  <li><a href="{{route('kardex')}}"><i class="fa-solid fa-box-open"></i>Entradas y Salidas</a></li>
               </div>
 
             </div>
