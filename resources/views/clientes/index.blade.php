@@ -18,11 +18,11 @@
     <table  id="datatable" class="table table-striped">
         <thead>
         <tr>
-            <th scope="col" style="text-align: center">Identidad</th>
-            <th scope="col" style="text-align: center">Nombres</th>
-            <th scope="col" style="text-align: center">Apellidos</th>
-            <th scope="col" style="text-align: center">Teléfono</th>
-            <th scope="col" style="text-align: center">Editar</th>
+            <th scope="col" class="sorting" style="text-align: center">Identidad</th>
+            <th scope="col" class="sorting" style="text-align: center">Nombres</th>
+            <th scope="col" class="sorting" style="text-align: center">Apellidos</th>
+            <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
+            <th scope="col" class="sorting" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Detalles</th>
         </tr>
         </thead>

@@ -11,10 +11,10 @@ Listado de Proveedores Desactivados
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col" style=" text-align: center">Nombre Repartidor</th>
-        <th scope="col" style=" text-align: center">Nombre Proveedor</th>
-        <th scope="col" style=" text-align: center">Teléfono Repartidor</th>
-        <th scope="col" style=" text-align: center">Dia de Entrega</th>
+        <th scope="col"class="sorting"  style=" text-align: center">Nombre Repartidor</th>
+        <th scope="col"class="sorting"  style=" text-align: center">Nombre Proveedor</th>
+        <th scope="col"class="sorting"  style=" text-align: center">Teléfono Repartidor</th>
+        <th scope="col" class="sorting" style=" text-align: center">Dia de Entrega</th>
         <th scope="col" style="text-align: center">Detalles</th>
         <th scope="col" style="text-align: center">Activar</th>
       </tr>

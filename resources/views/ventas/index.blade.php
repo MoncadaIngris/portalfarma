@@ -29,7 +29,7 @@
             <th scope="col" style="text-align: center">Sub Total</th>
             <th scope="col" style="text-align: center">Impuesto</th>
             <th scope="col" style="text-align: center">Total</th>
-            <th scope="col" style="text-align: center">Detalle</th>
+            <th scope="col" class='notexport' style="text-align: center">Detalle</th>
 
 
 

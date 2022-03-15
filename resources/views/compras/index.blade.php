@@ -24,12 +24,12 @@
     <table  id="datatable-buttons" class="table table-striped">
         <thead>
         <tr>
-            <th scope="col" style="text-align: center">Fecha efectuada</th>
-            <th scope="col" style="text-align: center">Proveedor</th>
-            <th scope="col" style="text-align: center">Sub Total</th>
-            <th scope="col" style="text-align: center">Impuesto</th>
-            <th scope="col" style="text-align: center">Total</th>
-            <th scope="col" style="text-align: center">Detalle</th>
+            <th scope="col" class="sorting" style="text-align: center">Fecha efectuada</th>
+            <th scope="col" class="sorting" style="text-align: center">Proveedor</th>
+            <th scope="col" class="sorting" style="text-align: center">Sub Total</th>
+            <th scope="col" class="sorting" style="text-align: center">Impuesto</th>
+            <th scope="col" class="sorting" style="text-align: center">Total</th>
+            <th scope="col" class='notexport' style="text-align: center">Detalle</th>
 
         
         

@@ -23,12 +23,12 @@
     <table  id="datatable-buttons" class="table table-striped">
         <thead>
         <tr>
-            <th scope="col" style="text-align: center">Producto</th>
-            <th scope="col" style="text-align: center">Codigo</th>
-            <th scope="col" style="text-align: center">Cantidad</th>
-            <th scope="col" style="text-align: center">Precio de venta</th>
-            <th scope="col" style="text-align: center">Total</th>
-            <th scope="col" style="text-align: center">Detalle</th>
+            <th scope="col" class="sorting" style="text-align: center">Producto</th>
+            <th scope="col" class="sorting" style="text-align: center">Codigo</th>
+            <th scope="col" class="sorting" style="text-align: center">Cantidad</th>
+            <th scope="col" class="sorting" style="text-align: center">Precio de venta</th>
+            <th scope="col" class="sorting" style="text-align: center">Total</th>
+            <th scope="col" class='notexport' style="text-align: center">Detalle</th>
 
         
         

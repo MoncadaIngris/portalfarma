@@ -17,10 +17,10 @@ Listado de Proveedores
 <table  id="datatable" class="table table-striped">
     <thead>
       <tr>
-        <th scope="col" style="text-align: center">Nombre Repartidor</th>
-        <th scope="col" style="text-align: center">Nombre Proveedor</th>
-        <th scope="col" style="text-align: center">Teléfono Repartidor</th>
-        <th scope="col" style="text-align: center">Día de Entrega</th>
+        <th scope="col" class="sorting" style="text-align: center">Nombre Repartidor</th>
+        <th scope="col" class="sorting" style="text-align: center">Nombre Proveedor</th>
+        <th scope="col" class="sorting" style="text-align: center">Teléfono Repartidor</th>
+        <th scope="col" class="sorting" style="text-align: center">Día de Entrega</th>
         <th scope="col" style="text-align: center">Editar</th>
         <th scope="col" style="text-align: center">Detalles</th>
         <th scope="col" style="text-align: center">Desactivar</th>
