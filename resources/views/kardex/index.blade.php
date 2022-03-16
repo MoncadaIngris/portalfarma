@@ -187,7 +187,7 @@
                     <?php 
                     $f = $producto->created_at;
                         $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                        $pt = $tt/$tU;
+                        if($tU!=0){$pt = $tt/$tU;}
                     ?>
                 </tr>
             @endforeach
@@ -234,8 +234,9 @@
                 </td>
 
                 <?php 
+                
                 $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                $pt = $tt/$tU;
+                if($tU!=0){$pt = $tt/$tU;}
                 ?>
 
                 <td style="text-align: right">L.{{ number_format($tU,2)}}</td>
@@ -299,7 +300,7 @@
                         <?php 
                         $f = $producto->created_at;
                             $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                            $pt = $tt/$tU;
+                            if($tU!=0){$pt = $tt/$tU;}
                         ?>
                     </tr>
                 @endforeach
@@ -346,8 +347,10 @@
                     </td>
     
                     <?php 
+                   
                     $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                    $pt = $tt/$tU;
+                    if($tU!=0){$pt = $tt/$tU;}
+                    
                     ?>
     
                     <td style="text-align: right">L.{{ number_format($tU,2)}}</td>
