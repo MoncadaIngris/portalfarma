@@ -271,22 +271,36 @@ class KardexController extends Controller
        ->where('id_producto',$producto)
         ->first();
 
-        if($venta->fecha_inicio<$compra->fecha_inicio){
-            $original = $venta->fecha_inicio;
+
+        if($venta->fecha_inicio){
+            if($venta->fecha_inicio<$compra->fecha_inicio){
+                $original = $venta->fecha_inicio;
+            }else{
+                $original = $compra->fecha_inicio;
+            }
+    
         }else{
             $original = $compra->fecha_inicio;
         }
-
-        if($venta->fecha_final>$compra->fecha_final){
-            $ultima = $venta->fecha_final;
+        
+        if($venta->fecha_final){
+            if($venta->fecha_final>$compra->fecha_final){
+                $ultima = $venta->fecha_final;
+            }else{
+                $ultima = $compra->fecha_final;
+            }
         }else{
-            $ultima = $venta->fecha_final;
+            $ultima = $compra->fecha_final;
         }
         
 
         if($inicio == null){
-            if($venta->fecha_inicio<$compra->fecha_inicio){
-                $inicio = $venta->fecha_inicio;
+            if($venta->fecha_inicio){
+                if($venta->fecha_inicio<$compra->fecha_inicio){
+                    $inicio = $venta->fecha_inicio;
+                }else{
+                    $inicio = $compra->fecha_inicio;
+                }
             }else{
                 $inicio = $compra->fecha_inicio;
             }

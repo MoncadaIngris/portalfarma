@@ -75,9 +75,9 @@ class VentaController extends Controller
     {
         $clie = Cliente::find($cliente);
         $clientes = Cliente::all();
-        $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", 
+        $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", "productos.receta",
         DB::raw("sum(cantidad) AS cantidad"), DB::raw("(SUM(venta*cantidad)/sum(cantidad)) AS venta"), 
-        DB::raw("sum(cantidad*venta*(1+valor)) AS total"),DB::raw("max(impuestos.descripcion) AS impuesto"))
+        DB::raw("sum(cantidad*venta*(1+valor)) AS total"),DB::raw("max(impuestos.id) AS id_impuesto"))
         ->join('productos', 'productos.id', '=', 'id_producto')
         ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
         ->groupby('id_producto')
@@ -176,6 +176,9 @@ class VentaController extends Controller
 
             $cantidadtotal = $productos->cantidad + $request->input('cantidad');
             $productos->cantidad = $cantidadtotal;
+            foreach($datos as $dat){
+                $productos->id_impuesto = $dat->impuesto;
+            }
 
             $creado = $productos->save();
 

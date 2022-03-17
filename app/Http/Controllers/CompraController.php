@@ -164,7 +164,6 @@ class CompraController extends Controller
     public function cambiar($valor){
 
         $verifican = Producto_Temporal::all();
-
         foreach($verifican as $verificar){
             $productos = new Producto_Comprado();
 
@@ -176,7 +175,18 @@ class CompraController extends Controller
             $productos->id_compra = $valor;
 
             $creado = $productos->save();
+
+            $corregir = Producto_Comprado::where('id_producto', $verificar->id_producto)->get();
+
+            foreach($corregir as $c){
+                $corr = Producto_Comprado::findOrFail($c->id);
+                $corr->id_impuesto = $verificar->id_impuesto;
+                $cread = $corr->save();
+            }
+
         }
+
+        
             $valor = 2;
             return $this->eliminartodo($valor);
     }
