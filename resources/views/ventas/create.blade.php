@@ -60,7 +60,7 @@ onchange="seleccionar()" data-live-search="true">
     </div>
     @endif
     
-        <div style="width: 30%; float: left;margin-right: 1%">
+        <div style="width: 20%; float: left;margin-right: 1%">
             <center><label for="">Producto:</label></center>
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true" onchange="ventas()">
@@ -92,13 +92,26 @@ onchange="seleccionar()" data-live-search="true">
                         inputNombre.value = "L.{{ number_format($p->venta,2)}}";
 
                         var inputDato = document.getElementById("impuesto");
-                        inputDato.value = "{{$p->impuesto}}";
+                        inputDato.value = "{{$p->impuestos->descripcion}}";
+
+                        var receta = document.getElementById("receta");
+                        if({{$p->receta}} == 0){
+                            receta.value = "No se necesita receta";
+                            receta.style.background  = "green";
+                            receta.style.color  = "black";
+                        }else{
+                            if({{$p->receta}} == 1){
+                                receta.value = "Se necesita receta";
+                                receta.style.background  = "red";
+                                receta.style.color  = "black";
+                            }
+                        }
                     }
                 @endforeach
             }
         </script>  
         
-        <div style="width: 20%; float: left;margin-right: 1%">
+        <div style="width: 15%; float: left;margin-right: 1%">
             <center><label for="" >Precio de Venta:</label></center>
             <input readonly type="text" placeholder="0.00" class="form-control" 
             id="venta" name="venta" style="text-align: right" value="{{old('venta')}}">
@@ -115,6 +128,11 @@ onchange="seleccionar()" data-live-search="true">
             <center><label for="" >Impuesto:</label></center>
             <input readonly type="text" placeholder="Porcentaje" 
             name="impuesto" id="impuesto" class="form-control" style="text-align: right" value="{{old('impuesto')}}">
+        </div>
+        <div style="width: 15%; float: left;margin-right: 1%">
+            <center><label for="" >Receta:</label></center>
+            <input readonly type="text"
+            name="receta" id="receta" class="form-control" style="text-align: center" ">
         </div>
         <div style="width: 15%; float: left">
             <label for="" style="color: white">boton</label>

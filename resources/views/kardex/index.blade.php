@@ -7,6 +7,21 @@
 @endforeach
 @stop
 @section('contenido')
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $("#mensaje2").fadeOut(1500);
+        },3000);
+
+        setTimeout(function() {
+            $("#mensaje").fadeOut(1500);
+        },3000);
+
+        setTimeout(function() {
+            $("#error").fadeOut(3000);
+        },3000);
+    });
+    </script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     @if(session('mensaje'))
         <div class="alert alert-success">
@@ -52,6 +67,17 @@
             <br>
         </form>
     @if ($producto)
+    @if($errors->any())
+        <div id="error" class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{route('kardex')}}" method="GET">
         <?php $fecha_actual = date("Y-m-d");?>
         <input type="text" name="producto" value="{{$producto}}" style="display: none">
@@ -65,7 +91,12 @@
                     </center>
                 </div>
                 <div style="float: left;width: 60%">
-                    <input type="date" class="form-control" id="start_date" name="start_date"  value="{{date("Y-m-d", strtotime($inicio))}}" 
+                    <input type="date" class="form-control" id="start_date" name="start_date"
+                    @if ($inicio)
+                    value="{{date("Y-m-d", strtotime($inicio))}}"
+                    @else
+                    value="{{date("Y-m-d", strtotime($original))}}"
+                    @endif
                     min="{{date("Y-m-d", strtotime($original))}}"
                     max="{{date("Y-m-d", strtotime($ultima))}}">
                 </div>
@@ -80,7 +111,12 @@
                     </center>
                 </div>
                 <div style="float: left;width: 60%">
-                    <input type="date" class="form-control" id="end_date" name="end_date"  value="{{date("Y-m-d", strtotime($final))}}"
+                    <input type="date" class="form-control" id="end_date" name="end_date"
+                    @if ($final)
+                    value="{{date("Y-m-d", strtotime($final))}}"
+                    @else
+                    value="{{date("Y-m-d", strtotime($ultima))}}"
+                    @endif
                     min="{{date("Y-m-d", strtotime($original))}}"
                     max="{{$fecha_actual}}">
                 </div>
@@ -187,7 +223,7 @@
                     <?php 
                     $f = $producto->created_at;
                         $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                        $pt = $tt/$tU;
+                        if($tU!=0){$pt = $tt/$tU;}
                     ?>
                 </tr>
             @endforeach
@@ -234,8 +270,9 @@
                 </td>
 
                 <?php 
+                
                 $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                $pt = $tt/$tU;
+                if($tU!=0){$pt = $tt/$tU;}
                 ?>
 
                 <td style="text-align: right">L.{{ number_format($tU,2)}}</td>
@@ -299,7 +336,7 @@
                         <?php 
                         $f = $producto->created_at;
                             $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                            $pt = $tt/$tU;
+                            if($tU!=0){$pt = $tt/$tU;}
                         ?>
                     </tr>
                 @endforeach
@@ -346,8 +383,10 @@
                     </td>
     
                     <?php 
+                   
                     $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                    $pt = $tt/$tU;
+                    if($tU!=0){$pt = $tt/$tU;}
+                    
                     ?>
     
                     <td style="text-align: right">L.{{ number_format($tU,2)}}</td>

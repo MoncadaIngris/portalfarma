@@ -35,7 +35,7 @@
                     $tp = 0;
 
                     $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-                    $pt = $tt/$tU;
+                    if($tU!=0){$pt = $tt/$tU;}
                 ?>
         @endforeach
         <tr>
@@ -82,7 +82,7 @@
 
             <?php 
             $tt = $tt + $producto->total - ($pt*$producto->cantidad_vendida);
-            $pt = $tt/$tU;
+            if($tU!=0){$pt = $tt/$tU;}
             ?>
 
             <td style="text-align: right">L.{{ number_format($tU,2)}}</td>

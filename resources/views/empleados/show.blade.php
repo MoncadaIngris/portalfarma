@@ -9,7 +9,7 @@
             {{session('mensaje')}}
         </div>
     @endif
-    <div class="container">
+    <div style="margin-left: 15%;width: 70%">
         <div>
             <div class="card" style="border-style: none!important; margin-top: 25px">
                 <div class="container" style="border-style: none!important; background-color: #53b4f5; border-radius: 5px; width: 60em;">
