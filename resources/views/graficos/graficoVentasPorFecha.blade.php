@@ -5,75 +5,87 @@ Grafico De Ventas Por Fecha Portalfarma
 @section('contenido')
 
 
-<div id="chart.container"></div>
+<div class="container mt-5">
+      <div class="row">
+          <div class="col">
+              <div id="container">
+                  
+              </div>
+          </div>
+      </div>
+      </div>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
- 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
 <script>
-    var datas = <?php echo json_encode($datas) ?>
-
-    highcharts.chart('chart.container',{
-        title: {
-            text: 'Incremento de nuevas ventas , 2022'
-        },
-        subtitle: {
-            text: 'Fuente: medios de TI'
-        },
-xAxis: {
-    categories: ['Ene','Feb','Mzo','Abr','may','jun','jul','ago','sep','oct','nov','dic']
-},
-yAxis: {
+  
+// Create the chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
     title: {
-        text: 'Número de nuevas ventas '
-    }
-},
+        text: ''
+    },
+    subtitle: {
+        text: ''
+    },
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        }
+    },
+    xAxis: {
+        type: 'categoria'
+    },
+    yAxis: {
+        title: {
+            text: 'Cantidad'
+        }
 
-legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'middle'
-},
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}%'
+            }
+        }
+    },
 
-plotOptions:{
-    series:{
-        allowPointSelect: true
-    }
-},
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> total<br/>'
+    },
 
-series: [{
-    name: 'nueva venta',
-    data:datas
-
-}],
- 
-responsive: {
-    rules:[
+    series: [
         {
-        condition:{
-            maxWidth:500
-        },
-chartOptions:{
-    legend:{
-        layout: 'horizobtal',
-        align: 'center',
-        vertical: 'bottom'
-    }
-}
+            name: "Cantidad de ventas",
+            colorByPoint: true,
+            data: <?=$data ?>
 
-
-    }
-]
-}
-
-
-    })
-
+        }]
+    
+});
+             
+          
 
 </script>
 
-
-
 @stop
+
 
 
  

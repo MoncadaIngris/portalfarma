@@ -292,21 +292,14 @@ class VentaController extends Controller
 
     public function grafico() {
 
-        $clientes = Cliente:: select (DB::raw("COUNT(*) as count"))
-        ->whereYear('created_at', date ('Y'))
-        ->groupby(DB::raw("Month(created_at)"))
-        ->pluck('count');
+        $ventas = Producto_Vendido::all();
 
-        $months = Cliente::select(DB::raw("Month(created_at) as month"))
-        ->whereYear('created_at', date ('Y'))
-        ->groupby(DB::raw("Month(created_at)"))
-        ->pluck('month');
 
-        $datas = array(0,0,0,0,0,0,0,0,0,0,0,0);
-        foreach ($months as $index => $month)
-        $datas[$month]=  $clientes[$index];
-
-        return view('graficos/graficoVentasPorFecha', compact('datas'));
+        $puntos=[];
+        foreach($ventas as $ventas){
+            $puntos [] = ['name' => $ventas['created_at'] ,'y' => floatval($ventas['cantidad'])];
+        }
+        return view("graficos/graficoVentasPorFecha",["data" => json_encode ($puntos)]);
     }
 
 

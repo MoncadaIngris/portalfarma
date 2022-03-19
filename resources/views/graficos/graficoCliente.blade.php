@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Grafico De Clientes Portalfarma
+Grafico De Venta Por Clientes Portalfarma
 @stop
 @section('contenido')
 
@@ -44,11 +44,11 @@ Highcharts.chart('container', {
         }
     },
     xAxis: {
-        type: 'category'
+        type: 'categoria'
     },
     yAxis: {
         title: {
-            text: 'CANTIDAD'
+            text: 'Cantidad'
         }
 
     },
@@ -67,12 +67,12 @@ Highcharts.chart('container', {
 
     tooltip: {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> total<br/>'
     },
 
     series: [
         {
-            name: "Browsers",
+            name: "Cantidad de ventas",
             colorByPoint: true,
             data: <?=$data ?>
 
