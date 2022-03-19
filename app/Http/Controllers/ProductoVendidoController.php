@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Producto_Vendido;
 use App\Http\Requests\StoreProducto_VendidoRequest;
 use App\Http\Requests\UpdateProducto_VendidoRequest;
+use App\Models\Cliente;
+use Illuminate\Support\Facades\DB;
+use App\Models\Venta;
 
 class ProductoVendidoController extends Controller
 {
@@ -15,8 +18,18 @@ class ProductoVendidoController extends Controller
      */
     public function index()
     {
-        //
-    }
+
+        $ventas = Producto_Vendido::all();
+
+
+        $puntos=[];
+        foreach($ventas as $ventas){
+            $puntos [] = ['name' => $ventas['id_venta'] ,'y' => floatval($ventas['cantidad'])];
+        }
+        return view("graficos/graficoCliente",["data" => json_encode ($puntos)]);
+     } //
+
+
 
     /**
      * Show the form for creating a new resource.

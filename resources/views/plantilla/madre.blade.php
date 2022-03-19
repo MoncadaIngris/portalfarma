@@ -127,6 +127,12 @@
                       <li><a href="{{route('ventas.index')}}">Listado de Ventas</a></li>
                     </ul>
                   <li><a href="{{route('kardex')}}"><i class="fa-solid fa-box-open"></i>Entradas y Salidas</a></li>
+
+                  <li><a><i class="fa-solid fa-box-open"></i> Graficos<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('grafico.index')}}">Grafico De Cliente</a></li>
+                      <li><a href="{{route('grafico.ventas')}}">Grafico De Ventas Por Fecha</a></li>
+                    </ul>
               </div>
 
             </div>

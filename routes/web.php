@@ -9,6 +9,8 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\KardexController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProductoVendidoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -252,3 +254,12 @@ Route::get('/kardex', [KardexController::class, 'index'])
 Route::get('/kardex/pdf', [KardexController::class, 'createPDF'])->name('kardex.pdf');
 Route::get('/kardex/xlsx', [KardexController::class, 'exportxlsx'])->name('kardex.xlsx');
 Route::get('/kardex/csv', [KardexController::class, 'exportcsv'])->name('kardex.csv');
+
+// rutas para Graficos
+
+Route:: get('graficos',[ProductoVendidoController::class,'index'])
+->name('grafico.index');
+
+
+Route:: get('graficos/ventas',[VentaController::class,'grafico'])
+->name('grafico.ventas');

@@ -19,6 +19,7 @@ use App\Http\Requests\StoreCompraRequest;
 use App\Http\Requests\UpdateCompraRequest;
 use App\Models\Cliente;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use App\Http\Controllers\raw;
 use PDF;
 
 
@@ -286,6 +287,29 @@ class VentaController extends Controller
 
         return view('ventas/show')->with('productos', $productos)->with('venta', $venta);
     }
+
+
+
+    public function grafico() {
+
+        $clientes = Cliente:: select (DB::raw("COUNT(*) as count"))
+        ->whereYear('created_at', date ('Y'))
+        ->groupby(DB::raw("Month(created_at)"))
+        ->pluck('count');
+
+        $months = Cliente::select(DB::raw("Month(created_at) as month"))
+        ->whereYear('created_at', date ('Y'))
+        ->groupby(DB::raw("Month(created_at)"))
+        ->pluck('month');
+
+        $datas = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        foreach ($months as $index => $month)
+        $datas[$month]=  $clientes[$index];
+
+        return view('graficos/graficoVentasPorFecha', compact('datas'));
+    }
+
+
 }
 
 
