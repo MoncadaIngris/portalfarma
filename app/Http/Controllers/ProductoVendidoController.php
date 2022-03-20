@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProducto_VendidoRequest;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\DB;
 use App\Models\Venta;
+use Illuminate\Database\Console\DbCommand;
 
 class ProductoVendidoController extends Controller
 {
@@ -21,14 +22,12 @@ class ProductoVendidoController extends Controller
 
         $ventas = Producto_Vendido::all();
 
-
         $puntos=[];
-        foreach($ventas as $ventas){
-            $puntos [] = ['name' => $ventas['id_venta'] ,'y' => floatval($ventas['cantidad'])];
+        foreach($ventas as $venta){
+            $puntos [] = ['name' => $venta['id_venta'] ,'y' => floatval($venta['cantidad'])];
         }
         return view("graficos/graficoCliente",["data" => json_encode ($puntos)]);
      } //
-
 
 
     /**
