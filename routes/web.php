@@ -263,3 +263,11 @@ Route:: get('graficos',[ProductoVendidoController::class,'index'])
 
 Route:: get('graficos/ventas',[VentaController::class,'grafico'])
 ->name('grafico.ventas');
+
+
+
+//rutas para login
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
