@@ -3,19 +3,48 @@
 Detalles de Venta
 @stop
 @section('contenido')
-<br>
 <div id="GFG">
+    <style>
+        .round_table {                   
+            border-collapse: separate;
+            border-spacing: 10;
+            border: 1px solid black;
+            border-radius: 15px;
+            -moz-border-radius: 20px;
+            padding: 2px;
+            -webkit-border-radius: 5px;
+        }
+    </style>
     <link href="{{ asset('css/bootstrapcdn.css') }}" rel="stylesheet">
-    <div>
-    <div style="float: left; font-size: 20px">
-        <label for="">Fecha: </label>
-        {{date_format($venta->created_at,"d/m/Y")}}
+    <br>
+    <div style="float: left; font-size: 14px; width: 80%">
+        <label style="float: left;width: 20%" for="">Nombre del Cliente:  </label>
+        <p style="float: left;border-bottom: solid 1px #000;width: 80%">{{$venta->clientes->nombres}} {{$venta->clientes->apellidos}}</p>
+        <label style="float: left;width: 20%" for="">Dirección:  </label>
+        <p style="float: left;border-bottom: solid 1px #000;width: 80%">{{$venta->clientes->direccion}}</p>     
     </div>
-    <div style="float: right;font-size: 20px">
-        <label for="">Cliente: </label>
-        {{$venta->clientes->nombres}}
+    <div style="float: left; font-size: 14px; width: 20%"> 
+        <center>
+            Fecha:
+            <table class="" style="width: 60%">
+                <tr>
+                    <th style="width: 25%;text-align: center">Dia</th>
+                    <th style="width: 7.5%;"></th>
+                    <th style="width: 25%;text-align: center">Mes</th>
+                    <th style="width: 7.5%"></th>
+                    <th style="width: 35%;text-align: center">Año</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center">{{date_format($venta->created_at,"d")}}</td>
+                    <td style="text-align: center">/</td>
+                    <td style="text-align: center">{{date_format($venta->created_at,"m")}}</td>
+                    <td style="text-align: center">/</td>
+                    <td style="text-align: center">{{date_format($venta->created_at,"Y")}}</td>
+                </tr>
+            </table>
+        </center>
     </div>
-</div>
+
 <br><br>
 
 <table class="table table-bordered">
@@ -71,7 +100,10 @@ Detalles de Venta
         var divContents = document.getElementById("GFG").innerHTML;
         var a = window.open('', '', 'height=1000, width=1000');
         a.document.write('<html>');
-        a.document.write('<body > <h1><center>Detalles de Venta<br>');
+        a.document.write('<body > <h1><center>PORTALFARMA</center></h1>');
+        a.document.write('<center><p>El Paraíso, El Paraíso barrio San Isidro, 1/2 abajo del Instituto Armando Martinez</p></center>');
+        a.document.write('<p style="float:left"><strong>Telefono: </strong> 2974-2782 / 9189-2989 / 3827-9181</p>');
+        a.document.write('<p style="float:right"><strong>Factura: </strong>{{substr(str_repeat(0, 5).$venta->id, - 5)}}</p>');
         a.document.write(divContents);
         a.document.write('</body></html>');
         a.document.close();
