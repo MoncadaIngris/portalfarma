@@ -96,7 +96,7 @@ onchange="seleccionar()" data-live-search="true">
 
                         var receta = document.getElementById("receta");
                         if({{$p->receta}} == 0){
-                            receta.value = "No se necesita receta";
+                            receta.value = "Sin receta";
                             receta.style.background  = "green";
                             receta.style.color  = "black";
                         }else{
