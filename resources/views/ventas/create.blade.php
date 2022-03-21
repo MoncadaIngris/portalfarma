@@ -101,7 +101,7 @@ onchange="seleccionar()" data-live-search="true">
                             receta.style.color  = "black";
                         }else{
                             if({{$p->receta}} == 1){
-                                receta.value = "Se necesita receta";
+                                receta.value = "Con receta";
                                 receta.style.background  = "red";
                                 receta.style.color  = "black";
                             }
