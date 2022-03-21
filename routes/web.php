@@ -9,8 +9,9 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\KardexController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductoVendidoController;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,10 @@ use App\Http\Controllers\ProductoVendidoController;
 */
 // Cambiar idioma. En este caso "en":
 
+//rutas para login
+Auth::routes();
 
+Route::middleware("auth")->group(function () {
 
 Route::get('/', function () {
     return view('welcome');
@@ -264,10 +268,13 @@ Route:: get('graficos',[ProductoVendidoController::class,'index'])
 Route:: get('graficos/ventas',[VentaController::class,'grafico'])
 ->name('grafico.ventas');
 
-
-
-//rutas para login
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/registrar', [UserController::class, 'showRegistrationForm'])->name('registrar');
+
+Route::post('/registrar', [UserController::class, 'create']);
+
+});
+
+
+
