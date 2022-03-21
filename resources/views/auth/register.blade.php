@@ -1,77 +1,105 @@
-@extends('layouts.app')
+@extends('plantilla.madre')
+@section('titulo')
+Añadir Usuario
+@stop
+@section('contenido')
+<form method="POST" action="{{ route('registrar') }}">
+    @csrf
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <script>
+        function llenar(){
+            var select = document.getElementById("empleado");
+            var options=document.getElementsByTagName("option");
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+            var valor = select.value;
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+            @foreach ($empleados as $p)
+                if(valor == {{$p->id}}){
+                    var inputNombre = document.getElementById("nombres");
+                    inputNombre.value = "{{$p->nombres}} {{$p->apellidos}}";
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    var inputDato = document.getElementById("identidad");
+                    inputDato.value = "{{$p->identidad}}";
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                    var inputDato = document.getElementById("identidad");
+                    inputDato.value = "{{$p->DNI}}";
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                    var inputDato = document.getElementById("email");
+                    inputDato.value = "{{$p->correo_electronico}}";  
+                    
+                    var inputDato = document.getElementById("telefono");
+                    inputDato.value = "{{$p->telefono_personal}}";
+                }
+            @endforeach
+        }
+    </script>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Empleado: <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <select name="empleado" id="empleado" required="required" class="form-control"
+            onchange="llenar()">
+                <option style="display: none" value="">Seleccione un empleado</option>
+                @foreach ($empleados as $e)
+                    <option value="{{$e->id}}">{{$e->nombres}} {{$e->apellidos}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
-</div>
-@endsection
+
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre completo: <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Identidad: <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <input maxlength="50" type="text" id="identidad" name="identidad" required="required" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">correo electronico: <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <input maxlength="50" type="text" id="email" name="email" required="required" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Telefono: <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <input maxlength="50" type="text" id="telefono" name="telefono" required="required" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Funcion: <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <select name="funcion" id="funcion" required="required" class="form-control">
+            <option style="display: none" value="">Seleccione una funcion</option>
+                @foreach ($funcion as $e)
+                    <option value="{{$e->id}}">{{$e->descripcion}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="item form-group">
+        <div class="col-md-6 col-sm-6 offset-md-3">
+            <button class="btn btn-regresar" type="button" onclick="window.location='#'">Cancelar</button>
+            <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
+            <button type="submit" class="btn btn-guardar">Guardar</button>
+        </div>
+    </div>
+
+</form>
+@stop
