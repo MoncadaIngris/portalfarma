@@ -11,4 +11,9 @@ class Empleado extends Model
     public function scopeSearch($query, $nombres){
         return $query->where('nombres', 'LIKE', "%$nombres%");
     }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
 }

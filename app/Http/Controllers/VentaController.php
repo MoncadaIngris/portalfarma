@@ -238,7 +238,7 @@ class VentaController extends Controller
 
         $this->cambiar($venta->id);
 
-        return redirect()->route('ventas.create');
+        return redirect()->route('ventas.show',['id'=>$venta->id]);
     }
 
     public function eliminar( $id, $cliente){

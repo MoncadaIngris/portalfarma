@@ -67,11 +67,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ asset('images/img.png') }}" alt="..." class="img-circle profile_img">
+                <img src="{{ asset(Auth()->user()->empleados->fotografia) }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>User</h2>
+                <h2>{{Auth()->user()->name}}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -133,6 +133,13 @@
                       <li><a href="{{route('grafico.index')}}">Grafico De Cliente</a></li>
                       <li><a href="{{route('grafico.ventas')}}">Grafico De Ventas Por Fecha</a></li>
                     </ul>
+                  </li>
+                    <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li><a href="{{route('registrar')}}">Nuevo Usuario</a></li>
+                        <li><a href="#"> Lista De usuarios</a></li>
+                      </ul>
+                    </li>
               </div>
 
             </div>
@@ -165,10 +172,17 @@
                 </div>
                 <nav class="nav navbar-nav">
                 <ul class=" navbar-right">
-                  <li class="nav-item dropdown open" style="padding-left: 15px;">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('images/img.png') }}" alt="">User
-                    </a>
+                  <li class="nav-item dropdown">
+                    <button style="border: none; outline:none;font-size: 22px" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                      <img src="{{ asset(Auth()->user()->empleados->fotografia) }}" alt="">{{Auth()->user()->name}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button style="border: none; outline:none;text-align: left" class="dropdown-item" >Action</button><br>
+                      <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" style="border: none; outline:none;text-align: left" class="dropdown-item" >Cerrar Sesion</button>
+                      </form>
+                    </div>
                   </li>
                 </ul>
               </nav>
