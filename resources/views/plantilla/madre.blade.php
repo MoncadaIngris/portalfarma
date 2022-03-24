@@ -130,10 +130,10 @@
 
                   <li><a><i class="fa-solid fa-box-open"></i> Graficos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="{{route('grafico.producto',['val'=>0])}}">Grafico De Producto</a></li>
-                        <li><a href="{{route('grafico.proveedor',['val'=>0])}}">Grafico De Proveedor</a></li>
-                      <li><a href="{{route('grafico.index')}}">Grafico De Cliente</a></li>
-                      <li><a href="{{route('grafico.ventas')}}">Grafico De Ventas Por Fecha</a></li>
+                        <li><a href="{{route('grafico.producto',['val'=>0])}}">Gráfico De Producto</a></li>
+                        <li><a href="{{route('grafico.proveedor',['val'=>0])}}">Gráfico De Proveedor</a></li>
+                      <li><a href="{{route('grafico.index')}}">Gráfico De Cliente</a></li>
+                      <li><a href="{{route('grafico.ventas')}}">Gráfico De Ventas Por Fecha</a></li>
                     </ul>
                   </li>
                     <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
