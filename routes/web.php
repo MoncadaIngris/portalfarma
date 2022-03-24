@@ -10,6 +10,7 @@ use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\KardexController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ProductoVendidoController;
 use Illuminate\Support\Facades\Auth;
 
@@ -260,6 +261,12 @@ Route::get('/kardex/xlsx', [KardexController::class, 'exportxlsx'])->name('karde
 Route::get('/kardex/csv', [KardexController::class, 'exportcsv'])->name('kardex.csv');
 
 // rutas para Graficos
+
+Route::get('graficos/graficoProducto/{val}',[GraficoController::class,'producto'])
+->name('grafico.producto');
+
+Route::get('graficos/graficoProveedor/{val}',[GraficoController::class,'proveedor'])
+->name('grafico.proveedor');
 
 Route:: get('graficos',[ProductoVendidoController::class,'index'])
 ->name('grafico.index');
