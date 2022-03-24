@@ -25,6 +25,8 @@ Grafico De Venta Por Clientes Portalfarma
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 
+
+
 <script>
   
 // Create the chart
@@ -43,10 +45,14 @@ Highcharts.chart('container', {
             enabled: true
         }
     },
-    xAxis: {
+    xAxis:
+
+               {
         type: 'categoria'
+        
     },
     yAxis: {
+
         title: {
             text: 'Cantidad'
         }
@@ -66,13 +72,13 @@ Highcharts.chart('container', {
     },
 
     tooltip: {
-        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> total<br/>'
+        headerFormat: '<span style="font-size:18px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span><br>:Unidades Vendidas = <b>{point.y:f}</b> <br/>'
     },
 
     series: [
         {
-            name: "Cantidad de ventas",
+            name: "cliente",
             colorByPoint: true,
             data: <?=$data ?>
 

@@ -27,7 +27,11 @@ class ProductoVendidoController extends Controller
             $puntos [] = ['name' => $venta['id_venta'] ,'y' => floatval($venta['cantidad'])];
         }
         return view("graficos/graficoCliente",["data" => json_encode ($puntos)]);
-     } //
+     } 
+     
+
+
+
 
 
     /**

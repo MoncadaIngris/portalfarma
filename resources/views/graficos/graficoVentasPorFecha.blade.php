@@ -43,6 +43,8 @@ Highcharts.chart('container', {
             enabled: true
         }
     },
+  
+
     xAxis: {
         type: 'categoria'
     },
@@ -66,13 +68,13 @@ Highcharts.chart('container', {
     },
 
     tooltip: {
-        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> total<br/>'
+        headerFormat: '<span style="font-size:18px">{series.name}<br></span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span><br>: Cantidad vendida en esta fecha = <b>{point.y:.2f}%</b><br/>'
     },
 
     series: [
         {
-            name: "Cantidad de ventas",
+            name: "Fecha de la venta:",
             colorByPoint: true,
             data: <?=$data ?>
 
