@@ -288,7 +288,7 @@ class VentaController extends Controller
         return view('ventas/show')->with('productos', $productos)->with('venta', $venta);
     }
 
-
+//graficos
 
     public function grafico() {
 
