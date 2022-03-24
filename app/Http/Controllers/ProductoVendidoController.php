@@ -44,6 +44,17 @@ class ProductoVendidoController extends Controller
         //
     }
 
+    public function graficostore()
+    {
+        $ventas = Producto_Vendido::all();
+
+        $puntos=[];
+        foreach($ventas as $venta){
+            $puntos [] = ['name' => $venta['id_venta'] ,'y' => floatval($venta['cantidad'])];
+        }
+        return view("graficos/graficoProducto",["data" => json_encode ($puntos)]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,9 +72,15 @@ class ProductoVendidoController extends Controller
      * @param  \App\Models\Producto_Vendido  $producto_Vendido
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto_Vendido $producto_Vendido)
+    public function graficoshow()
     {
-        //
+        $ventas = Producto_Vendido::all();
+
+        $puntos=[];
+        foreach($ventas as $venta){
+            $puntos [] = ['name' => $venta['id_venta'] ,'y' => floatval($venta['cantidad'])];
+        }
+        return view("graficos/graficoProveedor",["data" => json_encode ($puntos)]);
     }
 
     /**
