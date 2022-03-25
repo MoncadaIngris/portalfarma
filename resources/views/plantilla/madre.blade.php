@@ -140,8 +140,14 @@
                       <ul class="nav child_menu">
                         <li><a href="{{route('registrar')}}">Nuevo Usuario</a></li>
                         <li><a href="#"> Lista De usuarios</a></li>
+                        
                       </ul>
                     </li>
+                    <li><a><i class="fa-solid fa-box-open"></i> Permisos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li><a href="{{route('permisos.create')}}">Nuevo Permiso</a></li>
+                      <li><a href="{{route('permisos.index')}}">Lista De Permiso</a></li>
+                      
               </div>
 
             </div>

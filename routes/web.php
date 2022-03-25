@@ -12,6 +12,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ProductoVendidoController;
+use App\Http\Controllers\PermisoController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -281,7 +282,28 @@ Route::get('/registrar', [UserController::class, 'showRegistrationForm'])->name(
 
 Route::post('/registrar', [UserController::class, 'create']);
 
+
+
+//rutas permisos
+Route::get('/permisos/nuevo',[PermisoController::class, 'create'])
+->name('permisos.create');
+Route::post('/permisos/nuevo',[PermisoController::class, 'store'])
+    ->name('permisos.store');
+
+
+
+//ruta lista permisos
+Route::get('/permisos', [PermisoController::class, 'index'])
+    ->name('permisos.index');
+
+    //ruta guardar
+    Route::post('/permisos/nuevo',[PermisoController::class, 'store'])
+    ->name('permisos.store');
 });
+
+
+
+
 
 
 
