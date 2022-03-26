@@ -8,7 +8,7 @@ class PermisoController extends Controller
 {
 
     //public function create()
-    
+
     public function create()
     {
         return view('permisos/create')->with('permiso');
@@ -23,8 +23,6 @@ class PermisoController extends Controller
         $rules=[
             'nombres' => 'required|max:100',
             'descripcion'=> 'required|max:200',
-
-
         ];
         $mensaje=[
             'nombres.required' => 'El nombre no puede estar vacío',
@@ -38,7 +36,7 @@ class PermisoController extends Controller
 
         $permisos->nombres = $request->input('nombres');
         $permisos->descripcion = $request->input('descripcion');
-        
+
         $permi = $permisos->save();
 
         if ($permi) {
@@ -57,9 +55,43 @@ class PermisoController extends Controller
     public function index()
     {
         $permisos = Permiso::select("id","nombres", "descripcion")->get();
-
         return view('permisos/index')->with('permisos', $permisos);
     }
-   
+
+    public function edit($id)
+    {
+        $permisos = Permiso::findOrFail($id);
+        return view("permisos.update")->with("permisos", $permisos);
+    }
+
+    public function update(Request $request,  $id)
+    {
+        $rules=[
+            'nombres' => 'required|max:100',
+            'descripcion'=> 'required|max:200',
+        ];
+
+        $mensaje=[
+            'nombres.required' => 'El nombre no puede estar vacío',
+            'nombres.max' => 'El nombre es muy extenso',
+            'descripcion.required' => 'El descripción no puede estar vacío',
+            'descripcion.max' => 'La descripcion es muy extenso',
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+
+        $permiso = Permiso::findOrFail($id);
+        $permiso->nombres = $request->input('nombres');
+        $permiso->descripcion= $request->input('descripcion');
+
+        $creado = $permiso->save();
+
+        if ($creado) {
+            return redirect()->route('permisos.index')
+                ->with('mensaje', 'El permiso fue editado exitosamente');
+        }
+    }
+
+
 }
 

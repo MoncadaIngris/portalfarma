@@ -20,31 +20,25 @@
             <th scope="col" class="sorting" style="text-align: center">Nombre</th>
             <th scope="col" class="sorting" style="text-align: center">Descripción</th>
             <th scope="col" style="text-align: center">Editar</th>
-            
+
         </tr>
         </thead>
 
         <tbody>
         @foreach ($permisos as $permisos)
             <tr>
-                
+
                 <td>{{$permisos->nombres}}</td>
                 <td>{{$permisos->descripcion}}</td>
 
-               
+
                 <td>
                     <center>
-            <a class="btn btn-editar" href=""><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="btn btn-editar" href="{{route("permisos.edit",["id"=>$permisos->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                     </center>
                 </td>
-               
-            
-        
-        
-
-    
-    
     </tr>
+
     @endforeach
     </tbody>
     </table>

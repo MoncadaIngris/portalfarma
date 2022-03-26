@@ -301,8 +301,13 @@ Route::get('/permisos', [PermisoController::class, 'index'])
     ->name('permisos.store');
 });
 
+//ruta editar permisos
+Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
+    ->name("permisos.edit")->where('id', '[0-9]+');
 
 
+Route::put("/permisos/{id}/edit", [PermisoController::class, "update"])
+    ->name("permisos.edit")->where('id', '[0-9]+');
 
 
 
