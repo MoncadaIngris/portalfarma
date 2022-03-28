@@ -50,14 +50,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
-
   </head>
   <body class="nav-md">
     <div class="container body">
       @yield('impresiones')
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
+        <div class="col-md-3 left_col" >
+          <div class="left_col" style="height: 100vh">
             <div class="navbar nav_title" style="border: 0;">
               <a href="/" class="site_title"><i class="fa fa-heartbeat"></i> <span>Portal Farma</span></a>
             </div>
@@ -78,8 +77,29 @@
 
             <br />
 
+            <style>
+              #sidebar-menu{
+                width:100%; 
+                height:70%; 
+                overflow: auto;
+              }
+              #sidebar-menu::-webkit-scrollbar {
+                width: 12px;               /* width of the entire scrollbar */
+              }
+
+              #sidebar-menu::-webkit-scrollbar-track {
+                background: #2A3F54;        /* color of the tracking area */
+              }
+
+              #sidebar-menu::-webkit-scrollbar-thumb {
+                background-color: #416f9c;    /* color of the scroll thumb */
+                border-radius: 20px;       /* roundness of the scroll thumb */
+                border: 3px solid #102e4d;  /* creates padding around scroll thumb */
+              }
+            </style>
+
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div id="sidebar-menu" >
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
@@ -136,6 +156,26 @@
                       <li><a href="{{route('grafico.ventas')}}">Gráfico De Ventas Por Fecha</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa-solid fa-box-open"></i> Permisos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li>
+                      <a href="{{route('permisos.create')}}">Nuevo Permiso</a>
+                    </li>
+                    <li>
+                      <a href="{{route('permisos.index')}}">Lista De Permiso</a>
+                    </li>
+                    </ul>
+                    </li>
+                    <li><a><i class="fa-solid fa-box-open"></i> Funciones <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                      <li>
+                        <a href="{{route('roles.create')}}">Nueva funcion</a>
+                      </li>
+                      <li>
+                        <a href="{{route('roles.index')}}">Lista De Funciones</a>
+                      </li>
+                      </ul>
+                      </li>
                     <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="{{route('registrar')}}">Nuevo Usuario</a></li>
@@ -143,32 +183,12 @@
                         
                       </ul>
                     </li>
-                    <li><a><i class="fa-solid fa-box-open"></i> Permisos <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                    <li><a href="{{route('permisos.create')}}">Nuevo Permiso</a></li>
-                      <li><a href="{{route('permisos.index')}}">Lista De Permiso</a></li>
                       
               </div>
 
             </div>
             <!-- /sidebar menu -->
 
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
           </div>
         </div>
 
@@ -228,7 +248,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-            <div class="row" style="overflow:scroll;height: 90vh">
+            <div class="row" style="overflow:scroll;height: 89vh">
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
@@ -241,7 +261,7 @@
                       <h1><center>@yield('titulo')</center></h1>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content"  id="prueba">
+                  <div class="x_content" id="prueba">
                     @yield('contenido')
                   </div>
                 </div>
