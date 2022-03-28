@@ -21,6 +21,46 @@ class UserSeeder extends Seeder
                 'id_empleado' => 1,
                 'id_funcion' => 1,
             ]
-        );
+        )->assignRole('Admin');
+
+        User::create(
+            [
+                'name' => 'PortalFarma01',
+                'email' => 'portalfarma01@gmail.com',
+                'password' => bcrypt('00000000'),
+                'id_empleado' => 1,
+                'id_funcion' => 1,
+            ]
+        )->assignRole('Facultativo');
+
+        User::create(
+            [
+                'name' => 'PortalFarma02',
+                'email' => 'portalfarma02@gmail.com',
+                'password' => bcrypt('00000000'),
+                'id_empleado' => 1,
+                'id_funcion' => 1,
+            ]
+        )->assignRole('Abastecimiento');
+
+        User::create(
+            [
+                'name' => 'PortalFarma03',
+                'email' => 'portalfarma03@gmail.com',
+                'password' => bcrypt('00000000'),
+                'id_empleado' => 1,
+                'id_funcion' => 1,
+            ]
+        )->assignRole('Vendedor');
+
+        User::create(
+            [
+                'name' => 'PortalFarma04',
+                'email' => 'portalfarma04@gmail.com',
+                'password' => bcrypt('00000000'),
+                'id_empleado' => 1,
+                'id_funcion' => 1,
+            ]
+        )->assignRole('Vendedor')->assignRole('Abastecimiento');
     }
 }
