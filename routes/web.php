@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ProductoVendidoController;
 use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -34,7 +35,7 @@ Route::middleware("auth")->group(function () {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 //ruta index
 Route::get('/empleados', [EmpleadoController::class, 'index'])
@@ -290,6 +291,7 @@ Route::get('/permisos/nuevo',[PermisoController::class, 'create'])
 Route::post('/permisos/nuevo',[PermisoController::class, 'store'])
     ->name('permisos.store');
 
+Route::resource('roles', RoleController::class);
 
 
 //ruta lista permisos
@@ -299,15 +301,17 @@ Route::get('/permisos', [PermisoController::class, 'index'])
     //ruta guardar
     Route::post('/permisos/nuevo',[PermisoController::class, 'store'])
     ->name('permisos.store');
-});
 
-//ruta editar permisos
+    //ruta editar permisos
 Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
-    ->name("permisos.edit")->where('id', '[0-9]+');
+->name("permisos.edit")->where('id', '[0-9]+');
 
 
 Route::put("/permisos/{id}/edit", [PermisoController::class, "update"])
-    ->name("permisos.edit")->where('id', '[0-9]+');
+->name("permisos.edit")->where('id', '[0-9]+');
+});
+
+
 
 
 
