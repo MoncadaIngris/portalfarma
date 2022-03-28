@@ -290,17 +290,58 @@ class VentaController extends Controller
 
 //graficos
 
-    public function grafico() {
+  
 
-        $ventas = Producto_Vendido::all();
+    public function grafico(Request $request) {
 
+        $rules=[
+            'start_date' => 'nullable',
+            'end_date'=>'nullable|after_or_equal:start_date',
+        ];
 
-        $puntos=[];
-        foreach($ventas as $ventas){
-            $puntos [] = ['name' => $ventas['created_at'] ,'y' => floatval($ventas['cantidad'])];
+        $mensaje=[
+            'end_date.after_or_equal' => 'La fecha final no puede ser mayor a la de inicio',
+        ];
+
+        
+
+        $this->validate($request,$rules,$mensaje);
+
+        $inicio = $request->input('start_date');
+        $final = $request->input('end_date');
+
+        $fecha = Producto_Vendido::select(DB::raw("MIN(created_at) AS inicio,MAX(created_at) AS final"))->first();
+
+        if($inicio == null){
+            $inicio = date('Y-m-d',strtotime($fecha->inicio));
         }
-        return view("graficos/graficoVentasPorFecha",["data" => json_encode ($puntos)]);
+
+        if($final == null){
+            $final = date('Y-m-d',strtotime($fecha->final));
+        }
+
+        $ventas = Producto_Vendido::select(DB::raw('DATE_FORMAT(created_at,"%Y %m") AS fecha, SUM(venta*cantidad) as total'))
+        ->whereBetween('producto__vendidos.created_at', [$inicio." 00:00:00", $final." 23:59:59"])
+        ->GROUPBY(DB::raw('DATE_FORMAT(created_at,"%Y %m")'))
+        ->get();
+
+                //
+                $suma = 0;
+
+                foreach($ventas as $p){
+                    $suma += $p->total;
+                }
+        
+                if($suma == 0){
+                    $suma = 1;
+                }
+                //
+
+        return view("graficos/graficoVentasPorFecha")->with('ventas', $ventas)
+        ->with('inicio', $inicio)->with('final', $final)->with('suma', $suma);
     }
+
+
 
 
 }
