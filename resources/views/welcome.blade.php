@@ -4,4 +4,5 @@
 @stop
 @section('contenido')
 
+
 @stop

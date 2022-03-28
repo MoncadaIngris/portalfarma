@@ -61,16 +61,19 @@
               <a href="/" class="site_title"><i class="fa fa-heartbeat"></i> <span>Portal Farma</span></a>
             </div>
 
-            <div class="clearfix"></div>
-
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="{{ asset(Auth()->user()->empleados->fotografia) }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>{{Auth()->user()->name}}</h2>
+                <div>
+                  @forelse (auth()->user()->getRoleNames() as $roles)
+                <span>{{$roles}}</span>
+                @empty
+                    Sin funciones
+                @endforelse
+                </div>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -103,86 +106,156 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                  @can('clientes_index', 'clientes_nuevo', 'empleados_desactivados')
                   <li><a><i class="fa fa-user-circle"></i> Empleado <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      @can('clientes_nuevo')
                       <li><a href="{{route('empleados.create')}}">Nuevo Empleado</a></li>
+                      @endcan
+                      @can('clientes_index')
                       <li><a href="{{route('empleados.index')}}">Empleados Activos</a></li>
+                      @endcan
+                      @can('empleados_desactivados')
                       <li><a href="{{route('empleados.desactivado')}}">Empleados Desactivados</a></li>
+                      @endcan
                     </ul>
                   </li>
+                  @endcan
+                  @can('proveedores_index','proveedores_nuevo','proveedores_desactivados')
                   <li><a><i class="fa-solid fa-box-open"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      @can('proveedores_nuevo')
                       <li><a href="{{route('proveedor.create')}}">Nuevo Proveedor</a></li>
-                      <li><a href="{{route('proveedor.index')}}">Proveedores Activos</a></li>
+                      @endcan
+                     @can('proveedores_index')
+                     <li><a href="{{route('proveedor.index')}}">Proveedores Activos</a></li>
+                     @endcan
+                      @can('proveedores_desactivados')
                       <li><a href="{{route('proveedor.desactivado')}}">Proveedores Desactivados</a></li>
+                      @endcan
                     </ul>
                   </li>
+                  @endcan
+                @can('productos_nuevo', 'productos_index')
                 <li><a><i class="fa-solid fa-box-archive"></i> Productos <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{route('productos.create')}}">Nuevo Producto</a></li>
-                      <li><a href="{{route('productos.index')}}"> Lista De Productos</a></li>
-                    </ul>
-                  </li>
+                  <ul class="nav child_menu">
+                    @can('productos_nuevo')
+                    <li><a href="{{route('productos.create')}}">Nuevo Producto</a></li>
+                    @endcan
+                    @can('productos_index')
+                    <li><a href="{{route('productos.index')}}"> Lista De Productos</a></li>
+                    @endcan
+                  </ul>
+                </li>
+                @endcan
+                  @can('compras_index','compras_nuevo')
                   <li><a><i class="fa-solid fa-warehouse"></i> Compras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      @can('compras_nuevo')
                       <li><a href="{{route('compras.create')}}">Nueva Compra</a></li>
+                      @endcan
+                      @can('compras_index')
                       <li><a href="{{route('compras.index')}}">Listado de Compras</a></li>
+                      @endcan
                     </ul>
                   </li>
+                  @endcan
+                  @can('inventarios_index')
                   <li><a><i class="fa-solid fa-people-carry-box"></i> Inventario <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('inventario')}}">Listado de Inventario</a></li>
                     </ul>
                   </li>
+                  @endcan
+                  @can('clientes_index','clientes_nuevo')
                   <li><a><i class="fa-solid fa-user-clock"></i>Clientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      @can('clientes_nuevo')
                       <li><a href="{{route('clientes.create')}}">Nuevo cliente</a></li>
+                      @endcan
+                      @can('clientes_index')
                       <li><a href="{{route('clientes.index')}}"> Lista De clientes</a></li>
+                      @endcan
                     </ul>
                   </li>
-
+                  @endcan
+                  @can('ventas_index','ventas_nuevo')
                   <li><a><i class="fa-solid fa-box-open"></i> Ventas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      @can('ventas_nuevo')
                       <li><a href="{{route('ventas.create')}}">Nueva venta</a></li>
+                      @endcan
+                      @can('ventas_index')
                       <li><a href="{{route('ventas.index')}}">Listado de Ventas</a></li>
-                    </ul>
-                  <li><a href="{{route('kardex')}}"><i class="fa-solid fa-box-open"></i>Entradas y Salidas</a></li>
-
-                  <li><a><i class="fa-solid fa-box-open"></i> Graficos<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="{{route('grafico.producto',['val'=>0])}}">Gráfico De Producto</a></li>
-                        <li><a href="{{route('grafico.proveedor',['val'=>0])}}">Gráfico De Proveedor</a></li>
-                      <li><a href="{{route('grafico.index')}}">Gráfico De Cliente</a></li>
-                      <li><a href="{{route('grafico.ventas')}}">Gráfico De Ventas Por Fecha</a></li>
+                      @endcan
                     </ul>
                   </li>
+                  @endcan
+                  @can('entrada_salida')
+                  <li><a href="{{route('kardex')}}"><i class="fa-solid fa-box-open"></i>Entradas y Salidas</a></li>
+                  @endcan
+                  @can('grafico_cliente','grafico_producto','grafico_proveedor','grafico_fecha')
+                  <li><a><i class="fa-solid fa-box-open"></i> Graficos<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        @can('grafico_producto')
+                        <li><a href="{{route('grafico.producto',['val'=>0])}}">Gráfico De Producto</a></li>
+                        @endcan
+                        @can('grafico_proveedor')
+                        <li><a href="{{route('grafico.proveedor',['val'=>0])}}">Gráfico De Proveedor</a></li>
+                        @endcan
+                      @can('grafico_cliente')
+                      <li><a href="{{route('grafico.index')}}">Gráfico De Cliente</a></li>
+                      @endcan
+                      @can('grafico_fecha')
+                      <li><a href="{{route('grafico.ventas')}}">Gráfico De Ventas Por Fecha</a></li>
+                      @endcan
+                    </ul>
+                  </li>
+                  @endcan
+                  @can('permisos_index','permisos_nuevo')
                   <li><a><i class="fa-solid fa-box-open"></i> Permisos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     <li>
+                      @can('permisos_nuevo')
                       <a href="{{route('permisos.create')}}">Nuevo Permiso</a>
+                      @endcan
                     </li>
                     <li>
+                      @can('permisos_index')
                       <a href="{{route('permisos.index')}}">Lista De Permiso</a>
+                      @endcan
                     </li>
                     </ul>
                     </li>
+                  @endcan
+                    @can('roles_index','roles_nuevo')
                     <li><a><i class="fa-solid fa-box-open"></i> Funciones <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                       <li>
+                        @can('roles_nuevo')
                         <a href="{{route('roles.create')}}">Nueva funcion</a>
+                        @endcan
                       </li>
                       <li>
+                        @can('roles_index')
                         <a href="{{route('roles.index')}}">Lista De Funciones</a>
+                        @endcan
                       </li>
                       </ul>
                       </li>
+                    @endcan
+                    @can('usuarios_index','usuarios_nuevo')
                     <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
+                        @can('usuarios_nuevo')
                         <li><a href="{{route('registrar')}}">Nuevo Usuario</a></li>
+                        @endcan
+                        @can('usuarios_index')
                         <li><a href="#"> Lista De usuarios</a></li>
-                        
+                        @endcan                        
                       </ul>
                     </li>
+                    @endcan
                       
               </div>
 

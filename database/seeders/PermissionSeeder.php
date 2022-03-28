@@ -169,5 +169,38 @@ class PermissionSeeder extends Seeder
             'titulo' => 'Grafico fecha',
             'name' => 'grafico_fecha',
         ]);
+        Permission::create([
+            'titulo' => 'Lista de permisos',
+            'name' => 'permisos_index',
+        ]);
+        Permission::create([
+            'titulo' => 'Nuevo permiso',
+            'name' => 'permisos_nuevo',
+        ]);
+        Permission::create([
+            'titulo' => 'Editar permisos',
+            'name' => 'permisos_editar',
+        ]);
+        Permission::create([
+            'titulo' => 'Lista de roles',
+            'name' => 'roles_index',
+        ]);
+        Permission::create([
+            'titulo' => 'Nuevo role',
+            'name' => 'roles_nuevo',
+        ]);
+        Permission::create([
+            'titulo' => 'Editar roles',
+            'name' => 'roles_editar',
+        ]);
+        Permission::create([
+            'titulo' => 'Lista de usuarios',
+            'name' => 'usuarios_index',
+        ]);
+        Permission::create([
+            'titulo' => 'Nuevo usuario',
+            'name' => 'usuarios_nuevo',
+        ]);
+        
     }
 }
