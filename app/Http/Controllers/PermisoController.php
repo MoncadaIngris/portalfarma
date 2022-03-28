@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Permiso;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermisoController extends Controller
 {
@@ -32,10 +34,10 @@ class PermisoController extends Controller
         ];
         $this->validate($request,$rules,$mensaje);
 
-        $permisos = new Permiso();
+        $permisos = new Permission();
 
-        $permisos->nombres = $request->input('nombres');
-        $permisos->descripcion = $request->input('descripcion');
+        $permisos->titulo = $request->input('nombres');
+        $permisos->name = $request->input('descripcion');
 
         $permi = $permisos->save();
 
@@ -54,13 +56,13 @@ class PermisoController extends Controller
     }
     public function index()
     {
-        $permisos = Permiso::select("id","nombres", "descripcion")->get();
+        $permisos = Permission::all();
         return view('permisos/index')->with('permisos', $permisos);
     }
 
     public function edit($id)
     {
-        $permisos = Permiso::findOrFail($id);
+        $permisos = Permission::findOrFail($id);
         return view("permisos.update")->with("permisos", $permisos);
     }
 
@@ -80,9 +82,9 @@ class PermisoController extends Controller
 
         $this->validate($request,$rules,$mensaje);
 
-        $permiso = Permiso::findOrFail($id);
-        $permiso->nombres = $request->input('nombres');
-        $permiso->descripcion= $request->input('descripcion');
+        $permiso = Permission::findOrFail($id);
+        $permiso->titulo = $request->input('nombres');
+        $permiso->name = $request->input('descripcion');
 
         $creado = $permiso->save();
 

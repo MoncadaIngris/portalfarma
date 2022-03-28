@@ -29,7 +29,7 @@ Editar Permisos
                        @if(old("nombres"))
                        value="{{old("nombres")}}"
                        @else
-                       value="{{$permisos->nombres}}"
+                       value="{{$permisos->titulo}}"
                     @endif
                 >
             </div>
@@ -41,7 +41,7 @@ Editar Permisos
                 <textarea maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
                           value="{{old('descripcion')}}"
                           placeholder="Ingrese la descripción ">@if(old("descripcion")){{old("descripcion")}}
-                    @else{{$permisos->descripcion}}@endif</textarea>
+                    @else{{$permisos->name}}@endif</textarea>
             </div>
         </div>
 

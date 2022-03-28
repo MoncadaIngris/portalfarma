@@ -28,8 +28,8 @@
         @foreach ($permisos as $permisos)
             <tr>
 
-                <td>{{$permisos->nombres}}</td>
-                <td>{{$permisos->descripcion}}</td>
+                <td>{{$permisos->titulo}}</td>
+                <td>{{$permisos->name}}</td>
 
 
                 <td>
