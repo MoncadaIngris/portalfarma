@@ -263,10 +263,10 @@ Route::get('/kardex/csv', [KardexController::class, 'exportcsv'])->name('kardex.
 
 // rutas para Graficos
 
-Route::get('graficos/graficoProducto/{val}',[GraficoController::class,'producto'])
+Route::get('graficos/graficoProducto',[GraficoController::class,'producto'])
 ->name('grafico.producto');
 
-Route::get('graficos/graficoProveedor/{val}',[GraficoController::class,'proveedor'])
+Route::get('graficos/graficoProveedor',[GraficoController::class,'proveedor'])
 ->name('grafico.proveedor');
 
 Route:: get('graficos',[ProductoVendidoController::class,'index'])
