@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-  Estadisticas de ventas por Producto
+  Estadisticas de ventas por Producto {{date('d/m/Y',strtotime($inicio))}} al {{date('d/m/Y',strtotime($final))}}
 @stop
 @section('contenido')
 
@@ -49,10 +49,47 @@
 
 <?php $fecha_actual = date("Y-m-d");?>
 
+<form action="{{route('grafico.producto')}}" method="GET">
+  <div class="row">
+    <center>
+      <div style="width: 45%;float: left;margin-left: 2%">
+        <div>
+          <label for="">Fecha Inicio:</label>
+          <span class="input-group-text bg-info text-white" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+        </div>
+        <div>
+          <input type="date" class="form-control" id="start_date" name="start_date"  value="{{date("Y-m-d", strtotime($inicio))}}"
+          min="<?php echo date('Y-m-d',strtotime($inicio));?>"
+          max="<?php echo date('Y-m-d',strtotime($final));?>">
+        </div>
+      </div>
+      <div style="width: 45%;float: left;margin-left: 6%">
+        <div>
+          <label for="">Fecha Final:</label>
+          <span class="input-group-text bg-info text-white" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+        </div>
+        <div>
+          <input type="date" class="form-control" id="end_date" name="end_date"  value="{{date("Y-m-d", strtotime($final))}}"
+          min="<?php echo date('Y-m-d',strtotime($inicio));?>"
+            max="<?php echo date('Y-m-d',strtotime($final));?>">
+        </div>
+      </div>
+    </center>
+  </div>
+  <br>
+  <button class="btn btn-success" type="submit">Filtrar</button>
+  <a type="button" href="{{route('grafico.producto',['val' => $val])}}" class="btn btn-danger">Limpiar</a>
+@if ($val == 0)
+  <a type="button" href="{{route('grafico.producto',['val' => 1, 'end_date' => $final, 'start_date' => $inicio])}}" class="btn btn-warning">Ver tabla</a>
+@else
+  <a type="button" href="{{route('grafico.producto',['val' => 0, 'end_date' => $final, 'start_date' => $inicio])}}" class="btn btn-warning">Ver grafico</a>
+  <br><br>
+@endif
+</form>
+
+
 @if($val == 1)
 <div id="tabla">
-
-  <a type="button" href="{{route('grafico.producto',['val'=>0])}}" class="btn btn-success">Ver Grafico</a>
     <div style="float: right;margin-right: 10px; width: 250px">
         <p><center>Descargar reporte:</center></p>
     </div>
@@ -78,7 +115,6 @@
 </div>
 @else
 <div id="grafico">
-  <a type="button" class="btn btn-success" href="{{route('grafico.producto',['val'=>1])}}">Ver Tabla</a>
   <div id="chart">
   </div>
 </div>
@@ -131,7 +167,7 @@
           }
         },
         title: {
-    text: 'Gráfico de ventas por Producto',
+    text: 'Gráfico de ventas por Producto {{date('d/m/Y',strtotime($inicio))}} al {{date('d/m/Y',strtotime($final))}}',
     floating: false,
     align: 'center',
     style: {
