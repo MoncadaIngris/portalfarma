@@ -36,11 +36,14 @@ Crear Funciones
                           <span class="badge" style="background: rgb(235, 137, 137)">Sin permiso asignados</span>
                       @endforelse
                     </td>
+
+                      <td>
+                          <center>
+                              <a class="btn btn-editar" href="{{ route('roles.edit', $role->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                          </center>
+                      </td>
                     <td>
-                   
-                    </td>
-                    <td>
-                   
+
                     </td>
                   </tr>
                   @empty

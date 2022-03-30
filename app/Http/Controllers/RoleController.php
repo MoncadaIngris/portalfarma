@@ -90,16 +90,18 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Role $role, Request $request)
     {
-        $role->update($request->only('name'));
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required',
+        ]);
 
-        // $role->permissions()->sync($request->input('permissions', []));
-        $role->syncPermissions($request->input('permissions', []));
+        $role->update($request->only('name'));
+        $role->syncPermissions($request->get('permission'));
 
         return redirect()->route('roles.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
