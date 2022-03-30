@@ -300,7 +300,7 @@ class VentaController extends Controller
         ];
 
         $mensaje=[
-            'end_date.after_or_equal' => 'La fecha final no puede ser mayor a la de inicio',
+            'end_date.after_or_equal' => 'La fecha final no puede ser menor a la de inicio',
         ];
 
         
