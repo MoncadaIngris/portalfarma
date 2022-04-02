@@ -34,12 +34,102 @@ Editar Permisos
                 >
             </div>
         </div>
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Modelo: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+                <select name="modelo" id="modelo" required="required" class="form-control" onchange="cambio()">
+                    <option style="display: none" value="{{$permisos->partes->modelos->id}}" >{{$permisos->partes->modelos->descripcion}}</option>
+                    @foreach ($modulo as $m)
+                        <option value="{{$m->id}}">{{$m->descripcion}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <script>
+            function cambio(){
+                    $("#funcion").find('option').not(':first').remove();
+                    var select = document.getElementById("modelo");
+                    var valor = select.value;
+                    var selectnw = document.getElementById("funcion");
+
+                    @foreach ($funcion as $f)
+                        if({{$f->id_modelo}} == valor){
+                            
+                            // creando la nueva option
+                            var opt = document.createElement('option');
+
+                            // Añadiendo texto al elemento (opt)
+                            opt.innerHTML = "{{$f->descripcion}}";
+
+                            //Añadiendo un valor al elemento (opt)
+                            opt.value = "{{$f->id}}";
+
+                            // Añadiendo opt al final del selector (sel)
+                            selectnw.appendChild(opt);
+
+                        }
+                    @endforeach
+
+                    @foreach ($modulo as $f)
+                        if({{$f->id}} == valor){
+                            
+                            document.getElementById("descripcion").value = "{{$f->descripcion}}_";
+
+                        }
+                    @endforeach
+                      
+                  }
+        </script>
+
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Funcion: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+                <select name="funcion" id="funcion" required="required" class="form-control" onchange="completar()">
+                    <option style="display: none" value="{{$permisos->partes->id}}" >{{$permisos->partes->descripcion}}</option>
+                    @foreach ($funcion as $m)
+                        @if ($m->id_modelo == $permisos->partes->modelos->id)
+                            <option value="{{$m->id}}">{{$m->descripcion}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <script>
+            function completar(){
+
+                var select = document.getElementById("funcion");
+                var valor = select.value;
+
+                var select2 = document.getElementById("modelo");
+                var valor2 = select2.value;
+
+                @foreach ($modulo as $f)
+                        if({{$f->id}} == valor2){
+                            
+                            document.getElementById("descripcion").value = "{{$f->descripcion}}_";
+
+                        }
+                    @endforeach
+
+                @foreach ($funcion as $f)
+                    if({{$f->id}} == valor){
+                        
+                        document.getElementById("descripcion").value += "{{$f->descripcion}}";
+
+                    }
+                @endforeach
+            }
+        </script>
 
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descripción: <span class="required">*</span>
             </label> <div class="col-md-6 col-sm-6 ">
                 <textarea maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
-                          value="{{old('descripcion')}}"
+                          value="{{old('descripcion')}}" readonly
                           placeholder="Ingrese la descripción ">@if(old("descripcion")){{old("descripcion")}}
                     @else{{$permisos->name}}@endif</textarea>
             </div>

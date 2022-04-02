@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Permiso;
+
+use App\Models\Parte;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\Permiso;
+use App\Models\Modelo;
 
 class PermisoController extends Controller
 {
@@ -13,7 +16,11 @@ class PermisoController extends Controller
 
     public function create()
     {
-        return view('permisos/create')->with('permiso');
+        $modulo = Modelo::all();
+        $funcion = Parte::all();
+        return view('permisos/create')->with('permiso')
+        ->with('modulo',$modulo)
+        ->with('funcion',$funcion);
     }
 
 
@@ -23,14 +30,20 @@ class PermisoController extends Controller
     {
 
         $rules=[
-            'nombres' => 'required|max:100',
-            'descripcion'=> 'required|max:200',
+            'nombres' => 'required|max:100|unique:permissions,titulo',
+            'descripcion'=> 'required|max:200|unique:permissions,name',
+            'funcion'=> 'required|exists:partes,id',
+            'modelo'=> 'required|exists:modelos,id',
         ];
         $mensaje=[
             'nombres.required' => 'El nombre no puede estar vacío',
             'nombres.max' => 'El nombre es muy extenso',
             'descripcion.required' => 'El descripción no puede estar vacío',
-            'descripcion.max' => 'La descripcion es muy extenso',
+            'descripcion.unique' => 'La combinacion de modelo y funcion ya ha sido utilizada',
+            'funcion.required' => 'La funcion no puede estar vacío',
+            'funcion.exists' => 'La funcion no existe',
+            'modelo.required' => 'El modelo no puede estar vacío',
+            'modelo.maexistsx' => 'El modelo no existe',
         ];
         $this->validate($request,$rules,$mensaje);
 
@@ -38,6 +51,7 @@ class PermisoController extends Controller
 
         $permisos->titulo = $request->input('nombres');
         $permisos->name = $request->input('descripcion');
+        $permisos->id_partes = $request->input('funcion');
 
         $permi = $permisos->save();
 
@@ -62,29 +76,37 @@ class PermisoController extends Controller
 
     public function edit($id)
     {
-        $permisos = Permission::findOrFail($id);
-        return view("permisos.update")->with("permisos", $permisos);
+        $permisos = Permiso::findOrFail($id);
+        $modulo = Modelo::all();
+        $funcion = Parte::all();
+        return view("permisos.update")->with("permisos", $permisos)->with('modulo',$modulo)
+        ->with('funcion',$funcion);
     }
 
     public function update(Request $request,  $id)
     {
         $rules=[
-            'nombres' => 'required|max:100',
-            'descripcion'=> 'required|max:200',
+            'nombres' => 'required|max:100|unique:permissions,titulo,'.$id,
+            'descripcion'=> 'required|max:200|unique:permissions,name,'.$id,
+            'funcion'=> 'required|exists:partes,id',
+            'modelo'=> 'required|exists:modelos,id',
         ];
-
         $mensaje=[
             'nombres.required' => 'El nombre no puede estar vacío',
             'nombres.max' => 'El nombre es muy extenso',
             'descripcion.required' => 'El descripción no puede estar vacío',
-            'descripcion.max' => 'La descripcion es muy extenso',
+            'descripcion.unique' => 'La combinacion de modelo y funcion ya ha sido utilizada',
+            'funcion.required' => 'La funcion no puede estar vacío',
+            'funcion.exists' => 'La funcion no existe',
+            'modelo.required' => 'El modelo no puede estar vacío',
+            'modelo.maexistsx' => 'El modelo no existe',
         ];
-
         $this->validate($request,$rules,$mensaje);
 
         $permiso = Permission::findOrFail($id);
         $permiso->titulo = $request->input('nombres');
         $permiso->name = $request->input('descripcion');
+        $permiso->id_partes = $request->input('funcion');
 
         $creado = $permiso->save();
 
