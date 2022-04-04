@@ -28,11 +28,11 @@ class GraficoController extends Controller
         $fecha = Producto_Vendido::select(DB::raw("MIN(created_at) AS inicio,MAX(created_at) AS final"))->first();
 
         if($inicio == null){
-            $inicio = date('Y-m-d',strtotime($fecha->inicio));
+            $inicio = date('d-m-Y',strtotime($fecha->inicio));
         }
 
         if($final == null){
-            $final = date('Y-m-d',strtotime($fecha->final));
+            $final = date('d-m-Y',strtotime($fecha->final));
         }
 
         $producto = Producto_Vendido::select("productos.nombre",DB::raw("SUM(venta*cantidad) as total"))
