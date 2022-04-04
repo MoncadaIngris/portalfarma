@@ -62,7 +62,9 @@
 
                             <!--Footer-->
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('roles.index')}}'">Cancelar</button>
+                                <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Restaurar</a>
+                                <button type="submit" class="btn btn-guardar">Guardar</button>
                             </div>
                             <!--End footer-->
                         </div>
