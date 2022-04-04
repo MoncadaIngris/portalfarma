@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'id_empleado' => 1,
                 'id_funcion' => 1,
             ]
-        )->assignRole('Admin');
+        )->assignRole('Desarrollador');
 
         User::create(
             [
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'id_empleado' => 1,
                 'id_funcion' => 1,
             ]
-        )->assignRole('Facultativo');
+        )->assignRole('Admin');
 
         User::create(
             [
@@ -61,6 +61,6 @@ class UserSeeder extends Seeder
                 'id_empleado' => 1,
                 'id_funcion' => 1,
             ]
-        )->assignRole('Vendedor')->assignRole('Abastecimiento');
+        )->assignRole('Facultativo');
     }
 }
