@@ -45,6 +45,15 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $rules=[
+            'name' => 'required|max:100|unique:roles,name',
+        ];
+        $mensaje=[
+            'name.required' => 'El nombre no puede estar vacío',
+            'name.max' => 'El nombre es muy extenso',
+            'name.unique' => 'El nombre ya esta siendo utilizado',
+        ];
+        $this->validate($request,$rules,$mensaje);
         $role = Role::create($request->only('name'));
 
         // $role->permissions()->sync($request->input('permissions', []));

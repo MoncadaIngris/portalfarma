@@ -205,6 +205,17 @@ class PermissionSeeder extends Seeder
             'id_partes' => 34,
         ]);
         Permission::create([
+            'titulo' => 'Lista de usuarios',
+            'name' => 'usuarios_index',
+            'id_partes' => 43,
+        ]);
+        Permission::create([
+            'titulo' => 'Nuevo usuario',
+            'name' => 'usuarios_nuevo',
+            'id_partes' => 42,
+        ]);
+        
+        Permission::create([
             'titulo' => 'Lista de permisos',
             'name' => 'permisos_index',
             'id_partes' => 38,
@@ -233,16 +244,6 @@ class PermissionSeeder extends Seeder
             'titulo' => 'Editar roles',
             'name' => 'roles_editar',
             'id_partes' => 40,
-        ]);
-        Permission::create([
-            'titulo' => 'Lista de usuarios',
-            'name' => 'usuarios_index',
-            'id_partes' => 43,
-        ]);
-        Permission::create([
-            'titulo' => 'Nuevo usuario',
-            'name' => 'usuarios_nuevo',
-            'id_partes' => 42,
         ]);
         
     }
