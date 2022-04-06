@@ -84,7 +84,7 @@ Editar Permisos
         </script>
 
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Funcion: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Función: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <select name="funcion" id="funcion" required="required" class="form-control" onchange="completar()">
