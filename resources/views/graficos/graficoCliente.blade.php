@@ -57,8 +57,7 @@ Grafico De Venta Por Clientes {{date('d/m/Y',strtotime($inicio))}} al {{date('d/
           </div>
           <div>
             <input type="date" class="form-control" id="start_date" name="start_date"  value="{{date("Y-m-d", strtotime($inicio))}}"
-            min="<?php echo date('Y-m-d',strtotime($inicio));?>"
-            max="<?php echo date('Y-m-d',strtotime($final));?>">
+          >
           </div>
         </div>
         <div style="width: 45%;float: left;margin-left: 6%">
@@ -68,8 +67,7 @@ Grafico De Venta Por Clientes {{date('d/m/Y',strtotime($inicio))}} al {{date('d/
           </div>
           <div>
             <input type="date" class="form-control" id="end_date" name="end_date"  value="{{date("Y-m-d", strtotime($final))}}"
-            min="<?php echo date('Y-m-d',strtotime($inicio));?>"
-              max="<?php echo date('Y-m-d',strtotime($final));?>">
+            >
           </div>
         </div>
       </center>
