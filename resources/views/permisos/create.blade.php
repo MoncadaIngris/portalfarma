@@ -83,7 +83,7 @@ Añadir Permisos
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <select name="funcion" id="funcion" required="required" class="form-control" onchange="completar()">
-                    <option style="display: none" value="" >Seleccione la funcion</option>
+                    <option style="display: none" value="" >Seleccione la función</option>
                 </select>
             </div>
         </div>
@@ -121,7 +121,7 @@ Añadir Permisos
             </label> <div class="col-md-6 col-sm-6 ">
                 <textarea maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control"
                 value="{{old('descripcion')}}" readonly
-                placeholder="">{{old('descripcion')}}</textarea>
+                placeholder="">{{old('descripción')}}</textarea>
             </div>
         </div>
     <br>
