@@ -71,8 +71,7 @@ Estadisticas de ventas por Proveedor {{date('d/m/Y',strtotime($inicio))}} al {{d
         </div>
         <div>
           <input type="date" class="form-control" id="end_date" name="end_date"  value="{{date("Y-m-d", strtotime($final))}}"
-          min="<?php echo date('Y-m-d',strtotime($inicio));?>"
-            max="<?php echo date('Y-m-d',strtotime($final));?>">
+          >
         </div>
       </div>
     </center>
