@@ -195,7 +195,7 @@
                   <li><a href="{{route('kardex')}}"><i class="fa-solid fa-box-open"></i>Entradas y Salidas</a></li>
                   @endcan
                   @can('grafico_cliente','grafico_producto','grafico_proveedor','grafico_fecha')
-                  <li><a><i class="fa-solid fa-box-open"></i> Graficos<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa-solid fa-box-open"></i> Gráficos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         @can('grafico_producto')
                         <li><a href="{{route('grafico.producto',['val'=>0])}}">Gráfico De Producto</a></li>
@@ -233,7 +233,7 @@
                       <ul class="nav child_menu">
                       <li>
                         @can('roles_nuevo')
-                        <a href="{{route('roles.create')}}">Nueva funcion</a>
+                        <a href="{{route('roles.create')}}">Nueva función</a>
                         @endcan
                       </li>
                       <li>

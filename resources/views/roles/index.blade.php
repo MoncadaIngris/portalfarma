@@ -13,7 +13,7 @@ Crear Funciones
           <div class="card-body">
             <div class="row">
               <div class="col-12">
-                <button class="btn btn-nuevo" onclick="window.location='{{route('roles.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Funcion</button>
+                <button class="btn btn-nuevo" onclick="window.location='{{route('roles.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Función</button>
 
                 <br>
               </div>
