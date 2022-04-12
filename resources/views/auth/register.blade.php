@@ -3,9 +3,19 @@
 Añadir Usuario
 @stop
 @section('contenido')
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <form method="POST" action="{{ route('registrar') }}">
     @csrf
-
     <script>
         function llenar(){
             var select = document.getElementById("empleado");
@@ -84,10 +94,10 @@ Añadir Usuario
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Funcion: <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
-            <select name="funcion" id="funcion" required="required" class="form-control">
-            <option style="display: none" value="">Seleccione una funcion</option>
+            <select name="funcion[]" id="funcion" required="required" class="form-control selectpicker" 
+           data-live-search="true" multiple>
                 @foreach ($funcion as $e)
-                    <option value="{{$e->id}}">{{$e->descripcion}}</option>
+                    <option value="{{$e->descripcion}}">{{$e->descripcion}}</option>
                 @endforeach
             </select>
         </div>

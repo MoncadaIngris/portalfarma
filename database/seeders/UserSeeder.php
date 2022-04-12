@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
                 'email' => 'portalfarma@gmail.com',
                 'password' => bcrypt('00000000'),
                 'id_empleado' => 1,
-                'id_funcion' => 1,
             ]
         )->assignRole('Desarrollador');
 
@@ -29,7 +28,6 @@ class UserSeeder extends Seeder
                 'email' => 'portalfarma01@gmail.com',
                 'password' => bcrypt('00000000'),
                 'id_empleado' => 1,
-                'id_funcion' => 1,
             ]
         )->assignRole('Admin');
 
@@ -39,7 +37,6 @@ class UserSeeder extends Seeder
                 'email' => 'portalfarma02@gmail.com',
                 'password' => bcrypt('00000000'),
                 'id_empleado' => 1,
-                'id_funcion' => 1,
             ]
         )->assignRole('Abastecimiento');
 
@@ -49,7 +46,6 @@ class UserSeeder extends Seeder
                 'email' => 'portalfarma03@gmail.com',
                 'password' => bcrypt('00000000'),
                 'id_empleado' => 1,
-                'id_funcion' => 1,
             ]
         )->assignRole('Vendedor');
 
@@ -59,7 +55,6 @@ class UserSeeder extends Seeder
                 'email' => 'portalfarma04@gmail.com',
                 'password' => bcrypt('00000000'),
                 'id_empleado' => 1,
-                'id_funcion' => 1,
             ]
         )->assignRole('Facultativo');
     }

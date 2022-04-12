@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         $rules=[
             'empleado' => ['required', 'string', 'exists:empleados,id','unique:users,id_empleado'],
-            'funcion' => ['required', 'string', 'exists:funcions,id'],
+            'funcion' => ['required', 'exists:funcions,descripcion'],
         ];
 
         $mensaje=[
@@ -42,13 +42,14 @@ class UserController extends Controller
 
         $password = Str::random(8);
 
-        User::create([
+        $usernew = User::create([
             'name' =>  $empleado->nombres." ".$empleado->apellidos,
             'email' => $empleado->correo_electronico,
             'id_empleado' => $request->input('empleado'),
-            'id_funcion' => $request->input('funcion'),
             'password' => Hash::make($password),
         ]);
+
+        $usernew->assignRole($request->input('funcion'));
 
         $call=[
             'nombres' => $empleado->nombres." ".$empleado->apellidos,
