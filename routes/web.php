@@ -28,8 +28,7 @@ use Illuminate\Support\Facades\Auth;
 */
 // Cambiar idioma. En este caso "en":
 
-//rutas para login
-Auth::routes();
+
 
 Route::middleware("auth")->group(function () {
 
@@ -277,8 +276,6 @@ Route:: get('graficos',[ProductoVendidoController::class,'index'])
 Route:: get('graficos/ventas',[VentaController::class,'grafico'])
 ->name('grafico.ventas');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/registrar', [UserController::class, 'showRegistrationForm'])->name('registrar');
 
 Route::post('/registrar', [UserController::class, 'create']);
@@ -311,7 +308,10 @@ Route::put("/permisos/{id}/edit", [PermisoController::class, "update"])
 ->name("permisos.edit")->where('id', '[0-9]+');
 });
 
+//rutas para login
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 

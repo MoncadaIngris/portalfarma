@@ -22,21 +22,12 @@
         <br>
       <button type="submit">Iniciar Sesion</button>
       <div id="remember-container">
-        <span id="forgotten">Recuperar Contraseña</span>
+<a href="{{route('password.request')}}" style="text-decoration: none">
+  <span id="forgotten"><strong>Recuperar Contraseña</strong></span>
+</a>
+
       </div>
   </form>
   </div>
-  
-  <!-- Forgotten Password Container -->
-  <div id="forgotten-container">
-     <h1>Recuperar Contraseña</h1>
-    <span class="close-btn">
-      <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-    </span>
-  
-    <form>
-      <input type="email" name="email" placeholder="Correo Electronico">
-      <a href="#" class="orange-btn">Recuperar contraseña</a>
-  </form>
-  </div>
+
 @stop

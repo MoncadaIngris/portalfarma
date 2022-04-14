@@ -92,7 +92,6 @@
         /* Inputs */
         button, input{
         font-family: 'Open Sans Condensed', sans-serif;
-        text-decoration: none;
         position: relative;
         width: 80%;
         display: block;
@@ -183,12 +182,11 @@
         }
 
         #forgotten{
-        position: absolute;
-        font-size: 12px;
+        font-size: 16px;
         font-family: 'Hind', sans-serif;
-        color: rgba(255,255,255,.2);
-        right: 0px;
-        top: 8px;
+        color: rgb(0, 0, 0);
+        margin-left: 30px;
+        margin-right: 10px;
         cursor: pointer;
         -webkit-transition: all 2s ease-in-out;
         -moz-transition: all 2s ease-in-out;
@@ -197,7 +195,7 @@
         }
 
         #forgotten:hover{
-        color: rgba(255,255,255,.6);
+        color: rgb(255, 255, 255);
         }
 
         #forgotten-container{
