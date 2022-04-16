@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware("auth")->group(function () {
 
+    Route::middleware("primeraclave")->group(function () {
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -303,15 +305,20 @@ Route::get('/permisos', [PermisoController::class, 'index'])
 Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
 ->name("permisos.edit")->where('id', '[0-9]+');
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+});
+});
 
 Route::put("/permisos/{id}/edit", [PermisoController::class, "update"])
 ->name("permisos.edit")->where('id', '[0-9]+');
-});
+
+Route::get('primercambio', [UserController::class, 'primercambio'])->name('primercambio')->middleware('restringirclave');
+    Route::post('primercambio', [UserController::class, 'primercambiar'])->middleware('restringirclave');
+
 
 //rutas para login
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
