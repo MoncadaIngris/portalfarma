@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Producto_Temporalv;
 use App\Http\Requests\StoreProducto_TemporalvRequest;
 use App\Http\Requests\UpdateProducto_TemporalvRequest;
+use Illuminate\Support\Facades\Gate;
 
 class ProductoTemporalvController extends Controller
 {

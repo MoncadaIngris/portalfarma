@@ -6,7 +6,7 @@ use App\Models\Proveedor;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProveedorRequest;
 use App\Http\Requests\UpdateProveedorRequest;
-
+use Illuminate\Support\Facades\Gate;
 
 
 class ProveedorController extends Controller
@@ -18,6 +18,8 @@ class ProveedorController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('proveedores_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $proveedor = Proveedor::where('estado',0)->select("id","nombre_repartidor", "telefono_repartidor", "nombre_proveedor", "dia_de_entrega")->get();
         $provee = Proveedor::where('estado',0)->get();
 
@@ -31,6 +33,8 @@ class ProveedorController extends Controller
      */
     public function create($prov=-1)
     {
+        abort_if(Gate::denies('proveedores_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         return view('proveedor/create')->with('prov', $prov);
     }
 
@@ -42,6 +46,8 @@ class ProveedorController extends Controller
      */
     public function store(Request $request, $prov=-1)
     {
+        abort_if(Gate::denies('proveedores_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'nombre_repartidor' => 'required|max:100',
             'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor',
@@ -108,6 +114,8 @@ class ProveedorController extends Controller
      */
     public function show($id)
     {
+        abort_if(Gate::denies('proveedores_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         {
             $proveedor = Proveedor::findOrFail($id);
             return view("proveedor.show")->with("proveedor", $proveedor);
@@ -122,6 +130,8 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('proveedores_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
             $proveedor = Proveedor::findOrFail($id);
             return view("proveedor.update")->with("proveedor", $proveedor);
 
@@ -137,6 +147,8 @@ class ProveedorController extends Controller
 
         public function update(UpdateProveedorRequest $request, $id)
     {
+        abort_if(Gate::denies('proveedores_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'nombre_repartidor' => 'required|max:100',
             'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor,'.$id,
@@ -204,6 +216,8 @@ class ProveedorController extends Controller
     // funcion para lista de desact
     public function desactivados()
     {
+        abort_if(Gate::denies('proveedores_desactivados'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $proveedor = Proveedor::where('estado',1)->select("id","nombre_repartidor", "telefono_repartidor", "nombre_proveedor", "dia_de_entrega")->get();
         $provee = Proveedor::where('estado',1)->get();
         return view('proveedor/desactivados')->with('proveedor',$proveedor)->with('provee', $provee);
@@ -211,6 +225,7 @@ class ProveedorController extends Controller
 // funcion para activar 
     public function activar(UpdateProveedorRequest $request, $id)
     {
+        abort_if(Gate::denies('proveedores_activar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $proveedor= Proveedor::findOrFail($id);
         $proveedor->estado= 0;
@@ -223,6 +238,7 @@ class ProveedorController extends Controller
     // funcion para desactivar 
     public function desactivar(UpdateProveedorRequest $request, $id)
     {
+        abort_if(Gate::denies('proveedores_desactivar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $proveedor= Proveedor::findOrFail($id);
         $proveedor->estado= 1;

@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto_Vendido;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class GraficoController extends Controller
 {
     public function producto(Request $request){
+        abort_if(Gate::denies('grafico_producto'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
 
         $rules=[
             'start_date' => 'nullable',
@@ -68,6 +71,9 @@ class GraficoController extends Controller
     }
 
     public function proveedor(Request $request){
+
+        abort_if(Gate::denies('grafico_proveedor'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
 
         $rules=[
             'start_date' => 'nullable',

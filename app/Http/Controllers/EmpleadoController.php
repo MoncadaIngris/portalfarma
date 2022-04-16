@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreEmpleadoRequest;
 use App\Http\Requests\UpdateEmpleadoRequest;
+use Illuminate\Support\Facades\Gate;
 
 class EmpleadoController extends Controller
 {
@@ -17,6 +18,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('empleados_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $empleados = Empleado::where('estado',0)->select("id","nombres", "apellidos", "DNI","telefono_personal")->get();
 
         return view('empleados/index')->with('empleados', $empleados);
@@ -30,6 +33,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
+        abort_if(Gate::denies('empleados_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         return view('empleados/create');
     }
 
@@ -41,6 +46,8 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if(Gate::denies('empleados_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $fecha_actual = date("d-m-Y");
         $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
         $minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
@@ -131,6 +138,8 @@ class EmpleadoController extends Controller
      */
     public function show($id)
     {
+        abort_if(Gate::denies('empleados_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $empleado= Empleado::findOrFail($id);
         return view('empleados.show')->with('empleado', $empleado);
     }
@@ -143,6 +152,8 @@ class EmpleadoController extends Controller
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('empleados_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $empleado = Empleado::findOrFail($id);
         return view("empleados.update")->with("empleado", $empleado);
     }
@@ -156,6 +167,8 @@ class EmpleadoController extends Controller
      */
     public function update(UpdateEmpleadoRequest $request, $id)
     {
+        abort_if(Gate::denies('empleados_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $fecha_actual = date("d-m-Y");
         $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
         $minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
@@ -247,17 +260,21 @@ class EmpleadoController extends Controller
     }
     public function desactivar (UpdateEmpleadoRequest $request, $id)
     {
-    $empleado= Empleado::findOrFail($id);
-    $empleado->estado= 1;
+        abort_if(Gate::denies('empleados_desactivar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
-     $creado = $empleado->save();
+        $empleado= Empleado::findOrFail($id);
+        $empleado->estado= 1;
 
-    return redirect()->route('empleados.index');
+        $creado = $empleado->save();
+
+        return redirect()->route('empleados.index');
     }
 
 
     public function desactivados()
     {
+        abort_if(Gate::denies('empleados_desactivados'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $empleados = Empleado::where('estado',1)->select("id","nombres", "apellidos", "DNI","telefono_personal")->get();
 
         return view('empleados/desactivados')->with('empleados', $empleados);
@@ -265,6 +282,8 @@ class EmpleadoController extends Controller
 
     public function activar(UpdateEmpleadoRequest $request, $id)
     {
+        abort_if(Gate::denies('empleados_activar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
 
         $empleado= Empleado::findOrFail($id);
         $empleado->estado= 0;
@@ -273,8 +292,4 @@ class EmpleadoController extends Controller
 
         return redirect()->route('empleados.desactivado');
     }
-
-
-
-
 }

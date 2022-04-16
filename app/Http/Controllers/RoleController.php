@@ -16,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //abort_if(Gate::denies('role_index'), back()->with('denegar','No tiene acceso a esta seccion'));
+        abort_if(Gate::denies('roles_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $roles = Role::all();
 
@@ -30,7 +30,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //abort_if(Gate::denies('role_create'), back()->with('denegar','No tiene acceso a esta seccion'));
+        abort_if(Gate::denies('roles_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $permissions = Permission::all();
         // dd($permissions);
@@ -45,6 +45,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if(Gate::denies('roles_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
         $rules=[
             'name' => 'required|max:100|unique:roles,name',
         ];
@@ -84,8 +85,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //abort_if(Gate::denies('role_edit'), back()->with('denegar','No tiene acceso a esta seccion'));
-
+        abort_if(Gate::denies('roles_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
         $permissions = Permission::all();
         $role->load('permissions');
         // dd($role);
@@ -101,6 +101,7 @@ class RoleController extends Controller
      */
     public function update(Role $role, Request $request)
     {
+        abort_if(Gate::denies('roles_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
         $this->validate($request, [
             'name' => 'required',
             'permission' => 'required',

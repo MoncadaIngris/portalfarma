@@ -20,6 +20,7 @@ use App\Http\Requests\UpdateCompraRequest;
 use App\Models\Cliente;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Http\Controllers\raw;
+use Illuminate\Support\Facades\Gate;
 use PDF;
 
 
@@ -55,6 +56,9 @@ class VentaController extends Controller
      */
     public function index()
     {
+
+        abort_if(Gate::denies('ventas_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $ventas = Venta::select("ventas.id", "id_cliente", "ventas.created_at",
         DB::raw("SUM(venta* cantidad) AS subtotal"), DB::raw("SUM(venta * cantidad * valor) AS impuesto"),
         DB::raw("SUM(venta* cantidad)+SUM(venta * cantidad * valor) AS total"))
@@ -74,6 +78,8 @@ class VentaController extends Controller
      */
     public function create($cliente=0, $producto = " ", $producto_id=0)
     {
+        abort_if(Gate::denies('ventas_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $clie = Cliente::find($cliente);
         $clientes = Cliente::all();
         $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", "productos.receta",
@@ -103,6 +109,8 @@ class VentaController extends Controller
      */
     public function store(Request $request, $cliente=0)
     {
+        abort_if(Gate::denies('ventas_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $datos = Producto_Comprado::select("producto__comprados.id_producto as id", "productos.nombre", "productos.codigo", 
         DB::raw("sum(producto__comprados.cantidad) AS cantidad"), 
         DB::raw("(SUM(producto__comprados.venta*producto__comprados.cantidad)/sum(producto__comprados.cantidad)) AS venta"), 
@@ -281,6 +289,9 @@ class VentaController extends Controller
     }
 
     public function show($id){
+        abort_if(Gate::denies('ventas_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
+
         $venta = Venta::findOrFail($id);
         $productos = Producto_Vendido::join('ventas','ventas.id','id_venta')
         ->where('id_venta', $id)->get();
@@ -293,6 +304,7 @@ class VentaController extends Controller
   
 
     public function grafico(Request $request) {
+        abort_if(Gate::denies('grafico_fecha'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $rules=[
             'start_date' => 'nullable',

@@ -10,6 +10,7 @@ use App\Models\Producto_Comprado;
 use App\Models\Impuesto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreCompraRequest;
 use App\Http\Requests\UpdateCompraRequest;
 use PDF;
@@ -40,6 +41,9 @@ class InventarioController extends Controller
 
     public function index()
     {
+        abort_if(Gate::denies('inventarios_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
+
         $productos = DB::table('inventario')
         ->select("inventario.id AS id","nombre", "codigo", 
         DB::raw("MAX(venta) AS venta, SUM(cantidad) - SUM(vendido) AS cantidad, ((SUM(cantidad) - SUM(vendido))*MAX(venta)) AS total"))
@@ -52,6 +56,8 @@ class InventarioController extends Controller
     }
 
     public function show($id){
+        abort_if(Gate::denies('inventarios_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo",
         "concentracions.descripcion as concentraciones","receta", "productos.descripcion", 
         DB::raw("(SUM(compra*cantidad)/sum(cantidad)) AS compra"),

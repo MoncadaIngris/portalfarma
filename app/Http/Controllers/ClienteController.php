@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 
@@ -16,6 +17,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('clientes_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
         $clientes = Cliente::select("id","nombres", "apellidos", "DNI","telefono")->get();
 
         return view('clientes/index')->with('clientes', $clientes);
@@ -28,6 +30,8 @@ class ClienteController extends Controller
      */
     public function create($clie=-1)
     {
+        abort_if(Gate::denies('clientes_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         return view('clientes/create')->with('clie', $clie);;
     }
 
@@ -39,6 +43,8 @@ class ClienteController extends Controller
      */
     public function store(Request $request,$clie=-1)
     {
+        abort_if(Gate::denies('clientes_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',
@@ -99,6 +105,8 @@ class ClienteController extends Controller
     
     public function show($id)
     {
+        abort_if(Gate::denies('clientes_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $clientes = Cliente::findOrFail($id);
             return view("clientes.show")->with("clientes", $clientes);
     }
@@ -111,6 +119,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('clientes_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $clientes = Cliente::findOrFail($id);
         return view("clientes.update")->with("clientes", $clientes);
     }
@@ -125,6 +135,8 @@ class ClienteController extends Controller
      */
     public function update(Request $request,  $id)
     {
+        abort_if(Gate::denies('clientes_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'nombres' => 'required|max:100',
             'apellidos' => 'required|max:100',

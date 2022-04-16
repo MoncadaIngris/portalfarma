@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use PDF;
 use Excel;
 use App\Exports\KardexExport;
+use Illuminate\Support\Facades\Gate;
 
 class KardexController extends Controller
 {
@@ -246,6 +247,8 @@ class KardexController extends Controller
 
     public function index(Request $request)
     {
+        abort_if(Gate::denies('entrada_salida'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'start_date' => 'nullable',
             'end_date'=>'nullable|after_or_equal:start_date',

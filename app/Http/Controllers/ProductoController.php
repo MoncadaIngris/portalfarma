@@ -7,6 +7,7 @@ use App\Models\Concentracion;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
+use Illuminate\Support\Facades\Gate;
 
 class ProductoController extends Controller
 {
@@ -17,6 +18,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('productos_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
             $productos = Producto::select("id","nombre", "codigo", "concentracion","receta")->orderby('nombre')->get();
 
@@ -32,6 +34,8 @@ class ProductoController extends Controller
      */
     public function create($prov=-1)
     {
+        abort_if(Gate::denies('productos_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $concentracion = Concentracion::all();
         return view('productos/create')->with('concentracion', $concentracion)->with('prov', $prov);
     }
@@ -44,6 +48,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request, $prov=-1)
     {
+        abort_if(Gate::denies('productos_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
             $rules=[
                 'nombre' => 'required|max:50|unique:productos,nombre',
                 'codigo' => 'required|numeric|regex:([0-9]{8})|unique:productos,codigo',
@@ -109,6 +115,8 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
+        abort_if(Gate::denies('productos_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
             $productos = Producto::findOrFail($id);
             return view("productos.show")->with("productos", $productos);
     }
@@ -121,6 +129,8 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        abort_if(Gate::denies('productos_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $concentracion = Concentracion::all();
         $producto = Producto::findOrFail($id);
         return view("productos.update")->with("producto", $producto)
@@ -136,6 +146,8 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        abort_if(Gate::denies('productos_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'nombre' => 'required|max:50|unique:productos,nombre,'.$id, 
             'codigo' => 'required|numeric|regex:([0-9]{8})|unique:productos,codigo,'.$id,

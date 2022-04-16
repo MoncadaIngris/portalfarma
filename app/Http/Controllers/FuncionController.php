@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Funcion;
 use App\Http\Requests\StoreFuncionRequest;
 use App\Http\Requests\UpdateFuncionRequest;
+use Illuminate\Support\Facades\Gate;
 
 class FuncionController extends Controller
 {

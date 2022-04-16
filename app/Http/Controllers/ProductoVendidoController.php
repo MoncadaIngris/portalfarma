@@ -9,6 +9,7 @@ use App\Models\Cliente;
 use Illuminate\Support\Facades\DB;
 use App\Models\Venta;
 use Illuminate\Database\Console\DbCommand;
+use Illuminate\Support\Facades\Gate;
 
 class ProductoVendidoController extends Controller
 {
@@ -20,6 +21,8 @@ class ProductoVendidoController extends Controller
    
         public function index(Request $request)
         {
+            abort_if(Gate::denies('grafico_cliente'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
     
             $rules=[
                 'start_date' => 'nullable',
@@ -105,6 +108,8 @@ class ProductoVendidoController extends Controller
 
     public function graficostore()
     {
+        abort_if(Gate::denies('grafico_producto'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $ventas = Producto_Vendido::all();
 
         $puntos=[];

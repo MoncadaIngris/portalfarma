@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\Permiso;
 use App\Models\Modelo;
+use Illuminate\Support\Facades\Gate;
 
 class PermisoController extends Controller
 {
@@ -16,6 +17,8 @@ class PermisoController extends Controller
 
     public function create()
     {
+        abort_if(Gate::denies('permisos_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $modulo = Modelo::all();
         $funcion = Parte::all();
         return view('permisos/create')->with('permiso')
@@ -28,6 +31,7 @@ class PermisoController extends Controller
 
     public function store(Request $request, $perm=-1)
     {
+        abort_if(Gate::denies('permisos_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $rules=[
             'nombres' => 'required|max:100|unique:permissions,titulo',
@@ -70,12 +74,16 @@ class PermisoController extends Controller
     }
     public function index()
     {
+        abort_if(Gate::denies('permisos_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $permisos = Permission::all();
         return view('permisos/index')->with('permisos', $permisos);
     }
 
     public function edit($id)
     {
+        abort_if(Gate::denies('permisos_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $permisos = Permiso::findOrFail($id);
         $modulo = Modelo::all();
         $funcion = Parte::all();
@@ -85,6 +93,8 @@ class PermisoController extends Controller
 
     public function update(Request $request,  $id)
     {
+        abort_if(Gate::denies('permisos_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'nombres' => 'required|max:100|unique:permissions,titulo,'.$id,
             'descripcion'=> 'required|max:200|unique:permissions,name,'.$id,

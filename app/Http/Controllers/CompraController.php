@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
 use App\Http\Requests\UpdateCompraRequest;
+use Illuminate\Support\Facades\Gate;
 use PDF;
 
 class CompraController extends Controller
@@ -46,6 +47,8 @@ class CompraController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('compras_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $compras = Compra::select("compras.id", "id_proveedor", "compras.created_at", 
         DB::raw("SUM(compra * cantidad) AS subtotal"), DB::raw("SUM(compra * cantidad * valor) AS impuesto"), 
         DB::raw("SUM(compra * cantidad)+SUM(compra * cantidad * valor) AS total"))
@@ -65,6 +68,8 @@ class CompraController extends Controller
      */
     public function create($proveedor=0, $producto = " ", $producto_id=0)
     {
+        abort_if(Gate::denies('compras_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $prov = Proveedor::find($proveedor);
         $proveedors = Proveedor::all();
         $productos = Producto::all();
@@ -88,6 +93,8 @@ class CompraController extends Controller
      */
     public function store(Request $request, $proveedor=0)
     {
+        abort_if(Gate::denies('compras_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $compra = $request->input('compra')+0.01;
 
         $this->validate($request, [
@@ -244,6 +251,8 @@ class CompraController extends Controller
     }
 
     public function show($id){
+        abort_if(Gate::denies('compras_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $compra = Compra::findOrFail($id);
         $productos = Producto_Comprado::join('compras','compras.id','id_compra')
         ->where('id_compra', $id)->get();

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmergencyCallReceived;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -27,6 +28,8 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
+        abort_if(Gate::denies('usuarios_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
         $rules=[
             'empleado' => ['required', 'string', 'exists:empleados,id','unique:users,id_empleado'],
             'funcion' => ['required', 'exists:funcions,descripcion'],
@@ -68,10 +71,30 @@ class UserController extends Controller
     {
         $empleados=Empleado::select('empleados.*')
         ->leftjoin('users','users.id_empleado','empleados.id')
-        ->where('estado',0)
+        ->where('empleados.estado',0)
         ->whereNull('users.id')
         ->get();
         $funcion=Funcion::all();
         return view('auth.register', compact('empleados','funcion'));
+    }
+    public function primercambio(){
+        return view('contrasenia/primercambioclave');
+    }
+
+    public function primercambiar(Request $request){
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $usuario = User::findOrFail(auth()->user()->id);
+
+        $usuario->password = bcrypt($request->input('password'));
+        $usuario->estado = 1;
+
+        $creado = $usuario->save();
+
+        if ($creado) {
+            return redirect()->route('welcome')->with('mensaje', 'La clave fue cambiada exitosamente');
+        }
     }
 }
