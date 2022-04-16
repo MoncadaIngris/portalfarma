@@ -21,8 +21,13 @@
             <th scope="col" class="sorting" style="text-align: center">Codigo</th>
             <th scope="col" class="sorting" style="text-align: center">Concentracion</th>
             <th scope="col" class="sorting" style="text-align: center">Receta</th>
+            @can('productos_editar')
             <th scope="col" style="text-align: center">Editar</th>
+            @endcan
+            @can('productos_detalle')
             <th scope="col" style="text-align: center">Detalles</th>
+            @endcan
+            
 
         </tr>
         </thead>
@@ -40,16 +45,20 @@
                         Si
                     @endif
                 </td>
+                @can('productos_editar')
                 <td>
                     <center>
             <a class="btn btn-editar" href="{{route("productos.edit",["id"=>$producto->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                     </center>
                 </td>
-                <td>
-                    <center>
-            <a class="btn btn-detalles" href="{{route("productos.show",["id"=>$producto->id])}}"><i class="fa-solid fa-circle-info"></i></a>
-                    </center>
-                </td>
+                @endcan
+                @can('productos_detalle')
+                    <td>
+                        <center>
+                <a class="btn btn-detalles" href="{{route("productos.show",["id"=>$producto->id])}}"><i class="fa-solid fa-circle-info"></i></a>
+                        </center>
+                    </td>
+                @endcan
             </tr>
         @endforeach
 

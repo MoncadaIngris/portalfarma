@@ -13,8 +13,9 @@ Crear Funciones
           <div class="card-body">
             <div class="row">
               <div class="col-12">
+                @can('roles_nuevo')
                 <button class="btn btn-nuevo" onclick="window.location='{{route('roles.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Función</button>
-
+                @endcan
                 <br>
               </div>
             </div>
@@ -35,14 +36,15 @@ Crear Funciones
                           <span class="badge" style="background: rgb(235, 137, 137)">Sin permiso asignados</span>
                       @endforelse
                     </td>
-
-                      <td>
-                          @if ($role->id != 1 && $role->id != 2)
-                            <center>
-                                <a class="btn btn-editar" href="{{ route('roles.edit', $role->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </center>
-                          @endif
-                      </td>
+                    @can('roles_editar')
+                    <td>
+                      @if ($role->id != 1 && $role->id != 2)
+                        <center>
+                            <a class="btn btn-editar" href="{{ route('roles.edit', $role->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </center>
+                      @endif
+                  </td>
+                    @endcan
                   </tr>
                   @empty
                   <tr>

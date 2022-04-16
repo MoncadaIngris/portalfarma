@@ -20,8 +20,12 @@ Listado de Empleados Desactivados
         <th scope="col" class="sorting" style="text-align: center">Nombres</th>
         <th scope="col" class="sorting" style="text-align: center">Apellidos</th>
         <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
+        @can('empleados_detalle')
         <th scope="col" style="text-align: center">Detalles</th>
+        @endcan
+        @can('empleados_activar')
         <th scope="col" style="text-align: center">Activar</th>
+        @endcan
       </tr>
     </thead>
     <tbody>
@@ -31,16 +35,20 @@ Listado de Empleados Desactivados
           <td>{{$empleado->nombres}}</td>
           <td>{{$empleado->apellidos}}</td>
           <td>{{$empleado->telefono_personal}}</td>
+          @can('empleados_detalle')
           <td>
             <center>
               <a class="btn btn-detalles" href="{{route("empleado.show",["id"=>$empleado->id])}}"><i class="fa-solid fa-circle-info"></i></a>
             </center>
           </td>
+          @endcan
+          @can('empleados_activar')
           <td>
             <center>
               <button onclick="activar{{$empleado->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i></button>
             </center>
           </td>
+          @endcan
         </tr>
       @endforeach
     </tbody>

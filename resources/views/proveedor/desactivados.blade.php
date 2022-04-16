@@ -15,8 +15,12 @@ Listado de Proveedores Desactivados
         <th scope="col"class="sorting"  style=" text-align: center">Nombre Proveedor</th>
         <th scope="col"class="sorting"  style=" text-align: center">Teléfono Repartidor</th>
         <th scope="col" class="sorting" style=" text-align: center">Dia de Entrega</th>
+        @can('proveedores_detalle')
         <th scope="col" style="text-align: center">Detalles</th>
+        @endcan
+        @can('proveedores_activar')
         <th scope="col" style="text-align: center">Activar</th>
+        @endcan
       </tr>
     </thead>
     <tbody>
@@ -27,17 +31,20 @@ Listado de Proveedores Desactivados
           <td>{{$proveedor->nombre_proveedor}}</td>
           <td>{{$proveedor->telefono_repartidor}}</td>
           <td>{{$proveedor->dia_de_entrega}}</td>
+          @can('proveedores_detalle')
           <td>
-            
             <center>
               <a class="btn btn-detalles" href="{{route("proveedor.show",["id"=>$proveedor->id])}}"><i class="fa-solid fa-circle-info"></i></a>
             </center>
           </td>
+          @endcan
+          @can('proveedores_activar')
           <td>
-              <center>
-              <button onclick="activar{{$proveedor->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i></button>
-            </center>
-          </td>
+            <center>
+            <button onclick="activar{{$proveedor->id}}();" class="btn btn-activar"><i class="fa-solid fa-eye"></i></button>
+          </center>
+        </td>
+          @endcan
         </tr>
       @endforeach
     </tbody>

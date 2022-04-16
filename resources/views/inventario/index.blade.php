@@ -28,7 +28,9 @@
             <th scope="col" class="sorting" style="text-align: center">Cantidad</th>
             <th scope="col" class="sorting" style="text-align: center">Precio de venta</th>
             <th scope="col" class="sorting" style="text-align: center">Total</th>
+            @can('inventarios_detalle')
             <th scope="col" class='notexport' style="text-align: center">Detalle</th>
+            @endcan
 
         
         
@@ -43,11 +45,13 @@
                 <td style="text-align: right">{{$compra->cantidad}}</td>
                 <td style="text-align: right">L.{{ number_format($compra->venta,2)}}</td>
                 <td style="text-align: right">L.{{ number_format($compra->total,2)}}</td>
+                @can('inventarios_detalle')
                 <td>
                     <center>
                         <a class="btn btn-detalles" href="{{route("inventario.show",["id"=>$compra->id])}}"><i class="fa-solid fa-circle-info"></i></a>
                     </center>
                 </td>
+                @endcan
             </tr>
         @endforeach
         </tbody>
