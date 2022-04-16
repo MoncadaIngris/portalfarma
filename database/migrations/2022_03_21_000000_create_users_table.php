@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedBigInteger('id_empleado');
             $table->foreign("id_empleado")->references("id")->on("empleados");
+            $table->boolean('estado')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
