@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmergencyCallReceived;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -95,6 +96,79 @@ class UserController extends Controller
 
         if ($creado) {
             return redirect()->route('welcome')->with('mensaje', 'La clave fue cambiada exitosamente');
+        }
+    }
+
+    public function perfil(){
+
+        return view('perfil.perfil');
+
+    }
+
+    public function editar(){
+        return view('perfil.editar');
+    }
+
+    public function update(Request $request){
+        //{{auth()->user()->empleados->id}}
+        $id = auth()->user()->empleados->id;
+        $this->validate($request, [
+            "correo_electronico" => "required|max:100|email|unique:empleados,correo_electronico," . $id,
+            "telefono_personal" => "required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:empleados,telefono_personal," . $id,
+            "telefono_alternativo" => "required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:empleados,telefono_alternativo," . $id,
+            'foto' => 'sometimes|mimes:jpeg,bmp,png',
+            'direccion'=>'required|max:200',
+        ], [
+            'correo_electronico.required' => 'El correo electrónico no puede estar vacío',
+            'correo_electronico.regex' => 'El correo electrónico tiene un formato invalido',
+            'correo_electronico.max' => 'El correo electrónico es muy extenso',
+            'correo_electronico.email' => 'En el campo correo electrónico debe de ingresar un correo valido',
+            'correo_electronico.unique' => 'El correo electrónico ingresado ya esta en uso',
+            'telefono_personal.required' => 'El teléfono personal no puede estar vacío',
+            'telefono_personal.regex' => 'El teléfono personal debe contener 8 dígitos e iniciar con 2,3,8 o 9',
+            'telefono_personal.numeric' => 'En teléfono personal no debe de incluir letras ni signos',
+            'telefono_personal.unique' => 'El teléfono personal ingresado ya esta en uso',
+            'telefono_alternativo.required' => 'El teléfono emergencia no puede estar vacío',
+            'telefono_alternativo.regex' => 'El teléfono emergencia debe contener 8 dígitos e iniciar con 2,3,8 o 9',
+            'telefono_alternativo.numeric' => 'En teléfono emergencia no debe de incluir letras ni signos',
+            'telefono_alternativo.unique' => 'El teléfono emergencia ya esta en uso',
+            'foto.sometimes' => 'La de fotografía no puede estar vacía',
+            'foto.mimes' => 'Debe de subir una fotografía',
+            'direccion.required' => 'La dirección no puede ser vacía',
+            'direccion.max' => 'La dirección es muy extenso',
+        ]);
+
+        $empleado= Empleado::findOrFail($id);
+
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $destinationPath = 'images/';
+            $filename = time().'.'.$file->getClientOriginalName();
+            Storage::delete('public/' . $empleado->fotografia);
+            $uploadSuccess = $request->file('foto')->move($destinationPath,$filename);
+            //formulario
+            $empleado->fotografia = 'images/' . $filename;
+        }
+
+        $empleado->correo_electronico = $request->input('correo_electronico');
+        $empleado->telefono_personal= $request->input('telefono_personal');
+        $empleado->telefono_alternativo = $request->input('telefono_alternativo');
+        $empleado->direccion = $request->input('direccion');
+
+        $creado = $empleado->save();
+
+        if ($creado) {
+            $usuario= User::findOrFail(auth()->user()->id);
+
+            $usuario->email = $request->input('correo_electronico');
+
+            $creado2 = $usuario->save();
+            
+            if($creado2){
+                return redirect()->route('perfil')
+                ->with('mensaje', 'Los datos fueron editados exitosamente');
+            }
+
         }
     }
 }

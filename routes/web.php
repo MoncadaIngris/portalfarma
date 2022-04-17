@@ -307,6 +307,11 @@ Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::get("perfil",[UserController::class, "perfil"])->name("perfil");
+Route::get("perfil/editar",[UserController::class, "editar"])->name("perfil.editar");
+Route::put("perfil/editar",[UserController::class, "update"])->name("perfil.update");
+
 });
 });
 

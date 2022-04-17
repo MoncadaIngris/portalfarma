@@ -278,7 +278,9 @@
                       <img src="{{ asset(Auth()->user()->empleados->fotografia) }}" alt="">{{Auth()->user()->name}}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button style="border: none; outline:none;text-align: left" class="dropdown-item" >Action</button><br>
+                      <button style="border: none; outline:none;text-align: left" class="dropdown-item" onclick="window.location='{{route('perfil')}}'">
+                        Perfil
+                      </button><br>
                       <form action="{{route('logout')}}" method="POST">
                         @csrf
                         <button type="submit" style="border: none; outline:none;text-align: left" class="dropdown-item" >Cerrar Sesion</button>
