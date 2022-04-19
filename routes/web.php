@@ -328,3 +328,7 @@ Auth::routes();
 
 
 
+// ruta para usuario
+//ruta index
+Route::get('/usuarios', [UserController::class, 'index'])
+    ->name('usuarios.index');

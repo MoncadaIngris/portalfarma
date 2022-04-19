@@ -251,7 +251,7 @@
                         <li><a href="{{route('registrar')}}">Nuevo Usuario</a></li>
                         @endcan
                         @can('usuarios_index')
-                        <li><a href="#"> Lista De usuarios</a></li>
+                        <li><a href="{{route('usuarios.index')}}"> Lista De usuarios</a></li>
                         @endcan                        
                       </ul>
                     </li>
