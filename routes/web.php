@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProveedorController;
@@ -34,7 +35,7 @@ Route::middleware("auth")->group(function () {
 
     Route::middleware("primeraclave")->group(function () {
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('welcome');
 })->name('welcome');
 
@@ -305,8 +306,7 @@ Route::get('/permisos', [PermisoController::class, 'index'])
 Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
 ->name("permisos.edit")->where('id', '[0-9]+');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get("/", [HomeController::class, "index"])->name('home');
 
 Route::get("perfil",[UserController::class, "perfil"])->name("perfil");
 Route::get("perfil/editar",[UserController::class, "editar"])->name("perfil.editar");
