@@ -11,52 +11,49 @@
     @endif
 
     <div> <br> <br>
-
         <center>
             <form role="form" id="Formulario" action="" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                @foreach ($errors->all() as $error)
-                    <p class="text-danger">{{ $error }}</p>
-                @endforeach
-
-                <div class="form-group row">
-                    <label for="current_password" class="col-sm-2 col-form-label">{{ __('Contraseña actual:') }}</label>
-                    <div class="col-sm-5">
-                        <input placeholder="" id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" required>
-
-                        @error('current_password')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                <label for="confirm_password" class="col-sm-4 col-form-label">{{ __('Contraseña Actual:') }}</label>
+                <div class="input-group" style="width: 40%; margin-right: 1110px" >
+                    <input placeholder="" id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" required>
+                    <span class="input-group-btn">
+                        <button id="show_current_password" class="btn btn-primary" type="button" onclick="mostrarCurrentPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                    </span>
+                    @error('current_password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
-                <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">{{ __('Nueva contraseña:') }}</label>
-                    <div class="col-sm-5">
-                        <input placeholder="" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                <label for="confirm_password" class="col-sm-4 col-form-label">{{ __('Nueva Contraseña:') }}</label>
+                <div class="input-group" style="width: 40%; margin-right: 1110px" >
 
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
+                    <input id="password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="password" required>
+                    <span class="input-group-btn">
+                        <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                    </span>
+
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
-                <div class="form-group row">
-                    <label for="confirm_password" class="col-sm-2 col-form-label">{{ __('Confirmar contraseña:') }}</label>
-                    <div class="col-sm-5">
-                        <input placeholder="" id="confirm_password" type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" required autocomplete="new-password">
-
-                        @error('confirm_password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
+                <label for="confirm_password" class="col-sm-4 col-form-label">{{ __('Confirmar Contraseña:') }}</label>
+                <div class="input-group" style="width: 40%; margin-right: 1110px" >
+                    <input placeholder="" id="confirm_password" type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" required autocomplete="new-password">
+                    <span class="input-group-btn">
+                        <button id="show_confirm_password" class="btn btn-primary" type="button" onclick="mostrarConfirmPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                    </span>
+                    @error('confirm_password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
@@ -71,5 +68,40 @@
             </form>
         </center>
     </div>
+
+    <script type="text/javascript">
+        function mostrarCurrentPassword(){
+            var x = document.getElementById("current_password");
+            if(x.type == "password"){
+                x.type = "text";
+                $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            }else{
+                x.type = "password";
+                $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+        }
+
+        function mostrarPassword(){
+            var y = document.getElementById("password");
+            if(y.type == "password"){
+                y.type = "text";
+                $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            }else{
+                y.type = "password";
+                $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+        }
+
+        function mostrarConfirmPassword(){
+            var z = document.getElementById("confirm_password");
+            if(z.type == "password"){
+                z.type = "text";
+                $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            }else{
+                z.type = "password";
+                $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+        }
+    </script>
 @stop
 
