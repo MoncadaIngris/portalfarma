@@ -18,7 +18,7 @@
                 <img src="images/banner_empleados.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title">Empleados</h5>
-                <p class="card-text">Existen {{$empleados}} empleados en los registros.</p>
+                <p class="card-text">Existen  empleados en los registros.</p>
                 <a href="/empleados/nuevo" class="btn btn-primary">Añadir</a>
                 <a href="/empleados" class="btn btn-success">Listar</a>
                 </div>
@@ -30,7 +30,7 @@
                 <img src="images/banner_proveedores.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Proveedores</h5>
-                    <p class="card-text">Existen {{$proveedores}}  proveedores en los registros.</p>
+                    <p class="card-text">Existen   proveedores en los registros.</p>
                     <a href="/proveedor/nuevo" class="btn btn-primary">Añadir</a>
                     <a href="/proveedor" class="btn btn-success">Listar</a>
                 </div>
@@ -42,7 +42,7 @@
                 <img src="images/banner_clientes.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Clientes</h5>
-                    <p class="card-text">Existen {{$clientes}} clientes en los registros.</p>
+                    <p class="card-text">Existen  clientes en los registros.</p>
                     <a href="clientes/nuevo" class="btn btn-primary">Añadir</a>
                     <a href="/clientes" class="btn btn-success">Listar</a>
                 </div>
@@ -54,7 +54,7 @@
                 <img src="images/banner_productos.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Productos</h5>
-                    <p class="card-text">Existen {{$productos}}  productos en los registros.</p>
+                    <p class="card-text">Existen   productos en los registros.</p>
                     <a href="/productos/nuevo" class="btn btn-primary">Añadir</a>
                     <a href="/productos" class="btn btn-success">Listar</a>
                 </div>
