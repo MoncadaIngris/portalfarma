@@ -56,7 +56,7 @@ Perfil del usuario: {{auth()->user()->name}}
     </div>
     <br><br><br>
     <div>
-        <label style="float: left;width: 40%;line-height: 35px" for="">Telefono personal: </label>
+        <label style="float: left;width: 40%;line-height: 35px" for="">Teléfono personal: </label>
         <input style="float: left;width: 60%;" type="text" class="form-control" value="{{auth()->user()->empleados->telefono_personal}}" disabled>
     </div>
     <br><br><br>
@@ -66,7 +66,7 @@ Perfil del usuario: {{auth()->user()->name}}
     </div>
     <br><br><br>
     <div>
-        <label style="float: left;width: 40%;line-height: 35px" for="">Funcion: </label>
+        <label style="float: left;width: 40%;line-height: 35px" for="">Función: </label>
         <?php $i = 1?>
         <textarea style="float: left;width: 60%;" name="" id="" cols="30" rows="3" class="form-control" disabled >@forelse (auth()->user()->getRoleNames() as $roles) {{$i}}. {{$roles}}  <?php $i ++?>
 

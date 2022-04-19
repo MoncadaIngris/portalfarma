@@ -22,9 +22,9 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Nombres</th>
             <th scope="col" class="sorting" style="text-align: center">Apellidos</th>
-            <th scope="col" class="sorting" style="text-align: center">Telefono</th>
+            <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
             <th scope="col" class="sorting" style="text-align: center">Identidad</th>
-            <th scope="col" class="sorting" style="text-align: center">Funcion</th>
+            <th scope="col" class="sorting" style="text-align: center">Función</th>
            
         </tr>
         </thead>
