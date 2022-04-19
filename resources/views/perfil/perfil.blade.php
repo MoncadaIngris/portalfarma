@@ -68,8 +68,8 @@ Perfil del usuario: {{auth()->user()->name}}
     <div>
         <label style="float: left;width: 40%;line-height: 35px" for="">Funcion: </label>
         <?php $i = 1?>
-        <textarea style="float: left;width: 60%;" name="" id="" cols="30" rows="3" class="form-control" disabled >@forelse (auth()->user()->getRoleNames() as $roles) {{$i}}. {{$roles}}  <?php $i ++?> 
-@empty Sin funciones @endforelse 
+        <textarea style="float: left;width: 60%;" name="" id="" cols="30" rows="3" class="form-control" disabled >@forelse (auth()->user()->getRoleNames() as $roles) {{$i}}. {{$roles}}  <?php $i ++?>
+@empty Sin funciones @endforelse
         </textarea>
     </div>
 
@@ -80,6 +80,7 @@ Perfil del usuario: {{auth()->user()->name}}
     <div class="item form-group">
         <div class="col-md-6 col-sm-6 offset-md-3">
             <a style="color: black" href="{{route('perfil.editar')}}" type="button" class="btn btn-guardar">Editar datos</a>
+            <a style="color: whitesmoke" href="{{route('perfil.nueva_contrasenia')}}" type="button" class="btn btn-dark">Editar contraseña</a>
             <button class="btn btn-regresar" type="button" onclick="window.location='{{route('welcome')}}'">Regresar</button>
         </div>
     </div>

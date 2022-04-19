@@ -99,10 +99,43 @@ class UserController extends Controller
         }
     }
 
+    public function nueva_contrasenia(){
+        return view('perfil.nueva_contrasenia');
+    }
+
+    public function nueva_contrasenia_cambiar(Request $request){
+        try {
+            $valid = validator($request->only('current_password', 'password', 'confirm_password'), [
+                'current_password' => 'required|string|min:8',
+                'password' => 'required|string|min:6|different:current_password',
+                'confirm_password' => 'required_with:password|same:password|string|min:8',
+            ], [
+                'confirm_password.required_with' => 'Confirm password is required.'
+            ]);
+
+            if ($valid->fails()) {
+                return redirect()->route('perfil.nueva_contrasenia')->with('error', 'La nueva contraseña y la confirmación no coinciden');
+            }
+
+            if (Hash::check($request->get('current_password'), auth()->user()->password)) {
+                $usuario = User::findOrFail(auth()->user()->id);
+
+                $usuario->password = bcrypt($request->input('password'));
+                $usuario->estado = 1;
+                if ($usuario->save()) {
+                    return redirect()->route('perfil')->with('mensaje', 'Tu contraseña fue actualizada exitosamente.');
+                }
+            } else {
+                return redirect()->route('perfil.nueva_contrasenia')->with('error', 'La contraseña actual que ingresó es incorrecta.');
+            }
+        } catch (Exception $e) {
+            return redirect()->route('perfil.nueva_contrasenia')->with('error', 'Por favor intente nuevamente.');
+        }
+    }
+
+
     public function perfil(){
-
         return view('perfil.perfil');
-
     }
 
     public function editar(){
@@ -163,7 +196,7 @@ class UserController extends Controller
             $usuario->email = $request->input('correo_electronico');
 
             $creado2 = $usuario->save();
-            
+
             if($creado2){
                 return redirect()->route('perfil')
                 ->with('mensaje', 'Los datos fueron editados exitosamente');

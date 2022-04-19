@@ -318,9 +318,14 @@ Route::put("perfil/editar",[UserController::class, "update"])->name("perfil.upda
 Route::put("/permisos/{id}/edit", [PermisoController::class, "update"])
 ->name("permisos.edit")->where('id', '[0-9]+');
 
-Route::get('primercambio', [UserController::class, 'primercambio'])->name('primercambio')->middleware('restringirclave');
-    Route::post('primercambio', [UserController::class, 'primercambiar'])->middleware('restringirclave');
+Route::get('primercambio', [UserController::class, 'primercambio'])
+    ->name('primercambio')->middleware('restringirclave');
 
+Route::post('primercambio', [UserController::class, 'primercambiar'])
+    ->middleware('restringirclave');
+
+Route::get('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasenia"]);
+Route::post('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasenia_cambiar"])->name('perfil.nueva_contrasenia');
 
 //rutas para login
 Auth::routes();
