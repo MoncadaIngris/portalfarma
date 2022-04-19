@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
+use App\Models\Empleado;
+use App\Models\Producto;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +27,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $empleados = Empleado::all()->count();
+        $proveedores = Proveedor::all()->count();
+        $clientes = Cliente::all()->count();
+        $productos = Producto::all()->count();
+
+        return view('welcome')
+            ->with("empleados", $empleados)
+            ->with("proveedores", $proveedores)
+            ->with("clientes", $clientes)
+            ->with("productos", $productos);
     }
 }
