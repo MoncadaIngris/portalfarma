@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProveedorController;
@@ -32,19 +31,19 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::middleware("auth")->group(function () {
+
     Route::middleware("primeraclave")->group(function () {
-        Route::get('/home', function () {
-            return view('welcome');
-        })->name('welcome');
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
 
 //ruta index
 Route::get('/empleados', [EmpleadoController::class, 'index'])
     ->name('empleados.index');
-
 //ruta  create
 Route::get('/empleados/nuevo',[EmpleadoController::class, 'create'])
     ->name('empleados.create');
-
 //ruta guardar
 Route::post('/empleados/nuevo',[EmpleadoController::class, 'store'])
     ->name('empleados.store');
@@ -55,7 +54,6 @@ Route::get("/empleados/{id}/edit", [EmpleadoController::class, "edit"])
  //ruta editar
 Route::put("/empleados/{id}/edit", [EmpleadoController::class, "update"])
     ->name("empleado.edit")->where('id', '[0-9]+');
-
  //ruta detalle
 Route::get("/empleados/{id}", [EmpleadoController::class, "show"])
     ->name("empleado.show")->where('id', '[0-9]+');
@@ -72,10 +70,10 @@ Route::get('/empleados/desactivados', [EmpleadoController::class, 'desactivados'
 Route::get('/empleados/{id}/activar', [EmpleadoController::class, 'activar'])
     ->name('empleados.activar')->where('id', '[0-9]+');
 
+
 //ruta  create
 Route::get('/proveedor/nuevo',[ProveedorController::class, 'create'])
 ->name('proveedor.create');
-
 //ruta guardar
 Route::post('/proveedor/nuevo',[ProveedorController::class, 'store'])
 ->name('proveedor.store');
@@ -83,10 +81,10 @@ Route::post('/proveedor/nuevo',[ProveedorController::class, 'store'])
 //ruta  create
 Route::get('/proveedor/nuevo/{prov?}',[ProveedorController::class, 'create'])
 ->name('proveedor.create2')->where('prov', '[0-9]+');
-
 //ruta guardar
 Route::post('/proveedor/nuevo/{prov?}',[ProveedorController::class, 'store'])
 ->name('proveedor.store2')->where('prov', '[0-9]+');
+
 
 //Ruta Formulario proveedor
 Route::get('/proveedor', [ProveedorController::class, 'index'])
@@ -99,11 +97,11 @@ Route::get("/proveedor/{id}/edit", [ProveedorController::class, "edit"])
 Route::put("/proveedor/{id}/edit", [ProveedorController::class, "update"])
     ->name("proveedor.edit")->where('id', '[0-9]+');
 
-//Ruta detalle proveedor
+    //Ruta detalle proveedor
 Route::get("/proveedor/{id}", [ProveedorController::class, "show"])
     ->name("proveedor.show")->where('id', '[0-9]+');
 
-//ruta lista desactivados de proveedor
+    //ruta lista desactivados de proveedor
 Route::get('/proveedor/desactivados', [ProveedorController::class, 'desactivados'])
 ->name('proveedor.desactivado');
 
@@ -114,6 +112,8 @@ Route::get('/proveedor/{id}/activar', [ProveedorController::class, 'activar'])
 // Ruta desactivar proveedor
     Route::get('/proveedor/{id}/desactivado', [ProveedorController::class, 'desactivar'])
     ->name('proveedor.desactivar')->where('id', '[0-9]+');
+
+
 
     //ruta index productos
 Route::get('/productos', [ProductoController::class, 'index'])
@@ -305,7 +305,8 @@ Route::get('/permisos', [PermisoController::class, 'index'])
 Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
 ->name("permisos.edit")->where('id', '[0-9]+');
 
-Route::get("/", [HomeController::class, "index"])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::get("perfil",[UserController::class, "perfil"])->name("perfil");
 Route::get("perfil/editar",[UserController::class, "editar"])->name("perfil.editar");
@@ -328,6 +329,9 @@ Route::post('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasen
 
 //rutas para login
 Auth::routes();
+
+
+
 
 // ruta para usuario
 //ruta index

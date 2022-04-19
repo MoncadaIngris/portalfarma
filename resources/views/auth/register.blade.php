@@ -97,7 +97,7 @@ Añadir Usuario
             <select name="funcion[]" id="funcion" required="required" class="form-control selectpicker" 
            data-live-search="true" multiple>
                 @foreach ($funcion as $e)
-                    <option value="{{$e->descripcion}}">{{$e->descripcion}}</option>
+                    <option value="{{$e->name}}">{{$e->name}}</option>
                 @endforeach
             </select>
         </div>

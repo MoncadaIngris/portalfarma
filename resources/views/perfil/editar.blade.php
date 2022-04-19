@@ -106,7 +106,7 @@ Editar datos del usuario: {{auth()->user()->name}}
                 <label style="float: left;width: 40%;line-height: 35px" for="">Funcion: </label>
                 <?php $i = 1?>
                 <textarea style="float: left;width: 60%;" name="" id="" cols="30" rows="3" class="form-control" disabled >@forelse (auth()->user()->getRoleNames() as $roles) {{$i}}. {{$roles}}  <?php $i ++?> 
-        @empty Sin funciones @endforelse 
+@empty Sin funciones @endforelse 
                 </textarea>
             </div>
         

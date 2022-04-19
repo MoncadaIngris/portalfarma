@@ -80,7 +80,6 @@
                 $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
             }
         }
-
         function mostrarPassword(){
             var y = document.getElementById("password");
             if(y.type == "password"){
@@ -91,7 +90,6 @@
                 $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
             }
         }
-
         function mostrarConfirmPassword(){
             var z = document.getElementById("confirm_password");
             if(z.type == "password"){
@@ -104,4 +102,3 @@
         }
     </script>
 @stop
-
