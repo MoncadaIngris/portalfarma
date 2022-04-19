@@ -54,7 +54,7 @@ class UserController extends Controller
 
         $rules=[
             'empleado' => ['required', 'string', 'exists:empleados,id','unique:users,id_empleado'],
-            'funcion' => ['required', 'exists:funcions,descripcion'],
+            'funcion' => ['required', 'exists:roles,name'],
         ];
 
         $mensaje=[
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         Mail::to($empleado->correo_electronico)->send(new EmergencyCallReceived($call));
 
-        return redirect()->route('home');
+        return redirect()->route('usuarios.index');
     }
 
     public function showRegistrationForm()
@@ -96,7 +96,7 @@ class UserController extends Controller
         ->where('empleados.estado',0)
         ->whereNull('users.id')
         ->get();
-        $funcion=Funcion::all();
+        $funcion=DB::table('roles')->where('id','>',2)->get();
         return view('auth.register', compact('empleados','funcion'));
     }
     public function primercambio(){

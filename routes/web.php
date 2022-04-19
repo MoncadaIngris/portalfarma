@@ -312,6 +312,14 @@ Route::get("perfil",[UserController::class, "perfil"])->name("perfil");
 Route::get("perfil/editar",[UserController::class, "editar"])->name("perfil.editar");
 Route::put("perfil/editar",[UserController::class, "update"])->name("perfil.update");
 
+//ruta index
+Route::get('/usuarios', [UserController::class, 'index'])
+    ->name('usuarios.index');
+
+    Route::get('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasenia"]);
+Route::post('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasenia_cambiar"])->name('perfil.nueva_contrasenia');
+
+
 });
 });
 
@@ -324,8 +332,6 @@ Route::get('primercambio', [UserController::class, 'primercambio'])
 Route::post('primercambio', [UserController::class, 'primercambiar'])
     ->middleware('restringirclave');
 
-Route::get('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasenia"]);
-Route::post('perfil/nueva_contrasenia', [UserController::class, "nueva_contrasenia_cambiar"])->name('perfil.nueva_contrasenia');
 
 //rutas para login
 Auth::routes();
@@ -334,6 +340,3 @@ Auth::routes();
 
 
 // ruta para usuario
-//ruta index
-Route::get('/usuarios', [UserController::class, 'index'])
-    ->name('usuarios.index');

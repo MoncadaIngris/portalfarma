@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="confirm_password" class="col-sm-2 col-form-label">{{ __('Confirmar contraseña:') }}</label>
+                    <label for="confirm_password" class="col-sm-2 col-form-label" style="font-size: 12px">{{ __('Confirmar contraseña:') }}</label>
                     <div class="col-sm-5">
                         <input placeholder="" id="confirm_password" type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" required autocomplete="new-password">
 
