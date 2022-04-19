@@ -27,6 +27,27 @@ class UserController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+    public function index()
+    {
+       // $users = User::get();
+
+       // return view('usuarios/index')->with('users', $users);
+
+       
+       $users =User::select('users.*',DB::raw("empleados.apellidos as apellidos"),
+         DB::raw("empleados.telefono_personal as telefono"),
+         DB::raw("empleados.DNI as identidad"))
+       ->join("empleados","empleados.id","=","users.id_empleado")
+      
+       ->get();
+    
+       return view('usuarios/index')->with('users', $users);
+
+    }
+
+
+
     public function create(Request $request)
     {
         abort_if(Gate::denies('usuarios_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
