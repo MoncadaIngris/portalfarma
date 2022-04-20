@@ -75,7 +75,7 @@ Añadir Usuario
     </div>
 
     <div class="item form-group">
-        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">correo electronico: <span class="required">*</span>
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Correo electrónico: <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
             <input maxlength="50" type="text" id="email" name="email" required="required" class="form-control" readonly>

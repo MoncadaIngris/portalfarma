@@ -86,7 +86,7 @@ class UserController extends Controller
 
         Mail::to($empleado->correo_electronico)->send(new EmergencyCallReceived($call));
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('mensaje', 'El usuario fue agregado exitosamente');
     }
 
     public function showRegistrationForm()
