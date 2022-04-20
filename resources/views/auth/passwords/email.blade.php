@@ -27,17 +27,22 @@
     @else
     @endif
 
-      <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo electronico">
+      <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Correo electrónico">
         @if($errors->has('email'))
           <span class="invalid-feedback" role="alert" style="color: rgb(255, 0, 0);font-size: 14px">
+            @if ($errors->first('email') == 'El campo email es requerido.')
+            <strong><center>El campo correo electrónico es requerido.</center></strong>
+            @else
             <strong><center>{{$errors->first('email')}}</center></strong>
+            @endif
+            
           </span>
         @else
         <br>
         @endif
       
       <button type="submit" class="btn btn-primary">
-        Enviar correo de recuperacion
+        Enviar correo de recuperación
     </button>
     <a href="{{route('login')}}" style="text-decoration: none">
         <span id="forgotten"><strong>Cancelar</strong></span>
