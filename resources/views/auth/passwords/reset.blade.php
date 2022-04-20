@@ -5,7 +5,7 @@
 
 <style>
     #container{
-        height: 320px !important;
+        height: 340px !important;
     }
     input{
         margin-top: 15px !important;
@@ -14,7 +14,7 @@
         margin-top: -40px !important;
     }
     label{
-        color: white !important;
+        color: rgb(0, 0, 0) !important;
     }
 </style>
 
@@ -33,17 +33,20 @@
         </span>
     @enderror
 
-    <center><label for="">Ingrese su nueva contraseña: </label></center>
-    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+    <center><label for=""><strong>Ingrese su nueva contraseña:</strong> </label></center>
+    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
+    @if($errors->has('password'))
+    @if ($errors->first('password')=='El campo password es requerido.')
+            <strong style="margin-left: 10%;color: red">El campo contraseña es requerido.</strong>
+        @else
+            <strong style="margin-left: 10%;color: red">{{$errors->first('password')}}</strong>
+        @endif
+    @else
+        <br>
+    @endif
 
-    @error('password')
-        <span class="invalid-feedback" role="alert" style="color: red">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-
-    <center><label for="">Vuelva a ingrese su nueva contraseña: </label></center>
-    <input id="password-confirm"  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+    <center><label for=""><strong>Vuelva a ingrese su nueva contraseña: </strong></label></center>
+    <input id="password-confirm"  type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
 
     
       

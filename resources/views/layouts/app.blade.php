@@ -9,7 +9,7 @@
 <body>
     <style>
         html { 
-        background: url(http://cdn.magdeleine.co/wp-content/uploads/2014/05/3jPYgeVCTWCMqjtb7Dqi_IMG_8251-1400x933.jpg) no-repeat center center fixed; 
+        background: url({{asset('fondo4.jpg')}}) no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -85,7 +85,7 @@
         margin-top: 0px;
         text-align: center;
         font-size: 40px;
-        color: #ddd;
+        color: #000;
         text-shadow: 3px 3px 10px #000;
         }
 
@@ -97,7 +97,7 @@
         display: block;
         margin: 9px auto;
         font-size: 17px;
-        color: #fff;
+        color: #000;
         padding: 8px;
         border-radius: 6px;
         border: none;
@@ -116,7 +116,7 @@
 
         /* Placeholders */
         ::-webkit-input-placeholder {
-        color: #ddd;  }
+            color: #000;  }
         :-moz-placeholder { /* Firefox 18- */
         color: red;  }
         ::-moz-placeholder {  /* Firefox 19+ */
@@ -129,7 +129,7 @@
         font-family: 'Open Sans Condensed', sans-serif;
         text-align: center;
         padding: 4px 8px;
-        background: rgba(107,255,3,0.3);
+        background: rgba(73, 138, 27, 0.973);
         }
 
         button:hover{
@@ -195,7 +195,7 @@
         }
 
         #forgotten:hover{
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         }
 
         #forgotten-container{

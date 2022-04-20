@@ -8,22 +8,26 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <input type="email" name="email" placeholder="Correo electrónico">
-        @error('email')
-            <span class="invalid-feedback" role="alert" style="color: white">
-                {{ $message }}
-            </span>
-        @enderror
+          @if($errors->has('email'))
+                @if ($errors->first('email')=='El campo email es requerido.')
+                  <strong style="margin-left: 10%;color: red">Correo electrónico incorrecto</strong>
+                @else
+                <strong style="margin-left: 10%;color: red">{{$errors->first('email')}}</strong>
+                @endif
+          @else
+          <br>
+          @endif
         <input type="password" name="password" placeholder="Contraseña">
-        @error('password')
-            <span class="invalid-feedback" role="alert" style="color: white">
-                {{ $message }}
-            </span>
-        @enderror
-        <br>
+          @if($errors->has('password'))
+                <strong style="margin-left: 10%;color: red">Contraseña incorrecta</strong>
+                @else
+          <br>
+          @endif
+
       <button type="submit">Iniciar Sesión</button>
       <div id="remember-container">
 <a href="{{route('password.request')}}" style="text-decoration: none">
-  <span id="forgotten"  style="color: white"><strong>Recuperar Contraseña</strong> </span>
+  <span id="forgotten"  ><strong>Recuperar Contraseña</strong> </span>
 </a>
 
       </div>
