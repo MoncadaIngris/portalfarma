@@ -32,11 +32,11 @@ Editar datos del usuario: {{auth()->user()->name}}
             </div>
             <br><br><br>
             <div>
-                <label style="float: left;width: 40%;line-height: 35px" for="">Correo electronico: </label>
+                <label style="float: left;width: 40%;line-height: 35px" for="">Correo electrònico: </label>
                 <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
                     placeholder="Ingrese el correo electrónico" style="float: left;width: 60%;"  
                     pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
-                title="Ingrese un correo electronico valido" 
+                title="Ingrese un correo electrònico valido" 
                     @if(old("correo_electronico"))
                            value="{{old("correo_electronico")}}"
                            @else
@@ -45,7 +45,7 @@ Editar datos del usuario: {{auth()->user()->name}}
             </div>
             <br><br><br>
             <div>
-                <label style="float: left;width: 40%;line-height: 35px" for="">Telefono alternativo: </label>
+                <label style="float: left;width: 40%;line-height: 35px" for="">Telèfono alternativo: </label>
                 <input maxlength="8" type="tel" id="telefono_alternativo" name="telefono_alternativo" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            placeholder="Ingrese los nombres" style="float: left;width: 60%;"
@@ -64,7 +64,7 @@ Editar datos del usuario: {{auth()->user()->name}}
             </div>
             <br><br><br>
             <div>
-                <label style="float: left;width: 40%;line-height: 35px" for="">Direccion: </label>
+                <label style="float: left;width: 40%;line-height: 35px" for="">Direcciòn: </label>
                 <textarea style="float: left;width: 60%;" maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
                     >@if(old("direccion")){{old("direccion")}}@else{{auth()->user()->empleados->direccion}}@endif</textarea>
             </div>
@@ -84,7 +84,7 @@ Editar datos del usuario: {{auth()->user()->name}}
             </div>
             <br><br><br>
             <div>
-                <label style="float: left;width: 40%;line-height: 35px" for="">Telefono personal: </label>
+                <label style="float: left;width: 40%;line-height: 35px" for="">Telèfono personal: </label>
                 <input maxlength="8" type="number" id="telefono_personal" name="telefono_personal" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            placeholder="Ingrese el teléfono personal" style="float: left;width: 60%;"
@@ -103,7 +103,7 @@ Editar datos del usuario: {{auth()->user()->name}}
             </div>
             <br><br><br>
             <div>
-                <label style="float: left;width: 40%;line-height: 35px" for="">Funcion: </label>
+                <label style="float: left;width: 40%;line-height: 35px" for="">Funciòn: </label>
                 <?php $i = 1?>
                 <textarea style="float: left;width: 60%;" name="" id="" cols="30" rows="3" class="form-control" disabled >@forelse (auth()->user()->getRoleNames() as $roles) {{$i}}. {{$roles}}  <?php $i ++?> 
 @empty Sin funciones @endforelse 
