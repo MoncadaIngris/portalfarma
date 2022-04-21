@@ -283,7 +283,7 @@
                       </button><br>
                       <form action="{{route('logout')}}" method="POST">
                         @csrf
-                        <button type="submit" style="border: none; outline:none;text-align: left" class="dropdown-item" >Cerrar Sesion</button>
+                        <button type="submit" style="border: none; outline:none;text-align: left" class="dropdown-item" >Cerrar Sesiòn</button>
                       </form>
                     </div>
                   </li>
