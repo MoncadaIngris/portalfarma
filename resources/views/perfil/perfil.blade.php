@@ -22,12 +22,12 @@ Perfil del usuario: {{auth()->user()->name}}
     </div>
     <br><br><br>
     <div>
-        <label style="float: left;width: 40%;line-height: 35px" for="">Correo electronico: </label>
+        <label style="float: left;width: 40%;line-height: 35px" for="">Correo electrònico: </label>
         <input style="float: left;width: 60%;" type="text" class="form-control" value="{{auth()->user()->empleados->correo_electronico}}" disabled>
     </div>
     <br><br><br>
     <div>
-        <label style="float: left;width: 40%;line-height: 35px" for="">Telefono alternativo: </label>
+        <label style="float: left;width: 40%;line-height: 35px" for="">Telèfono alternativo: </label>
         <input style="float: left;width: 60%;" type="text" class="form-control" value="{{auth()->user()->empleados->telefono_alternativo}}" disabled>
     </div>
     <br><br><br>
@@ -37,7 +37,7 @@ Perfil del usuario: {{auth()->user()->name}}
     </div>
     <br><br><br>
     <div>
-        <label style="float: left;width: 40%;line-height: 35px" for="">Direccion: </label>
+        <label style="float: left;width: 40%;line-height: 35px" for="">Direcciòn: </label>
         <textarea style="float: left;width: 60%;" name="" id="" cols="30" rows="3" class="form-control" disabled >{{auth()->user()->empleados->direccion}}</textarea>
     </div>
 
