@@ -106,6 +106,11 @@ class UserController extends Controller
     public function primercambiar(Request $request){
         $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'password.required' => 'El campo contraseña es obligatorio.',
+            'password.string' => 'El campo contraseña es invalido .',
+            'password.min' => 'El campo contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'Las contraseñas ingresadas no coinciden.',
         ]);
 
         $usuario = User::findOrFail(auth()->user()->id);

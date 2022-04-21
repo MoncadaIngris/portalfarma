@@ -45,7 +45,7 @@
         Enviar correo de recuperación
     </button>
     <a href="{{route('login')}}" style="text-decoration: none">
-        <span id="forgotten style="color: white"><strong>Cancelar</strong></span>
+        <span id="forgotten" ><strong>Cancelar</strong></span>
       </a>
     </div>
 </form>
