@@ -48,7 +48,7 @@ Editar datos del usuario: {{auth()->user()->name}}
                 <label style="float: left;width: 40%;line-height: 35px" for="">Telèfono alternativo: </label>
                 <input maxlength="8" type="tel" id="telefono_alternativo" name="telefono_alternativo" required="required" class="form-control"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                           placeholder="Ingrese los nombres" style="float: left;width: 60%;"
+                           placeholder="Ingrese el número de telèfono alternativo" style="float: left;width: 60%;"
                            @if(old("telefono_alternativo"))
                            value="{{old("telefono_alternativo")}}"
                            @else
