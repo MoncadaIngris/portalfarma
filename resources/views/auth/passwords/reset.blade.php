@@ -51,7 +51,7 @@
     
       
     <button type="submit" class="btn btn-primary">
-        {{ __('Reiniciar contraseña') }}
+        {{ __('Cambiar contraseña') }}
     </button>
     <a href="{{route('login')}}" style="text-decoration: none">
         <span id="forgotten"><strong>Cancelar</strong></span>
