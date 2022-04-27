@@ -24,6 +24,7 @@
             <th scope="col" class="sorting" style="text-align: center">Apellidos</th>
             <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
             <th scope="col" class="sorting" style="text-align: center">Identidad</th>
+            <th scope="col" class="sorting" style="text-align: center">Correo Electrónico</th>
             <th scope="col" class="sorting" style="text-align: center">Función</th>
            
         </tr>
@@ -36,6 +37,7 @@
                 <td>{{$user->apellidos}}</td>
                 <td>{{$user->telefono}}</td>
                 <td>{{$user->identidad}}</td>
+                <td>{{$user->email}}</td>
                 <td>@forelse ($user->getRoleNames() as $rol)
                     <span class="badge">{{$rol}}</span>
                     @empty
