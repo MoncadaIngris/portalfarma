@@ -35,9 +35,7 @@ Route::middleware("auth")->group(function () {
 
     Route::middleware("primeraclave")->group(function () {
 
-Route::get('/home', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/home', [GraficoController::class, 'welcome'])->name('welcome');
 
 //ruta index
 Route::get('/empleados', [EmpleadoController::class, 'index'])

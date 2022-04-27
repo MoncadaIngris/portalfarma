@@ -4,11 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto_Vendido;
+use App\Models\Empleado;
+use App\Models\Proveedor;
+use App\Models\Cliente;
+use App\Models\Producto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class GraficoController extends Controller
 {
+
+    public function welcome(){
+        $empleado = Empleado::count();
+        $proveedores = Proveedor::count();
+        $clientes = Cliente::count();
+        $productos = Producto::count();
+        return view('welcome')
+        ->with('empleado', $empleado)
+        ->with('proveedores', $proveedores)
+        ->with('clientes', $clientes)
+        ->with('productos', $productos);
+    }
+
     public function producto(Request $request){
         abort_if(Gate::denies('grafico_producto'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 

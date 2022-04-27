@@ -48,7 +48,7 @@ Añadir Usuario
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Empleado: <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
-            <select name="empleado" id="empleado" required="required" class="form-control"
+            <select name="empleado" id="empleado" class="form-control"
             onchange="llenar()">
                 <option style="display: none" value="">Seleccione un empleado</option>
                 @foreach ($empleados as $e)
@@ -94,7 +94,7 @@ Añadir Usuario
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Función: <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
-            <select name="funcion[]" id="funcion" required="required" class="form-control selectpicker" 
+            <select name="funcion[]" id="funcion" class="form-control selectpicker" 
            data-live-search="true" multiple>
                 @foreach ($funcion as $e)
                     <option value="{{$e->name}}">{{$e->name}}</option>
