@@ -304,7 +304,7 @@ Route::get('/permisos', [PermisoController::class, 'index'])
 Route::get("/permisos/{id}/edit", [PermisoController::class, "edit"])
 ->name("permisos.edit")->where('id', '[0-9]+');
 
-Route::get("/", [HomeController::class, "index"])->name('home');
+Route::get("/", [GraficoController::class, 'welcome'])->name('home');
 
 Route::get("perfil",[UserController::class, "perfil"])->name("perfil");
 Route::get("perfil/editar",[UserController::class, "editar"])->name("perfil.editar");
