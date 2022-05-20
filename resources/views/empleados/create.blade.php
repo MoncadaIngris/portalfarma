@@ -23,7 +23,7 @@ Añadir Empleado
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
-                value="{{old('nombres')}}"
+                value="{{old('nombres')}}" onkeydown="return /[a-z, ]/i.test(event.key)"
                 placeholder="Ingrese los nombres">
             </div>
         </div>
@@ -32,7 +32,7 @@ Añadir Empleado
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
-                value="{{old('apellidos')}}"
+                value="{{old('apellidos')}}" onkeydown="return /[a-z, ]/i.test(event.key)"
                 placeholder="Ingrese los apellidos">
             </div>
         </div>
@@ -43,7 +43,7 @@ Añadir Empleado
                 <input maxlength="60" type="email" id="email" name="email" required="required" class="form-control"
                 value="{{old('email')}}"
                 placeholder="Ingrese el correo electrónico"
-                pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                pattern="^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
                 title="Ingrese un punto seguido de un dominio como por ejemplo .com .es .org">
             </div>
         </div>

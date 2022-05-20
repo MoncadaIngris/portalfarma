@@ -25,7 +25,7 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                    <input onkeydown="return /[a-z, ]/i.test(event.key)" maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
                            @if(old("nombres"))
                            value="{{old("nombres")}}"
                            @else
@@ -38,7 +38,7 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Apellidos: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
+                    <input onkeydown="return /[a-z, ]/i.test(event.key)" maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
                     placeholder="Ingrese los nombres"   
                         @if(old("apellidos"))
                            value="{{old("apellidos")}}"
@@ -53,7 +53,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="60" type="email" id="correo_electronico" name="correo_electronico" required="required" class="form-control"
                     placeholder="Ingrese el correo electrónico"      
-                    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                    pattern="^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
                 title="Ingrese un correo electronico valido" 
                     @if(old("correo_electronico"))
                            value="{{old("correo_electronico")}}"
