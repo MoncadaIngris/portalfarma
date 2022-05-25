@@ -244,6 +244,18 @@
                       </ul>
                       </li>
                     @endcan
+                    @can('jornada_index','jornada_nuevo')
+                    <li><a><i class="fa-solid fa-user-clock"></i>Jornada <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        @can('jornada_nuevo')
+                        <li><a href="{{route('jornada.create')}}">Nueva jornada</a></li>
+                        @endcan
+                        @can('jornada_index')
+                        <li><a href="{{route('jornada.index')}}"> Lista De jornadas</a></li>
+                        @endcan                        
+                      </ul>
+                    </li>
+                    @endcan
                     @can('usuarios_index','usuarios_nuevo')
                     <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
