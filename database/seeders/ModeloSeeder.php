@@ -28,6 +28,8 @@ class ModeloSeeder extends Seeder
             ['descripcion' => 'permisos'],
             ['descripcion' => 'roles'],
             ['descripcion' => 'usuarios'],
+
+            ['descripcion' => 'jornada'],
         ];
         foreach($datos as $conce){
             Modelo::create($conce);

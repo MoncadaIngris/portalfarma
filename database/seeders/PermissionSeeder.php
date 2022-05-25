@@ -214,6 +214,22 @@ class PermissionSeeder extends Seeder
             'name' => 'usuarios_nuevo',
             'id_partes' => 42,
         ]);
+
+        Permission::create([
+            'titulo' => 'Lista de jornadas',
+            'name' => 'jornada_index',
+            'id_partes' => 44,
+        ]);
+        Permission::create([
+            'titulo' => 'Nueva jornada',
+            'name' => 'jornada_nuevo',
+            'id_partes' => 45,
+        ]);
+        Permission::create([
+            'titulo' => 'Editar jornada',
+            'name' => 'jornada_editar',
+            'id_partes' => 46,
+        ]);
         
         Permission::create([
             'titulo' => 'Lista de permisos',
