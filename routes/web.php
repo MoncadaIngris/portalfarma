@@ -15,6 +15,7 @@ use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ProductoVendidoController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\JornadaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -309,6 +310,16 @@ Route::get("/", [GraficoController::class, 'welcome'])->name('home');
 Route::get("perfil",[UserController::class, "perfil"])->name("perfil");
 Route::get("perfil/editar",[UserController::class, "editar"])->name("perfil.editar");
 Route::put("perfil/editar",[UserController::class, "update"])->name("perfil.update");
+
+//ruta index
+Route::get('/jornada', [JornadaController::class, 'index'])
+    ->name('jornada.index');
+//ruta  create
+Route::get('/jornada/nuevo',[JornadaController::class, 'create'])
+    ->name('jornada.create');
+//ruta guardar
+Route::post('/jornada/nuevo',[JornadaController::class, 'store'])
+    ->name('jornada.store');
 
 });
 });
