@@ -16,6 +16,7 @@ use App\Http\Controllers\ProductoVendidoController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\JornadaController;
+use App\Http\Controllers\CalendarioController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -320,6 +321,25 @@ Route::get('/jornada/nuevo',[JornadaController::class, 'create'])
 //ruta guardar
 Route::post('/jornada/nuevo',[JornadaController::class, 'store'])
     ->name('jornada.store');
+
+    Route::get("/jornada/{id}/edit", [JornadaController::class, "edit"])
+    ->name("jornada.edit")->where('id', '[0-9]+');
+
+    Route::put("/jornada/{id}/edit", [JornadaController::class, "update"])
+    ->name("jornada.edit")->where('id', '[0-9]+');
+    
+
+    
+
+
+
+
+    //ruta  create
+Route::get('/calendario/nuevo',[CalendarioController::class, 'create'])
+->name('calendario.create');
+//ruta guardar
+Route::post('/calendario/nuevo',[CalendarioController::class, 'store'])
+->name('calendario.store');
 
 });
 });

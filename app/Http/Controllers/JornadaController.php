@@ -95,9 +95,12 @@ class JornadaController extends Controller
      * @param  \App\Models\Jornada  $jornada
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jornada $jornada)
+    public function edit($id)
     {
-        //
+        abort_if(Gate::denies('jornada_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
+        $jornadas = Jornada::findOrFail($id);
+        return view("jornada.update")->with("jornadas", $jornadas);
     }
 
     /**
@@ -107,9 +110,39 @@ class JornadaController extends Controller
      * @param  \App\Models\Jornada  $jornada
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateJornadaRequest $request, Jornada $jornada)
+    public function update(Request $request, $id)
     {
-        //
+        abort_if(Gate::denies('jornada_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
+        $rules=[
+            'nombres' => 'required|max:100',
+            'entrada' => 'required',
+            'salida' => 'required',
+        ];
+
+        $mensaje=[
+            'nombres.required' => 'El nombre no puede estar vacío',
+            'nombres.max' => 'El nombre es muy extenso',
+            'entrada.required' => 'La hora entrada no puede estar vacío',
+            'salida.required' => 'La hora salida no puede estar vacío',
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+
+        $jornada = new Jornada();
+
+        $jornada->nombre = $request->input('nombres');
+        $jornada->hora_entrada= $request->input('entrada');
+        $jornada->hora_salida = $request->input('salida');
+
+        $creado = $jornada->save();
+
+        if ($creado) {
+            return redirect()->route('jornada.index')
+                ->with('mensaje', 'La jornada fue editada exitosamente');
+        } else {
+
+        }
     }
 
     /**

@@ -71,7 +71,7 @@
                 @can('jornada_editar')
                 <td>
                     <center>
-            <a class="btn btn-editar" href=""><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="btn btn-editar" href="{{route("jornada.edit",["id"=>$jornada->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                     </center>
                 </td>
                 @endcan

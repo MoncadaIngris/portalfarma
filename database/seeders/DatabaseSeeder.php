@@ -26,5 +26,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeder::class);
         $this->call(RoleHasPermissionSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(JornadaSeeder::class);
+        $this->call(SemanaSeeder::class);
+        $this->call(CalendarioSeeder::class);
+        $this->call(CalendarioDetalleSeeder::class);
     }
 }

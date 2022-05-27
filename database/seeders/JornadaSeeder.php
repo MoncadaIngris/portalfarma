@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Jornada;
 
 class JornadaSeeder extends Seeder
 {
@@ -13,6 +14,14 @@ class JornadaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $datos=[
+            ['nombre' => 'Matutina','hora_entrada' => '05:00:00', 'hora_salida'=>'13:00:00' ],
+            ['nombre' => 'Vespertina','hora_entrada' => '12:00:00', 'hora_salida'=>'20:00:00' ],
+            ['nombre' => 'Alternativa','hora_entrada' => '19:00:00', 'hora_salida'=>'01:00:00' ],
+            ['nombre' => 'Nocturna','hora_entrada' => '12:00:00', 'hora_salida'=>'06:00:00' ],
+        ];
+        foreach($datos as $imp){
+            Jornada::create($imp);
+        }
     }
 }

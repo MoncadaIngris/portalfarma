@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -255,7 +255,23 @@
                         @endcan                        
                       </ul>
                     </li>
-                    @endcan
+                       @endcan
+
+                      
+                    <li><a><i class="fa-solid fa-user-clock"></i>Calendario <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        
+                        <li><a href="{{route('calendario.create')}}">Nuevo Turno</a></li>
+                        
+                      
+                        
+                                    
+                      </ul>
+                    </li>
+                       
+
+
+
                     @can('usuarios_index','usuarios_nuevo')
                     <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
@@ -267,8 +283,19 @@
                         @endcan                        
                       </ul>
                     </li>
+                    @can('calendario_index','calendario_nuevo')
+                    <li><a><i class="fa-solid fa-user-clock"></i>Añadir Calendario <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        @can('calendario_nuevo')
+                        
+                        @endcan                        
+                      </ul>
+                    </li>
+                    @endcan
                     @endcan
                       
+
+
               </div>
 
             </div>
