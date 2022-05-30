@@ -333,13 +333,21 @@ Route::post('/jornada/nuevo',[JornadaController::class, 'store'])
 
 
 
-
+//ruta index
+Route::get('/calendario', [CalendarioController::class, 'index'])
+    ->name('calendario.index');
     //ruta  create
 Route::get('/calendario/nuevo',[CalendarioController::class, 'create'])
 ->name('calendario.create');
 //ruta guardar
 Route::post('/calendario/nuevo',[CalendarioController::class, 'store'])
 ->name('calendario.store');
+
+Route::get("/calendario/{id}/edit", [CalendarioController::class, "edit"])
+->name("calendario.edit")->where('id', '[0-9]+');
+
+Route::put("/calendario/{id}/edit", [CalendarioController::class, "update"])
+->name("calendario.update")->where('id', '[0-9]+');
 
 });
 });

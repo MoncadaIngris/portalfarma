@@ -223,5 +223,23 @@ class ParteSeeder extends Seeder
             'id_modelo' => 13,
         ]);
 
+        //calendario
+        Parte::create([
+            'descripcion' => 'nuevo',
+            'id_modelo' => 14,
+        ]);
+        Parte::create([
+            'descripcion' => 'index',
+            'id_modelo' => 14,
+        ]);
+        Parte::create([
+            'descripcion' => 'editar',
+            'id_modelo' => 14,
+        ]);
+        Parte::create([
+            'descripcion' => 'detalle',
+            'id_modelo' => 14,
+        ]);
+
     }
 }

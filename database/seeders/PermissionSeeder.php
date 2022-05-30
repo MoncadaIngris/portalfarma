@@ -205,7 +205,7 @@ class PermissionSeeder extends Seeder
             'id_partes' => 34,
         ]);
         Permission::create([
-            'titulo' => 'Lista de usuarios',
+            'titulo' => 'Lista usuarios',
             'name' => 'usuarios_index',
             'id_partes' => 43,
         ]);
@@ -216,7 +216,7 @@ class PermissionSeeder extends Seeder
         ]);
 
         Permission::create([
-            'titulo' => 'Lista de jornadas',
+            'titulo' => 'Lista jornadas',
             'name' => 'jornada_index',
             'id_partes' => 44,
         ]);
@@ -230,7 +230,29 @@ class PermissionSeeder extends Seeder
             'name' => 'jornada_editar',
             'id_partes' => 46,
         ]);
+
+        Permission::create([
+            'titulo' => 'Lista calendario',
+            'name' => 'calendario_index',
+            'id_partes' => 47,
+        ]);
+        Permission::create([
+            'titulo' => 'Nueva calendario',
+            'name' => 'calendario_nuevo',
+            'id_partes' => 48,
+        ]);
+        Permission::create([
+            'titulo' => 'Editar calendario',
+            'name' => 'calendario_editar',
+            'id_partes' => 49,
+        ]);
+        Permission::create([
+            'titulo' => 'Detalle calendario',
+            'name' => 'calendario_detalle',
+            'id_partes' => 50,
+        ]);
         
+        //permiso de desarrollador
         Permission::create([
             'titulo' => 'Lista de permisos',
             'name' => 'permisos_index',

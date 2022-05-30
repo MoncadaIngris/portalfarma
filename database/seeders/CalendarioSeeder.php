@@ -18,6 +18,7 @@ class CalendarioSeeder extends Seeder
             ['id_semana' => 1 ],
             ['id_semana' => 2 ],
             ['id_semana' => 3 ],
+            ['id_semana' => 4 ],
         ];
         foreach($datos as $imp){
             Calendario::create($imp);
