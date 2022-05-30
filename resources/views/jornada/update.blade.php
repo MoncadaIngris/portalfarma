@@ -27,6 +27,11 @@ Editar jornada
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
                 value="{{old('nombres')}}" placeholder="Ingrese el nombre de la jornada">
+                 @if(old("nombre"))
+                    value="{{old("nombre")}}"
+                    @else
+                    value="{{$jornadas->nombre}}"
+                    @endif>
                 
             </div>
 
@@ -38,6 +43,13 @@ Editar jornada
             <div class="col-md-6 col-sm-6 ">
                 <input type="time" id="entrada" name="entrada" required="required" class="form-control "
                 value="{{old('entrada')}}" placeholder="Ingrese la hora de entrada">
+                
+                @if(old("entrada"))
+                    value="{{old("entrada")}}"
+                    @else
+                    value="{{$jornadas->entrada}}"
+                    @endif>
+                
             </div>
         </div>
 
@@ -47,6 +59,12 @@ Editar jornada
             <div class="col-md-6 col-sm-6 ">
                 <input type="time" id="salida" name="salida" required="required" class="form-control " 
                 value="{{old('salida')}}" placeholder="Ingrese la hora de salida">
+                
+                @if(old("salida"))
+                    value="{{old("salida")}}"
+                    @else
+                    value="{{$jornadas->salida}}"
+                    @endif>
             </div>
         </div>
 
