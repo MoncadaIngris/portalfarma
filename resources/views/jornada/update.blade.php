@@ -25,19 +25,25 @@ Editar jornada
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
-                value="{{old('nombres')}}" placeholder="Ingrese el nombre de la jornada">
-                
+            <input onkeydown="return /[a-z, ]/i.test(event.key)" maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                           @if(old("nombre"))
+                           value="{{old("nombre")}}"
+                           @else
+                           value="{{$jornadas->nombre}}"
+                           @endif>
+                </div>
             </div>
-
-        </div>
 
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Hora de entrada: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="time" id="entrada" name="entrada" required="required" class="form-control "
-                value="{{old('entrada')}}" placeholder="Ingrese la hora de entrada">
+                @if(old("entrada"))
+                    value="{{old("entrada")}}"
+                    @else
+                    value="{{$jornadas->hora_entrada}}"
+                    @endif>    
             </div>
         </div>
 
@@ -46,10 +52,17 @@ Editar jornada
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="time" id="salida" name="salida" required="required" class="form-control " 
-                value="{{old('salida')}}" placeholder="Ingrese la hora de salida">
+                
+                @if(old("salida"))
+                           value="{{old("salida")}}"
+                           @else
+                           value="{{$jornadas->hora_salida}}"
+                           @endif
+                           >
+                </div>
             </div>
-        </div>
-
+                
+           
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Total de horas: <span class="required">*</span>
             </label>
@@ -63,7 +76,7 @@ Editar jornada
             function calculo(){
                 var entrada = document.getElementById('entrada').value;
                 var salida = document.getElementById('salida').value;
-
+                if (entrada != '' && salida != '') {
                 var arrayentrada = entrada.split(':');
                 var arraysalida = salida.split(':');
 
@@ -97,6 +110,8 @@ Editar jornada
                 document.getElementById('total').value =horas+' horas y '+minutos+' minutos';
                 
                 
+            } else {
+                document.getElementById('total').value = 'Calculo de horas laborales';
             }
         </script>
 
