@@ -76,7 +76,7 @@ Editar jornada
             function calculo(){
                 var entrada = document.getElementById('entrada').value;
                 var salida = document.getElementById('salida').value;
-
+                if (entrada != '' && salida != '') {
                 var arrayentrada = entrada.split(':');
                 var arraysalida = salida.split(':');
 
@@ -110,6 +110,8 @@ Editar jornada
                 document.getElementById('total').value =horas+' horas y '+minutos+' minutos';
                 
                 
+            } else {
+                document.getElementById('total').value = 'Calculo de horas laborales';
             }
         </script>
 
@@ -127,5 +129,4 @@ Editar jornada
     </form>
         
 @stop
-        
         
