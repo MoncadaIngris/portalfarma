@@ -327,9 +327,9 @@ Route::post('/jornada/nuevo',[JornadaController::class, 'store'])
 
     Route::put("/jornada/{id}/edit", [JornadaController::class, "update"])
     ->name("jornada.edit")->where('id', '[0-9]+');
-    
 
-    
+
+
 
 
 
@@ -342,6 +342,9 @@ Route::get('/calendario/nuevo',[CalendarioController::class, 'create'])
 //ruta guardar
 Route::post('/calendario/nuevo',[CalendarioController::class, 'store'])
 ->name('calendario.store');
+
+Route::get("/calendario/{id}/show", [CalendarioController::class, "show"])
+->name("calendario.show")->where('id', '[0-9]+');
 
 Route::get("/calendario/{id}/edit", [CalendarioController::class, "edit"])
 ->name("calendario.edit")->where('id', '[0-9]+');

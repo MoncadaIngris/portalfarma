@@ -28,7 +28,22 @@ class CalendarioController extends Controller
 
         return view('calendario/index')->with('calendarios', $calendarios);
     }
-  
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Calendario  $calendario
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        abort_if(Gate::denies('calendario_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
+
+        $calendario= Calendario::findOrFail($id);
+        return view('calendario.show')->with('calendario', $calendario);
+    }
+
+    /**
+
 
 
 
@@ -92,16 +107,6 @@ class CalendarioController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Calendario  $calendario
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Calendario $calendario)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -113,7 +118,8 @@ class CalendarioController extends Controller
     {
         abort_if(Gate::denies('calendario_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
-        $calendarios = Calendario::findOrFail($id);
+        $calendarios
+            = Calendario::findOrFail($id);
         $empleados = Calendario_detalle::where('id_calendario', $calendarios->id)->get();
         $jornada = Jornada::all();
         return view("Calendario.update")

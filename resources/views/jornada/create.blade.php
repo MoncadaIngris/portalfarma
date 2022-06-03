@@ -44,7 +44,7 @@ Añadir jornada
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Hora de salida: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="time" id="salida" name="salida" required="required" class="form-control " 
+                <input type="time" id="salida" name="salida" required="required" class="form-control "
                 value="{{old('salida')}}" placeholder="Ingrese la hora de salida">
             </div>
         </div>
@@ -82,8 +82,8 @@ Añadir jornada
                         var horas = 24-hora_entrada + hora_salida-1;
                     }
 
-                    var minutos = 60 - minuto_entrada + minuto_salida; 
-                    
+                    var minutos = 60 - minuto_entrada + minuto_salida;
+
                     if (minutos == 60) {
                         minutos = 0;
                         horas ++;
@@ -93,13 +93,13 @@ Añadir jornada
                             horas ++;
                         }
                     }
-                    
+
                     document.getElementById('total').value =horas+' horas y '+minutos+' minutos';
-                    
+
                 } else {
                     document.getElementById('total').value = 'Calculo de horas laborales';
                 }
-                
+
             }
         </script>
 
@@ -113,5 +113,5 @@ Añadir jornada
         </div>
 
     </form>
-        
+
 @stop
