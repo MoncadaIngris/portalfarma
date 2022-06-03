@@ -43,12 +43,6 @@ class CalendarioController extends Controller
     }
 
     /**
-
-
-
-
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -147,7 +141,6 @@ class CalendarioController extends Controller
             ->with('mensaje', 'El calendario fue editado exitosamente');
         }
     }
-
 
     /**
      * Remove the specified resource from storage.

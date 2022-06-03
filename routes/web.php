@@ -352,6 +352,10 @@ Route::get("/calendario/{id}/edit", [CalendarioController::class, "edit"])
 Route::put("/calendario/{id}/edit", [CalendarioController::class, "update"])
 ->name("calendario.update")->where('id', '[0-9]+');
 
+//RUTAS LABORAL
+Route::get("/laborales", [LaboralController::class, 'index'])
+->name('laborales.index');
+
 });
 });
 

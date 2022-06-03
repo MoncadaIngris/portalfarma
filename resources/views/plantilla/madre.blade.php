@@ -82,8 +82,8 @@
 
             <style>
               #sidebar-menu{
-                width:100%; 
-                height:70%; 
+                width:100%;
+                height:70%;
                 overflow: auto;
               }
               #sidebar-menu::-webkit-scrollbar {
@@ -252,7 +252,7 @@
                         @endcan
                         @can('jornada_index')
                         <li><a href="{{route('jornada.index')}}"> Lista De jornadas</a></li>
-                        @endcan                        
+                        @endcan
                       </ul>
                     </li>
                        @endcan
@@ -264,14 +264,19 @@
                         <li><a href="{{route('calendario.create')}}">Nuevo Turno</a></li>
                         @endcan
                         @can('calendario_index')
-                        <li><a href="{{route('calendario.index')}}">Listado De Turnos</a></li> 
-                        @endcan            
+                        <li><a href="{{route('calendario.index')}}">Listado De Turnos</a></li>
+                        @endcan
                       </ul>
                     </li>
                     @endcan
-                       
-
-
+                    @can('Laboral_index')
+                          <li><a><i class="fa-solid fa-user-clock"></i>Laboral <span class="fa fa-chevron-down"></span></a>
+                              <ul class="nav child_menu">
+                                  @can('laboral_index')
+                                      <li><a href="{{route('laboral.index')}}">Estado Laboral</a></li>
+                                  @endcan
+                              </ul>
+                                      @endcan
 
                     @can('usuarios_index','usuarios_nuevo')
                     <li><a><i class="fa-solid fa-user-clock"></i>Usuarios <span class="fa fa-chevron-down"></span></a>
@@ -281,21 +286,10 @@
                         @endcan
                         @can('usuarios_index')
                         <li><a href="{{route('usuarios.index')}}"> Lista De usuarios</a></li>
-                        @endcan                        
-                      </ul>
-                    </li>
-                    @can('calendario_index','calendario_nuevo')
-                    <li><a><i class="fa-solid fa-user-clock"></i>Añadir Calendario <span class="fa fa-chevron-down"></span></a>
-                      <ul class="nav child_menu">
-                        @can('calendario_nuevo')
-                        
-                        @endcan                        
+                        @endcan
                       </ul>
                     </li>
                     @endcan
-                    @endcan
-                      
-
 
               </div>
 
