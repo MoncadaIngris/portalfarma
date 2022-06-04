@@ -38,8 +38,13 @@ class CalendarioController extends Controller
     {
         abort_if(Gate::denies('calendario_detalle'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
-        $calendario= Calendario::findOrFail($id);
-        return view('calendario.show')->with('calendario', $calendario);
+        $calendarios= Calendario::findOrFail($id);
+        $empleados = Calendario_detalle::where('id_calendario', $calendarios->id)->get();
+        $jornada = Jornada::all();
+        return view("Calendario.show")
+        ->with("calendario", $calendarios)
+        ->with("empleados", $empleados)
+        ->with("jornadas", $jornada);
     }
 
     /**

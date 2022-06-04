@@ -3,52 +3,64 @@
     Detalle de Calendario De Turnos
 @stop
 @section('contenido')
-    @if(session('mensaje'))
-        <div class="alert alert-success">
-            {{session('mensaje')}}
-        </div>
-    @endif
-    <style>
-        #prueba {
-            overflow:auto;
-        }
-    </style>
+<center><h3>Generalidades de la semana</h3></center>
+<div style="float: left; width: 45%">
+    <label for="" style="float: left; width: 30%; line-height: 30px">Fecha de inicio</label>
+    <input style="float: right; width: 70%" type="text" name="fecha_inicio" value="{{$calendario->semana->fecha_inicio}}" class="form-control " readonly>
+</div>
 
-    <table  id="datatable" class="table table-striped">
-        <thead>
+<div style="float: right; width: 45%">
+    <label for="" style="float: left;width: 30%; line-height: 30px">Fecha final</label>
+    <input style="float: right;width: 70%" type="text" name="fecha_final" value="{{$calendario->semana->fecha_final}}" class="form-control " readonly>
+</div>
+<br><br>
+<div style="float: left">
+    <center><h3>Numero de empleados por jornada</h3></center>
+    @foreach ($jornadas as $jornad)
+    <?php $k = 0;?>
+    @foreach ($empleados as $empleado)
+        @if ($empleado->jornada->id == $jornad->id)
+        <?php $k++;?>
+        @endif
+    @endforeach
+    <div style="float: left; width: 19%; margin-right: 1%">
+        <label for="" style="float: left;width: 55%; line-height: 30px; text-align: right">{{$jornad->nombre}}: </label>
+        <input style="float: left;width: 45%; text-align: right" type="text" id="numemp{{$jornad->id}}" value="{{$k}}" class="form-control " readonly>
+    </div>
+    @endforeach
+</div>
+<br><br><br>
+<center><h3>Asignar jornada a los empleados</h3></center>
+<table class="table table-striped">
+    <thead>
         <tr>
-            <th scope="col" style="text-align: center">N°</th>
-            <th scope="col" class="sorting" style="text-align: center">Inicio de semana</th>
-            <th scope="col" class="sorting" style="text-align: center">fin de semana</th>
-            <th scope="col" class="sorting" style="text-align: center">Numero de empleado</th>
-
-
+            <th scope="col" class="sorting">N°</th>
+            <th scope="col" class="sorting">Nombre</th>
+            <th scope="col" class="sorting">Identidad</th>
+            <th scope="col" class="sorting">Jornada</th>
         </tr>
-        </thead>
+    </thead>
 
-        <tbody>
-        <?php $i=0;?>
+    <tbody>
+        <?php $n=0?>
+        @foreach($empleados as $empleado)
+        <?php $n++?>
+        <tr>
+            <td>{{$n}}</td>
+            <td>{{$empleado->empleado->nombres}} {{$empleado->empleado->apellidos}}</td>
+            <td>{{$empleado->empleado->DNI}}</td>
+            <td>{{$empleado->jornada->nombre}}</td>
+        </tr>
+        @endforeach 
+    </tbody>
+</table>
+<div class="ln_solid"></div>
+<div class="item form-group">
+    <div class="col-md-6 col-sm-6 offset-md-3">
+        <button class="btn btn-regresar" type="button" onclick="window.location='{{route('calendario.index')}}'">Regresar</button>
+    </div>
+</div>
 
-            <?php
-            $fecha_actual = date("Y-m-d");
-            $i++;
-            ?>
-            <tr>
-                <td >{{$i}}</td>
-                <td style="text-align: center">{{date("d-m-Y", strtotime($calendario->semana->fecha_inicio))}}</td>
-                <td style="text-align: center">{{date("d-m-Y", strtotime($calendario->semana->fecha_final))}}</td>
-                <td style="text-align: center"><?php $n=0;?>
-                    @foreach ($calendario->detalles as $detalle)
-                        <?php $n++;?>
-                    @endforeach
-                    {{$n}}</td>
-            </tr>
-        </tbody>
-
-        <div  style="margin: 0 auto;">
-            <button class="btn btn-regresar" type="button" onclick="window.location='{{route('calendario.index')}}'">Regresar</button>
-        </div>
-    </table>
 @stop
 
 
