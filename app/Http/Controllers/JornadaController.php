@@ -47,16 +47,21 @@ class JornadaController extends Controller
         abort_if(Gate::denies('jornada_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $rules=[
-            'nombres' => 'required|max:100',
+            'nombres' => 'required|max:100|unique:jornadas,nombre',
             'entrada' => 'required',
             'salida' => 'required',
+            'empleados' => 'required|min:1|numeric'
         ];
 
         $mensaje=[
             'nombres.required' => 'El nombre no puede estar vacío',
             'nombres.max' => 'El nombre es muy extenso',
+            'nombres.unique' => 'El nombre de la jornada ya esta en uso',
             'entrada.required' => 'La hora entrada no puede estar vacío',
             'salida.required' => 'La hora salida no puede estar vacío',
+            'empleados.required' => 'El numero de empleados maximo es obligatorio',
+            'empleados.min' => 'El numero de empleados maximo debe de ser positivo',
+            'empleados.numeric' => 'El numero de empleados maximo debe de ser un valor numerico',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -66,6 +71,7 @@ class JornadaController extends Controller
         $jornada->nombre = $request->input('nombres');
         $jornada->hora_entrada= $request->input('entrada');
         $jornada->hora_salida = $request->input('salida');
+        $jornada->numero_empleados = $request->input('empleados');
 
         $creado = $jornada->save();
 
@@ -115,25 +121,31 @@ class JornadaController extends Controller
         abort_if(Gate::denies('jornada_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $rules=[
-            'nombres' => 'required|max:100',
+            'nombres' => 'required|max:100|unique:jornadas,nombre,'.$id,
             'entrada' => 'required',
             'salida' => 'required',
+            'empleados' => 'required|min:1|numeric'
         ];
 
         $mensaje=[
             'nombres.required' => 'El nombre no puede estar vacío',
             'nombres.max' => 'El nombre es muy extenso',
+            'nombres.unique' => 'El nombre de la jornada ya esta en uso',
             'entrada.required' => 'La hora entrada no puede estar vacío',
             'salida.required' => 'La hora salida no puede estar vacío',
+            'empleados.required' => 'El numero de empleados maximo es obligatorio',
+            'empleados.min' => 'El numero de empleados maximo debe de ser positivo',
+            'empleados.numeric' => 'El numero de empleados maximo debe de ser un valor numerico',
         ];
 
         $this->validate($request,$rules,$mensaje);
 
-        $jornada = new Jornada();
+        $jornada = Jornada::findOrFail($id);;
 
         $jornada->nombre = $request->input('nombres');
         $jornada->hora_entrada= $request->input('entrada');
         $jornada->hora_salida = $request->input('salida');
+        $jornada->numero_empleados = $request->input('empleados');
 
         $creado = $jornada->save();
 

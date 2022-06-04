@@ -25,12 +25,14 @@ Editar jornada
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-            <input onkeydown="return /[a-z, ]/i.test(event.key)" maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
-                           @if(old("nombre"))
-                           value="{{old("nombre")}}"
-                           @else
-                           value="{{$jornadas->nombre}}"
-                           @endif>
+                <select id="nombres" name="nombres" required="required" class="form-control ">
+                    <option value="{{$jornadas->nombre}}" style="display: none">{{$jornadas->nombre}}</option>
+                    <option value="Diurno">Diurno</option>
+                    <option value="Nocturna">Nocturna</option>
+                    <option value="Mixto">Mixto</option>
+                    <option value="Matutino">Matutino</option>
+                    <option value="Vespertino">Vespertino</option>
+                </select>
                 </div>
             </div>
 
@@ -71,47 +73,63 @@ Editar jornada
             </div>
         </div>
 
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Maximo de empleados: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 ">
+                <input type="number" id="empleados" name="empleados" required="required" class="form-control "
+                placeholder="Ingrese el numero maximo de empleados de esta jornada"
+                @if(old("empleados"))
+                           value="{{old("empleados")}}"
+                           @else
+                           value="{{$jornadas->numero_empleados}}"
+                           @endif>
+            </div>
+        </div>
+
         <script>
             setInterval('calculo()',1000);
             function calculo(){
                 var entrada = document.getElementById('entrada').value;
                 var salida = document.getElementById('salida').value;
+
                 if (entrada != '' && salida != '') {
-                var arrayentrada = entrada.split(':');
-                var arraysalida = salida.split(':');
+                    var arrayentrada = entrada.split(':');
+                    var arraysalida = salida.split(':');
 
-                var totalentrada = new Date(2011, 0, 1,arrayentrada[0],arrayentrada[1],0,0);
-                var totalsalida = new Date(2011, 0, 1, arraysalida[0],arraysalida[1],0,0);
+                    var totalentrada = new Date(2011, 0, 1,arrayentrada[0],arrayentrada[1],0,0);
+                    var totalsalida = new Date(2011, 0, 1, arraysalida[0],arraysalida[1],0,0);
 
-                var hora_entrada = totalentrada.getHours();
-                var minuto_entrada = totalentrada.getMinutes();
-                var hora_salida = totalsalida.getHours();
-                var minuto_salida = totalsalida.getMinutes();
+                    var hora_entrada = totalentrada.getHours();
+                    var minuto_entrada = totalentrada.getMinutes();
+                    var hora_salida = totalsalida.getHours();
+                    var minuto_salida = totalsalida.getMinutes();
 
-                var horas = 0;
-                if (hora_salida>=hora_entrada) {
-                    var horas = hora_salida-hora_entrada-1;
-                } else {
-                    var horas = 24-hora_entrada + hora_salida-1;
-                }
-
-                var minutos = 60 - minuto_entrada + minuto_salida; 
-                
-                if (minutos == 60) {
-                    minutos = 0;
-                    horas ++;
-                }else{
-                    if(minutos > 60){
-                        minutos = minutos - 60;
-                        horas ++;
+                    var horas = 0;
+                    if (hora_salida>=hora_entrada) {
+                        var horas = hora_salida-hora_entrada-1;
+                    } else {
+                        var horas = 24-hora_entrada + hora_salida-1;
                     }
+
+                    var minutos = 60 - minuto_entrada + minuto_salida;
+
+                    if (minutos == 60) {
+                        minutos = 0;
+                        horas ++;
+                    }else{
+                        if(minutos > 60){
+                            minutos = minutos - 60;
+                            horas ++;
+                        }
+                    }
+
+                    document.getElementById('total').value =horas+' horas y '+minutos+' minutos';
+
+                } else {
+                    document.getElementById('total').value = 'Calculo de horas laborales';
                 }
-                
-                document.getElementById('total').value =horas+' horas y '+minutos+' minutos';
-                
-                
-            } else {
-                document.getElementById('total').value = 'Calculo de horas laborales';
+
             }
         </script>
 

@@ -20,6 +20,7 @@
         <thead>
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Nombre</th>
+            <th scope="col" class="sorting" style="text-align: center">Maximo de empleados</th>
             <th scope="col" class="sorting" style="text-align: center">Hora de entrada</th>
             <th scope="col" class="sorting" style="text-align: center">Hora de salida</th>
             <th scope="col" class="sorting" style="text-align: center">Horas laborales</th>
@@ -43,6 +44,7 @@
 
                 ?>
                 <td>{{$jornada->nombre}}</td>
+                <td>{{$jornada->numero_empleados}}</td>
                 <td>{{$jornada->hora_entrada}}</td>
                 <td>{{$jornada->hora_salida}}</td>
                 <td>

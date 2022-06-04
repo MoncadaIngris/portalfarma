@@ -18,6 +18,7 @@ class CreateJornadasTable extends Migration
             $table->string('nombre');
             $table->time('hora_entrada');
             $table->time('hora_salida');
+            $table->integer('numero_empleados');
             $table->timestamps();
         });
     }
