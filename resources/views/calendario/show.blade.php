@@ -38,6 +38,8 @@
             <th scope="col" class="sorting">Nombre</th>
             <th scope="col" class="sorting">Identidad</th>
             <th scope="col" class="sorting">Jornada</th>
+            <th scope="col" class="sorting">Hora de entrada</th>
+            <th scope="col" class="sorting">Hora de salida</th>
         </tr>
     </thead>
 
@@ -50,6 +52,8 @@
             <td>{{$empleado->empleado->nombres}} {{$empleado->empleado->apellidos}}</td>
             <td>{{$empleado->empleado->DNI}}</td>
             <td>{{$empleado->jornada->nombre}}</td>
+            <td>{{$empleado->jornada->hora_entrada}}</td>
+            <td>{{$empleado->jornada->hora_salida}}</td>
         </tr>
         @endforeach 
     </tbody>
