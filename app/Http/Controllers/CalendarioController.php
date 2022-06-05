@@ -79,8 +79,8 @@ class CalendarioController extends Controller
         $empleados = Empleado::where('estado',0)->where('id','>',1)->select("id","nombres", "apellidos", "DNI")->get();
 
         $semana = new Semana();
-        $semana->fecha_inicio = $request->input('fecha_inicio');
-        $semana->fecha_final= $request->input('fecha_final');
+        $semana->fecha_inicio = date("Y-m-d", strtotime($request->input('fecha_inicio')));
+        $semana->fecha_final= date("Y-m-d", strtotime($request->input('fecha_final')));
         $creado = $semana->save();
 
         if ($creado) {
