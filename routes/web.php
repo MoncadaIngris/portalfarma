@@ -17,6 +17,9 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\JornadaController;
 use App\Http\Controllers\CalendarioController;
+use App\Http\Controllers\LaboralController;
+use App\Http\Controllers\HoraSalidaController;
+use App\Http\Controllers\HoraEntradaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -355,6 +358,21 @@ Route::put("/calendario/{id}/edit", [CalendarioController::class, "update"])
 //RUTAS LABORAL
 Route::get("/laborales", [LaboralController::class, 'index'])
 ->name('laborales.index');
+
+Route::post("/laborales", [LaboralController::class, 'carga'])
+->name('laborales.carga');
+
+Route::get("/entrada/{id}", [HoraEntradaController::class, 'create'])
+->name('entrada.cargar');
+
+Route::post("/entrada/{id}", [HoraEntradaController::class, 'store'])
+->name('entrada.registrar');
+
+Route::get("/salida/{id}", [HoraSalidaController::class, 'create'])
+->name('salida.cargar');
+
+Route::post("/salida/{id}", [HoraSalidaController::class, 'store'])
+->name('salida.registrar');
 
 });
 });
