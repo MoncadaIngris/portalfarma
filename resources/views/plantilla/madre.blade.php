@@ -290,7 +290,7 @@
                       </ul>
                     </li>
                     @endcan
-
+                    <li><a href="{{route('laborales.index')}}"><i class="fa-solid fa-box-open"></i>Listado laboral</a></li>
               </div>
 
             </div>
