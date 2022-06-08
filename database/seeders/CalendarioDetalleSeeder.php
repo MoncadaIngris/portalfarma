@@ -46,7 +46,7 @@ class CalendarioDetalleSeeder extends Seeder
                     [
                         'id_empleado' => $i,
                         'id_calendario' => $j,
-                        'id_jornada' => 4,
+                        'id_jornada' => 1,
                     ]
                 );
             }
