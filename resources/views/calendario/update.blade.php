@@ -60,7 +60,7 @@ Editar Calendario
             <td>{{$empleado->empleado->nombres}} {{$empleado->empleado->apellidos}}</td>
             <td>{{$empleado->empleado->DNI}}</td>
             <td>
-                <select name="jornada{{$empleado->id}}" onchange="determi({{$empleado->id}})"  id="jornada[{{$empleado->id}}]" required="true" class="form-control">
+                <select name="jornada{{$empleado->empleado->id}}" onchange="determi({{$empleado->empleado->id}})"  id="jornada[{{$empleado->empleado->id}}]" required="true" class="form-control">
                     <option style="display: none" value="{{$empleado->jornada->id}}">{{$empleado->jornada->nombre}}</option>
                     @foreach ($jornadas as $jornad)
                         <option value="{{$jornad->id}}">{{$jornad->nombre}}</option>
@@ -74,7 +74,7 @@ Editar Calendario
 
     <script>
         window.onload = function () {
-            determi({{$empleado->id}});
+            determi({{$empleado->empleado->id}});
         }
         function determi(id){
             document.getElementById('text'+id).innerHTML = "";
@@ -93,7 +93,7 @@ Editar Calendario
                     var numero = 0;
                     var val = {{$jornad->id}};
                     @foreach($empleados as $empleado)
-                        var emple = document.getElementById('jornada['+{{$empleado->id}}+']').value;
+                        var emple = document.getElementById('jornada['+{{$empleado->empleado->id}}+']').value;
                         if (val == emple) {
                             numero++;   
                         }
@@ -105,43 +105,17 @@ Editar Calendario
                 document.getElementById('text'+id).innerHTML = "La jornada "+selected+" no puede tener mas de "+dat+" empleados asignados";
             }
         }
-
-
-        setInterval('habilitar()',1000);
-        function habilitar(){
-            
-            var n = {{$n}};
-            var a = 0;
-
-            @foreach($empleados as $empleado)
-            if(document.getElementById('jornada['+{{$empleado->empleado->id}}+']').value != ""){
-               a++;
-            }
-            @endforeach 
-
-            let button = document.querySelector("#save");
-
-            if(a == n){
-                document.getElementById('alerta').style.visibility="hidden";
-                button.disabled = false;
-            }else{
-                document.getElementById('alerta').style.visibility="";
-                button.disabled = true;
-            }
-
-        }
     </script>
 
 
 
 </table>
-<label for="" style="color: red" id="alerta">Asignele una jornada a todos los empleados</label>
 <div class="ln_solid"></div>
 <div class="item form-group">
     <div class="col-md-6 col-sm-6 offset-md-3">
         <button class="btn btn-regresar" type="button" onclick="window.location='{{route('calendario.index')}}'">Cancelar</button>
         <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Restaurar</a>
-        <button type="submit" disabled id="save" class="btn btn-guardar">Guardar</button>
+        <button type="submit" id="save" class="btn btn-guardar">Guardar</button>
     </div>
 </div>
 </form>
