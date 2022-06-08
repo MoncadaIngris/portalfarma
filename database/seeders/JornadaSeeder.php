@@ -15,7 +15,6 @@ class JornadaSeeder extends Seeder
     public function run()
     {
         $datos=[
-            ['nombre' => 'Matutina','hora_entrada' => '05:00:00', 'hora_salida'=>'13:00:00', 'numero_empleados' => 10 ],
             ['nombre' => 'Vespertina','hora_entrada' => '12:00:00', 'hora_salida'=>'20:00:00', 'numero_empleados' => 10 ],
             ['nombre' => 'Alternativa','hora_entrada' => '19:00:00', 'hora_salida'=>'01:00:00', 'numero_empleados' => 10 ],
             ['nombre' => 'Medio Tiempo','hora_entrada' => '12:00:00', 'hora_salida'=>'16:00:00', 'numero_empleados' => 10 ],
