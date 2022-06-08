@@ -17,6 +17,7 @@ Editar Calendario
 <form method="post">
     @csrf
     @method("PUT")
+    <div style="float: left; width: 100%">
     <center><h3>Generalidades de la semana</h3></center>
 <div style="float: left; width: 45%">
     <label for="" style="float: left; width: 30%; line-height: 30px">Fecha de inicio</label>
@@ -27,8 +28,9 @@ Editar Calendario
     <label for="" style="float: left;width: 30%; line-height: 30px">Fecha final</label>
     <input style="float: right;width: 70%" type="text" name="fecha_final" value="{{date("d-m-Y", strtotime($calendario->semana->fecha_final))}}" class="form-control " readonly>
 </div>
+</div>
 <br><br>
-<div style="float: left">
+<div style="float: left;  width: 100%">
     <center><h3>Numero de empleados por jornada</h3></center>
     @foreach ($jornadas as $jornad)
     <div style="float: left; width: 19%; margin-right: 1%">

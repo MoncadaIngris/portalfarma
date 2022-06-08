@@ -16,18 +16,20 @@ Añadir Calendario
 @endif
 <form method="post">
     @csrf
+<div style="float: left; width: 100%">
     <center><h3>Generalidades de la semana</h3></center>
-<div style="float: left; width: 45%">
-    <label for="" style="float: left; width: 30%; line-height: 30px">Fecha de inicio</label>
-    <input style="float: right; width: 70%" type="text" name="fecha_inicio" value="{{date("d-m-Y", strtotime($semana->fecha_inicio));}}" class="form-control " readonly>
-</div>
-
-<div style="float: right; width: 45%">
-    <label for="" style="float: left;width: 30%; line-height: 30px">Fecha final</label>
-    <input style="float: right;width: 70%" type="text" name="fecha_final" value="{{date("d-m-Y", strtotime($semana->fecha_final));}}" class="form-control " readonly>
+    <div style="float: left; width: 45%">
+        <label for="" style="float: left; width: 30%; line-height: 30px">Fecha de inicio</label>
+        <input style="float: right; width: 70%" type="text" name="fecha_inicio" value="{{date("d-m-Y", strtotime($semana->fecha_inicio));}}" class="form-control " readonly>
+    </div>
+    
+    <div style="float: right; width: 45%">
+        <label for="" style="float: left;width: 30%; line-height: 30px">Fecha final</label>
+        <input style="float: right;width: 70%" type="text" name="fecha_final" value="{{date("d-m-Y", strtotime($semana->fecha_final));}}" class="form-control " readonly>
+    </div>
 </div>
 <br><br>
-<div style="float: left">
+<div style="float: left;  width: 100%">
     <center><h3>Numero de empleados por jornada</h3></center>
     @foreach ($jornadas as $jornad)
     <div style="float: left; width: 19%; margin-right: 1%">
