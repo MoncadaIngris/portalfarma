@@ -19,6 +19,7 @@ class SemanaSeeder extends Seeder
             ['fecha_inicio' => '2022-05-16','fecha_final' => '2022-05-22' ],
             ['fecha_inicio' => '2022-05-23','fecha_final' => '2022-05-29' ],
             ['fecha_inicio' => '2022-05-30','fecha_final' => '2022-06-05' ],
+            ['fecha_inicio' => '2022-06-06','fecha_final' => '2022-06-12' ],
         ];
         foreach($datos as $imp){
             Semana::create($imp);
