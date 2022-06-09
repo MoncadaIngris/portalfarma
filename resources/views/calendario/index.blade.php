@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Calendario De Turnos
+    Listado de calendario de turnos
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -23,7 +23,7 @@
             <th scope="col" style="text-align: center">N°</th>
             <th scope="col" class="sorting" style="text-align: center">Inicio de semana</th>
             <th scope="col" class="sorting" style="text-align: center">fin de semana</th>
-            <th scope="col" class="sorting" style="text-align: center">Numero de empleado</th>
+            <th scope="col" class="sorting" style="text-align: center">Número de empleado</th>
             @can('calendario_detalle')
                 <th scope="col" style="text-align: center">Detalle</th>
             @endcan

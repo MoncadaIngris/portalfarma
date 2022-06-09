@@ -40,11 +40,11 @@
             <th scope="col"  style="text-align: center; width: 5%">N°</th>
             <th scope="col" class="sorting" style="text-align: center; width: 20%">Nombres</th>
             <th scope="col" class="sorting" style="text-align: center; width: 12%">Fecha</th>
-            <th scope="col" class="sorting" style="text-align: center; width: 12%">Hora Entrada</th>
-            <th scope="col" class="sorting" style="text-align: center; width: 12%">Hora Salida</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 12%">Hora de Entrada</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 12%">Hora de Salida</th>
             <th scope="col" class="sorting" style="text-align: center; width: 12%">Hora Ordinarias</th>
             <th scope="col" class="sorting" style="text-align: center; width: 12%">Hora Extras</th>
-            <th scope="col" style="text-align: center; width: 15%">Accion</th>
+            <th scope="col" style="text-align: center; width: 15%">Acción</th>
         </tr>
         </thead>
 
