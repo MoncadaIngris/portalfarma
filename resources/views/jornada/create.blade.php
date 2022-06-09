@@ -60,11 +60,11 @@ Añadir jornada
         </div>
 
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Maximo de empleados: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Máximo de empleados: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" id="empleados" name="empleados" required="required" class="form-control "
-                value="{{old('empleados')}}" placeholder="Ingrese el numero maximo de empleados de esta jornada">
+                value="{{old('empleados')}}" placeholder="Ingrese el numero máximo de empleados de esta jornada">
             </div>
         </div>
 
