@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Calendario De Turnos
+    Listado de calendario de turnos
 @stop
 @section('contenido')
     @if(session('mensaje'))

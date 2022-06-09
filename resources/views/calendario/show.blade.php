@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Detalle de Calendario De Turnos
+    Detalle de calendario de turnos
 @stop
 @section('contenido')
 <center><h3>Generalidades de la semana</h3></center>
