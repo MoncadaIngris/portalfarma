@@ -37,6 +37,7 @@
         }
         .dataTables_filter{
             display: none !important;
+            width: 200px !important;
         }
       </style>
     <div>

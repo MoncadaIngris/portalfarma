@@ -17,11 +17,11 @@
 
                     <hr style="border-top: 2px solid white; border-bottom: 2px solid white; border-left:none; border-right:none; height: 2px; ">
 
-                    <div  style="margin-top: 10px; width: 200px ; height: 200px; float: left; display: inline-block; margin-top: 10px; margin-bottom: 1px; margin-left: 10px; margin-right: 10px">
-                        <img src="{{asset($empleado->fotografia)}}" class="card-img-top" alt="" height="90%" >
+                    <div style="margin-left: 10px; float: left;">
+                        <img src="{{asset($empleado->fotografia)}}" class="card-img-top" alt=""  width=200px height=200px;>
                     </div>
 
-                    <div style="float: left; display: inline-block; margin-top: 10px">
+                    <div  style="float: left; width: 35em">
                         <p style="color: black; margin-left: 20px">Nombre: <strong style="color: black">{{$empleado->nombres}} {{$empleado->apellidos}}</strong></p>
                         <p style="color: black; margin-left: 20px">Correo Electrónico: <strong style="color: black">{{$empleado->correo_electronico}}</strong></p>
                         <p style="color: black; margin-left: 20px">Teléfono Personal: <strong style="color: black">{{$empleado->telefono_personal}} </strong> </p>
