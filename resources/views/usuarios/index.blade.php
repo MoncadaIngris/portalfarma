@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado De Usuarios
+    Listado de usuarios
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -15,7 +15,7 @@
       </style>
   
     <button class="btn btn-nuevo" onclick="window.location='{{route('registrar')}}'">
-    <i class="fa-solid fa-folder-plus"></i> Agregar Usuario</button>
+    <i class="fa-solid fa-folder-plus"></i> Agregar usuario</button>
     
     <table  id="datatable" class="table table-striped">
         <thead>
