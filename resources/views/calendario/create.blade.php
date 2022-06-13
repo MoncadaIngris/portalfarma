@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Añadir Calendario
+Añadir calendario
 @stop
 @section('contenido')
 @if($errors->any())
