@@ -14,7 +14,7 @@
         }
       </style>
     @can('jornada_nuevo')
-    <button class="btn btn-nuevo" onclick="window.location='{{route('jornada.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Jornada</button>
+    <button class="btn btn-nuevo" onclick="window.location='{{route('jornada.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar jornada</button>
     @endcan
     <table  id="datatable" class="table table-striped">
         <thead>
