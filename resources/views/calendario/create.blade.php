@@ -60,7 +60,7 @@ Añadir calendario
             <td>{{$empleado->DNI}}</td>
             <td>
                 <select name="jornada{{$empleado->id}}" onchange="determi({{$empleado->id}})"  id="jornada[{{$empleado->id}}]" required="true" class="form-control">
-                    <option value="">Seleccione una opcion</option>
+                    <option value="">Seleccione una opción</option>
                     @foreach ($jornadas as $jornad)
                         <option value="{{$jornad->id}}">{{$jornad->nombre}}</option>
                     @endforeach
