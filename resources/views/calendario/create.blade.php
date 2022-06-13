@@ -30,7 +30,7 @@ Añadir Calendario
 </div>
 <br><br>
 <div style="float: left;  width: 100%">
-    <center><h3>Numero de empleados por jornada</h3></center>
+    <center><h3>Número de empleados por jornada</h3></center>
     @foreach ($jornadas as $jornad)
     <div style="float: left; width: 19%; margin-right: 1%">
         <label for="" style="float: left;width: 55%; line-height: 30px; text-align: right">{{$jornad->nombre}}: </label>
