@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/diseno.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
     <!-- Font Awesome -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
@@ -317,7 +318,7 @@
                       </button><br>
                       <form action="{{route('logout')}}" method="POST">
                         @csrf
-                        <button type="submit" style="border: none; outline:none;text-align: left" class="dropdown-item" >Cerrar Sesiòn</button>
+                        <button type="submit" style="border: none; outline:none;text-align: left" class="dropdown-item" >Cerrar sesión</button>
                       </form>
                     </div>
                   </li>
