@@ -292,6 +292,15 @@
                     </li>
                     @endcan
                     <li><a href="{{route('laborales.index')}}"><i class="fa-solid fa-box-open"></i>Listado laboral</a></li>
+
+                    <li><a><i class="fa-solid fa-user-clock"></i>Salario por hora <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+
+                        <li><a href="{{route('salariohora.create')}}">Nuevo Salario</a></li>
+
+                        <li><a href="{{route('salariohora.index')}}"> Lista De Salarios</a></li>
+                      </ul>
+                    </li>
               </div>
 
             </div>
