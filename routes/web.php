@@ -20,6 +20,7 @@ use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\LaboralController;
 use App\Http\Controllers\HoraSalidaController;
 use App\Http\Controllers\HoraEntradaController;
+use App\Http\Controllers\SalarioHoraController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -373,6 +374,15 @@ Route::get("/salida/{id}", [HoraSalidaController::class, 'create'])
 
 Route::post("/salida/{id}", [HoraSalidaController::class, 'store'])
 ->name('salida.registrar');
+
+Route::get("/salariohora", [SalarioHoraController::class, 'index'])
+->name('salariohora.index');
+
+Route::get("/salariohora/create", [SalarioHoraController::class, 'create'])
+->name('salariohora.create');
+
+Route::post("/salariohora/create", [SalarioHoraController::class, 'store'])
+->name('salariohora.store');
 
 });
 });
