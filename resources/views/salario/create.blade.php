@@ -20,32 +20,16 @@ Añadir Salario hora
     <form method="post" enctype="multipart/form-data">
         @csrf
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Seleccione la jornada: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Seleccione un cargo: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <select name="jornada" id="jornada" class="form-control" required onchange="horas()">
-                        <option value="" style="display: none">Seleccione una jornada</option>
-                        @foreach ($jornada as $jorn)
-                            <option value="{{$jorn->id}}">{{$jorn->nombre}}</option>
+                        <option value="" style="display: none">Seleccione una cargo</option>
+                        @foreach ($cargo as $c)
+                            <option value="{{$c->id}}">{{$c->descripcion}}</option>
                         @endforeach
                     </select>
                 </select>
-            </div>
-        </div>
-
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Horas laborales semanales: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input type="text" class="form-control" value="0" readonly name="hsem" id="hsem">
-            </div>
-        </div>
-
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Horas laborales diarias: <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input type="text" class="form-control" value="0" readonly name="hdia" id="hdia">
             </div>
         </div>
 
@@ -86,27 +70,12 @@ Añadir Salario hora
     </form>
 
     <script>
-        function horas(){
-            var jornada = document.getElementById('jornada').value;
-            @foreach ($jornada as $jorn)
-                if (jornada == {{$jorn->id}}) {
-                    var hora = {{$jorn->diferencia}};
-                    if (hora< 0) {
-                        hora = 24+hora;
-                    }
-
-                    document.getElementById('hsem').value = hora*6;
-                    document.getElementById('hdia').value = hora;
-                }
-            @endforeach
-        }
         setInterval('salario()',1000);
         function salario(){
             var semanal = document.getElementById('semanal').value;
-            var hora = document.getElementById('hdia').value;
             if (semanal != "") {
                 document.getElementById('diario').value = (Math.round((semanal/6)*100))/100;
-                document.getElementById('hora').value = (Math.round(((semanal/6)/hora)*100))/100;
+                document.getElementById('hora').value = (Math.round(((semanal/6)/8)*100))/100;
             }
         }
     </script>

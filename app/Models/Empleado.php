@@ -16,4 +16,8 @@ class Empleado extends Model
         return $this->hasMany(User::class);
     }
 
+    public function cargos(){
+        return $this->belongsTo(Cargo::class, 'cargo', 'id');
+    }
+
 }

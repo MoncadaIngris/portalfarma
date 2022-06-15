@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreEmpleadoRequest;
@@ -35,7 +36,8 @@ class EmpleadoController extends Controller
     {
         abort_if(Gate::denies('empleados_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
-        return view('empleados/create');
+        $cargo = Cargo::all();
+        return view('empleados/create')->with('cargo', $cargo);
     }
 
     /**
@@ -63,9 +65,12 @@ class EmpleadoController extends Controller
             'dni'=> 'required|unique:empleados,DNI|numeric|regex:([0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9})',
             'foto' => 'required|mimes:jpeg,bmp,png',
             'direccion'=>'required|max:200',
+            'cargo'=>'required|exists:cargos,id',
         ];
 
         $mensaje=[
+            'cargo.required' => 'El cargo no puede estar vacío',
+            'cargo.exists' => 'El cargo no existe',
             'nombres.required' => 'El nombre no puede estar vacío',
             'nombres.max' => 'El nombre es muy extenso',
             'apellidos.required' => 'El apellido no puede estar vacío',
@@ -110,6 +115,7 @@ class EmpleadoController extends Controller
         $empleado->fecha_de_ingreso= $request->input('ingreso');
         $empleado->direccion = $request->input('direccion');
         $empleado->DNI= $request->input('dni');
+        $empleado->cargo= $request->input('cargo');
 
         $file = $request->file('foto');
         $destinationPath = 'images/';
@@ -155,7 +161,8 @@ class EmpleadoController extends Controller
         abort_if(Gate::denies('empleados_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $empleado = Empleado::findOrFail($id);
-        return view("empleados.update")->with("empleado", $empleado);
+        $cargo = Cargo::all();
+        return view("empleados.update")->with("empleado", $empleado)->with('cargo', $cargo);
     }
 
     /**
@@ -184,7 +191,10 @@ class EmpleadoController extends Controller
             "DNI" => "required|numeric|regex:([0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9})|unique:empleados,DNI," . $id,
             'foto' => 'sometimes|mimes:jpeg,bmp,png',
             'direccion'=>'required|max:200',
+            'cargo'=>'required|exists:cargos,id',
         ], [
+            'cargo.required' => 'El cargo no puede estar vacío',
+            'cargo.exists' => 'El cargo no existe',
             'nombres.required' => 'El nombre no puede estar vacío',
             'nombres.max' => 'El nombre es muy extenso',
             'apellidos.required' => 'El apellido no puede estar vacío',
@@ -237,6 +247,7 @@ class EmpleadoController extends Controller
         $empleado->fecha_de_ingreso= $request->input('ingreso');
         $empleado->direccion = $request->input('direccion');
         $empleado->DNI= $request->input('DNI');
+        $empleado->cargo= $request->input('cargo');
 
         $creado = $empleado->save();
 

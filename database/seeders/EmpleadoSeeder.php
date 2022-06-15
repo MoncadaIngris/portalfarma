@@ -25,6 +25,7 @@ class EmpleadoSeeder extends Seeder
                 'fecha_de_ingreso' => '00000000',
                 'direccion' => 'El Paraíso, El Paraíso barrio San Isidro, 1/2 abajo del Instituto Armando Martinez',
                 'DNI' => '0000000000000',
+                'cargo' => 1,
                 'fotografia' => 'images/1.jpg',
             ]
         );

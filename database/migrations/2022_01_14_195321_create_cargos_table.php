@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSalarioHorasTable extends Migration
+class CreateCargosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateSalarioHorasTable extends Migration
      */
     public function up()
     {
-        Schema::create('salario_horas', function (Blueprint $table) {
+        Schema::create('cargos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_cargo');
-            $table->foreign("id_cargo")->references("id")->on("cargos");
-            $table->decimal("salario_hora");
-            $table->decimal("salario_dia");
+            $table->string("descripcion");
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateSalarioHorasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salario_horas');
+        Schema::dropIfExists('cargos');
     }
 }

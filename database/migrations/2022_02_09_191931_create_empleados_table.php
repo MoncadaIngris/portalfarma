@@ -25,6 +25,8 @@ class CreateEmpleadosTable extends Migration
             $table->string("direccion");
             $table->string("DNI")->unique();
             $table->string("fotografia");
+            $table->unsignedBigInteger('cargo');
+            $table->foreign("cargo")->references("id")->on("cargos");
             $table->boolean("estado")->default(0);
             $table->timestamps();
         });

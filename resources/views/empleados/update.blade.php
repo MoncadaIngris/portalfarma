@@ -95,6 +95,21 @@
                         title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos">
                 </div>
             </div>
+
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Cargo: <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <select name="cargo" id="cargo" required class="form-control">
+                        <option value="{{$empleado->cargo}}" style="display: none">{{$empleado->cargos->descripcion}}</option>
+                        @foreach ($cargo as $c)
+                            <option value="{{$c->id}}">{{$c->descripcion}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+
             <?php $fecha_actual = date("d-m-Y");?>
             <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align">Fecha de Nacimiento <span class="required">*</span>

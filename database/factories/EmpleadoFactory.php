@@ -30,6 +30,7 @@ class EmpleadoFactory extends Factory
              'DNI'  =>substr(str_repeat(0, 2).$this-> faker -> numberBetween($min = 1, $max = 18), - 2).substr(str_repeat(0, 2).$this-> faker -> numberBetween($min = 1, $max = 28), - 2).$this-> faker -> numberBetween($min =1957, $max = 2004).$this-> faker ->unique()-> numerify('#####'),
              'fotografia' => 'images/'.$this->faker -> numberBetween($min = 1, $max = 14).'.jpg',
              'estado' => $this->faker ->randomElement([0,1]),
+             'cargo' => $this->faker -> numberBetween($min = 2, $max = 5),
         ];
     }
 }

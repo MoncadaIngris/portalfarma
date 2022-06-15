@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SalarioHora;
 use App\Models\Jornada;
+use App\Models\Cargo;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreSalarioHoraRequest;
 use App\Http\Requests\UpdateSalarioHoraRequest;
@@ -19,8 +20,7 @@ class SalarioHoraController extends Controller
      */
     public function index()
     {
-        $salario = SalarioHora::select(DB::raw("*,TIMESTAMPDIFF(hour , hora_entrada, hora_salida ) AS diferencia"))
-        ->join("jornadas","salario_horas.id_jornada","=","jornadas.id")->get();
+        $salario = SalarioHora::all();
         return view("salario/index")->with("salario",$salario);
     }
 
@@ -31,8 +31,9 @@ class SalarioHoraController extends Controller
      */
     public function create()
     {
+        $cargo = Cargo::all();
         $jornada = jornada::select(DB::raw("*,TIMESTAMPDIFF(hour , hora_entrada, hora_salida ) AS diferencia"))->get();
-        return view("salario/create")->with("jornada",$jornada);
+        return view("salario/create")->with("jornada",$jornada)->with('cargo', $cargo);
     }
 
     /**
@@ -44,13 +45,13 @@ class SalarioHoraController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'jornada' => 'required|unique:salario_horas,id_jornada',
+            'jornada' => 'required|unique:salario_horas,id_cargo',
             'semanal' => 'required|numeric|min:0|max:999999.99',
         ];
 
         $mensaje=[
-            'jornada.required' => 'La jornada no puede estar vacío',
-            'jornada.unique' => 'La jornada ya esta en uso',
+            'jornada.required' => 'El cargo no puede estar vacío',
+            'jornada.unique' => 'El cargo ya esta en uso',
             'semanal.required' => 'El salario no puede estar vacio',
             'semanal.numeric' => 'El salario debe de ser numerico',
             'semanal.min' => 'El salario no puede ser negativo',
@@ -61,7 +62,7 @@ class SalarioHoraController extends Controller
 
         $salario = new SalarioHora();
 
-        $salario->id_jornada = $request->input('jornada');
+        $salario->id_cargo = $request->input('jornada');
         $salario->salario_hora= $request->input('hora');
         $salario->salario_dia = $request->input('diario');
 
