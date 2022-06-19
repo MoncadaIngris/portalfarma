@@ -301,6 +301,8 @@
                         <li><a href="{{route('salariohora.index')}}"> Lista De Salarios</a></li>
                       </ul>
                     </li>
+
+                    <li><a href="{{route('planilla.index')}}"><i class="fa-solid fa-box-open"></i>Listado de planilla</a></li>
               </div>
 
             </div>

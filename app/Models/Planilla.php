@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cargo extends Model
+class Planilla extends Model
 {
     use HasFactory;
-
-    public function salario()
+    public function detalles()
     {
-        return $this->belongsTo(SalarioHora::class,'id', 'id_cargo');
+        return $this->hasMany(PlanillaDetalle::class,'id_planilla');
     }
 }

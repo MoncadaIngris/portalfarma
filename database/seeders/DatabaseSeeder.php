@@ -31,5 +31,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SemanaSeeder::class);
         $this->call(CalendarioSeeder::class);
         $this->call(CalendarioDetalleSeeder::class);
+        $this->call(HoraEntradaSeeder::class);
+        $this->call(HoraSalidaSeeder::class);
+        $this->call(LaboralSeeder::class);
     }
 }

@@ -21,7 +21,7 @@ class EmpleadoController extends Controller
     {
         abort_if(Gate::denies('empleados_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
-        $empleados = Empleado::where('estado',0)->select("id","nombres", "apellidos", "DNI","telefono_personal")->get();
+        $empleados = Empleado::where('estado',0)->select("id","nombres", "apellidos", "DNI","telefono_personal","cargo")->get();
 
         return view('empleados/index')->with('empleados', $empleados);
 

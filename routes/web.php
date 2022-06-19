@@ -21,6 +21,7 @@ use App\Http\Controllers\LaboralController;
 use App\Http\Controllers\HoraSalidaController;
 use App\Http\Controllers\HoraEntradaController;
 use App\Http\Controllers\SalarioHoraController;
+use App\Http\Controllers\PlanillaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -383,6 +384,15 @@ Route::get("/salariohora/create", [SalarioHoraController::class, 'create'])
 
 Route::post("/salariohora/create", [SalarioHoraController::class, 'store'])
 ->name('salariohora.store');
+
+Route::get("/planilla", [PlanillaController::class, 'index'])
+->name('planilla.index');
+
+Route::post("/planilla", [PlanillaController::class, 'store'])
+->name('planilla.generate');
+
+Route::get("/planilla/{id}", [PlanillaController::class, 'show'])
+->name('planilla.show');
 
 });
 });

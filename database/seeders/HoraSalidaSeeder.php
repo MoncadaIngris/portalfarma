@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Hora_salida;
 use Illuminate\Database\Seeder;
 
 class HoraSalidaSeeder extends Seeder
@@ -13,6 +13,6 @@ class HoraSalidaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Hora_salida::Factory(360)->create();
     }
 }

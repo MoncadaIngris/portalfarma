@@ -22,6 +22,7 @@
             <th scope="col" class="sorting" style="text-align: center">Identidad</th>
             <th scope="col" class="sorting" style="text-align: center">Nombres</th>
             <th scope="col" class="sorting" style="text-align: center">Apellidos</th>
+            <th scope="col" class="sorting" style="text-align: center">Cargo</th>
             <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
             @can('empleados_editar')
             <th scope="col" style="text-align: center">Editar</th>
@@ -41,6 +42,7 @@
                 <td>{{$empleado->DNI}}</td>
                 <td>{{$empleado->nombres}}</td>
                 <td>{{$empleado->apellidos}}</td>
+                <td>{{$empleado->cargos->descripcion}}</td>
                 <td>{{$empleado->telefono_personal}}</td>
                 @can('empleados_editar')
                 <td>

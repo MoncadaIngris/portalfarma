@@ -1,10 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Hora_entrada;
+
 use Illuminate\Database\Seeder;
 
-class HoraEntradaSeeder extends Seeder
+class PlanillaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class HoraEntradaSeeder extends Seeder
      */
     public function run()
     {
-        Hora_entrada::Factory(360)->create();
+        //
     }
 }
