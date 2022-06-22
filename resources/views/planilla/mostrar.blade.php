@@ -34,9 +34,10 @@
             @endif
         @endif
     @endif
-<form action="{{Route('baucher.generate',['id'=>$p->id])}}">
-    <button type="submit" class="btn btn-save">Generar Baucher</button>
-</form>
+    <form method="post">
+        @csrf
+        <button type="submit" class="btn btn-detalles">Generar Baucher</button>
+    </form>
 <form action="{{Route('planilla.show',['id'=>$p->id])}}" method="get" name="formulario1">
     <h3><center>Filtro de busqueda</center></h3>
     <div style="width: 100%">

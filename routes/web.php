@@ -22,6 +22,7 @@ use App\Http\Controllers\HoraSalidaController;
 use App\Http\Controllers\HoraEntradaController;
 use App\Http\Controllers\SalarioHoraController;
 use App\Http\Controllers\PlanillaController;
+use App\Http\Controllers\BaucherController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -393,6 +394,12 @@ Route::post("/planilla", [PlanillaController::class, 'store'])
 
 Route::get("/planilla/{id}", [PlanillaController::class, 'show'])
 ->name('planilla.show');
+
+Route::post("/planilla/{id}", [BaucherController::class, 'store'])
+->name('baucher.generate');
+
+Route::get("/baucher/{id}", [BaucherController::class, 'show'])
+->name('baucher.show');
 
 });
 });

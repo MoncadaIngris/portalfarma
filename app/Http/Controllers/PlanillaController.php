@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Planilla;
 use App\Models\Laboral;
+use App\Models\Cargo;
 use App\Models\Empleado;
 use App\Models\PlanillaDetalle;
 use App\Models\SalarioHora;
 use App\Http\Requests\StorePlanillaRequest;
 use App\Http\Requests\UpdatePlanillaRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class PlanillaController extends Controller
 {
@@ -136,11 +138,57 @@ class PlanillaController extends Controller
      * @param  \App\Models\Planilla  $planilla
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        $detail = PlanillaDetalle::where('id_planilla',$id)->get();
+        $cargos = Cargo::all();
         $p = Planilla::FindOrFail($id);
-        return view('planilla/show')->with('planilla', $detail)->with('p', $p);
+
+        $empleado = Empleado::all();
+
+        $emp = trim($request->get('employee'));
+        $car = trim($request->get('cargo'));
+
+        if ($emp != "" && $car != "" ) {
+
+            $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+            ->join('cargos','empleados.cargo','=','cargos.id')
+            ->where('id_planilla',$id)
+            ->where('cargos.id',$car)
+            ->where('id_empleado',$emp)
+            ->get();
+            $carg = Cargo::where('id',$car)->first();
+            $emple = Empleado::where('id',$emp)->first();
+            return view('planilla/mostrar')->with('planilla', $detail)
+                    ->with('p', $p)->with('cargos', $cargos)
+                    ->with('empleados', $empleado)->with('emple', $emple)
+                    ->with('carg', $carg);
+        }else{
+            if ($emp != "") {
+                $detail = PlanillaDetalle::where('id_planilla',$id)
+                ->where('id_empleado',$emp)
+                ->get();
+                $emple = Empleado::where('id',$emp)->first();
+                return view('planilla/mostrar')->with('planilla', $detail)
+                    ->with('p', $p)->with('cargos', $cargos)
+                    ->with('empleados', $empleado)->with('emple', $emple);
+            } else {
+                if ($car != "") {
+                    $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+                    ->join('cargos','empleados.cargo','=','cargos.id')
+                    ->where('id_planilla',$id)
+                    ->where('cargos.id',$car)
+                    ->get();
+                    $carg = Cargo::where('id',$car)->first();
+                    return view('planilla/mostrar')->with('planilla', $detail)
+                    ->with('p', $p)->with('cargos', $cargos)
+                    ->with('empleados', $empleado)->with('carg', $carg);
+                }else{
+                    $detail = PlanillaDetalle::where('id_planilla',$id)->get();
+                    return view('planilla/mostrar')->with('planilla', $detail)->with('p', $p)->with('cargos', $cargos)->with('empleados', $empleado);
+                }
+            }
+            
+        }
     }
 
 }
