@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Añadir Salario hora
+Añadir Cargo
 @stop
 @section('contenido')
 <div class="x_content">
@@ -20,16 +20,11 @@ Añadir Salario hora
     <form method="post" enctype="multipart/form-data">
         @csrf
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Seleccione un cargo: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Ingrese el nombre: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <select name="jornada" id="jornada" class="form-control" required onchange="horas()">
-                        <option value="" style="display: none">Seleccione una cargo</option>
-                        @foreach ($cargo as $c)
-                            <option value="{{$c->id}}">{{$c->descripcion}}</option>
-                        @endforeach
-                    </select>
-                </select>
+                <input type="text" class="form-control" name="jornada" id="jornada" placeholder="Ingrese el nombre del cargo"
+                required title="Formato de precio incorrecto" maxlength="50">
             </div>
         </div>
 
