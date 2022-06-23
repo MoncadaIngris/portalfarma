@@ -45,7 +45,7 @@ class SalarioHoraController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'jornada' => 'required|unique:cargos,descripcion',
+            'jornada' => 'required|unique:salario_horas,id_cargo',
             'semanal' => 'required|numeric|min:0|max:999999.99',
         ];
 
@@ -60,13 +60,9 @@ class SalarioHoraController extends Controller
 
         $this->validate($request,$rules,$mensaje);
 
-        $cargo = new Cargo();
-        $cargo->descripcion = $request->input('jornada');
-        $creado = $cargo->save();
-
         $salario = new SalarioHora();
 
-        $salario->id_cargo = $cargo->id;
+        $salario->id_cargo = $request->input('jornada');
         $salario->salario_hora= $request->input('hora');
         $salario->salario_dia = $request->input('diario');
 
