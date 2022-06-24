@@ -386,6 +386,12 @@ Route::get("/salariohora/create", [SalarioHoraController::class, 'create'])
 Route::post("/salariohora/create", [SalarioHoraController::class, 'store'])
 ->name('salariohora.store');
 
+Route::get("/salariohora/{id}", [SalarioHoraController::class, 'edit'])
+->name('salariohora.edit');
+
+Route::put("/salariohora/{id}", [SalarioHoraController::class, 'update'])
+->name('salariohora.update');
+
 Route::get("/planilla", [PlanillaController::class, 'index'])
 ->name('planilla.index');
 
@@ -400,6 +406,10 @@ Route::post("/planilla/{id}", [BaucherController::class, 'store'])
 
 Route::get("/baucher/{id}", [BaucherController::class, 'show'])
 ->name('baucher.show');
+
+Route::get('/planills/pdf', [PlanillaController::class, 'createPDF'])->name('planilla.pdf');
+Route::get('/planills/xlsx', [PlanillaController::class, 'exportxlsx'])->name('planilla.xlsx');
+Route::get('/planills/csv', [PlanillaController::class, 'exportcsv'])->name('planilla.csv');
 
 });
 });
