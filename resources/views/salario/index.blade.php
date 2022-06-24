@@ -20,7 +20,8 @@
             <th scope="col" class="sorting" style="text-align: center">Cargo</th>
             <th scope="col" class="sorting" style="text-align: center">Salario por hora</th>
             <th scope="col" class="sorting" style="text-align: center">Salario por dia</th>
-            <th scope="col" class="sorting" style="text-align: center">Salario semanal</th>       
+            <th scope="col" class="sorting" style="text-align: center">Salario semanal</th> 
+            <th scope="col" style="text-align: center">Editar</th>      
         </tr>
         </thead>
         <tbody>
@@ -30,6 +31,11 @@
                     <td style="text-align: right">{{$s->salario_hora}}</td>
                     <td style="text-align: right">{{$s->salario_dia}}</td>
                     <td style="text-align: right">{{$s->salario_dia * 6}}</td>
+                    <td>
+                        <center>
+                <a class="btn btn-editar" href="{{route("salariohora.edit",["id"=>$s->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </center>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
