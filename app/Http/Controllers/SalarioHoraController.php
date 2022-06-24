@@ -93,9 +93,12 @@ class SalarioHoraController extends Controller
      * @param  \App\Models\SalarioHora  $salarioHora
      * @return \Illuminate\Http\Response
      */
-    public function edit(SalarioHora $salarioHora)
+    public function edit($id)
     {
-        //
+        $salario = SalarioHora::findOrFail($id);
+        $cargo = Cargo::all();
+        $jornada = jornada::select(DB::raw("*,TIMESTAMPDIFF(hour , hora_entrada, hora_salida ) AS diferencia"))->get();
+        return view("salario/edit")->with("jornada",$jornada)->with('cargo', $cargo)->with('salario', $salario);
     }
 
     /**
@@ -105,9 +108,38 @@ class SalarioHoraController extends Controller
      * @param  \App\Models\SalarioHora  $salarioHora
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSalarioHoraRequest $request, SalarioHora $salarioHora)
+    public function update($id,Request $request)
     {
-        //
+        $rules=[
+            'jornada' => 'required|unique:salario_horas,id_cargo,'.$id,
+            'semanal' => 'required|numeric|min:0|max:999999.99',
+        ];
+
+        $mensaje=[
+            'jornada.required' => 'El cargo no puede estar vacío',
+            'jornada.unique' => 'El cargo ya esta en uso',
+            'semanal.required' => 'El salario no puede estar vacio',
+            'semanal.numeric' => 'El salario debe de ser numerico',
+            'semanal.min' => 'El salario no puede ser negativo',
+            'semanal.max' => 'El salario no puede ser tan alto',
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+
+        $salario = SalarioHora::findOrFail($id);
+
+        $salario->id_cargo = $request->input('jornada');
+        $salario->salario_hora= $request->input('hora');
+        $salario->salario_dia = $request->input('diario');
+
+        $creado = $salario->save();
+
+        if ($creado) {
+            return redirect()->route('salariohora.index')
+                ->with('mensaje', 'El salario fue editado exitosamente');
+        } else {
+
+        }
     }
 
     /**
