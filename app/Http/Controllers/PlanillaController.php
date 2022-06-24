@@ -11,10 +11,194 @@ use App\Models\SalarioHora;
 use App\Http\Requests\StorePlanillaRequest;
 use App\Http\Requests\UpdatePlanillaRequest;
 use Illuminate\Support\Facades\DB;
+use PDF;
+use Excel;
 use Illuminate\Http\Request;
+use App\Exports\PlanillaExport;
 
 class PlanillaController extends Controller
 {
+    public function createPDF(Request $request){
+        $inicio = $request->input('start_date');
+        $final = $request->input('end_date');
+        $id = $request->input('planilla');
+        $emp = $request->input('employee');
+        $car = $request->input('cargo');
+
+        $pla = Planilla::FindOrFail($id);
+
+        if ($emp != "" && $car != "" ) {
+
+            $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+            ->join('cargos','empleados.cargo','=','cargos.id')
+            ->where('id_planilla',$id)
+            ->where('cargos.id',$car)
+            ->where('id_empleado',$emp)
+            ->get();
+            $carg = Cargo::where('id',$car)->first();
+            $emple = Empleado::where('id',$emp)->first();
+
+            $data = [
+                'title' => 'Planilla de '.$carg->descripcion.' con el empleado '.$emple->nombres.' '.$emple->apellidos.' del '.$inicio.' al '.$final,
+                'planilla' =>$detail,
+                'p' =>$pla,
+            ];
+               
+            $pdf = PDF::loadView('planilla/pdf', $data)->setPaper('a3','landscape');
+            return $pdf->download('Planilla_del_'.$inicio.'_al_'.$final.'.pdf');
+
+
+        }else{
+            if ($emp != "") {
+                $detail = PlanillaDetalle::where('id_planilla',$id)
+                ->where('id_empleado',$emp)
+                ->get();
+                $emple = Empleado::where('id',$emp)->first();
+               
+
+                $data = [
+                    'title' => 'Planilla de '.$emple->nombres.' '.$emple->apellidos.' del '.$inicio.' al '.$final,
+                    'planilla' =>$detail,
+                    'p' =>$pla,
+                ];
+                   
+                $pdf = PDF::loadView('planilla/pdf', $data)->setPaper('a3','landscape');
+                return $pdf->download('Planilla_del_'.$inicio.'_al_'.$final.'.pdf');
+
+
+            } else {
+                if ($car != "") {
+                    $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+                    ->join('cargos','empleados.cargo','=','cargos.id')
+                    ->where('id_planilla',$id)
+                    ->where('cargos.id',$car)
+                    ->get();
+                    $carg = Cargo::where('id',$car)->first();
+                    
+
+                    $data = [
+                        'title' => 'Planilla de '.$carg->descripcion.' del '.$inicio.' al '.$final,
+                        'planilla' =>$detail,
+                        'p' =>$pla,
+                    ];
+                       
+                    $pdf = PDF::loadView('planilla/pdf', $data)->setPaper('a3','landscape');
+                    return $pdf->download('Planilla_del_'.$inicio.'_al_'.$final.'.pdf');
+
+
+
+                }else{
+                    $detail = PlanillaDetalle::where('id_planilla',$id)->get();
+                    
+                    
+                    $data = [
+                        'title' => 'Planilla del '.$inicio.' al '.$final,
+                        'planilla' =>$detail,
+                        'p' =>$pla,
+                    ];
+                       
+                    $pdf = PDF::loadView('planilla/pdf', $data)->setPaper('a3','landscape');
+                    return $pdf->download('Planilla_del_'.$inicio.'_al_'.$final.'.pdf');
+
+
+
+                }
+            }
+        }
+    }
+
+    public function exportxlsx(Request $request){
+        $inicio = $request->input('start_date');
+        $final = $request->input('end_date');
+        $id = $request->input('planilla');
+        $emp = $request->input('employee');
+        $car = $request->input('cargo');
+
+        $pla = Planilla::FindOrFail($id);
+
+        if ($emp != "" && $car != "" ) {
+
+            $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+            ->join('cargos','empleados.cargo','=','cargos.id')
+            ->where('id_planilla',$id)
+            ->where('cargos.id',$car)
+            ->where('id_empleado',$emp)
+            ->get();
+            $carg = Cargo::where('id',$car)->first();
+            $emple = Empleado::where('id',$emp)->first();
+
+            return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_del_empleado_'.$emple->nombres.'_'.$emple->apellidos.'_con_cargo_'.$carg->descripcion.'_con_fecha_'.$inicio.'_al_'.$final.'.xlsx');
+        }else{
+            if ($emp != "") {
+                $detail = PlanillaDetalle::where('id_planilla',$id)
+                ->where('id_empleado',$emp)
+                ->get();
+                $emple = Empleado::where('id',$emp)->first();
+                return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_del_empleado_'.$emple->nombres.'_'.$emple->apellidos.'_con_fecha_'.$inicio.'_al_'.$final.'.xlsx');
+            } else {
+                if ($car != "") {
+                    $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+                    ->join('cargos','empleados.cargo','=','cargos.id')
+                    ->where('id_planilla',$id)
+                    ->where('cargos.id',$car)
+                    ->get();
+                    $carg = Cargo::where('id',$car)->first();
+                    return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_con_cargo_'.$carg->descripcion.'_con_fecha_'.$inicio.'_al_'.$final.'.xlsx');
+                }else{
+                    $detail = PlanillaDetalle::where('id_planilla',$id)->get();
+                    return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_del_'.$inicio.'_al_'.$final.'.xlsx');
+                }
+            }
+        }
+    }
+
+    public function exportcsv(Request $request){
+        $inicio = $request->input('start_date');
+        $final = $request->input('end_date');
+        $id = $request->input('planilla');
+        $emp = $request->input('employee');
+        $car = $request->input('cargo');
+
+        $pla = Planilla::FindOrFail($id);
+
+        if ($emp != "" && $car != "" ) {
+
+            $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+            ->join('cargos','empleados.cargo','=','cargos.id')
+            ->where('id_planilla',$id)
+            ->where('cargos.id',$car)
+            ->where('id_empleado',$emp)
+            ->get();
+            $carg = Cargo::where('id',$car)->first();
+            $emple = Empleado::where('id',$emp)->first();
+
+            return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_del_empleado_'.$emple->nombres.'_'.$emple->apellidos.'_con_cargo_'.$carg->descripcion.'_con_fecha_'.$inicio.'_al_'.$final.'.csv');
+        }else{
+            if ($emp != "") {
+                $detail = PlanillaDetalle::where('id_planilla',$id)
+                ->where('id_empleado',$emp)
+                ->get();
+                $emple = Empleado::where('id',$emp)->first();
+                return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_del_empleado_'.$emple->nombres.'_'.$emple->apellidos.'_con_fecha_'.$inicio.'_al_'.$final.'.csv');
+            } else {
+                if ($car != "") {
+                    $detail = PlanillaDetalle::join('empleados','planilla_detalles.id_empleado','=','empleados.id')
+                    ->join('cargos','empleados.cargo','=','cargos.id')
+                    ->where('id_planilla',$id)
+                    ->where('cargos.id',$car)
+                    ->get();
+                    $carg = Cargo::where('id',$car)->first();
+                    return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_con_cargo_'.$carg->descripcion.'_con_fecha_'.$inicio.'_al_'.$final.'.csv');
+                }else{
+                    $detail = PlanillaDetalle::where('id_planilla',$id)->get();
+                    return Excel::download(new PlanillaExport($detail, $pla), 'Planilla_del_'.$inicio.'_al_'.$final.'.csv');
+                }
+            }
+        }
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
