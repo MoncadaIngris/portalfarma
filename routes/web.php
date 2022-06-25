@@ -407,6 +407,11 @@ Route::post("/planilla/{id}", [BaucherController::class, 'store'])
 Route::get("/baucher/{id}", [BaucherController::class, 'show'])
 ->name('baucher.show');
 
+Route::get("/baucher", [BaucherController::class, 'index'])
+->name('baucher.index');
+
+Route::get('/bauchr/pdf', [BaucherController::class, 'createPDF'])->name('baucher.pdf');
+
 Route::get('/planills/pdf', [PlanillaController::class, 'createPDF'])->name('planilla.pdf');
 Route::get('/planills/xlsx', [PlanillaController::class, 'exportxlsx'])->name('planilla.xlsx');
 Route::get('/planills/csv', [PlanillaController::class, 'exportcsv'])->name('planilla.csv');
