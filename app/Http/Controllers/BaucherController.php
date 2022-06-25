@@ -9,6 +9,8 @@ use App\Models\Empleado;
 use App\Models\PlanillaDetalle;
 use App\Http\Requests\StoreBaucherRequest;
 use App\Http\Requests\UpdateBaucherRequest;
+use PDF;
+use Illuminate\Http\Request;
 
 class BaucherController extends Controller
 {
@@ -19,7 +21,8 @@ class BaucherController extends Controller
      */
     public function index()
     {
-        //
+        $baucher = Baucher::where('id_empleado',auth()->user()->empleados->id)->get();
+        return view('baucher/index')->with('baucher', $baucher);
     }
 
     /**
@@ -79,5 +82,20 @@ class BaucherController extends Controller
         ->where('id_empleado',auth()->user()->empleados->id)->first();
 
         return view('baucher/mostrar')->with('baucher',$baucher);
+    }
+
+    public function createPDF(Request $request){
+        $id = $request->input('planilla');
+
+        $baucher = Baucher::where('id_planilla',$id)
+        ->where('id_empleado',auth()->user()->empleados->id)->first();
+
+        $data = [
+            'title' => 'Baucher  del  '.$baucher->planillas->fecha_inicio.' al '.$baucher->planillas->fecha_final,
+            'baucher' =>$baucher,
+        ];
+
+        $pdf = PDF::loadView('baucher/pdf', $data)->setPaper('a4','landscape');
+        return $pdf->download('Baucher_'.$baucher->planillas->fecha_inicio.'_al_'.$baucher->planillas->fecha_final.'.pdf');
     }
 }
