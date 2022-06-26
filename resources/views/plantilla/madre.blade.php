@@ -303,6 +303,8 @@
                     </li>
 
                     <li><a href="{{route('planilla.index')}}"><i class="fa-solid fa-box-open"></i>Listado de planilla</a></li>
+
+                    <li><a href="{{route('baucher.index')}}"><i class="fa-solid fa-box-open"></i>Listado de Baucher</a></li>
               </div>
 
             </div>
