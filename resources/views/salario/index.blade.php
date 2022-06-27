@@ -13,7 +13,7 @@
             overflow:auto;
         }
       </style>
-    <button class="btn btn-nuevo" onclick="window.location='{{route('salariohora.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Salario Hora</button>
+    <button class="btn btn-nuevo" onclick="window.location='{{route('salariohora.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar salario hora</button>
     <table  id="datatable" class="table table-striped">
         <thead>
         <tr>
