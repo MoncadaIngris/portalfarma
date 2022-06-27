@@ -38,7 +38,7 @@
     <div  style="float: left;margin-left: 10px; width: 270px">
         <form method="post">
             @csrf
-            <button type="submit" class="btn btn-detalles">Generar Baucher</button>
+            <button type="submit" class="btn btn-detalles">Generar baucher</button>
         </form>
     </div>
 
@@ -101,7 +101,7 @@
                 @if (isset($emple))
                     <option style="display: none" value="{{$emple->id}}">{{$emple->nombres}} {{$emple->apellidos}}</option>
                 @else
-                    <option style="display: none" value="">Seleccione una opcion</option>
+                    <option style="display: none" value="">Seleccione una opción</option>
                 @endif
                 @foreach ($empleados as $b)
                     <option value="{{$b->id}}">{{$b->nombres}} {{$b->apellidos}}</option>
@@ -115,7 +115,7 @@
             @if (isset($carg))
                 <option style="display: none" value="{{$carg->id}}">{{$carg->descripcion}}</option>
             @else
-                <option style="display: none" value="">Seleccione una opcion</option>
+                <option style="display: none" value="">Seleccione una opción</option>
             @endif
                 @foreach ($cargos as $a)
                     <option value="{{$a->id}}">{{$a->descripcion}}</option>
@@ -134,7 +134,7 @@
     <br><br><br><br>
     <div style="width: 100%">
         <div style="width: 50%; float: left;">
-            <label for=""><Strong>Numero de empleados: </Strong></label>
+            <label for=""><Strong>Número de empleados: </Strong></label>
             <label for="">{{count($planilla)}}</label>
         </div>
         <div style="width: 50%; float: right;">
@@ -161,7 +161,7 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center; width: 12%" rowspan="2">Empleado</th>
             <th scope="col" class="sorting" style="text-align: center; width: 10%" rowspan="2">Cargo</th>
-            <th scope="col" class="sorting" style="text-align: center; width: 6%" rowspan="2">Precio por Hora</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 6%" rowspan="2">Precio por hora</th>
             <th scope="col" class="sorting" style="text-align: center; width: 6%" colspan="2">Lunes</th>
             <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Martes</th>
             <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Miercoles</th>
@@ -170,7 +170,7 @@
             <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Sabado</th>
             <th scope="col" class="sorting" style="text-align: center;width: 6%" rowspan="2">Total horas</th>
             <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Sub-Total</th>
-            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Deduccion</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Deducción</th>
             <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Total</th>
         </tr>
         <tr>
@@ -261,7 +261,7 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center; width: 12%" rowspan="2">Empleado</th>
             <th scope="col" class="sorting" style="text-align: center; width: 10%" rowspan="2">Cargo</th>
-            <th scope="col" class="sorting" style="text-align: center; width: 6%" rowspan="2">Precio por Hora</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 6%" rowspan="2">Precio por hora</th>
             <th scope="col" class="sorting" style="text-align: center; width: 6%" colspan="2">Lunes</th>
             <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Martes</th>
             <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Miercoles</th>
@@ -270,7 +270,7 @@
             <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Sabado</th>
             <th scope="col" class="sorting" style="text-align: center;width: 6%" rowspan="2">Total horas</th>
             <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Sub-Total</th>
-            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Deduccion</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Deducción</th>
             <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Total</th>
         </tr>
         <tr>
