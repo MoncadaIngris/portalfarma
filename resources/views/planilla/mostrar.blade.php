@@ -159,19 +159,19 @@
     <table style="font-size: 11px" id="data" class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Empleado</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Cargo</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Precio por hora</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="2">Lunes</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="2">Martes</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="2">Miércoles</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="2">Jueves</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="2">Viernes</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="2">Sábado</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Total horas</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Sub-Total</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Deducción</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Total</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 12%" rowspan="2">Empleado</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 10%" rowspan="2">Cargo</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 6%" rowspan="2">Precio por hora</th>
+            <th scope="col" class="sorting" style="text-align: center; width: 6%" colspan="2">Lunes</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Martes</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Miércoles</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Jueves</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Viernes</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 6%" colspan="2">Sábado</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 6%" rowspan="2">Total horas</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Sub-Total</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Deducción</th>
+            <th scope="col" class="sorting" style="text-align: center;width: 10%" rowspan="2">Total</th>
         </tr>
         <tr>
 
