@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Salario por hora
+    Listado de salario por hora
 @stop
 @section('contenido')
     @if(session('mensaje'))
