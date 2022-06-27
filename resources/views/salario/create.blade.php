@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Añadir Salario hora
+Añadir salario hora
 @stop
 @section('contenido')
 <div class="x_content">
