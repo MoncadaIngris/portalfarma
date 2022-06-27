@@ -35,7 +35,7 @@
         @endif
     @endif
 <form action="{{Route('baucher.generate',['id'=>$p->id])}}">
-    <button type="submit" class="btn btn-save">Generar Baucher</button>
+    <button type="submit" class="btn btn-save">Generar baucher</button>
 </form>
 <form action="{{Route('planilla.show',['id'=>$p->id])}}" method="get" name="formulario1">
     <h3><center>Filtro de busqueda</center></h3>
@@ -47,7 +47,7 @@
                 @if (isset($emple))
                     <option style="display: none" value="{{$emple->id}}">{{$emple->nombres}} {{$emple->apellidos}}</option>
                 @else
-                    <option style="display: none" value="">Seleccione una opcion</option>
+                    <option style="display: none" value="">Seleccione una opción</option>
                 @endif
                 @foreach ($empleados as $b)
                     <option value="{{$b->id}}">{{$b->nombres}} {{$b->apellidos}}</option>
@@ -61,7 +61,7 @@
             @if (isset($carg))
                 <option style="display: none" value="{{$carg->id}}">{{$carg->descripcion}}</option>
             @else
-                <option style="display: none" value="">Seleccione una opcion</option>
+                <option style="display: none" value="">Seleccione una opción</option>
             @endif
                 @foreach ($cargos as $a)
                     <option value="{{$a->id}}">{{$a->descripcion}}</option>
@@ -80,7 +80,7 @@
     <br><br><br><br>
     <div style="width: 100%">
         <div style="width: 50%; float: left;">
-            <label for=""><Strong>Numero de empleados: </Strong></label>
+            <label for=""><Strong>Número de empleados: </Strong></label>
             <label for="">{{count($planilla)}}</label>
         </div>
         <div style="width: 50%; float: right;">
@@ -107,16 +107,16 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Empleado</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Cargo</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Precio por Hora</th>
+            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Precio por hora</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="3">Lunes</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="3">Martes</th>
-            <th scope="col" class="sorting" style="text-align: center;" colspan="3">Miercoles</th>
+            <th scope="col" class="sorting" style="text-align: center;" colspan="3">Miércoles</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="3">Jueves</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="3">Viernes</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="3">Sabado</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Total horas</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Sub-Total</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Deduccion</th>
+            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Deducción</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Total</th>
         </tr>
         <tr>
