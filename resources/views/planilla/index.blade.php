@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Planillas
+    Listado de planillas
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -37,7 +37,7 @@
 
     <form method="post">
         @csrf
-        <button class="btn btn-nuevo" type="submit">Generar Planilla</button>
+        <button class="btn btn-nuevo" type="submit">Generar planilla</button>
     </form>
     <br><br>
     <table  id="datatable" class="table table-striped">
