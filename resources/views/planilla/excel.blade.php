@@ -4,7 +4,7 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Empleado</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Cargo</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Precio por Hora</th>
+            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Precio por hora</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="2">Lunes</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="2">Martes</th>
             <th scope="col" class="sorting" style="text-align: center;" colspan="2">Miercoles</th>
@@ -13,7 +13,7 @@
             <th scope="col" class="sorting" style="text-align: center;" colspan="2">Sabado</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Total horas</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Sub-Total</th>
-            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Deduccion</th>
+            <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Deducción</th>
             <th scope="col" class="sorting" style="text-align: center;" rowspan="2">Total</th>
         </tr>
         <tr>
