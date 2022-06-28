@@ -61,7 +61,7 @@
                 {{$baucher->planillas->fecha_final}}
             </td>
             <td>
-                <label for=""><Strong>Telefono de empleado: </Strong></label>
+                <label for=""><Strong>Teléfono de empleado: </Strong></label>
                 {{$baucher->empleados->telefono_personal}}
             </td>
         </tr>
@@ -72,7 +72,7 @@
             <td style="text-align: center" colspan="3"><strong>Ingresos</strong></td>
         </tr>
         <tr>
-            <td><strong><i>Descripcion</i></strong></td>
+            <td><strong><i>Descripción</i></strong></td>
             <td style="text-align: right"><strong><i>Cantidad</i></strong></td>
             <td style="text-align: right"><strong><i>Total</i></strong></td>
         </tr>
@@ -98,7 +98,7 @@
             <td style="text-align: center" colspan="3"><strong>Egresos</strong></td>
         </tr>
         <tr>
-            <td><strong><i>Descripcion</i></strong></td>
+            <td><strong><i>Descripción</i></strong></td>
             <td style="text-align: right"><strong><i>Cantidad</i></strong></td>
             <td style="text-align: right"><strong><i>Total</i></strong></td>
         </tr>
