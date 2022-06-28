@@ -14,7 +14,7 @@ class LaboralSeeder extends Seeder
     public function run()
     {
         $k = 1;
-        for ($j=6; $j < 18; $j++) { 
+        for ($j=6; $j < 25; $j++) { 
             for ($i=1; $i <= 30; $i++) { 
                 Laboral::create(
                     [

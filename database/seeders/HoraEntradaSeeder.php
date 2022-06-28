@@ -13,6 +13,6 @@ class HoraEntradaSeeder extends Seeder
      */
     public function run()
     {
-        Hora_entrada::Factory(360)->create();
+        Hora_entrada::Factory(570)->create();
     }
 }
