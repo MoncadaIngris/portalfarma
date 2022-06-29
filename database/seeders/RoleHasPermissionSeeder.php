@@ -19,7 +19,7 @@ class RoleHasPermissionSeeder extends Seeder
         $facultativo_permissions = Permission::whereBetween('id', [1, 4]);
         $abastecimiento_permissions = Permission::whereBetween('id', [2, 11]);
         $vendedor_permissions = Permission::whereBetween('id', [10, 18]);
-        $admin_permissions = Permission::whereBetween('id', [1, 44]);
+        $admin_permissions = Permission::whereBetween('id', [1, 50]);
         $desarrollador_permissions = Permission::all();
 
             // admin

@@ -291,19 +291,24 @@
                       </ul>
                     </li>
                     @endcan
+                    @can('calendario_index')
                     <li><a href="{{route('laborales.index')}}"><i class="fa-solid fa-box-open"></i>Listado laboral</a></li>
-
+                    @endcan
+                    @can('salario_index','salario_nuevo')
                     <li><a><i class="fa-solid fa-user-clock"></i>Salario por hora <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
-
+                      @can('salario_nuevo')
                         <li><a href="{{route('salariohora.create')}}">Nuevo Salario</a></li>
-
+                        @endcan
+                        @can('salario_index')
                         <li><a href="{{route('salariohora.index')}}"> Lista De Salarios</a></li>
+                        @endcan
                       </ul>
                     </li>
-
+                    @endcan
+                    @can('planilla_index')
                     <li><a href="{{route('planilla.index')}}"><i class="fa-solid fa-box-open"></i>Listado de planilla</a></li>
-
+                    @endcan
                     <li><a href="{{route('baucher.index')}}"><i class="fa-solid fa-box-open"></i>Listado de Baucher</a></li>
               </div>
 

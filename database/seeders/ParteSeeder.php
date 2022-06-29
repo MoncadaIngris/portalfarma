@@ -241,5 +241,34 @@ class ParteSeeder extends Seeder
             'id_modelo' => 14,
         ]);
 
+        //salario
+        Parte::create([
+            'descripcion' => 'nuevo',
+            'id_modelo' => 15,
+        ]);
+        Parte::create([
+            'descripcion' => 'index',
+            'id_modelo' => 15,
+        ]);
+        Parte::create([
+            'descripcion' => 'detalle',
+            'id_modelo' => 15,
+        ]);
+
+        //planilla
+        Parte::create([
+            'descripcion' => 'nuevo',
+            'id_modelo' => 16,
+        ]);
+        Parte::create([
+            'descripcion' => 'index',
+            'id_modelo' => 16,
+        ]);
+        Parte::create([
+            'descripcion' => 'detalle',
+            'id_modelo' => 16,
+        ]);
+
+
     }
 }

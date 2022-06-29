@@ -251,6 +251,37 @@ class PermissionSeeder extends Seeder
             'name' => 'calendario_detalle',
             'id_partes' => 50,
         ]);
+        Permission::create([
+            'titulo' => 'Nueva salario',
+            'name' => 'salario_nuevo',
+            'id_partes' => 51,
+        ]);
+        Permission::create([
+            'titulo' => 'Listado salario',
+            'name' => 'salario_index',
+            'id_partes' => 52,
+        ]);
+        Permission::create([
+            'titulo' => 'Detalle salario',
+            'name' => 'salario_detalle',
+            'id_partes' => 53,
+        ]); 
+        
+        Permission::create([
+            'titulo' => 'Nueva planilla',
+            'name' => 'planilla_nuevo',
+            'id_partes' => 54,
+        ]);
+        Permission::create([
+            'titulo' => 'Listado planilla',
+            'name' => 'planilla_index',
+            'id_partes' => 55,
+        ]);
+        Permission::create([
+            'titulo' => 'Detalle planilla',
+            'name' => 'planilla_detalle',
+            'id_partes' => 56,
+        ]);
         
         //permiso de desarrollador
         Permission::create([
