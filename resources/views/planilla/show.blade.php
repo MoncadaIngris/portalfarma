@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Planilla del {{$p->fecha_inicio}} al {{$p->fecha_final}}
+    Planilla del {{\Carbon\Carbon::parse($p->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY")}} al {{\Carbon\Carbon::parse($p->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY")}}
 @stop
 @section('contenido')
     @if(session('mensaje'))

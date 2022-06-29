@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Planilla del {{$p->fecha_inicio}} al {{$p->fecha_final}}
+Planilla del {{\Carbon\Carbon::parse($p->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY")}} al {{\Carbon\Carbon::parse($p->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY")}}
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -70,7 +70,7 @@
             var divContents = document.getElementById("GFG").innerHTML;
             var a = window.open('', '', 'height=1000, width=1000');
             a.document.write('<html>');
-            a.document.write('<body > <h1><center>Planilla <br> <center>  del {{$p->fecha_inicio}} al {{$p->fecha_final}} <br> <center><br>');
+            a.document.write('<body > <h1><center>Planilla <br> <center>  {{\Carbon\Carbon::parse($p->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY")}} al {{\Carbon\Carbon::parse($p->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY")}} <br> <center><br>');
             a.document.write(divContents);
             a.document.write('</body></html>');
             a.document.close();
@@ -256,6 +256,30 @@
 <!----------------------------------------------------------->
 <div id="GFG" style="display: none">
     <link href="{{ asset('css/bootstrapcdn.css') }}" rel="stylesheet">
+    <div style="width: 100%">
+    <div style="width: 50%; float: left;font-size: 20px;text-align: left">
+        <label for=""><Strong>Número de empleados: </Strong></label>
+        <label for="">{{count($planilla)}}</label>
+    </div>
+    <div style="width: 50%; float: right;font-size: 20px">
+        <?php $sum = 0?>
+        <label for="" style="float: right;">
+            @foreach ($planilla as $p)
+                <?php 
+                    $sum= $sum + (($p->hora_ordinaria_lunes + $p->hora_extra_lunes+$p->hora_ordinaria_martes + 
+                        $p->hora_extra_martes+$p->hora_ordinaria_miercoles + $p->hora_extra_miercoles+$p->hora_ordinaria_jueves + 
+                        $p->hora_extra_jueves+$p->hora_ordinaria_viernes + $p->hora_extra_viernes+$p->hora_ordinaria_sabado + 
+                        $p->hora_extra_sabado)*$p->precio_hora)-((($p->hora_ordinaria_lunes + $p->hora_extra_lunes+$p->hora_ordinaria_martes + 
+                        $p->hora_extra_martes+$p->hora_ordinaria_miercoles + $p->hora_extra_miercoles+$p->hora_ordinaria_jueves + 
+                        $p->hora_extra_jueves+$p->hora_ordinaria_viernes + $p->hora_extra_viernes+$p->hora_ordinaria_sabado + 
+                        $p->hora_extra_sabado)*$p->precio_hora)*0.025);
+                ?>
+            @endforeach
+            L. {{number_format($sum,2)}}
+        </label>
+        <label for="" style="float: right;"><Strong>Total a pagar: </Strong></label>
+    </div>
+    </div>
     <table style="font-size: 11px" id="data" class="table table-striped table-bordered">
         <thead>
         <tr>

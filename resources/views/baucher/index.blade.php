@@ -28,8 +28,10 @@
         </thead>
             @foreach ($baucher as $b)
                 <tr>
-                    <td>{{$b->planillas->fecha_inicio}}</td>
-                    <td>{{$b->planillas->fecha_final}}</td>
+                    
+                    <td>{{\Carbon\Carbon::parse($b->planillas->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
+                    <td>{{\Carbon\Carbon::parse($b->planillas->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
+
                     <td style="text-align: right">L. {{number_format(($b->precio_hora*$b->hora_ordinaria)+($b->precio_hora*$b->hora_extra),2)}}</td>
                     <td style="text-align: right">L. {{number_format(($b->deducciones),2)}}</td>
                     <td style="text-align: right">L. {{number_format(($b->precio_hora*$b->hora_ordinaria)+($b->precio_hora*$b->hora_extra)-($b->deducciones),2)}}</td>

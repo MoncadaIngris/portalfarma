@@ -54,8 +54,8 @@
         <tbody>
         @foreach($planilla as $plani)
         <tr>
-            <td>{{$plani->fecha_inicio}}</td>
-            <td>{{$plani->fecha_final}}</td>
+            <td>{{\Carbon\Carbon::parse($plani->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
+            <td>{{\Carbon\Carbon::parse($plani->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
             <td>{{count($plani->detalles)}}</td>
             <td>
                 <?php $sum = 0?>

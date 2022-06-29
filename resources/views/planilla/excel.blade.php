@@ -1,4 +1,35 @@
 <link href="{{ asset('css/bootstrapcdn.css') }}" rel="stylesheet">
+<?php $sum = 0?>
+@foreach ($planilla as $p)
+<?php 
+    $sum= $sum + (($p->hora_ordinaria_lunes + $p->hora_extra_lunes+$p->hora_ordinaria_martes + 
+        $p->hora_extra_martes+$p->hora_ordinaria_miercoles + $p->hora_extra_miercoles+$p->hora_ordinaria_jueves + 
+        $p->hora_extra_jueves+$p->hora_ordinaria_viernes + $p->hora_extra_viernes+$p->hora_ordinaria_sabado + 
+        $p->hora_extra_sabado)*$p->precio_hora)-((($p->hora_ordinaria_lunes + $p->hora_extra_lunes+$p->hora_ordinaria_martes + 
+        $p->hora_extra_martes+$p->hora_ordinaria_miercoles + $p->hora_extra_miercoles+$p->hora_ordinaria_jueves + 
+        $p->hora_extra_jueves+$p->hora_ordinaria_viernes + $p->hora_extra_viernes+$p->hora_ordinaria_sabado + 
+        $p->hora_extra_sabado)*$p->precio_hora)*0.025);
+?>
+@endforeach
+    <table>
+       <td>Número de empleados:</td> 
+       <td>{{count($planilla)}}</td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td colspan="2">Total a pagar:</td> 
+       <td colspan="2"> L. {{number_format($sum,2)}}</td>
+    </table>
     <table style="font-size: 11px" id="data" class="table table-striped table-bordered">
         <thead>
         <tr>

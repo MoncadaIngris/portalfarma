@@ -25,8 +25,8 @@ class UserSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'PortalFarma01',
-                'email' => 'portalfarma01@gmail.com',
+                'name' => 'Ingris Neptalia Carcamo Moncada',
+                'email' => 'ingrismoncada@gmail.com',
                 'password' => bcrypt('00000000'),
                 'estado' => 1,
                 'id_empleado' => 2,
@@ -35,8 +35,8 @@ class UserSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'PortalFarma02',
-                'email' => 'portalfarma02@gmail.com',
+                'name' => 'Ruth Abigail Fonseca Reconco ',
+                'email' => 'fonsecaruth98@gmail.com',
                 'password' => bcrypt('00000000'),
                 'estado' => 1,
                 'id_empleado' => 3,
@@ -45,8 +45,8 @@ class UserSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'PortalFarma03',
-                'email' => 'portalfarma03@gmail.com',
+                'name' => 'Juan Vallecillo',
+                'email' => 'juanillooe@gmail.com',
                 'password' => bcrypt('00000000'),
                 'estado' => 1,
                 'id_empleado' => 4,
@@ -55,12 +55,22 @@ class UserSeeder extends Seeder
 
         User::create(
             [
-                'name' => 'PortalFarma04',
-                'email' => 'portalfarma04@gmail.com',
+                'name' => 'Estefany Yissel López',
+                'email' => 'estefanyyissel@gmail.com',
                 'password' => bcrypt('00000000'),
                 'estado' => 1,
                 'id_empleado' => 5,
             ]
         )->assignRole('Facultativo');
+
+        User::create(
+            [
+                'name' => 'Jorge Enrique gonzalez',
+                'email' => 'jorgeenriquegonzalez6@gmail.com',
+                'password' => bcrypt('00000000'),
+                'estado' => 1,
+                'id_empleado' => 6,
+            ]
+        )->assignRole('Vendedor');
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Requests\UpdatePlanillaRequest;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Excel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exports\PlanillaExport;
 
@@ -39,7 +40,7 @@ class PlanillaController extends Controller
             $emple = Empleado::where('id',$emp)->first();
 
             $data = [
-                'title' => 'Planilla de '.$carg->descripcion.' con el empleado '.$emple->nombres.' '.$emple->apellidos.' del '.$inicio.' al '.$final,
+                'title' => 'Planilla de '.$carg->descripcion.' con el empleado '.$emple->nombres.' '.$emple->apellidos.' del '.Carbon::parse($inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($final)->locale("es")->isoFormat("DD MMMM YYYY"),
                 'planilla' =>$detail,
                 'p' =>$pla,
             ];
@@ -57,7 +58,7 @@ class PlanillaController extends Controller
                
 
                 $data = [
-                    'title' => 'Planilla de '.$emple->nombres.' '.$emple->apellidos.' del '.$inicio.' al '.$final,
+                    'title' => 'Planilla de '.$emple->nombres.' '.$emple->apellidos.' del '.Carbon::parse($inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($final)->locale("es")->isoFormat("DD MMMM YYYY"),
                     'planilla' =>$detail,
                     'p' =>$pla,
                 ];
@@ -77,7 +78,7 @@ class PlanillaController extends Controller
                     
 
                     $data = [
-                        'title' => 'Planilla de '.$carg->descripcion.' del '.$inicio.' al '.$final,
+                        'title' => 'Planilla de '.$carg->descripcion.' del '.Carbon::parse($inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($final)->locale("es")->isoFormat("DD MMMM YYYY"),
                         'planilla' =>$detail,
                         'p' =>$pla,
                     ];
@@ -92,7 +93,7 @@ class PlanillaController extends Controller
                     
                     
                     $data = [
-                        'title' => 'Planilla del '.$inicio.' al '.$final,
+                        'title' => 'Planilla del '.Carbon::parse($inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($final)->locale("es")->isoFormat("DD MMMM YYYY"),
                         'planilla' =>$detail,
                         'p' =>$pla,
                     ];

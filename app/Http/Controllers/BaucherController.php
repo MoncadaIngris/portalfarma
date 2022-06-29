@@ -10,6 +10,7 @@ use App\Models\PlanillaDetalle;
 use App\Http\Requests\StoreBaucherRequest;
 use App\Http\Requests\UpdateBaucherRequest;
 use PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BaucherController extends Controller
@@ -91,7 +92,7 @@ class BaucherController extends Controller
         ->where('id_empleado',auth()->user()->empleados->id)->first();
 
         $data = [
-            'title' => 'Baucher  del  '.$baucher->planillas->fecha_inicio.' al '.$baucher->planillas->fecha_final,
+            'title' => 'Baucher  del  '.Carbon::parse($baucher->planillas->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($baucher->planillas->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY"),
             'baucher' =>$baucher,
         ];
 

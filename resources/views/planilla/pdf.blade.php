@@ -8,7 +8,28 @@
 </head>
 <body>
     <h3><center>{{ $title }}</center></h3>
-
+    <div style="width: 100%">
+        <div style="width: 50%; float: left;font-size: 20px;text-align: left">
+            <label for=""><Strong>Número de empleados: </Strong></label>
+            <label for="">{{count($planilla)}}</label>
+        </div>
+        <div style="width: 50%; float: right;font-size: 20px">
+            <?php $sum = 0?>
+            @foreach ($planilla as $p)
+            <?php 
+                $sum= $sum + (($p->hora_ordinaria_lunes + $p->hora_extra_lunes+$p->hora_ordinaria_martes + 
+                    $p->hora_extra_martes+$p->hora_ordinaria_miercoles + $p->hora_extra_miercoles+$p->hora_ordinaria_jueves + 
+                    $p->hora_extra_jueves+$p->hora_ordinaria_viernes + $p->hora_extra_viernes+$p->hora_ordinaria_sabado + 
+                    $p->hora_extra_sabado)*$p->precio_hora)-((($p->hora_ordinaria_lunes + $p->hora_extra_lunes+$p->hora_ordinaria_martes + 
+                    $p->hora_extra_martes+$p->hora_ordinaria_miercoles + $p->hora_extra_miercoles+$p->hora_ordinaria_jueves + 
+                    $p->hora_extra_jueves+$p->hora_ordinaria_viernes + $p->hora_extra_viernes+$p->hora_ordinaria_sabado + 
+                    $p->hora_extra_sabado)*$p->precio_hora)*0.025);
+            ?>
+        @endforeach
+            <label for="" style="float: right;"><Strong>Total a pagar:</Strong>  L. {{number_format($sum,2)}}</label>
+        </div>
+        </div>
+        <br><br><br>
     <table style="font-size: 11px;" id="data" class="table table-striped table-bordered">
         <thead>
         <tr>

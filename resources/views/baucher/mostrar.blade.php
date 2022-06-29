@@ -54,11 +54,12 @@
         <tr>
             <td>
                 <label for=""><Strong>Fecha de inicio: </Strong></label>
-                {{$baucher->planillas->fecha_inicio}}
+                {{\Carbon\Carbon::parse($baucher->planillas->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY")}}
             </td>
             <td>
                 <label for=""><Strong>Fecha final: </Strong></label>
-                {{$baucher->planillas->fecha_final}}
+                {{\Carbon\Carbon::parse($baucher->planillas->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY")}}
+
             </td>
             <td>
                 <label for=""><Strong>Teléfono de empleado: </Strong></label>
@@ -79,12 +80,12 @@
         <tr>
             <td>Horas ordinarias</td>
             <td style="text-align: right">{{number_format($baucher->hora_ordinaria,2)}}</td>
-            <td style="text-align: right">{{number_format($baucher->hora_ordinaria*$baucher->precio_hora,2)}}</td>
+            <td style="text-align: right">L. {{number_format($baucher->hora_ordinaria*$baucher->precio_hora,2)}}</td>
         </tr>
         <tr>
             <td>Horas extra</td>
             <td style="text-align: right">{{number_format($baucher->hora_extra,2)}}</td>
-            <td style="text-align: right">{{number_format($baucher->hora_extra*$baucher->precio_hora,2)}}</td>
+            <td style="text-align: right">L. {{number_format($baucher->hora_extra*$baucher->precio_hora,2)}}</td>
         </tr>
         <tr>
             <td>Total</td>
@@ -114,10 +115,9 @@
         </tr>
     </table>
     <br><br><br><br>
-    <div style="float: left">
+    <div style="float: left; text-align: center; width: 100%">
         <h3>
-            El total a pagar para el empleado {{$baucher->empleados->nombres}} {{$baucher->empleados->apellidos}} con identidad
-            {{$baucher->empleados->DNI}} recibio un sueldo de L. 
+            El empleado {{$baucher->empleados->nombres}} {{$baucher->empleados->apellidos}} recibio un sueldo de L. 
             {{number_format((($baucher->hora_extra*$baucher->precio_hora)+($baucher->hora_ordinaria*$baucher->precio_hora))-$baucher->deducciones,2)}}
         </h3>
     </div>

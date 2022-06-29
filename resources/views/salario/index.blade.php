@@ -19,7 +19,7 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Cargo</th>
             <th scope="col" class="sorting" style="text-align: center">Salario por hora</th>
-            <th scope="col" class="sorting" style="text-align: center">Salario por dia</th>
+            <th scope="col" class="sorting" style="text-align: center">Salario por día</th>
             <th scope="col" class="sorting" style="text-align: center">Salario semanal</th> 
             <th scope="col" style="text-align: center">Editar</th>      
         </tr>
