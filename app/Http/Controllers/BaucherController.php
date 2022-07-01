@@ -26,6 +26,12 @@ class BaucherController extends Controller
         return view('baucher/index')->with('baucher', $baucher);
     }
 
+    public function general()
+    {
+        $baucher = Baucher::all();
+        return view('baucher/indexgeneral')->with('baucher', $baucher);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -85,11 +91,32 @@ class BaucherController extends Controller
         return view('baucher/mostrar')->with('baucher',$baucher);
     }
 
+    public function mostrar($id)
+    {
+        $baucher = Baucher::where('id',$id)->first();
+
+        return view('baucher/mostrargeneral')->with('baucher',$baucher);
+    }
+
     public function createPDF(Request $request){
         $id = $request->input('planilla');
 
         $baucher = Baucher::where('id_planilla',$id)
         ->where('id_empleado',auth()->user()->empleados->id)->first();
+
+        $data = [
+            'title' => 'Baucher  del  '.Carbon::parse($baucher->planillas->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($baucher->planillas->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY"),
+            'baucher' =>$baucher,
+        ];
+
+        $pdf = PDF::loadView('baucher/pdf', $data)->setPaper('a4','landscape');
+        return $pdf->download('Baucher_'.$baucher->planillas->fecha_inicio.'_al_'.$baucher->planillas->fecha_final.'.pdf');
+    }
+
+    public function createPDFgeneral(Request $request){
+        $id = $request->input('id');
+
+        $baucher = Baucher::where('id',$id)->first();
 
         $data = [
             'title' => 'Baucher  del  '.Carbon::parse($baucher->planillas->fecha_inicio)->locale("es")->isoFormat("DD MMMM YYYY").' al '.Carbon::parse($baucher->planillas->fecha_final)->locale("es")->isoFormat("DD MMMM YYYY"),

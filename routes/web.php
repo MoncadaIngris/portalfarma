@@ -416,6 +416,15 @@ Route::get('/planills/pdf', [PlanillaController::class, 'createPDF'])->name('pla
 Route::get('/planills/xlsx', [PlanillaController::class, 'exportxlsx'])->name('planilla.xlsx');
 Route::get('/planills/csv', [PlanillaController::class, 'exportcsv'])->name('planilla.csv');
 
+Route::get("/bauchergeneral", [BaucherController::class, 'general'])
+->name('baucher.general');
+
+Route::get("/bauchers/pdf", [BaucherController::class, 'createPDFgeneral'])
+->name('bauchergeneral.pdf');
+
+Route::get("/bauchergeneral/{id}", [BaucherController::class, 'mostrar'])
+->name('baucher.mostrar');
+
 });
 });
 

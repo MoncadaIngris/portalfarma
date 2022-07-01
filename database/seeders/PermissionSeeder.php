@@ -282,6 +282,11 @@ class PermissionSeeder extends Seeder
             'name' => 'planilla_detalle',
             'id_partes' => 56,
         ]);
+        Permission::create([
+            'titulo' => 'Baucher general',
+            'name' => 'baucher_general',
+            'id_partes' => 57,
+        ]);
         
         //permiso de desarrollador
         Permission::create([

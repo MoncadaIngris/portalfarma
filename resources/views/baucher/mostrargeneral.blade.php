@@ -11,14 +11,14 @@
 </style>
 
 <div>
-    <a type="button" class="btn btn-detalles" href="{{route('baucher.index')}}">Regresar</a>
+    <a type="button" class="btn btn-detalles" href="{{route('baucher.general')}}">Regresar</a>
 </div>
 
 <div style="float: right;margin-right: 10px; width: 130px">
     <p><center>Descargar:</center></p>
     <div class="dt-buttons btn-group">
         <center>
-            <a class="btn btn-default buttons-pdf buttons-html5 btn-sm" tabindex="0" aria-controls="datatable-buttons" href="{{route('baucher.pdf',['planilla'=>$baucher->planillas->id])}}"><span>PDF</span></a>
+            <a class="btn btn-default buttons-pdf buttons-html5 btn-sm" tabindex="0" aria-controls="datatable-buttons" href="{{route('bauchergeneral.pdf',['id'=>$baucher->id])}}"><span>PDF</span></a>
             <a class="btn btn-default buttons-print btn-sm" tabindex="0" aria-controls="datatable-buttons" href="javaScript:printDiv()"><span>Imprimir</span></a>
         </center>
     </div>

@@ -310,6 +310,9 @@
                     <li><a href="{{route('planilla.index')}}"><i class="fa-solid fa-box-open"></i>Listado de planilla</a></li>
                     @endcan
                     <li><a href="{{route('baucher.index')}}"><i class="fa-solid fa-box-open"></i>Listado de Baucher</a></li>
+                    @can('baucher_general')
+                    <li><a href="{{route('baucher.general')}}"><i class="fa-solid fa-box-open"></i>Listado de Baucher general</a></li>
+                    @endcan
               </div>
 
             </div>

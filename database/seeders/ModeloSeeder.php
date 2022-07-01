@@ -33,6 +33,8 @@ class ModeloSeeder extends Seeder
             ['descripcion' => 'calendario'],
             ['descripcion' => 'salario'],
             ['descripcion' => 'planilla'],
+
+            ['descripcion' => 'baucher'],
         ];
         foreach($datos as $conce){
             Modelo::create($conce);

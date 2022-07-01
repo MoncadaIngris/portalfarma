@@ -269,6 +269,12 @@ class ParteSeeder extends Seeder
             'id_modelo' => 16,
         ]);
 
+        //baucher
+        Parte::create([
+            'descripcion' => 'general',
+            'id_modelo' => 17,
+        ]);
+
 
     }
 }
