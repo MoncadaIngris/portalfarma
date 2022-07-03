@@ -83,12 +83,13 @@ class VentaController extends Controller
 
         $clie = Cliente::find($cliente);
         $clientes = Cliente::all();
-        $productos = Producto_Comprado::select("id_producto as id", "productos.nombre", "productos.codigo", "productos.receta",
-        DB::raw("sum(cantidad) AS cantidad"), DB::raw("(SUM(venta*cantidad)/sum(cantidad)) AS venta"), 
+        $productos = Producto_Comprado::select("producto__comprados.id_producto as id", "productos.nombre", "productos.codigo", "productos.receta",
+        DB::raw("sum(cantidad) AS cantidad"), DB::raw("IFNULL(nuevo,(SUM(venta*cantidad)/sum(cantidad))) AS venta"), 
         DB::raw("sum(cantidad*venta*(1+valor)) AS total"),DB::raw("max(impuestos.id) AS id_impuesto"))
-        ->join('productos', 'productos.id', '=', 'id_producto')
+        ->join('productos', 'productos.id', '=', 'producto__comprados.id_producto')
         ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
-        ->groupby('id_producto')
+        ->leftjoin('promocions', 'promocions.id_producto', '=', 'producto__comprados.id_producto')
+        ->groupby('producto__comprados.id_producto')
         ->orderby('productos.nombre')->get();
         $impuestos = Impuesto::all();
         $temporalv = Producto_Temporalv::all();
@@ -114,10 +115,11 @@ class VentaController extends Controller
 
         $datos = Producto_Comprado::select("producto__comprados.id_producto as id", "productos.nombre", "productos.codigo", 
         DB::raw("sum(producto__comprados.cantidad) AS cantidad"), 
-        DB::raw("(SUM(producto__comprados.venta*producto__comprados.cantidad)/sum(producto__comprados.cantidad)) AS venta"), 
+        DB::raw("IFNULL(nuevo,(SUM(producto__comprados.venta*producto__comprados.cantidad)/sum(producto__comprados.cantidad))) AS venta"), 
         DB::raw("sum(producto__comprados.cantidad*producto__comprados.venta*(1+valor)) AS total"),DB::raw("max(impuestos.id) AS impuesto"))
         ->join('productos', 'productos.id', '=', 'producto__comprados.id_producto')
         ->join('impuestos', 'id_impuesto', '=', 'impuestos.id')
+        ->leftjoin('promocions', 'promocions.id_producto', '=', 'producto__comprados.id_producto')
         ->where('productos.id',$request->input('productos'))
         ->groupby('producto__comprados.id_producto')
         ->orderby('productos.nombre')->get();

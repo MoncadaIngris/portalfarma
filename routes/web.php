@@ -24,6 +24,7 @@ use App\Http\Controllers\SalarioHoraController;
 use App\Http\Controllers\PlanillaController;
 use App\Http\Controllers\BaucherController;
 use App\Http\Controllers\VencerEntradaController;
+use App\Http\Controllers\PromocionController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -428,6 +429,16 @@ Route::get("/bauchergeneral/{id}", [BaucherController::class, 'mostrar'])
 
 Route::get("/vencer", [VencerEntradaController::class, 'index'])
 ->name('vencer.index');
+
+//ruta index
+Route::get('/promociones', [PromocionController::class, 'index'])
+    ->name('promociones.index');
+//ruta  create
+Route::get('/promociones/nuevo/{id}',[PromocionController::class, 'create'])
+    ->name('promociones.create');
+//ruta guardar
+Route::post('/promociones/nuevo/{id}',[PromocionController::class, 'store'])
+    ->name('promociones.store');
 
 });
 });
