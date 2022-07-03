@@ -23,6 +23,7 @@ use App\Http\Controllers\HoraEntradaController;
 use App\Http\Controllers\SalarioHoraController;
 use App\Http\Controllers\PlanillaController;
 use App\Http\Controllers\BaucherController;
+use App\Http\Controllers\VencerEntradaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -424,6 +425,9 @@ Route::get("/bauchers/pdf", [BaucherController::class, 'createPDFgeneral'])
 
 Route::get("/bauchergeneral/{id}", [BaucherController::class, 'mostrar'])
 ->name('baucher.mostrar');
+
+Route::get("/vencer", [VencerEntradaController::class, 'index'])
+->name('vencer.index');
 
 });
 });

@@ -15,7 +15,8 @@ class VencerEntradaController extends Controller
      */
     public function index()
     {
-        //
+        $vencer = VencerEntrada::all();
+        return view("vencer/index")->with("vencer",$vencer);
     }
 
     /**
