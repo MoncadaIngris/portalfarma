@@ -20,6 +20,7 @@ class CreateProductoTemporalsTable extends Migration
             $table->decimal("compra");
             $table->decimal("venta");
             $table->integer("cantidad");
+            $table->date("vencimiento");
             $table->unsignedBigInteger('id_impuesto');
             $table->foreign("id_impuesto")->references("id")->on("impuestos");
             $table->timestamps();

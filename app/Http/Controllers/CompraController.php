@@ -8,6 +8,7 @@ use App\Models\Producto;
 use App\Models\Producto_Temporal;
 use App\Models\Producto_Comprado;
 use App\Models\Impuesto;
+use App\Models\VencerEntrada;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
@@ -97,12 +98,17 @@ class CompraController extends Controller
 
         $compra = $request->input('compra')+0.01;
 
+        $fecha_actual = date("d-m-Y");
+        $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
+        $maxima = date("d-m-Y",strtotime($max."+ 30 days"));
+
         $this->validate($request, [
             'productos' => 'required|exists:productos,id',
             "venta" => 'required|numeric|max:999999.99|min:'.$compra,
             "compra" => 'required|numeric|min:1',
             "cantidad" => "required|min:1|numeric|max:999999999",
             "impuesto" => "required|exists:impuestos,id",
+            "vencimiento" => "required|date|after:'.$maxima.",
         ], [
             'productos.required' => 'Debe de seleccionar un producto',
             'productos.exists' => 'El producto seleccionado es invalido',
@@ -119,6 +125,9 @@ class CompraController extends Controller
             'cantidad.numeric' => 'La cantidad debe de ser un valor numérico',
             'impuesto.required' => 'El impuesto es obligatorio',
             'impuesto.exists' => 'El impuesto seleccionado es invalido',
+            'vencimiento.required' => 'La fecha de vencimiento es obligatorio',
+            'vencimiento.date' => 'La fecha de vencimiento debe de ser una fecha',
+            'vencimiento.after' => 'La fecha de vencimiento debe de ser '.$maxima.' o mayor ',
             
         ]);
 
@@ -140,6 +149,7 @@ class CompraController extends Controller
             $productos->venta = $valorventa/$cantidadtotal;
             $productos->cantidad = $cantidadtotal;
             $productos->id_impuesto = $request->input('impuesto');
+            $productos->vencimiento = $request->input('vencimiento');
 
             $creado = $productos->save();
 
@@ -157,6 +167,7 @@ class CompraController extends Controller
             $productos->venta = $request->input('venta');
             $productos->cantidad = $request->input('cantidad');
             $productos->id_impuesto = $request->input('impuesto');
+            $productos->vencimiento = $request->input('vencimiento');
 
             $creado = $productos->save();
 
@@ -191,6 +202,11 @@ class CompraController extends Controller
                 $cread = $corr->save();
             }
 
+            $vencimiento = new VencerEntrada();
+            $vencimiento->cantidad = $verificar->cantidad;
+            $vencimiento->vencimiento = $verificar->vencimiento;
+            $vencimiento->id_compra = $productos->id;
+            $creado2 = $vencimiento->save();
         }
 
         

@@ -13,6 +13,7 @@ use App\Models\Compra;
 use App\Models\Producto_Temporal;
 use App\Models\Producto_Comprado;
 use App\Models\Impuesto;
+use App\Models\VencerEntrada;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompraRequest;
@@ -224,13 +225,44 @@ class VentaController extends Controller
             $productos = new Producto_Vendido();
 
             $productos->id_producto = $verificar->id_producto;
-            //$productos->compra = $verificar->compra;
             $productos->venta = $verificar->venta;
             $productos->cantidad = $verificar->cantidad;
             $productos->id_impuesto = $verificar->id_impuesto;
             $productos->id_venta = $valor;
 
             $creado = $productos->save();
+
+            $vencimiento = VencerEntrada::select('vencer_entradas.id','vencer_entradas.cantidad','vencimiento')
+            ->join('producto__comprados','producto__comprados.id','=','vencer_entradas.id_compra')
+            ->where('id_producto',$verificar->id_producto)
+            ->orderby('vencimiento','asc')
+            ->first();
+
+            if ($verificar->cantidad <=  $vencimiento->cantidad) {
+                $venc = VencerEntrada::findOrFail($vencimiento->id);
+
+                $venc->cantidad = $venc->cantidad -  $verificar->cantidad;
+
+                $creado2 = $venc->save();
+            } else {
+                VencerEntrada::destroy($vencimiento->id);
+
+                $vencimiento2 = VencerEntrada::select('vencer_entradas.id','vencer_entradas.cantidad','vencimiento')
+                ->join('producto__comprados','producto__comprados.id','=','vencer_entradas.id_compra')
+                ->where('id_producto',$verificar->id_producto)
+                ->orderby('vencimiento','asc')
+                ->first();
+
+                $venc = VencerEntrada::findOrFail($vencimiento2->id);
+
+                $cantidad = $verificar->cantidad- $vencimiento->cantidad;
+
+                $venc->cantidad = $venc->cantidad -  $cantidad;
+
+                $creado2 = $venc->save();
+            }
+            
+
         }
             $valor = 2;
             return $this->eliminartodo($valor);

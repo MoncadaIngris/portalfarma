@@ -79,7 +79,7 @@ onchange="seleccionar()" data-live-search="true">
             </select>
         </div>
         
-        <div style="width: 15%; float: left;margin-right: 1%">
+        <div style="width: 12%; float: left;margin-right: 1%">
             <center><label for="" >Precio de Compra:</label></center>
             <input placeholder="0.00" class="form-control" id="compra" name="compra"
             min="0" max="999999.99" maxlength="10" type="number" step="any" required
@@ -87,7 +87,7 @@ onchange="seleccionar()" data-live-search="true">
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
         
-        <div style="width: 15%; float: left;margin-right: 1%">
+        <div style="width: 12%; float: left;margin-right: 1%">
             <center><label for="" >Precio de Venta:</label></center>
             <input placeholder="0.00" class="form-control" id="venta" name="venta"
             min="0" max="999999.99" maxlength="10" type="number" step="any" required
@@ -95,14 +95,22 @@ onchange="seleccionar()" data-live-search="true">
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
         
-        <div style="width: 13%; float: left;margin-right: 1%">
+        <div style="width: 10%; float: left;margin-right: 1%">
             <center><label for="" >Cantidad:</label></center>
             <input type="number" placeholder="0" class="form-control" id="cantidad" name="cantidad"
             min="0" maxlength="7" max="999999999" required value="{{old("cantidad")}}"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
-        
+        <?php $fecha_actual = date("d-m-Y");?>
         <div style="width: 13%; float: left;margin-right: 1%">
+            <center><label for="" >Fecha de vencimiento:</label></center>
+            <input type="date" class="form-control" id="vencimiento" name="vencimiento"
+            min="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 30 days"));?>"
+            max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 10 year"));?>"
+            required value="{{old("vencimiento")}}" >
+        </div>
+        
+        <div style="width: 10%; float: left;margin-right: 1%">
             <center><label for="" >Impuesto:</label></center>
             <select name="impuesto" id="impuesto" class="form-control">
                 @foreach ($impuestos as $imp)
@@ -110,7 +118,7 @@ onchange="seleccionar()" data-live-search="true">
                 @endforeach
             </select>
         </div>
-        <div style="width: 15%; float: left">
+        <div style="width: 13%; float: left">
             <label for="" style="color: white">boton</label>
             <button class="btn btn-guardar" type="submit" style="width: 100%">Agregar</button>
         </div>
