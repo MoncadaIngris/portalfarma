@@ -18,10 +18,10 @@
         <thead>
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Nombre del producto</th>
-            <th scope="col" class="sorting" style="text-align: center">Codigo del producto</th>
+            <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Precio anterior</th>
             <th scope="col" class="sorting" style="text-align: center">Nuevo precio</th>
-            <th scope="col" style="text-align: center">Accion</th>
+            <th scope="col" style="text-align: center">Acción</th>
         </tr>
         </thead>
         <tbody>
