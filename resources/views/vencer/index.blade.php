@@ -19,7 +19,7 @@
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Fecha de vencimiento</th>
             <th scope="col" class="sorting" style="text-align: center">Nombre del producto</th>
-            <th scope="col" class="sorting" style="text-align: center">Codigo del producto</th>
+            <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Unidades</th>
             <th scope="col" style="text-align: center">Accion</th>
         </tr>
@@ -35,7 +35,7 @@
                 <td>
                     <center>
                         <a class="btn btn-editar" href="{{route("promociones.create",["id"=>$vence->id])}}">
-                            <i class="fa-solid fa-pen-to-square"></i>Crear promocion
+                            <i class="fa-solid fa-pen-to-square"></i>Crear promoción
                         </a>
                     </center>
                 </td>

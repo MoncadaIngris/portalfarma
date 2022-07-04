@@ -27,14 +27,14 @@ Crear promoción {{$promocion->nombre}}
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Codigo Del Producto: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Código del producto: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="text"class="form-control" value="{{$promocion->codigo}}" readonly>
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Precio Del Producto: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Precio del producto: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="text"class="form-control" value="L.{{ number_format($promocion->venta,2)}}" readonly
@@ -66,7 +66,7 @@ Crear promoción {{$promocion->nombre}}
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nuevo Precio: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nuevo precio: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="text" class="form-control" value="L" readonly style="width: 10%;float: left;">
