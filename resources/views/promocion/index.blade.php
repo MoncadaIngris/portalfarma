@@ -24,7 +24,7 @@
              <th scope="col" style="text-align: center">Accion</th>
              <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Detalles</th>
-           
+            
         </tr>
         </thead>
         <tbody>
