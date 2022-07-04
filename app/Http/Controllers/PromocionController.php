@@ -87,8 +87,13 @@ class PromocionController extends Controller
      * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function show(Promocion $promocion)
+    public function show($id)
     {
+        
+        
+        $promocion = Promocion::findOrFail($id);
+        return view("promocion.show")->with("promocion", $promocion);
+        
         //
     }
 
@@ -98,8 +103,22 @@ class PromocionController extends Controller
      * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Promocion $promocion)
+    public function edit($id)
     {
+
+
+        
+        $promocion = DB::table('inventario')->select("inventario.id AS id","nombre", "codigo", 
+        DB::raw("MAX(inventario.venta) AS venta, SUM(inventario.cantidad) - SUM(vendido) AS cantidad, 
+        ((SUM(inventario.cantidad) - SUM(vendido))*MAX(inventario.venta)) AS total"), "vencimiento")
+        ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
+        ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
+        ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
+        ->groupby("inventario.id")
+        ->where("vencer_entradas.id",$id)->first();
+        return view("promocion/update")->with("promocion",$promocion);
+
+
         //
     }
 
@@ -110,8 +129,42 @@ class PromocionController extends Controller
      * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePromocionRequest $request, Promocion $promocion)
+    public function update(UpdatePromocionRequest $request,$id)
     {
+        $rules=[
+            'precionuevo' => 'required|numeric|min:0',
+        ];
+        $mensaje=[
+            'precionuevo.required' => 'El precio nuevo no puede estar vacío',
+            'precionuevo.numeric' => 'En precio nuevo no debe de incluir letras ni signos',
+            'precionuevo.min' => 'En precio nuevo no debe de ser negativo',
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+
+        $promocion = DB::table('inventario')->select("inventario.id AS id","nombre", "codigo", "id_producto",
+        DB::raw("MAX(inventario.venta) AS venta, SUM(inventario.cantidad) - SUM(vendido) AS cantidad, 
+        ((SUM(inventario.cantidad) - SUM(vendido))*MAX(inventario.venta)) AS total"), "vencimiento")
+        ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
+        ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
+        ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
+        ->groupby("inventario.id")
+        ->where("vencer_entradas.id",$id)->first();
+
+        
+        $prom= Promocion::findOrFail($id);
+
+        $prom->nuevo = $request->input('precionuevo');
+
+
+        $creado = $prom->save();
+
+        return redirect()->route('promociones.index')
+                ->with('mensaje', 'La promocion fue editado exitosamente');
+    
+
+
+
         //
     }
 

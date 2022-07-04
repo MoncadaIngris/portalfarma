@@ -430,6 +430,8 @@ Route::get("/bauchergeneral/{id}", [BaucherController::class, 'mostrar'])
 Route::get("/vencer", [VencerEntradaController::class, 'index'])
 ->name('vencer.index');
 
+//Promociones
+
 //ruta index
 Route::get('/promociones', [PromocionController::class, 'index'])
     ->name('promociones.index');
@@ -439,6 +441,19 @@ Route::get('/promociones/nuevo/{id}',[PromocionController::class, 'create'])
 //ruta guardar
 Route::post('/promociones/nuevo/{id}',[PromocionController::class, 'store'])
     ->name('promociones.store');
+
+//ruta detalle
+    Route::get("/promociones/{id}", [PromocionController::class, "show"])
+    ->name("promociones.show")->where('id', '[0-9]+');
+//ruta edit
+    Route::get("/promociones/{id}/edit", [PromocionController::class, "edit"])
+    ->name("promociones.edit")->where('id', '[0-9]+');
+
+    Route::put("/promociones/{id}/edit", [PromocionController::class, "update"])
+    ->name("promociones.edit")->where('id', '[0-9]+');
+
+
+
 
 });
 });

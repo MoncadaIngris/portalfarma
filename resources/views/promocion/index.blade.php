@@ -21,7 +21,10 @@
             <th scope="col" class="sorting" style="text-align: center">Codigo del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Precio anterior</th>
             <th scope="col" class="sorting" style="text-align: center">Nuevo precio</th>
-            <th scope="col" style="text-align: center">Accion</th>
+             <th scope="col" style="text-align: center">Accion</th>
+             <th scope="col" style="text-align: center">Editar</th>
+            <th scope="col" style="text-align: center">Detalles</th>
+           
         </tr>
         </thead>
         <tbody>
@@ -34,6 +37,18 @@
                 <td style="text-align: right">L.{{ number_format($pro->nuevo,2)}}</td>
                 <td>
                 </td>
+                <td>
+                    <center>
+            <a class="btn btn-editar" href="{{route("promociones.edit",["id"=>$pro->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </center>
+                </td>
+            
+                    <td>
+                        <center>
+                <a class="btn btn-detalles" href="{{route("promociones.show",["id"=>$pro->id])}}"><i class="fa-solid fa-circle-info"></i></a>
+                        </center>
+                    </td>
+
             </tr>
 
         @endforeach
