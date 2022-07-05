@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PromocionVencida;
 use App\Models\Producto_vendido;
 use App\Models\Promocion;
+use App\Models\VencerEntrada;
 
 class PromocionVencidaController extends Controller
 {
@@ -40,59 +41,23 @@ class PromocionVencidaController extends Controller
         return view('promocion/venta')->with('ventas', $ventas)->with('promocion', $promocion);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePromocionVencidaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePromocionVencidaRequest $request)
+    public function vencidas()
     {
-        //
+        $promocion = PromocionVencida::all();
+        return view("promocion/vencida")->with("promocion",$promocion);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PromocionVencida  $promocionVencida
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PromocionVencida $promocionVencida)
+    public function vencidos()
     {
-        //
+        $vencer = VencerEntrada::where('vencimiento','<=',date("Y-m-d"))->get();
+        return view("vencer/vencidos")->with("vencer",$vencer);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PromocionVencida  $promocionVencida
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PromocionVencida $promocionVencida)
+    public function ventavencidas($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePromocionVencidaRequest  $request
-     * @param  \App\Models\PromocionVencida  $promocionVencida
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdatePromocionVencidaRequest $request, PromocionVencida $promocionVencida)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PromocionVencida  $promocionVencida
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PromocionVencida $promocionVencida)
-    {
-        //
+        $promocion = PromocionVencida::where('id', $id)->first();
+        $ventas = Producto_Vendido::where('id_producto',$promocion->id_producto)
+        ->whereBetween('created_at',[$promocion->inicio, $promocion->created_at])->get();
+        return view("promocion/ventasvencidas")->with('ventas', $ventas)->with('promocion', $promocion);
     }
 }

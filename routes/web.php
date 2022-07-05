@@ -459,6 +459,15 @@ Route::get('/promociones/eliminar/{id}',[PromocionVencidaController::class, 'cam
     Route::get('/promociones/venta/{id}',[PromocionVencidaController::class, 'venta'])
     ->name('promociones.ventas');
 
+    Route::get('/promociones/vencidas',[PromocionVencidaController::class, 'vencidas'])
+    ->name('promociones.vencidas');
+
+    Route::get('/productos/vencidos',[PromocionVencidaController::class, 'vencidos'])
+    ->name('productos.vencidos');
+
+    Route::get('/promociones/vencidas/{id}',[PromocionVencidaController::class, 'ventavencidas'])
+    ->name('ventas.promociones');
+
 });
 });
 

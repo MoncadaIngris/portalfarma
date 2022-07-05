@@ -19,8 +19,8 @@ class CreatePromocionVencidasTable extends Migration
             $table->foreign("id_producto")->references("id")->on("productos");
             $table->decimal("anterior");
             $table->decimal("nuevo");
-            $table->date('inicio');
-            $table->date('final');
+            $table->datetime('inicio');
+            $table->datetime('final');
             $table->timestamps();
         });
     }

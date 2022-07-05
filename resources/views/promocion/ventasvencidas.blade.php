@@ -13,7 +13,7 @@
             overflow:auto;
         }
       </style>
-    <a class="btn btn-regresar" href="{{route("promociones.index")}}">
+    <a class="btn btn-regresar" href="{{route("promociones.vencidas")}}">
         Regresar
     </a>
     <br>

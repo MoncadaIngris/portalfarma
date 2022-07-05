@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de productos por vencer
+    Listado de productos vencidos
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -21,7 +21,6 @@
             <th scope="col" class="sorting" style="text-align: center">Nombre del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Unidades</th>
-            <th scope="col" style="text-align: center">Accion</th>
         </tr>
         </thead>
         <tbody>
@@ -32,13 +31,6 @@
                 <td style="text-align: center">{{$vence->compras->productos->nombre}}</td>
                 <td style="text-align: center">{{$vence->compras->productos->codigo}}</td>
                 <td style="text-align: right">{{$vence->cantidad}}</td>
-                <td>
-                    <center>
-                        <a class="btn btn-editar" href="{{route("promociones.create",["id"=>$vence->id])}}">
-                            <i class="fa-solid fa-pen-to-square"></i>Crear promoción
-                        </a>
-                    </center>
-                </td>
             </tr>
 
         @endforeach

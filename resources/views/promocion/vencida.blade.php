@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Promociones
+    Listado de Promociones Vencidas
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -14,52 +14,35 @@
         }
       </style>
     
-    <table  id="datatable-buttons" class="table table-striped">
+    <table  id="datatable" class="table table-striped">
         <thead>
         <tr>
+        <th scope="col" class="sorting" style="text-align: center">Inicio de la promocion</th>
+        <th scope="col" class="sorting" style="text-align: center">Final de la promocion</th>
             <th scope="col" class="sorting" style="text-align: center">Nombre del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Precio anterior</th>
             <th scope="col" class="sorting" style="text-align: center">Nuevo precio</th>
-             <th scope="col" style="text-align: center">Cancelar</th>
              <th scope="col" style="text-align: center">Ventas</th>
-             <th scope="col" style="text-align: center">Editar</th>
-            <th scope="col" style="text-align: center">Detalles</th>
         </tr>
         </thead>
         <tbody>
             
         @foreach ($promocion as $pro)
             <tr>
+            <td style="text-align: center">{{\Carbon\Carbon::parse($pro->inicio)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
+            <td style="text-align: center">{{\Carbon\Carbon::parse($pro->final)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
                 <td style="text-align: center">{{$pro->productos->nombre}}</td>
                 <td style="text-align: center">{{$pro->productos->codigo}}</td>
                 <td style="text-align: right">L.{{ number_format($pro->anterior,2)}}</td>
                 <td style="text-align: right">L.{{ number_format($pro->nuevo,2)}}</td>
                 <td>
                     <center>
-                        <a class="btn btn-desactivar" href="{{route("promociones.eliminar",["id"=>$pro->id])}}">
-                            <i class="fa-solid fa-eye-slash"></i>
-                        </a>
-                    </center>
-                </td>
-                <td>
-                    <center>
-                        <a class="btn btn-regresar" href="{{route("promociones.ventas",["id"=>$pro->id])}}">
+                        <a class="btn btn-regresar" href="{{route("ventas.promociones",["id"=>$pro->id])}}">
                             <i class="fa-solid fa-box-open"></i>
                         </a>
                     </center>
                 </td>
-                <td>
-                    <center>
-            <a class="btn btn-editar" href="{{route("promociones.edit",["id"=>$pro->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </center>
-                </td>
-            
-                    <td>
-                        <center>
-                <a class="btn btn-detalles" href="{{route("promociones.show",["id"=>$pro->id])}}"><i class="fa-solid fa-circle-info"></i></a>
-                        </center>
-                    </td>
 
             </tr>
 
