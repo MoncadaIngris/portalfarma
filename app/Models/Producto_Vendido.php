@@ -9,6 +9,9 @@ class Producto_Vendido extends Model
 {
     use HasFactory;
 
+    public function ventas(){
+        return $this->belongsTo(Venta::class, 'id_venta','id');
+    }
     
     public function productos(){
         return $this->belongsTo(Producto::class, 'id_producto', 'id');

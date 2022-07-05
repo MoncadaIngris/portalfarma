@@ -14,10 +14,10 @@ class Venta extends Model
 
     public function productos(){
         return $this->belongsTo(Producto::class, 'id_producto', 'id');
-}
+    }
 
-public function proveedores(){
-    return $this->belongsTo(Proveedor::class, 'id_proveedor', 'id');
+    public function proveedores(){
+        return $this->belongsTo(Proveedor::class, 'id_proveedor', 'id');
 
-}
+    }
 }

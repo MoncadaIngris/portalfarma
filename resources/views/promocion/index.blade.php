@@ -21,7 +21,8 @@
             <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Precio anterior</th>
             <th scope="col" class="sorting" style="text-align: center">Nuevo precio</th>
-             <th scope="col" style="text-align: center"></th>
+             <th scope="col" style="text-align: center">Cancelar</th>
+             <th scope="col" style="text-align: center">Ventas</th>
              <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Detalles</th>
         </tr>
@@ -35,6 +36,18 @@
                 <td style="text-align: right">L.{{ number_format($pro->anterior,2)}}</td>
                 <td style="text-align: right">L.{{ number_format($pro->nuevo,2)}}</td>
                 <td>
+                    <center>
+                        <a class="btn btn-desactivar" href="{{route("promociones.eliminar",["id"=>$pro->id])}}">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </a>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <a class="btn btn-regresar" href="{{route("promociones.ventas",["id"=>$pro->id])}}">
+                            <i class="fa-solid fa-box-open"></i>
+                        </a>
+                    </center>
                 </td>
                 <td>
                     <center>

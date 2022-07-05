@@ -25,6 +25,7 @@ use App\Http\Controllers\PlanillaController;
 use App\Http\Controllers\BaucherController;
 use App\Http\Controllers\VencerEntradaController;
 use App\Http\Controllers\PromocionController;
+use App\Http\Controllers\PromocionVencidaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -452,8 +453,11 @@ Route::post('/promociones/nuevo/{id}',[PromocionController::class, 'store'])
     Route::put("/promociones/{id}/edit", [PromocionController::class, "update"])
     ->name("promociones.edit")->where('id', '[0-9]+');
 
+Route::get('/promociones/eliminar/{id}',[PromocionVencidaController::class, 'cambiar'])
+    ->name('promociones.eliminar');
 
-
+    Route::get('/promociones/venta/{id}',[PromocionVencidaController::class, 'venta'])
+    ->name('promociones.ventas');
 
 });
 });
