@@ -16,7 +16,7 @@ Editar promoción
             </ul>
         </div>
     @endif
-    <form action="{{route("promociones.edit",["id"=>$promocion->id])}}" method="post">
+    <form action="{{route("promociones.edit",["id"=>$promocion->id_promocion])}}" method="post">
     @method("PUT")
     @csrf
         
@@ -39,7 +39,7 @@ Editar promoción
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Precio Del Producto: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text"class="form-control" value="L.{{ number_format($promocion->venta,2)}}" readonly
+                <input type="text"class="form-control" value="L.{{ number_format($promocion->anterior,2)}}" readonly
                 name="precioviejo" id="precioviejo">
             </div>
         </div>
@@ -55,7 +55,7 @@ Editar promoción
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" class="form-control" name="descuento" id="descuento" style="width: 90%;float: left;"
-                value="{{old('descuento')}}" style="text-align: right">
+                value="{{number_format(($promocion->nuevo/$promocion->anterior)*100,0)}}" style="text-align: right">
                 <input type="text" class="form-control" value="%" readonly style="width: 10%;float: left;">
             </div>
         </div>
@@ -86,9 +86,9 @@ Editar promoción
             function calcular(){
                 var descuento = document.getElementById('descuento').value;
 
-                var desc = (Math.round(({{$promocion->venta}} * (descuento/100))*100))/100;
+                var desc = (Math.round(({{$promocion->anterior}} * (descuento/100))*100))/100;
 
-                var np = (Math.round(({{$promocion->venta}} - desc)*100))/100;
+                var np = (Math.round(({{$promocion->anterior}} - desc)*100))/100;
 
                 document.getElementById('desc').value = desc;
 
@@ -99,8 +99,9 @@ Editar promoción
     <br>
         <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
-                <button class="btn btn-regresar" type="button" onclick="window.location=''">Cancelar</button>
+                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('promociones.index')}}'">Cancelar</button>
                 <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
+               
                 <button type="submit" class="btn btn-guardar">Guardar</button>
             </div>
         </div>

@@ -21,7 +21,7 @@
             <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Precio anterior</th>
             <th scope="col" class="sorting" style="text-align: center">Nuevo precio</th>
-             <th scope="col" style="text-align: center">Accion</th>
+             <th scope="col" style="text-align: center"></th>
              <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Detalles</th>
         </tr>

@@ -35,7 +35,7 @@ Detalle de la promoción de: {{$promocion->productos->nombre}}
                     <hr>
                     <div  style="margin: 0 auto;">
 
-                        <button class="btn btn-regresar" type="button" onclick="window.location='{{route('promociones.index')}}'">Cancelar</button>
+                        <button class="btn btn-regresar" type="button" onclick="window.location='{{route('promociones.index')}}'">Regresar</button>
 
                     </div>
 

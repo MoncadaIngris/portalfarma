@@ -105,21 +105,19 @@ class PromocionController extends Controller
      */
     public function edit($id)
     {
-
-
         
-        $promocion = DB::table('inventario')->select("inventario.id AS id","nombre", "codigo", 
-        DB::raw("MAX(inventario.venta) AS venta, SUM(inventario.cantidad) - SUM(vendido) AS cantidad, 
-        ((SUM(inventario.cantidad) - SUM(vendido))*MAX(inventario.venta)) AS total"), "vencimiento")
-        ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
-        ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
-        ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
-        ->groupby("inventario.id")
-        ->where("vencer_entradas.id",$id)->first();
-        return view("promocion/update")->with("promocion",$promocion);
-
-
-        //
+            $promocion = DB::table('inventario')->select("inventario.id AS id","nombre", "codigo",
+            "producto__comprados.id_producto", "promocions.id AS id_promocion","anterior", "nuevo",
+            DB::raw("MAX(inventario.venta) AS venta, SUM(inventario.cantidad) - SUM(vendido) AS cantidad, 
+            ((SUM(inventario.cantidad) - SUM(vendido))*MAX(inventario.venta)) AS total"), "vencimiento")
+            ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
+            ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
+            ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
+            ->join("promocions", "promocions.id_producto","=","productos.id")
+            ->groupby("inventario.id","vencimiento")
+            ->where("promocions.id",$id)->first();
+            return view("promocion/update")->with("promocion",$promocion);
+    
     }
 
     /**
@@ -129,7 +127,8 @@ class PromocionController extends Controller
      * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePromocionRequest $request,$id)
+
+    public function update(Request $request,$id)
     {
         $rules=[
             'precionuevo' => 'required|numeric|min:0',
@@ -141,31 +140,14 @@ class PromocionController extends Controller
         ];
 
         $this->validate($request,$rules,$mensaje);
-
-        $promocion = DB::table('inventario')->select("inventario.id AS id","nombre", "codigo", "id_producto",
-        DB::raw("MAX(inventario.venta) AS venta, SUM(inventario.cantidad) - SUM(vendido) AS cantidad, 
-        ((SUM(inventario.cantidad) - SUM(vendido))*MAX(inventario.venta)) AS total"), "vencimiento")
-        ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
-        ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
-        ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
-        ->groupby("inventario.id")
-        ->where("vencer_entradas.id",$id)->first();
-
         
         $prom= Promocion::findOrFail($id);
 
         $prom->nuevo = $request->input('precionuevo');
-
-
         $creado = $prom->save();
 
         return redirect()->route('promociones.index')
                 ->with('mensaje', 'La promocion fue editado exitosamente');
-    
-
-
-
-        //
     }
 
     /**
