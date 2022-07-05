@@ -12,6 +12,9 @@
         #prueba {
             overflow:auto;
         }
+        .dt-buttons{
+            float: right !important;
+        }
       </style>
     <a class="btn btn-regresar" href="{{route("promociones.vencidas")}}">
         Regresar
