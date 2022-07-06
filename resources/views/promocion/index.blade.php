@@ -39,11 +39,9 @@
                 <td style="text-align: right">L.{{ number_format($pro->anterior,2)}}</td>
                 <td style="text-align: right">L.{{ number_format($pro->nuevo,2)}}</td>
                 <td>
-                    <center>
-                        <a class="btn btn-desactivar" href="{{route("promociones.eliminar",["id"=>$pro->id])}}">
-                            <i class="fa-solid fa-eye-slash"></i>
-                        </a>
-                    </center>
+                <center>
+                    <button onclick="desactivar{{$pro->id}}();" class="btn btn-desactivar"><i class="fa-solid fa-eye-slash"></i></button>
+                </center>
                 </td>
                 <td>
                     <center>
@@ -67,8 +65,34 @@
             </tr>
 
         @endforeach
-    </table>
         </tbody>
+    </table>
+    @foreach($promocion as $pro)
+    <script>
+        function desactivar{{$pro->id}}(){
+            Swal.fire({
+                title: '<strong>Cancelar Promocion</strong>',
+                text: "¿Desea cancelar la promocion seleccionado?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Cancelada',
+                        'La promocion fue cancelada exitosamente',
+                        'success'
+                    )
+                    window.location='{{route("promociones.eliminar",["id"=>$pro->id])}}'
+                }
+            })
+
+        }
+    </script>
+    @endforeach
         
 
 @stop
