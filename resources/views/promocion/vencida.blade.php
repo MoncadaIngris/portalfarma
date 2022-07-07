@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Promociones Vencidas
+    Listado de Promociones Canceladas
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -12,9 +12,12 @@
         #prueba {
             overflow:auto;
         }
+        .dt-buttons{
+            float: right !important;
+        }
       </style>
     
-    <table  id="datatable" class="table table-striped">
+    <table  id="datatable-buttons" class="table table-striped">
         <thead>
         <tr>
         <th scope="col" class="sorting" style="text-align: center">Inicio de la promocion</th>
