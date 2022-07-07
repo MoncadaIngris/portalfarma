@@ -36,11 +36,23 @@
                 <td style="text-align: center">{{$vence->compras->productos->codigo}}</td>
                 <td style="text-align: right">{{$vence->cantidad}}</td>
                 <td>
+                    <?php $n=0;?>
+                    @foreach($promocion as $pro)
+                        @if($vence->compras->productos->id == $pro->id_producto)
+                            <?php $n++;?>
+                        @endif
+                    @endforeach
+                    @if($n == 0)
+                        <center>
+                            <a class="btn btn-editar" href="{{route("promociones.create",["id"=>$vence->id])}}">
+                                <i class="fa-solid fa-pen-to-square"></i>Crear promoción
+                            </a>
+                        </center>
+                    @else
                     <center>
-                        <a class="btn btn-editar" href="{{route("promociones.create",["id"=>$vence->id])}}">
-                            <i class="fa-solid fa-pen-to-square"></i>Crear promoción
-                        </a>
-                    </center>
+                        <span class="badge" style="background: rgb(235, 137, 137)">El producto tiene una promocion activa</span>
+                        </center>
+                    @endif
                 </td>
             </tr>
 

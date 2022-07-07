@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VencerEntrada;
+use App\Models\Promocion;
 use App\Http\Requests\StoreVencerEntradaRequest;
 use App\Http\Requests\UpdateVencerEntradaRequest;
 
@@ -16,7 +17,8 @@ class VencerEntradaController extends Controller
     public function index()
     {
         $vencer = VencerEntrada::all();
-        return view("vencer/index")->with("vencer",$vencer);
+        $promocion = Promocion::all();
+        return view("vencer/index")->with("vencer",$vencer)->with("promocion",$promocion);
     }
 
     /**
