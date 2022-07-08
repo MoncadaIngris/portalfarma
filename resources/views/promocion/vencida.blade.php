@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Promociones Canceladas
+    Listado de promociones canceladas
 @stop
 @section('contenido')
     @if(session('mensaje'))
@@ -20,8 +20,8 @@
     <table  id="datatable-buttons" class="table table-striped">
         <thead>
         <tr>
-        <th scope="col" class="sorting" style="text-align: center">Inicio de la promocion</th>
-        <th scope="col" class="sorting" style="text-align: center">Final de la promocion</th>
+        <th scope="col" class="sorting" style="text-align: center">Inicio de la promoción</th>
+        <th scope="col" class="sorting" style="text-align: center">Final de la promoción</th>
             <th scope="col" class="sorting" style="text-align: center">Nombre del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Código del producto</th>
             <th scope="col" class="sorting" style="text-align: center">Precio anterior</th>

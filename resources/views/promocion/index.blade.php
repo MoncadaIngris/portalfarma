@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Promociones
+    Listado de promociones
 @stop
 @section('contenido')
     @if(session('mensaje'))

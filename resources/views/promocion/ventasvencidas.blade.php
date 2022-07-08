@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-    Listado de Ventas de {{$promocion->productos->nombre}} en promocion
+    Listado de ventas de: {{$promocion->productos->nombre}} en promocion
 @stop
 @section('contenido')
     @if(session('mensaje'))

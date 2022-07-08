@@ -316,7 +316,7 @@
                     <li><a href="{{route('vencer.index')}}"><i class="fa-solid fa-box-open"></i>Listado de Productos por vencer</a></li>
                     <li><a href="{{route('promociones.index')}}"><i class="fa-solid fa-box-open"></i>Listado de Promociones Actuales</a></li>
 
-                    <li><a href="{{route('promociones.vencidas')}}"><i class="fa-solid fa-box-open"></i>Listado de Promociones Pasadas</a></li>
+                    <li><a href="{{route('promociones.vencidas')}}"><i class="fa-solid fa-box-open"></i>Listado de Promociones Canceladas</a></li>
 
                     <li><a href="{{route('productos.vencidos')}}"><i class="fa-solid fa-box-open"></i>Listado de productos vencidos</a></li>
               </div>
