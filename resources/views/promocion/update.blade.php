@@ -55,7 +55,8 @@ Editar promoción
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" class="form-control" name="descuento" id="descuento" style="width: 90%;float: left;"
-                value="{{number_format(($promocion->nuevo/$promocion->anterior)*100,0)}}" style="text-align: right">
+                value="{{number_format(100-(($promocion->nuevo/$promocion->anterior)*100),0)}}"  style="text-align: right">
+                
                 <input type="text" class="form-control" value="%" readonly style="width: 10%;float: left;">
             </div>
         </div>

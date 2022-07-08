@@ -22,8 +22,9 @@ Detalle de la promoción de: {{$promocion->productos->nombre}}
                         <p style="color: black; margin-left: 20px">Código Del Producto: <strong style="color: black"> {{$promocion->productos->codigo}}  </strong></p>
                         <p style="color: black; margin-left: 20px">Precio Del Producto: <strong style="color: black"> L.{{ number_format($promocion->anterior,2)}} </strong></p>
                      <p style="color: black; margin-left: 20px">Nuevo Precio:  <strong style="color: black">L.{{ number_format($promocion->nuevo,2)}}</strong>
-                        <p style="color: black; margin-left: 20px">Fecha de creación de promoción:  <strong style="color: black">{{$promocion->created_at->locale("es")->isoFormat("DD MMMM YYYY")}}</strong>
-                        <p style="color: black; margin-left: 20px">Descuento:  <strong style="color: black">L.{{ $promocion->anterior - $promocion->nuevo}} </strong>
+                      <p style="color: black; margin-left: 20px">Fecha de creación de promoción:  <strong style="color: black">{{$promocion->created_at->locale("es")->isoFormat("DD MMMM YYYY")}}</strong>
+                      <p style="color: black; margin-left: 20px">Fecha de vencimiento de promoción:  <strong style="color: black">{{\Carbon\Carbon::parse($promocion->vencimiento)->locale("es")->isoFormat("DD MMMM YYYY")}}</strong>
+                      <p style="color: black; margin-left: 20px">Descuento:  <strong style="color: black">L.{{ $promocion->anterior - $promocion->nuevo}} </strong>
          
                     </p>
         

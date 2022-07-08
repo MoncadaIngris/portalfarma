@@ -50,11 +50,15 @@ class PromocionController extends Controller
     {
         $rules=[
             'precionuevo' => 'required|numeric|min:0',
+            'descuento' => 'required',
+
+
         ];
         $mensaje=[
             'precionuevo.required' => 'El precio nuevo no puede estar vacío',
             'precionuevo.numeric' => 'En precio nuevo no debe de incluir letras ni signos',
             'precionuevo.min' => 'En precio nuevo no debe de ser negativo',
+            'descuento.required' => 'El descuento no puede estar vacío',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -89,9 +93,13 @@ class PromocionController extends Controller
      */
     public function show($id)
     {
-        
-        
-        $promocion = Promocion::findOrFail($id);
+        $promocion = Promocion::select(DB::raw('min(vencimiento) AS vencimiento'), 'promocions.id_producto', 
+        'anterior', 'nuevo', 'promocions.created_at')
+        ->join('producto__comprados','promocions.id_producto', '=', 'producto__comprados.id_producto')
+        ->join('vencer_entradas','producto__comprados.id', '=', 'vencer_entradas.id_compra')
+        ->groupby('promocions.id_producto')
+        ->where('promocions.id',$id)
+        ->first();
         return view("promocion.show")->with("promocion", $promocion);
         
         //
@@ -132,11 +140,16 @@ class PromocionController extends Controller
     {
         $rules=[
             'precionuevo' => 'required|numeric|min:0',
+            'descuento' => 'required',
+
+  
         ];
         $mensaje=[
             'precionuevo.required' => 'El precio nuevo no puede estar vacío',
             'precionuevo.numeric' => 'En precio nuevo no debe de incluir letras ni signos',
             'precionuevo.min' => 'En precio nuevo no debe de ser negativo',
+            'descuento.required' => 'El descuento no puede estar vacío',
+        
         ];
 
         $this->validate($request,$rules,$mensaje);
