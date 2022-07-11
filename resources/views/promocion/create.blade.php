@@ -49,7 +49,7 @@ Crear promoción {{$promocion->nombre}}
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Cantidad de descuento: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">porcentaje del descuento: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" class="form-control" name="descuento" id="descuento" style="width: 90%;float: left;"
