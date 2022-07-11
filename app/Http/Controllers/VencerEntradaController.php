@@ -16,7 +16,7 @@ class VencerEntradaController extends Controller
      */
     public function index()
     {
-        $vencer = VencerEntrada::all();
+        $vencer = VencerEntrada::where("vencimiento",">=",date("Y-m-d"))->get();
         $promocion = Promocion::all();
         return view("vencer/index")->with("vencer",$vencer)->with("promocion",$promocion);
     }
