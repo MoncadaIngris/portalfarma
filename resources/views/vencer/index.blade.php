@@ -50,7 +50,7 @@
                         </center>
                     @else
                     <center>
-                        <span class="badge" style="background: rgb(235, 137, 137)">El producto tiene una promocion activa</span>
+                        <span class="badge" style="background: rgb(235, 137, 137)">El producto tiene una promoción activa</span>
                         </center>
                     @endif
                 </td>
