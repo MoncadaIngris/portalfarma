@@ -99,6 +99,7 @@ class PromocionController extends Controller
         ->join('vencer_entradas','producto__comprados.id', '=', 'vencer_entradas.id_compra')
         ->groupby('promocions.id_producto')
         ->where('promocions.id',$id)
+        ->where('vencimiento','>=',date("Y-m-d"))
         ->first();
         return view("promocion.show")->with("promocion", $promocion);
         
