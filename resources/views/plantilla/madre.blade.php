@@ -199,16 +199,16 @@
                   <li><a><i class="fa-solid fa-box-open"></i> Gráficos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         @can('grafico_producto')
-                        <li><a href="{{route('grafico.producto',['val'=>0])}}">Gráfico De Producto</a></li>
+                        <li><a href="{{route('grafico.producto',['val'=>0])}}">Gráfico de producto</a></li>
                         @endcan
                         @can('grafico_proveedor')
-                        <li><a href="{{route('grafico.proveedor',['val'=>0])}}">Gráfico De Proveedor</a></li>
+                        <li><a href="{{route('grafico.proveedor',['val'=>0])}}">Gráfico de proveedor</a></li>
                         @endcan
                       @can('grafico_cliente')
                       <li><a href="{{route('grafico.index')}}">Gráfico De Cliente</a></li>
                       @endcan
                       @can('grafico_fecha')
-                      <li><a href="{{route('grafico.ventas')}}">Gráfico De Ventas Por Fecha</a></li>
+                      <li><a href="{{route('grafico.ventas')}}">Gráfico de ventas por fecha</a></li>
                       @endcan
                     </ul>
                   </li>
