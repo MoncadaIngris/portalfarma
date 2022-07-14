@@ -71,8 +71,8 @@
     <script>
         function desactivar{{$pro->id}}(){
             Swal.fire({
-                title: '<strong>Cancelar Promocion</strong>',
-                text: "¿Desea cancelar la promocion seleccionado?",
+                title: '<strong>Cancelar Promoción</strong>',
+                text: "¿Desea cancelar la promoción seleccionado?",
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -83,7 +83,7 @@
                 if (result.isConfirmed) {
                     Swal.fire(
                         'Cancelada',
-                        'La promocion fue cancelada exitosamente',
+                        'La promoción fue cancelada exitosamente',
                         'success'
                     )
                     window.location='{{route("promociones.eliminar",["id"=>$pro->id])}}'
