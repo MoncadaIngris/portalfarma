@@ -82,7 +82,7 @@ class PromocionController extends Controller
         $creado = $prom->save();
 
         return redirect()->route('promociones.index')
-                ->with('mensaje', 'La promocion fue creado exitosamente');
+                ->with('mensaje', 'La promoción fue creado exitosamente');
     }
 
     /**
