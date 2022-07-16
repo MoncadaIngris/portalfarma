@@ -26,6 +26,7 @@ use App\Http\Controllers\BaucherController;
 use App\Http\Controllers\VencerEntradaController;
 use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\PromocionVencidaController;
+use App\Http\Controllers\EstanteController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -467,6 +468,16 @@ Route::get('/promociones/eliminar/{id}',[PromocionVencidaController::class, 'cam
 
     Route::get('/promociones/vencidas/{id}',[PromocionVencidaController::class, 'ventavencidas'])
     ->name('ventas.promociones');
+
+    //ruta index
+Route::get('/estante', [EstanteController::class, 'index'])
+->name('estante.index');
+//ruta  create
+Route::get('/estante/nuevo',[EstanteController::class, 'create'])
+->name('estante.create');
+//ruta guardar
+Route::post('/estante/nuevo',[EstanteController::class, 'store'])
+->name('estante.store');
 
 });
 });
