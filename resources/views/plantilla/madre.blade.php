@@ -319,6 +319,8 @@
                     <li><a href="{{route('promociones.vencidas')}}"><i class="fa-solid fa-box-open"></i>Listado de promociones Canceladas</a></li>
 
                     <li><a href="{{route('productos.vencidos')}}"><i class="fa-solid fa-box-open"></i>Listado de productos vencidos</a></li>
+
+                    <li><a href="{{route('estante.index')}}"><i class="fa-solid fa-box-open"></i>Listado de estantes</a></li>
               </div>
 
             </div>

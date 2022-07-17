@@ -14,7 +14,7 @@
         }
       </style>
     @can('empleados_nuevo')
-    <button class="btn btn-nuevo" onclick="window.location='{{route('estante.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Empleado</button>
+    <button class="btn btn-nuevo" onclick="window.location='{{route('estante.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Estante</button>
     @endcan
     <table  id="datatable" class="table table-striped">
         <thead>
