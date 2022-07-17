@@ -33,8 +33,16 @@
             <td>{{$estante->nombre}}</td>
             <td>{{$estante->fila}}</td>
             <td>{{$estante->columna}}</td>
-            <td></td>
-            <td></td>
+            <td>
+                    <center>
+            <a class="btn btn-editar" href="{{route("estante.edit",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </center>
+                </td>
+            <td>
+            <center>
+            <a class="btn btn-save" href="{{route("estante.listado",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </center>
+            </td>
             <td></td>
         @endforeach
         </tbody>

@@ -476,8 +476,25 @@ Route::get('/estante', [EstanteController::class, 'index'])
 Route::get('/estante/nuevo',[EstanteController::class, 'create'])
 ->name('estante.create');
 //ruta guardar
+
 Route::post('/estante/nuevo',[EstanteController::class, 'store'])
 ->name('estante.store');
+
+
+
+Route::get("/estante/{id}/edit", [EstanteController::class, "edit"])
+->name("estante.edit")->where('id', '[0-9]+');
+
+ Route::put("/estante/{id}/edit", [EstanteController::class, "update"])
+->name("estante.edit")->where('id', '[0-9]+');
+
+Route::get('/estante/{id}', [EstanteController::class, 'show'])
+->name('estante.show')->where('id', '[0-9]+');
+    
+Route::get('/estante/listado/{id}', [EstanteController::class, 'listado'])
+->name('estante.listado')->where('id', '[0-9]+');
+    
+
 
 });
 });

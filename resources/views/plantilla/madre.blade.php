@@ -303,7 +303,7 @@
                         @can('salario_index')
                         <li><a href="{{route('salariohora.index')}}"> Lista De Salarios</a></li>
                         @endcan
-                      </ul>
+                      </ul> 
                     </li>
                     @endcan
                     @can('planilla_index')
