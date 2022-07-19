@@ -20,8 +20,8 @@
         <thead>
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Nombre</th>
-            <th scope="col" class="sorting" style="text-align: center">Numero de fila</th>
-            <th scope="col" class="sorting" style="text-align: center">Numero de columna</th>
+            <th scope="col" class="sorting" style="text-align: center">Número de fila</th>
+            <th scope="col" class="sorting" style="text-align: center">Número de columna</th>
             <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Filas</th>
             <th scope="col" style="text-align: center">Detalles</th>
