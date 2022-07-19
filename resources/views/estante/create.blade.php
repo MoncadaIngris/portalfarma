@@ -27,7 +27,7 @@ Añadir Estante
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Descripcion: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Descripción: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="100" type="text" id="descripcion" name="descripcion" required="required" class="form-control "
@@ -35,7 +35,7 @@ Añadir Estante
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Numero de fila: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Número de fila: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input max="100" type="number" id="fila" name="fila" required="required" class="form-control "
@@ -43,7 +43,7 @@ Añadir Estante
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Numero de columna: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Número de columna: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input max="100" type="number" id="columna" name="columna" required="required" class="form-control "
