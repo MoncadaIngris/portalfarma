@@ -31,7 +31,7 @@ Añadir Estante
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="100" type="text" id="descripcion" name="descripcion" required="required" class="form-control "
-                value="{{old('descripcion')}}" placeholder="Ingrese la descripcion del estante">
+                value="{{old('descripcion')}}" placeholder="Ingrese la descripción del estante">
             </div>
         </div>
         <div class="item form-group">
@@ -39,7 +39,7 @@ Añadir Estante
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input max="100" type="number" id="fila" name="fila" required="required" class="form-control "
-                value="{{old('fila')}}" placeholder="Ingrese el numero de fila">
+                value="{{old('fila')}}" placeholder="Ingrese el número de fila">
             </div>
         </div>
         <div class="item form-group">
@@ -47,7 +47,7 @@ Añadir Estante
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input max="100" type="number" id="columna" name="columna" required="required" class="form-control "
-                value="{{old('columna')}}" placeholder="Ingrese el numero de columna">
+                value="{{old('columna')}}" placeholder="Ingrese el número de columna">
             </div>
         </div>
         <div class="ln_solid"></div>
