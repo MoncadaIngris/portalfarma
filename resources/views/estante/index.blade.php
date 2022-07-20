@@ -30,6 +30,7 @@
 
         <tbody>
         @foreach ($estantes as $estante)
+            <tr>
             <td>{{$estante->nombre}}</td>
             <td>{{$estante->fila}}</td>
             <td>{{$estante->columna}}</td>
@@ -44,6 +45,7 @@
                     </center>
             </td>
             <td></td>
+            </tr>
         @endforeach
         </tbody>
     </table>

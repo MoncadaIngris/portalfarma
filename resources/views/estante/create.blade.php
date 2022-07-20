@@ -53,7 +53,7 @@ Añadir Estante
         <div class="ln_solid"></div>
         <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
-                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('empleados.index')}}'">Cancelar</button>
+                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('estante.index')}}'">Cancelar</button>
                 <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
                 <button type="submit" class="btn btn-guardar">Guardar</button>
             </div>
