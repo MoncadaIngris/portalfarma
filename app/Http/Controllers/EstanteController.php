@@ -55,18 +55,17 @@ class EstanteController extends Controller
             'nombres.max' => 'El nombre es muy extenso',
             'nombres.unique' => 'El nombre ya esta en uso',
 
-            'descripcion.required' => 'La descripcion no puede estar vacío',
-            'descripcion.max' => 'La descripcion es muy extensa',
+            'descripcion.required' => 'La descripción no puede estar vacío',
+            'descripcion.max' => 'La descripción es muy extensa',
 
-            'fila.required' => 'El numero de fila no puede estar vacío',
-            'fila.max' => 'El numero de fila es muy grande',
-            'fila.min' => 'El numero de fila no puede ser menor a 1',
-            'fila.numeric' => 'El numero de fila debe de ser un numero',
+            'fila.required' => 'El número de fila no puede estar vacío',
+            'fila.max' => 'El número de fila es muy grande',
+            'fila.numeric' => 'El número de fila debe de ser un número',
 
-            'columna.required' => 'El numero de columna no puede estar vacío',
-            'columna.max' => 'El numero de columna es muy grande',
-            'columna.min' => 'El numero de columna no puede ser menor a 1',
-            'columna.numeric' => 'El numero de columna debe de ser un numero',
+            'columna.required' => 'El número de columna no puede estar vacío',
+            'columna.max' => 'El número de columna es muy grande',
+            'columna.min' => 'El número de columna no puede ser menor a 1',
+            'columna.numeric' => 'El número de columna debe de ser un número',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -136,18 +135,18 @@ class EstanteController extends Controller
             'nombres.max' => 'El nombre es muy extenso',
             'nombres.unique' => 'El nombre ya esta en uso',
 
-            'descripcion.required' => 'La descripcion no puede estar vacío',
-            'descripcion.max' => 'La descripcion es muy extensa',
+            'descripcion.required' => 'La descripción no puede estar vacío',
+            'descripcion.max' => 'La descripción es muy extensa',
 
-            'fila.required' => 'El numero de fila no puede estar vacío',
-            'fila.max' => 'El numero de fila es muy grande',
-            'fila.min' => 'El numero de fila no puede ser menor a 1',
-            'fila.numeric' => 'El numero de fila debe de ser un numero',
+            'fila.required' => 'El número de fila no puede estar vacío',
+            'fila.max' => 'El número de fila es muy grande',
+            'fila.min' => 'El número de fila no puede ser menor a 1',
+            'fila.numeric' => 'El número de fila debe de ser un número',
 
-            'columna.required' => 'El numero de columna no puede estar vacío',
-            'columna.max' => 'El numero de columna es muy grande',
-            'columna.min' => 'El numero de columna no puede ser menor a 1',
-            'columna.numeric' => 'El numero de columna debe de ser un numero',
+            'columna.required' => 'El número de columna no puede estar vacío',
+            'columna.max' => 'El número de columna es muy grande',
+            'columna.min' => 'El número de columna no puede ser menor a 1',
+            'columna.numeric' => 'El número de columna debe de ser un número',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -302,7 +301,7 @@ class EstanteController extends Controller
             $product->save();
         }
         return redirect()->route('estante.columna',['id'=> $product->id_fila])
-        ->with('mensaje', 'La asignacion fue creada exitosamente');
+        ->with('mensaje', 'La asignación fue creada exitosamente'); 
     }
 
 }
