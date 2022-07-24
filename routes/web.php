@@ -494,7 +494,20 @@ Route::get('/estante/{id}', [EstanteController::class, 'show'])
 Route::get('/estante/listado/{id}', [EstanteController::class, 'listado'])
 ->name('estante.listado')->where('id', '[0-9]+');
     
+Route::get('/estante/columna/{id}', [EstanteController::class, 'columna'])
+->name('estante.columna')->where('id', '[0-9]+');
 
+Route::get('/asignar/columna/{id}', [EstanteController::class, 'asignar'])
+->name('columna.asignar')->where('id', '[0-9]+');
+
+Route::post('/asignar/columna/{id}', [EstanteController::class, 'agregar'])
+->name('columna.asignar')->where('id', '[0-9]+');
+
+Route::get('/editar/columna/{id}', [EstanteController::class, 'cambiar'])
+->name('columna.editar')->where('id', '[0-9]+');
+
+Route::post('/editar/columna/{id}', [EstanteController::class, 'cambio'])
+->name('columna.editar')->where('id', '[0-9]+');
 
 });
 });

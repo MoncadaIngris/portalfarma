@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Estante;
 use App\Models\Fila;
 use App\Models\Columna;
+use App\Models\Producto;
+use App\Models\ProductoUbicacion;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreEstanteRequest;
 use App\Http\Requests\UpdateEstanteRequest;
@@ -101,17 +103,6 @@ class EstanteController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Estante  $estante
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Estante $estante)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Estante  $estante
@@ -195,22 +186,123 @@ class EstanteController extends Controller
 
     public function listado($id)
     {
-        $estantes = Estante::select('filas.numero AS fila', 'columnas.numero AS columna', 'estantes.nombre AS estante')
+        $estantes = Estante::select('filas.id AS id','filas.numero AS fila', 'estantes.nombre AS estante')
         ->join('filas','estantes.id','=','filas.id_estante')
-        ->join('columnas','columnas.id_estante','=','filas.id_estante')
         ->where('estantes.id',$id)->get();
 
-        return view('estante/listado')->with('estantes', $estantes);
+        $alternativo = Estante::select("productos.nombre", "filas.numero as fila","columnas.numero as columna")
+        ->join("producto_ubicacions", "producto_ubicacions.id_estante", "=", "estantes.id")
+        ->join("filas","filas.id", "=", "producto_ubicacions.id_fila")
+        ->join("columnas","columnas.id", "=", "producto_ubicacions.id_columna")
+        ->join("productos", "productos.id", "=", "producto_ubicacions.id_producto")
+        ->where('estantes.id',$id)->get();
+
+        return view('estante/listado')->with('estantes', $estantes)->with('alternativo', $alternativo);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Estante  $estante
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Estante $estante)
+    public function columna($id)
     {
-        //
+        $estantes = Estante::select('columnas.id AS id','columnas.numero AS columna',"estantes.id as id_fila",'estantes.nombre AS estante')
+        ->join('columnas','estantes.id','=','columnas.id_estante')
+        ->join('filas','estantes.id','=','filas.id_estante')
+        ->where('filas.id',$id)->get();
+
+        $alternativo = Estante::select("productos.nombre", "filas.numero as fila","columnas.numero as columna")
+        ->join("producto_ubicacions", "producto_ubicacions.id_estante", "=", "estantes.id")
+        ->join("filas","filas.id", "=", "producto_ubicacions.id_fila")
+        ->join("columnas","columnas.id", "=", "producto_ubicacions.id_columna")
+        ->join("productos", "productos.id", "=", "producto_ubicacions.id_producto")
+        ->where('filas.id',$id)->get();
+
+        return view('estante/columna')->with('estantes', $estantes)->with('alternativo', $alternativo);
+    
     }
+
+    public function asignar($id)
+    {
+        $estantes = Estante::select('columnas.id AS id','columnas.numero AS columna',"estantes.id as id_fila" ,'estantes.nombre AS estante')
+        ->join('columnas','estantes.id','=','columnas.id_estante')
+        ->join('filas','estantes.id','=','filas.id_estante')
+        ->where('filas.id',$id)->get();
+
+        $productos = Producto::all();
+
+        
+        $alternativo = Estante::select("productos.nombre","productos.id as producto_id", "filas.numero as fila","columnas.numero as columna")
+        ->join("producto_ubicacions", "producto_ubicacions.id_estante", "=", "estantes.id")
+        ->join("filas","filas.id", "=", "producto_ubicacions.id_fila")
+        ->join("columnas","columnas.id", "=", "producto_ubicacions.id_columna")
+        ->join("productos", "productos.id", "=", "producto_ubicacions.id_producto")
+        ->where('filas.id',$id)->get();
+
+
+        return view('estante/asignar')->with('estantes', $estantes)->with('productos', $productos)
+        ->with('alternativo', $alternativo);
+    }
+
+    public function agregar(Request $request,$id)
+    {
+        $estantes = Estante::select('columnas.id AS id',
+        'columnas.id AS columna', 
+        'filas.id AS fila', 
+        'estantes.id AS estante')
+        ->join('columnas','estantes.id','=','columnas.id_estante')
+        ->join('filas','estantes.id','=','filas.id_estante')
+        ->where('filas.id',$id)->get();
+
+        foreach ($estantes as $estante) {
+            $product = new ProductoUbicacion();
+
+            $product->id_estante = $estante->estante;
+            $product->id_fila = $estante->fila;
+            $product->id_columna = $estante->columna;
+            $product->id_producto = $request->input('estante'.$estante->id);
+
+            $creado3 = $product->save();
+        }
+        return redirect()->route('estante.columna',['id'=> $product->id_fila])
+        ->with('mensaje', 'La asignacion fue creada exitosamente');
+    }
+
+    public function cambiar($id)
+    {
+        $estantes = Estante::select('columnas.id AS id','columnas.numero AS columna',"estantes.id as id_fila" ,'estantes.nombre AS estante')
+        ->join('columnas','estantes.id','=','columnas.id_estante')
+        ->join('filas','estantes.id','=','filas.id_estante')
+        ->where('filas.id',$id)->get();
+
+        $alternativo = Estante::select("productos.nombre","productos.id as producto_id", "filas.numero as fila","columnas.numero as columna")
+        ->join("producto_ubicacions", "producto_ubicacions.id_estante", "=", "estantes.id")
+        ->join("filas","filas.id", "=", "producto_ubicacions.id_fila")
+        ->join("columnas","columnas.id", "=", "producto_ubicacions.id_columna")
+        ->join("productos", "productos.id", "=", "producto_ubicacions.id_producto")
+        ->where('filas.id',$id)->get();
+
+        $productos = Producto::all();
+
+        return view('estante/asignar')->with('estantes', $estantes)->with('productos', $productos)->with('alternativo', $alternativo);
+    }
+
+    public function cambio(Request $request,$id)
+    {
+        $estantes = Estante::select('columnas.id AS id',
+        'columnas.id AS columna', 
+        'filas.id AS fila', 
+        'estantes.id AS estante')
+        ->join('columnas','estantes.id','=','columnas.id_estante')
+        ->join('filas','estantes.id','=','filas.id_estante')
+        ->where('filas.id',$id)->get();
+
+        foreach ($estantes as $estante) {
+            $product = ProductoUbicacion::where("id_estante",$estante->estante)->where("id_fila",$estante->fila)
+            ->where("id_columna",$estante->columna)->first();
+
+            $product->id_producto = $request->input('estante'.$estante->id);
+
+            $product->save();
+        }
+        return redirect()->route('estante.columna',['id'=> $product->id_fila])
+        ->with('mensaje', 'La asignacion fue creada exitosamente');
+    }
+
 }
