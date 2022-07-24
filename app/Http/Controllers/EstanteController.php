@@ -260,7 +260,7 @@ class EstanteController extends Controller
             $creado3 = $product->save();
         }
         return redirect()->route('estante.columna',['id'=> $product->id_fila])
-        ->with('mensaje', 'La asignacion fue creada exitosamente');
+        ->with('mensaje', 'La asignación fue creada exitosamente');
     }
 
     public function cambiar($id)
