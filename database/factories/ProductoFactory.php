@@ -16,7 +16,7 @@ class ProductoFactory extends Factory
     
 
             return [  
-            'nombre' => $this -> faker ->jobTitle(),   
+            'nombre' => $this -> faker ->text(11),   
             'codigo' => $this -> faker ->ean8(),  
             'concentracion' => $this -> faker ->randomElement([1,2,3,4]),     
             'receta' => $this -> faker -> randomElement([0,1]),   
