@@ -1,4 +1,4 @@
-@extends('plantilla.')
+@extends('plantilla.madre')
 @section('titulo')
     Listado de baucher
 @stop
