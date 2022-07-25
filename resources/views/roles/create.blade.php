@@ -1,4 +1,4 @@
-@extends('plantilla.madre')
+@extends('plantilla.')
 @section('titulo')
 Crear Funciones
 @stop

@@ -1,4 +1,4 @@
-@extends('plantilla.madre')
+@extends('plantilla.')
 @section('titulo')
 Añadir Usuario
 @stop
