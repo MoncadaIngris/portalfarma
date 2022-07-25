@@ -27,6 +27,7 @@ use App\Http\Controllers\VencerEntradaController;
 use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\PromocionVencidaController;
 use App\Http\Controllers\EstanteController;
+use App\Http\Controllers\ProductoUbicacionController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -480,7 +481,8 @@ Route::get('/estante/nuevo',[EstanteController::class, 'create'])
 Route::post('/estante/nuevo',[EstanteController::class, 'store'])
 ->name('estante.store');
 
-
+Route::get("/estante/{id}/detalles", [EstanteController::class, "detalles"])
+->name("estante.detalles")->where('id', '[0-9]+');
 
 Route::get("/estante/{id}/edit", [EstanteController::class, "edit"])
 ->name("estante.edit")->where('id', '[0-9]+');
@@ -508,6 +510,10 @@ Route::get('/editar/columna/{id}', [EstanteController::class, 'cambiar'])
 
 Route::post('/editar/columna/{id}', [EstanteController::class, 'cambio'])
 ->name('columna.editar')->where('id', '[0-9]+');
+
+    //ruta index
+Route::get('/ubicacion', [ProductoUbicacionController::class, 'index'])
+    ->name('producto.index');
 
 });
 });

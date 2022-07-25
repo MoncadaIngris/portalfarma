@@ -304,4 +304,18 @@ class EstanteController extends Controller
         ->with('mensaje', 'La asignación fue creada exitosamente'); 
     }
 
+    public function detalles($id){
+        $informacion = ProductoUbicacion::select("productos.nombre as producto", "estantes.nombre", "filas.numero AS fila", "columnas.numero AS columna")
+        ->join("estantes", "estantes.id", "=", "producto_ubicacions.id_estante")
+        ->join("filas", "filas.id", "=", "producto_ubicacions.id_fila")
+        ->join("columnas", "columnas.id", "=", "producto_ubicacions.id_columna")
+        ->join("productos", "productos.id", "=", "producto_ubicacions.id_producto")
+        ->where("estantes.id",$id)
+        ->get();
+
+        $estante = Estante::findorfail($id);
+
+        return view('estante/detalle')->with('informacion', $informacion)->with('estante', $estante);
+    }
+
 }

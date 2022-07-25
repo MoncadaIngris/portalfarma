@@ -44,7 +44,11 @@
             <a class="btn btn-save" href="{{route("estante.listado",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                     </center>
             </td>
-            <td></td>
+            <td>
+                <center>
+                    <a class="btn btn-save" href="{{route("estante.detalles",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                </center>
+            </td>
             </tr>
         @endforeach
         </tbody>

@@ -15,7 +15,11 @@ class ProductoUbicacionController extends Controller
      */
     public function index()
     {
-        //
+        $producto = ProductoUbicacion::select("productos.nombre", "id_estante", "id_fila", "id_columna")
+        ->join("productos","productos.id","=","producto_ubicacions.id_producto")
+        ->get();
+
+        return view("productos/ubicacion")->with("producto", $producto);
     }
 
     /**
