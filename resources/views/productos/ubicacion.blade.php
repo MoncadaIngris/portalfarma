@@ -9,6 +9,7 @@
     <tr>
 
         <th scope="col" class="sorting" style="text-align: center">Producto</th>
+        <th scope="col" class="sorting" style="text-align: center">Estante</th>
         <th scope="col" class="sorting" style="text-align: center">Número de fila</th>
         <th scope="col" class="sorting" style="text-align: center">Número de columna</th>
        
@@ -20,6 +21,7 @@
         <tr>
         
         <td>{{$estante->nombre}}</td>
+        <td>{{$estante->estantes->nombre}}</td>
         <td>{{$estante->filas->numero}}</td>
         <td>{{$estante->columnas->numero}}</td>
         

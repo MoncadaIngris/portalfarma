@@ -17,6 +17,10 @@ class ProductoUbicacion extends Model
         return $this->belongsTo(Fila::class, 'id_fila', 'id');
     }
 
+    public function estantes(){
+        return $this->belongsTo(Estante::class, 'id_estante', 'id');
+    }
+
     public function columnas(){
         return $this->belongsTo(Columna::class, 'id_columna', 'id');
     }

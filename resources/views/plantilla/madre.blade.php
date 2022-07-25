@@ -321,6 +321,8 @@
                     <li><a href="{{route('productos.vencidos')}}"><i class="fa-solid fa-box-open"></i>Listado de productos vencidos</a></li>
 
                     <li><a href="{{route('estante.index')}}"><i class="fa-solid fa-box-open"></i>Listado de estantes</a></li>
+
+                    <li><a href="{{route('producto.ubicacion')}}"><i class="fa-solid fa-box-open"></i>Ubicacion productos</a></li>
               </div>
 
             </div>

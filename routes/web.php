@@ -513,7 +513,7 @@ Route::post('/editar/columna/{id}', [EstanteController::class, 'cambio'])
 
     //ruta index
 Route::get('/ubicacion', [ProductoUbicacionController::class, 'index'])
-    ->name('producto.index');
+    ->name('producto.ubicacion');
 
 });
 });
