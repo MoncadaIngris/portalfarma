@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-   Ubicacion de producto
+   Ubicación de producto
 @stop
 @section('contenido')
 <style>
