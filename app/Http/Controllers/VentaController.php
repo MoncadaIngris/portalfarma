@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Venta;
+use App\Models\ProductoUbicacion;
 use App\Http\Requests\StoreVentaRequest;
 use App\Http\Requests\UpdateVentaRequest;
 use App\Models\Proveedor;
@@ -93,6 +94,10 @@ class VentaController extends Controller
         ->orderby('productos.nombre')->get();
         $impuestos = Impuesto::all();
         $temporalv = Producto_Temporalv::all();
+
+        $ubicacion=ProductoUbicacion::select("productos.id","id_columna", "id_fila","id_estante")
+        ->join("productos","productos.id","=","producto_ubicacions.id_producto")->get();
+
         return view('ventas/create')->with('clientes', $clientes)
         ->with('clie', $clie)
         ->with('cliente', $cliente)
@@ -100,7 +105,8 @@ class VentaController extends Controller
         ->with('impuestos', $impuestos)
         ->with('temporalv', $temporalv)
         ->with('producto_name', $producto)
-        ->with('producto_id', $producto_id);
+        ->with('producto_id', $producto_id)
+        ->with('ubicacion', $ubicacion);
     }
 
     /**

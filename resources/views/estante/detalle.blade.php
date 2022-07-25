@@ -3,8 +3,15 @@
     Detalle de estantes {{$estante->nombre}}
 @stop
 @section('contenido')
-
-<table  id="datatable" class="table table-striped">
+<style>
+    #prueba {
+        overflow:auto;
+    }
+    .dt-buttons{
+        float: right !important;
+    }
+  </style>
+<table  id="datatable-buttons" class="table table-striped">
     <thead>
     <tr>
         <th scope="col" class="sorting" style="text-align: center">Número de fila</th>

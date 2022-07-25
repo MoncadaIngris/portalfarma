@@ -12,8 +12,11 @@
         #prueba {
             overflow:auto;
         }
+        .dt-buttons{
+            float: right !important;
+        }
       </style>
-    <table  id="datatable" class="table table-striped">
+    <table  id="datatable-buttons" class="table table-striped">
         <thead>
         <tr>
             

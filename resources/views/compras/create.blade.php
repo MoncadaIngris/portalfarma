@@ -118,11 +118,15 @@ onchange="seleccionar()" data-live-search="true">
                 @endforeach
             </select>
         </div>
+        
         <div style="width: 13%; float: left">
             <label for="" style="color: white">boton</label>
             <button class="btn btn-guardar" type="submit" style="width: 100%">Agregar</button>
         </div>
+        
     </form>
+    
+    <label style="width: 100%;float: left" for="">El producto esta en el Estante A fila 2 columna 3</label>
 </div>
 <div>
 

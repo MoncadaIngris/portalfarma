@@ -108,6 +108,15 @@ onchange="seleccionar()" data-live-search="true">
                         }
                     }
                 @endforeach
+                var x = document.getElementById("oculto");
+                x.style.display = "block";
+
+                @foreach ($ubicacion as $ubi)
+                if(valor == {{$ubi->id}}){
+                    document.getElementById("aviso").value = "El producto esta ubicado en el estante {{$ubi->estantes->nombre}}, columna {{$ubi->columnas->numero}}, fila {{$ubi->filas->numero}}  ";
+                }
+                @endforeach
+
             }
         </script>  
         
@@ -139,6 +148,13 @@ onchange="seleccionar()" data-live-search="true">
             <button class="btn btn-guardar" type="submit" style="width: 100%">Agregar</button>
         </div>
     </form>
+    <br>
+<div style="display: none" id="oculto">
+    <div style="width: 100%; float: left" >
+        <input for="" readonly class="form-control" name="aviso" id="aviso" 
+        style="background: rgb(32, 221, 189);color: black" value="">
+    </div>
+</div>
 </div>
 <div>
 
