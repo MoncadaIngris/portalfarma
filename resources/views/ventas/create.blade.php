@@ -110,12 +110,16 @@ onchange="seleccionar()" data-live-search="true">
                 @endforeach
                 var x = document.getElementById("oculto");
                 x.style.display = "block";
-
+                var c = 0;
                 @foreach ($ubicacion as $ubi)
                 if(valor == {{$ubi->id}}){
+                    c++;
                     document.getElementById("aviso").value = "El producto esta ubicado en el estante {{$ubi->estantes->nombre}}, columna {{$ubi->columnas->numero}}, fila {{$ubi->filas->numero}}  ";
                 }
                 @endforeach
+                if (c==0) {
+                    document.getElementById("aviso").value = "El producto no ha sido ubicado";
+                }
 
             }
         </script>  

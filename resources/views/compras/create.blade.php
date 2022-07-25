@@ -126,7 +126,6 @@ onchange="seleccionar()" data-live-search="true">
         
     </form>
     
-    <label style="width: 100%;float: left" for="">El producto esta en el Estante A fila 2 columna 3</label>
 </div>
 <div>
 
