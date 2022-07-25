@@ -16,7 +16,7 @@
     <tr>
 
         <th scope="col" class="sorting" style="text-align: center">Producto</th>
-        <th scope="col" class="sorting" style="text-align: center">Codigo</th>
+        <th scope="col" class="sorting" style="text-align: center">Código</th>
         <th scope="col" class="sorting" style="text-align: center">Estante</th>
         <th scope="col" class="sorting" style="text-align: center">Número de fila</th>
         <th scope="col" class="sorting" style="text-align: center">Número de columna</th>
