@@ -322,7 +322,7 @@
 
                     <li><a href="{{route('estante.index')}}"><i class="fa-solid fa-box-open"></i>Listado de estantes</a></li>
 
-                    <li><a href="{{route('producto.ubicacion')}}"><i class="fa-solid fa-box-open"></i>Ubicacion productos</a></li>
+                    <li><a href="{{route('producto.ubicacion')}}"><i class="fa-solid fa-box-open"></i>Ubicación productos</a></li>
               </div>
 
             </div>
