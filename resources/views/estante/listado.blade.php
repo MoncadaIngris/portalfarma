@@ -48,21 +48,21 @@
             </td>
             <td>
                 <center>
-                    <a class="btn btn-save" href="{{route("estante.columna",["id"=>$estante->id])}}">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                    <a class="btn btn-guardar" href="{{route("estante.columna",["id"=>$estante->id])}}">
+                        <i class="fa-solid fa-barcode"></i>
                     </a>
                 </center>
             </td>
             <td>
                 @if ($num == 0)
                 <center>
-                    <a class="btn btn-save" href="{{route("columna.asignar",["id"=>$estante->id])}}">
+                    <a class="btn btn-editar" href="{{route("columna.asignar",["id"=>$estante->id])}}">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
                 </center>
                 @else
                 <center>
-                    <a class="btn btn-save" href="{{route("columna.editar",["id"=>$estante->id])}}">
+                    <a class="btn btn-editar" href="{{route("columna.editar",["id"=>$estante->id])}}">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
                 </center>

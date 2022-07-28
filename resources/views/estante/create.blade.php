@@ -22,7 +22,7 @@ Añadir Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                <input maxlength="100" type="text" id="nombres" name="nombres" required="required" class="form-control "
                 value="{{old('nombres')}}" placeholder="Ingrese el nombre del estante">
             </div>
         </div>
@@ -30,7 +30,7 @@ Añadir Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Descripción: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="text" id="descripcion" name="descripcion" required="required" class="form-control "
+                <input maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control "
                 value="{{old('descripcion')}}" placeholder="Ingrese la descripción del estante">
             </div>
         </div>
@@ -38,7 +38,7 @@ Añadir Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Número de fila: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input max="100" type="number" id="fila" name="fila" required="required" class="form-control "
+                <input max="15" min="1" type="number" id="fila" name="fila" required="required" class="form-control "
                 value="{{old('fila')}}" placeholder="Ingrese el número de fila">
             </div>
         </div>
@@ -46,7 +46,7 @@ Añadir Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Número de columna: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input max="100" type="number" id="columna" name="columna" required="required" class="form-control "
+                <input max="15" min="1" type="number" id="columna" name="columna" required="required" class="form-control "
                 value="{{old('columna')}}" placeholder="Ingrese el número de columna">
             </div>
         </div>

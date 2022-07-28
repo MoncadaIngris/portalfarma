@@ -41,12 +41,12 @@
                 </td>
             <td>
             <center>
-            <a class="btn btn-save" href="{{route("estante.listado",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="btn btn-guardar" href="{{route("estante.listado",["id"=>$estante->id])}}"><i class="fa-solid fa-bars"></i></a>
                     </center>
             </td>
             <td>
                 <center>
-                    <a class="btn btn-save" href="{{route("estante.detalles",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-detalles" href="{{route("estante.detalles",["id"=>$estante->id])}}"><i class="fa-solid fa-circle-info"></i></a>
                 </center>
             </td>
             </tr>

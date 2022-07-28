@@ -25,7 +25,7 @@ Editar Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" placeholder="Ingrese el nombre del estante" required="required" class="form-control"
+                <input maxlength="100" type="text" id="nombres" name="nombres" placeholder="Ingrese el nombre del estante" required="required" class="form-control"
                 @if(old("nombres"))
                            value="{{old("nombres")}}"
                            @else
@@ -37,7 +37,7 @@ Editar Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Descripción: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="100" type="text" id="descripcion" name="descripcion" required="required" class="form-control "
+                <input maxlength="200" type="text" id="descripcion" name="descripcion" required="required" class="form-control "
                 @if(old("descripcion"))
                 value="{{old('descripcion')}}" 
                 @else
@@ -50,7 +50,7 @@ Editar Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Número de fila: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input max="100" type="number" id="fila" name="fila" required="required" class="form-control "
+                <input max="15" min="0" type="number" id="fila" name="fila" required="required" class="form-control "
                 @if(old("fila"))
                 value="{{old('fila')}}" 
                 @else
@@ -63,7 +63,7 @@ Editar Estante
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Número de columna: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input max="100" type="number" id="columna" name="columna" required="required" class="form-control "
+                <input max="15" min="0" type="number" id="columna" name="columna" required="required" class="form-control "
                 @if(old("columna"))
                 value="{{old('columna')}}" 
                 @else
