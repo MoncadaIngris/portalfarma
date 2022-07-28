@@ -16,7 +16,10 @@
             float: right !important;
         }
       </style>
-    
+    <a class="btn btn-editar" href="{{route("vencidos.salida")}}">
+        Eliminar productos vencidos
+    </a>
+    <br><br>
     <table  id="datatable-buttons" class="table table-striped">
         <thead>
         <tr>

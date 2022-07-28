@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VencerEntrada;
 use App\Models\Promocion;
+use App\Models\Producto_Comprado;
 use App\Http\Requests\StoreVencerEntradaRequest;
 use App\Http\Requests\UpdateVencerEntradaRequest;
 
@@ -21,69 +22,18 @@ class VencerEntradaController extends Controller
         return view("vencer/index")->with("vencer",$vencer)->with("promocion",$promocion);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function salida()
     {
-        //
+        $vencer = VencerEntrada::where("vencimiento","<=",date("Y-m-d"))->get();
+        $promocion = Promocion::all();
+
+        foreach ($vencer as $ven) {
+            VencerEntrada::destroy($ven->id);
+            Producto_Comprado::destroy($ven->id_compra);
+        }
+        
+        return redirect()->route('productos.vencidos');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreVencerEntradaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreVencerEntradaRequest $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\VencerEntrada  $vencerEntrada
-     * @return \Illuminate\Http\Response
-     */
-    public function show(VencerEntrada $vencerEntrada)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\VencerEntrada  $vencerEntrada
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(VencerEntrada $vencerEntrada)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateVencerEntradaRequest  $request
-     * @param  \App\Models\VencerEntrada  $vencerEntrada
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateVencerEntradaRequest $request, VencerEntrada $vencerEntrada)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\VencerEntrada  $vencerEntrada
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(VencerEntrada $vencerEntrada)
-    {
-        //
-    }
 }

@@ -515,6 +515,10 @@ Route::post('/editar/columna/{id}', [EstanteController::class, 'cambio'])
 Route::get('/ubicacion', [ProductoUbicacionController::class, 'index'])
     ->name('producto.ubicacion');
 
+        //ruta index
+Route::get('/salida', [VencerEntradaController::class, 'salida'])
+->name('vencidos.salida');
+
 });
 });
 
