@@ -32,7 +32,7 @@ class VencerEntradaController extends Controller
             Producto_Comprado::destroy($ven->id_compra);
         }
         
-        return redirect()->route('productos.vencidos');
+        return redirect()->route('productos.vencidos')->with('mensaje', 'Los productos fueron eliminados exitosamente');
     }
 
 
