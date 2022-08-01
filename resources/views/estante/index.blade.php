@@ -20,6 +20,7 @@
         <thead>
         <tr>
             <th scope="col" class="sorting" style="text-align: center">Nombre</th>
+            <th scope="col" class="sorting" style="text-align: center">Descripcion</th>
             <th scope="col" class="sorting" style="text-align: center">Número de fila</th>
             <th scope="col" class="sorting" style="text-align: center">Número de columna</th>
             <th scope="col" style="text-align: center">Editar</th>
@@ -32,8 +33,9 @@
         @foreach ($estantes as $estante)
             <tr>
             <td>{{$estante->nombre}}</td>
-            <td>{{$estante->fila}}</td>
-            <td>{{$estante->columna}}</td>
+            <td>{{$estante->descripcion}}</td>
+            <td style="text-align: center">{{$estante->fila}}</td>
+            <td style="text-align: center">{{$estante->columna}}</td>
             <td>
                     <center>
             <a class="btn btn-editar" href="{{route("estante.edit",["id"=>$estante->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
