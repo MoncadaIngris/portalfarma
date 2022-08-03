@@ -28,6 +28,7 @@ use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\PromocionVencidaController;
 use App\Http\Controllers\EstanteController;
 use App\Http\Controllers\ProductoUbicacionController;
+use App\Http\Controllers\VacacionesController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -518,6 +519,13 @@ Route::get('/ubicacion', [ProductoUbicacionController::class, 'index'])
         //ruta index
 Route::get('/salida', [VencerEntradaController::class, 'salida'])
 ->name('vencidos.salida');
+
+//ruta  create
+Route::get('/empleados/vacaciones/{id}',[VacacionesController::class, 'create'])
+    ->name('vacaciones.create');
+//ruta guardar
+Route::post('/empleados/vacaciones/{id}',[VacacionesController::class, 'store'])
+    ->name('vacaciones.store');
 
 });
 });

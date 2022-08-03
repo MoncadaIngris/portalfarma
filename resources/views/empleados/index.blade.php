@@ -30,6 +30,7 @@
             @can('empleados_detalle')
             <th scope="col" style="text-align: center">Detalles</th>
             @endcan
+            <th scope="col" style="text-align: center">Vacaciones</th>
             @can('empleados_desactivar')
             <th scope="col" style="text-align: center">Desactivar</th>
             @endcan
@@ -58,6 +59,21 @@
                     </center>
                 </td>
                 @endcan
+                <td>
+                @if($empleado->inicio == null)
+
+                    <center>
+            <a class="btn btn-success" href="{{route("vacaciones.create",["id"=>$empleado->id])}}"><i class="fa-solid fa-hourglass-half"></i></a>
+                    </center>
+
+                @else
+
+                <center>
+                <a class="btn btn-success" href="#">Vacaciones asignadas</a>
+                </center>
+
+                @endif
+                </td>
                 @can('empleados_desactivar')
                 <td>
                     <center>
