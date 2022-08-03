@@ -521,6 +521,10 @@ Route::get('/salida', [VencerEntradaController::class, 'salida'])
 ->name('vencidos.salida');
 
 //ruta  create
+Route::get('/vacaciones',[VacacionesController::class, 'index'])
+    ->name('vacaciones.index');
+
+//ruta  create
 Route::get('/empleados/vacaciones/{id}',[VacacionesController::class, 'create'])
     ->name('vacaciones.create');
 //ruta guardar

@@ -17,7 +17,11 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-        //
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","vacaciones.inicio","vacaciones.final")
+        ->join("vacaciones","vacaciones.id_empleado","=","empleados.id")
+        ->get();
+
+        return view('vacaciones/index')->with('empleados', $empleados);
     }
 
     /**
