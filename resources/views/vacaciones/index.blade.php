@@ -19,8 +19,8 @@ Listado de Empleados en vacaciones
         <th scope="col" class="sorting" style="text-align: center">Nombre empleado</th>
         <th scope="col" class="sorting" style="text-align: center">Apellido empleado</th>
         <th scope="col" class="sorting" style="text-align: center">Identidad</th>
-        <th scope="col" class="sorting" style="text-align: center">Correo electronico</th>
-        <th scope="col" class="sorting" style="text-align: center">Telefono</th>
+        <th scope="col" class="sorting" style="text-align: center">Correo electrónico</th>
+        <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
         <th scope="col" class="sorting" style="text-align: center">Inicio de vacaciones</th>
         <th scope="col" class="sorting" style="text-align: center">Final de vacaciones</th>
         <th scope="col" style="text-align: center">Editar</th>
