@@ -31,7 +31,11 @@ class LaboralController extends Controller
             ->with('laborales', $laborales)
             ->with('alerta', "Los datos de los empleados del ".$fecha_moderna." fueron cargados anteriormente");
         }else{
-            $empleados = Empleado::where('estado',0)->get();
+            $empleados = Empleado::where('estado',0)->where('id','>',1)
+            ->where("id_empleado",null)
+            ->select("id","nombres", "apellidos", "DNI")
+            ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
+            ->get();
 
             foreach ($empleados as $emp) {
                 $laboral = new Laboral();

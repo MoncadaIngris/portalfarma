@@ -58,8 +58,11 @@ class CalendarioController extends Controller
 
         $semana = Semana::select(DB::raw('DATE_ADD(MAX(fecha_final), INTERVAL 1 DAY) AS fecha_inicio, DATE_ADD(MAX(fecha_final), INTERVAL 7 DAY) AS fecha_final'))
         ->first();
-
-        $empleados = Empleado::where('estado',0)->where('id','>',1)->select("id","nombres", "apellidos", "DNI")->get();
+        $empleados = Empleado::where('estado',0)->where('empleados.id','>',1)
+        ->where("id_empleado",null)
+        ->select("empleados.id","nombres", "apellidos", "DNI")
+        ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
+        ->get();
 
         $jornada = Jornada::all();
 
@@ -76,7 +79,11 @@ class CalendarioController extends Controller
     {
         abort_if(Gate::denies('calendario_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
-        $empleados = Empleado::where('estado',0)->where('id','>',1)->select("id","nombres", "apellidos", "DNI")->get();
+        $empleados = Empleado::where('estado',0)->where('empleados.id','>',1)
+        ->where("id_empleado",null)
+        ->select("empleados.id","nombres", "apellidos", "DNI")
+        ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
+        ->get();
 
         $semana = new Semana();
         $semana->fecha_inicio = date("Y-m-d", strtotime($request->input('fecha_inicio')));

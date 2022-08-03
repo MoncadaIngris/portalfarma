@@ -531,6 +531,13 @@ Route::get('/empleados/vacaciones/{id}',[VacacionesController::class, 'create'])
 Route::post('/empleados/vacaciones/{id}',[VacacionesController::class, 'store'])
     ->name('vacaciones.store');
 
+
+Route::get('/vacaciones/editar/{id}',[VacacionesController::class, 'edit'])
+->name('vacaciones.edit');
+
+Route::put('/vacaciones/editar/{id}',[VacacionesController::class, 'update'])
+->name('vacaciones.update');
+
 });
 });
 

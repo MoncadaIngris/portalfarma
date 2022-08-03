@@ -94,9 +94,14 @@ class VacacionesController extends Controller
      * @param  \App\Models\Vacaciones  $vacaciones
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vacaciones $vacaciones)
+    public function edit($id)
     {
-        //
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","vacaciones.inicio","vacaciones.final")
+        ->join("vacaciones","vacaciones.id_empleado","=","empleados.id")
+        ->where("empleados.id","=",$id)
+        ->first();
+
+        return view('vacaciones/edit')->with('empleado', $empleados);
     }
 
     /**
@@ -106,9 +111,39 @@ class VacacionesController extends Controller
      * @param  \App\Models\Vacaciones  $vacaciones
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateVacacionesRequest $request, Vacaciones $vacaciones)
+    public function update($id, Request $request)
     {
-        //
+        $fecha_actual = date("d-m-Y");
+        $maxima = date('d-m-Y',strtotime($fecha_actual."+ 65 year"));
+        $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
+        $minima2 = date("d-m-Y",strtotime($fecha_actual."+ 1 day"));
+
+        $rules=[
+            'inicio'=>'required|date|before:'.$maxima.'|after:'.$minima,
+            'final'=>'required|date|before:'.$maxima.'|after:'.$minima2,
+        ];
+
+        $mensaje=[
+            'inicio.required' => 'La fecha de inicio no puede estar vacía',
+            'inicio.date' => 'La fecha de inicio debe de ser una fecha valida',
+            'inicio.before' => 'La fecha de inicio debe de ser anterior a '.$maxima,
+            'inicio.after' => 'La fecha de inicio debe de ser posterior a '.$minima,
+            'final.required' => 'La fecha de final no puede estar vacía',
+            'final.date' => 'La fecha de final debe de ser una fecha valida',
+            'final.before' => 'La fecha de final debe de ser anterior a '.$maxima,
+            'final.after' => 'La fecha de final debe de ser posterior a '.$minima2,
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+
+        $vacaciones = Vacaciones::where("id_empleado",$id)->first();
+        $vacaciones->id_empleado = $id;
+        $vacaciones->inicio= $request->input('inicio');
+        $vacaciones->final = $request->input('final');
+        $creado = $vacaciones->save();
+
+        return redirect()->route('vacaciones.index')
+                ->with('mensaje', 'El empleado se le modificaron las vacaciones exitosamente');
     }
 
     /**

@@ -45,7 +45,10 @@ class BaucherController extends Controller
         $cargos = Cargo::all();
         $p = Planilla::FindOrFail($id);
 
-        $empleado = Empleado::all();
+        $empleado = Empleado::where('estado',0)->where("id_empleado",null)
+        ->select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","cargo","vacaciones.inicio")
+        ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
+        ->get();
 
         $baucher = Baucher::where('id_planilla',$id)->get();
 

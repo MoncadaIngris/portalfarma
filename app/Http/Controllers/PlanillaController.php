@@ -328,7 +328,11 @@ class PlanillaController extends Controller
         $cargos = Cargo::all();
         $p = Planilla::FindOrFail($id);
 
-        $empleado = Empleado::all();
+        $empleado = Empleado::where('id','>',1)
+        ->where("id_empleado",null)
+        ->select("id","nombres", "apellidos", "DNI")
+        ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
+        ->get();
 
         $emp = trim($request->get('employee'));
         $car = trim($request->get('cargo'));
