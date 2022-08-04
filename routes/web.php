@@ -541,6 +541,9 @@ Route::get('/vacaciones/editar/{id}',[VacacionesController::class, 'edit'])
 Route::put('/vacaciones/editar/{id}',[VacacionesController::class, 'update'])
 ->name('vacaciones.update');
 
+Route::get('/vacaciones/reintegrar/{id}',[VacacionesController::class, 'reintegrar'])
+->name('vacaciones.reintegrar');
+
 });
 });
 

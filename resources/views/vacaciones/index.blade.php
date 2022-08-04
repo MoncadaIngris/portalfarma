@@ -26,6 +26,7 @@ Listado de Empleados en vacaciones
         <th scope="col" class="sorting" style="text-align: center">Inicio de vacaciones</th>
         <th scope="col" class="sorting" style="text-align: center">Final de vacaciones</th>
         <th scope="col" style="text-align: center">Editar</th>
+        <th scope="col" style="text-align: center">Reintegrar</th>
       </tr>
     </thead>
     <tbody>
@@ -42,6 +43,13 @@ Listado de Empleados en vacaciones
                 <a class="btn btn-editar" href="{{route("vacaciones.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                         </center>
                     </td>
+                    <td>
+                  @if ($empleado->final <= date("Y-m-d"))
+                  <center>
+                    <a class="btn btn-danger" href="{{route("vacaciones.reintegrar",["id"=>$empleado->id])}}"><i class="fa-solid fa-hourglass-half"></i></a>
+                            </center>
+                  @endif
+                  </td>
     @endforeach
     </tbody>
   </table>

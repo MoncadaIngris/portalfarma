@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vacaciones;
 use App\Models\Empleado;
+use App\Models\VacacionesPasadas;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreVacacionesRequest;
 use App\Http\Requests\UpdateVacacionesRequest;
@@ -160,8 +161,20 @@ class VacacionesController extends Controller
      * @param  \App\Models\Vacaciones  $vacaciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vacaciones $vacaciones)
+    public function reintegrar($id)
     {
-        //
+        $oldvacaciones = Vacaciones::where("id_empleado",$id)->first();
+
+        $vacaciones = new VacacionesPasadas();
+        $vacaciones->id_empleado = $oldvacaciones->id;
+        $vacaciones->inicio= $oldvacaciones->inicio;
+        $vacaciones->final = $oldvacaciones->final;
+        $creado = $vacaciones->save();
+        
+
+        Vacaciones::destroy($oldvacaciones->id);
+
+        return redirect()->route('vacaciones.index')
+                ->with('mensaje', 'El empleado fue reintegrado exitosamente');
     }
 }
