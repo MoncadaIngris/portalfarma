@@ -10,6 +10,14 @@ use App\Http\Requests\UpdateVacacionesRequest;
 
 class VacacionesController extends Controller
 {
+    public function historico()
+    {
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","inicio","final")
+        ->join("vacaciones_pasadas","vacaciones_pasadas.id_empleado","=","empleados.id")
+        ->get();
+
+        return view('vacaciones/historia')->with('empleados', $empleados);
+    }
     /**
      * Display a listing of the resource.
      *
