@@ -84,7 +84,7 @@ Editar vacaciones
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fecha de final: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="date" id="final" name="final" required="required" class="form-control"  min="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 1 day"));?>"
+                <input type="date" id="final" name="final" required="required" class="form-control"  min="<?php echo date('Y-m-d',strtotime($empleado->inicio."+ 1 day"));?>"
                 max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 65 year"));?>" 
                 @if(old("final"))
                     value="{{old("final")}}"
