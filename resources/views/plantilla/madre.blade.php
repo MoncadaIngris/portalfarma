@@ -326,7 +326,7 @@
 
                     <li><a href="{{route('vacaciones.index')}}"><i class="fa-solid fa-box-open"></i>Vacaciones empleados</a></li>
 
-                    <li><a href="{{route('vacaciones.historico')}}"><i class="fa-solid fa-box-open"></i>Vacaciones historico</a></li>
+                    <li><a href="{{route('vacaciones.historico')}}"><i class="fa-solid fa-box-open"></i>Vacaciones histórico</a></li>
               </div>
 
             </div>
