@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Listado historico de Empleados en vacaciones
+Listado histórico de Empleados en vacaciones
 @stop
 @section('contenido')
   @if(session('mensaje'))
