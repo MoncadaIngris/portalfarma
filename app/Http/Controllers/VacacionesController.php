@@ -55,18 +55,19 @@ class VacacionesController extends Controller
     {
         $fecha_actual = date("d-m-Y");
         $maxima = date('d-m-Y',strtotime($fecha_actual."+ 65 year"));
+        $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
         $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
-        $minima2 = date("d-m-Y",strtotime($fecha_actual."+ 1 day"));
+        $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
 
         $rules=[
-            'inicio'=>'required|date|before:'.$maxima.'|after:'.$minima,
+            'inicio'=>'required|date|before:'.$maxima2.'|after:'.$minima,
             'final'=>'required|date|before:'.$maxima.'|after:'.$minima2,
         ];
 
         $mensaje=[
             'inicio.required' => 'La fecha de inicio no puede estar vacía',
             'inicio.date' => 'La fecha de inicio debe de ser una fecha valida',
-            'inicio.before' => 'La fecha de inicio debe de ser anterior a '.$maxima,
+            'inicio.before' => 'La fecha de inicio debe de ser anterior a '.$maxima2,
             'inicio.after' => 'La fecha de inicio debe de ser posterior a '.$minima,
             'final.required' => 'La fecha de final no puede estar vacía',
             'final.date' => 'La fecha de final debe de ser una fecha valida',
@@ -125,18 +126,19 @@ class VacacionesController extends Controller
     {
         $fecha_actual = date("d-m-Y");
         $maxima = date('d-m-Y',strtotime($fecha_actual."+ 65 year"));
+        $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
         $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
-        $minima2 = date("d-m-Y",strtotime($fecha_actual."+ 1 day"));
+        $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
 
         $rules=[
-            'inicio'=>'required|date|before:'.$maxima.'|after:'.$minima,
+            'inicio'=>'required|date|before:'.$maxima2.'|after:'.$minima,
             'final'=>'required|date|before:'.$maxima.'|after:'.$minima2,
         ];
 
         $mensaje=[
             'inicio.required' => 'La fecha de inicio no puede estar vacía',
             'inicio.date' => 'La fecha de inicio debe de ser una fecha valida',
-            'inicio.before' => 'La fecha de inicio debe de ser anterior a '.$maxima,
+            'inicio.before' => 'La fecha de inicio debe de ser anterior a '.$maxima2,
             'inicio.after' => 'La fecha de inicio debe de ser posterior a '.$minima,
             'final.required' => 'La fecha de final no puede estar vacía',
             'final.date' => 'La fecha de final debe de ser una fecha valida',
