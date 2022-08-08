@@ -169,7 +169,7 @@ class VacacionesController extends Controller
         $oldvacaciones = Vacaciones::where("id_empleado",$id)->first();
 
         $vacaciones = new VacacionesPasadas();
-        $vacaciones->id_empleado = $oldvacaciones->id;
+        $vacaciones->id_empleado = $oldvacaciones->id_empleado;
         $vacaciones->inicio= $oldvacaciones->inicio;
         $vacaciones->final = $oldvacaciones->final;
         $creado = $vacaciones->save();
