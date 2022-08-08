@@ -56,7 +56,7 @@ class VacacionesController extends Controller
         $fecha_actual = date("d-m-Y");
         $maxima = date('d-m-Y',strtotime($request->input('inicio')."+ 30 day"));
         $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
-        $minima = date("d-m-Y",strtotime($fecha_actual."+ 1 day"));
+        $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
         $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
 
         $rules=[
@@ -127,7 +127,7 @@ class VacacionesController extends Controller
         $fecha_actual = date("d-m-Y");
         $maxima = date('d-m-Y',strtotime($request->input('inicio')."+ 30 day"));
         $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
-        $minima = date("d-m-Y",strtotime($fecha_actual."+ 1 day"));
+        $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
         $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
 
         $rules=[
