@@ -54,9 +54,9 @@ class VacacionesController extends Controller
     public function store($id, Request $request)
     {
         $fecha_actual = date("d-m-Y");
-        $maxima = date('d-m-Y',strtotime($fecha_actual."+ 65 year"));
+        $maxima = date('d-m-Y',strtotime($request->input('inicio')."+ 30 day"));
         $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
-        $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
+        $minima = date("d-m-Y",strtotime($fecha_actual));
         $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
 
         $rules=[
@@ -125,9 +125,9 @@ class VacacionesController extends Controller
     public function update($id, Request $request)
     {
         $fecha_actual = date("d-m-Y");
-        $maxima = date('d-m-Y',strtotime($fecha_actual."+ 65 year"));
+        $maxima = date('d-m-Y',strtotime($request->input('inicio')."+ 30 day"));
         $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
-        $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
+        $minima = date("d-m-Y",strtotime($fecha_actual));
         $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
 
         $rules=[
