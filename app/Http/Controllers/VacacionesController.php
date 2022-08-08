@@ -6,6 +6,7 @@ use App\Models\Vacaciones;
 use App\Models\Empleado;
 use App\Models\VacacionesPasadas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreVacacionesRequest;
 use App\Http\Requests\UpdateVacacionesRequest;
 
@@ -26,7 +27,7 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","vacaciones.inicio","vacaciones.final")
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","vacaciones.inicio","vacaciones.final",DB::raw("TIMESTAMPDIFF(DAY, inicio, final) AS dias"))
         ->join("vacaciones","vacaciones.id_empleado","=","empleados.id")
         ->get();
 

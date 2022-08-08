@@ -25,6 +25,7 @@ Listado de Empleados en vacaciones
         <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
         <th scope="col" class="sorting" style="text-align: center">Inicio de vacaciones</th>
         <th scope="col" class="sorting" style="text-align: center">Final de vacaciones</th>
+        <th scope="col" class="sorting" style="text-align: center">Dias de vacaciones</th>
         <th scope="col" style="text-align: center">Editar</th>
         <th scope="col" style="text-align: center">Reintegrar</th>
       </tr>
@@ -36,8 +37,9 @@ Listado de Empleados en vacaciones
                 <td>{{$empleado->apellidos}}</td>
                 <td>{{$empleado->DNI}}</td>
                 <td>{{$empleado->telefono_personal}}</td>
-                <td>{{$empleado->inicio}}</td>
-                <td>{{$empleado->final}}</td>
+                <td>{{\Carbon\Carbon::parse($empleado->inicio)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
+                <td>{{\Carbon\Carbon::parse($empleado->final)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
+                <td>{{$empleado->dias}} dias</td>
                 <td>
                         <center>
                 <a class="btn btn-editar" href="{{route("vacaciones.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
