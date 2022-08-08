@@ -25,7 +25,7 @@ Listado de Empleados en vacaciones
         <th scope="col" class="sorting" style="text-align: center">Teléfono</th>
         <th scope="col" class="sorting" style="text-align: center">Inicio de vacaciones</th>
         <th scope="col" class="sorting" style="text-align: center">Final de vacaciones</th>
-        <th scope="col" class="sorting" style="text-align: center">Dias de vacaciones</th>
+        <th scope="col" class="sorting" style="text-align: center">Días de vacaciones</th>
         <th scope="col" style="text-align: center">Editar</th>
         <th scope="col" style="text-align: center">Reintegrar</th>
       </tr>
