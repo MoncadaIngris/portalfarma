@@ -318,4 +318,15 @@ class EstanteController extends Controller
         return view('estante/detalle')->with('informacion', $informacion)->with('estante', $estante);
     }
 
+    public function eliminar($id){
+
+        $estante = ProductoUbicacion::where("id_estante",$id)->get();
+
+        foreach ($estante as $est) {
+            ProductoUbicacion::destroy($est->id);
+        }
+
+        return redirect()->route('estante.index'); 
+    }
+
 }

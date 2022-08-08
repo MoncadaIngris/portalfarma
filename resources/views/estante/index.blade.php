@@ -26,6 +26,7 @@
             <th scope="col" style="text-align: center">Editar</th>
             <th scope="col" style="text-align: center">Filas</th>
             <th scope="col" style="text-align: center">Detalles</th>
+            <th scope="col" style="text-align: center">Eliminar Productos</th>
         </tr>
         </thead>
 
@@ -50,6 +51,37 @@
                 <center>
                     <a class="btn btn-detalles" href="{{route("estante.detalles",["id"=>$estante->id])}}"><i class="fa-solid fa-circle-info"></i></a>
                 </center>
+            </td>
+            <td>
+                <center>
+                    <button onclick="desactivar{{$estante->id}}();" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                </center>
+
+                <script>
+                    function desactivar{{$estante->id}}(){
+                        Swal.fire({
+                            title: '<strong>Eliminar productos</strong>',
+                            text: "¿Desea eliminar los productos del estante {{$estante->nombre}}?",
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Aceptar',
+                            cancelButtonText: 'Cancelar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+                                    'Eliminado',
+                                    'Los productos fueron eliminados exitosamente',
+                                    'success'
+                                )
+                                window.location='{{route("estante.eliminar",["id"=>$estante->id])}}'
+                            }
+                        })
+
+                    }
+                </script>
+
             </td>
             </tr>
         @endforeach

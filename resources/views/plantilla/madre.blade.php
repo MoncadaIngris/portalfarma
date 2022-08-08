@@ -119,6 +119,9 @@
                       @can('empleados_desactivados')
                       <li><a href="{{route('empleados.desactivado')}}">Empleados Desactivados</a></li>
                       @endcan
+                      <li><a href="{{route('vacaciones.index')}}">Vacaciones empleados</a></li>
+
+                      <li><a href="{{route('vacaciones.historico')}}">Vacaciones histórico</a></li>
                     </ul>
                   </li>
                   @endcan
@@ -323,10 +326,6 @@
                     <li><a href="{{route('estante.index')}}"><i class="fa-solid fa-box-open"></i>Listado de estantes</a></li>
 
                     <li><a href="{{route('producto.ubicacion')}}"><i class="fa-solid fa-box-open"></i>Ubicación productos</a></li>
-
-                    <li><a href="{{route('vacaciones.index')}}"><i class="fa-solid fa-box-open"></i>Vacaciones empleados</a></li>
-
-                    <li><a href="{{route('vacaciones.historico')}}"><i class="fa-solid fa-box-open"></i>Vacaciones histórico</a></li>
               </div>
 
             </div>

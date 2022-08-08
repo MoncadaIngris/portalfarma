@@ -483,6 +483,9 @@ Route::get('/estante/nuevo',[EstanteController::class, 'create'])
 Route::post('/estante/nuevo',[EstanteController::class, 'store'])
 ->name('estante.store');
 
+Route::get("/estante/{id}/eliminar", [EstanteController::class, "eliminar"])
+->name("estante.eliminar")->where('id', '[0-9]+');
+
 Route::get("/estante/{id}/detalles", [EstanteController::class, "detalles"])
 ->name("estante.detalles")->where('id', '[0-9]+');
 
