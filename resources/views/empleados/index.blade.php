@@ -62,16 +62,10 @@
                 <td>
                 @if($empleado->inicio == null)
 
+                    <center>
+            <a class="btn btn-success" href="{{route("vacaciones.create",["id"=>$empleado->id])}}"><i class="fa-solid fa-hourglass-half"></i></a>
+                    </center>
 
-                        @if($empleado->dias == 0)
-                            <center>
-                                <a class="btn btn-info" href="#">Ya se le asigno las vacaciones de este año</a>
-                            </center>
-                        @else
-                            <center>
-                                <a class="btn btn-success" href="{{route("vacaciones.create",["id"=>$empleado->id])}}"><i class="fa-solid fa-hourglass-half"></i></a>
-                            </center>
-                        @endif
                 @else
 
                 <center>

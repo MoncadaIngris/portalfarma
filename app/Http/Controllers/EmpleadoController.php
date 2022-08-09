@@ -6,7 +6,6 @@ use App\Models\Empleado;
 use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreEmpleadoRequest;
 use App\Http\Requests\UpdateEmpleadoRequest;
 use Illuminate\Support\Facades\Gate;
@@ -23,9 +22,8 @@ class EmpleadoController extends Controller
         abort_if(Gate::denies('empleados_index'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
 
         $empleados = Empleado::where('estado',0)
-        ->select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","cargo","vacaciones.inicio",DB::raw("IFNULL(TIMESTAMPDIFF(YEAR, vacaciones_pasadas.final, CURDATE()),1) AS dias "))
+        ->select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","cargo","vacaciones.inicio")
         ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
-        ->leftjoin("vacaciones_pasadas","vacaciones_pasadas.id_empleado","=","empleados.id")
         ->get();
 
         return view('empleados/index')->with('empleados', $empleados);
