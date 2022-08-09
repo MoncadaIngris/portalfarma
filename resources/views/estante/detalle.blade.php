@@ -11,7 +11,7 @@
         float: right !important;
     }
   </style>
-<textarea name="" id="" style="width: 100%;"  rows="2" disabled>Descripcion: {{$estante->descripcion}} </textarea>
+<textarea name="" id="" style="width: 100%;"  rows="2" disabled>Descripción: {{$estante->descripcion}} </textarea>
 <br><br>
 <table  id="datatable-buttons" class="table table-striped">
     <thead>
