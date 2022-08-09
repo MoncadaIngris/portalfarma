@@ -69,10 +69,10 @@ class VacacionesController extends Controller
             'inicio.date' => 'La fecha de inicio debe de ser una fecha valida',
             'inicio.before' => 'La fecha de inicio debe de ser anterior a la fecha final',
             'inicio.after' => 'La fecha de inicio debe de ser posterior a la fecha actual',
-            'final.required' => 'La fecha de final no puede estar vacía',
-            'final.date' => 'La fecha de final debe de ser una fecha valida',
-            'final.before' => 'La fecha de final debe de ser anterior a '.$maxima,
-            'final.after' => 'La fecha de final debe de ser posterior a la fecha de inicio',
+            'final.required' => 'La fecha final no puede estar vacía',
+            'final.date' => 'La fecha final debe de ser una fecha valida',
+            'final.before' => 'La fecha final debe de ser anterior a '.$maxima,
+            'final.after' => 'La fecha final debe de ser posterior a la fecha de inicio',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -140,10 +140,10 @@ class VacacionesController extends Controller
             'inicio.date' => 'La fecha de inicio debe de ser una fecha valida',
             'inicio.before' => 'La fecha de inicio debe de ser anterior a la fecha final',
             'inicio.after' => 'La fecha de inicio debe de ser posterior a la fecha actual',
-            'final.required' => 'La fecha de final no puede estar vacía',
-            'final.date' => 'La fecha de final debe de ser una fecha valida',
-            'final.before' => 'La fecha de final debe de ser anterior a '.$maxima,
-            'final.after' => 'La fecha de final debe de ser posterior a la fecha de inicio',
+            'final.required' => 'La fecha final no puede estar vacía',
+            'final.date' => 'La fecha final debe de ser una fecha valida',
+            'final.before' => 'La fecha final debe de ser anterior a '.$maxima,
+            'final.after' => 'La fecha final debe de ser posterior a la fecha de inicio',
         ];
 
         $this->validate($request,$rules,$mensaje);
