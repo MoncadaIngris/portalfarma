@@ -46,8 +46,9 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::middleware("auth")->group(function () {
-
     Route::middleware("primeraclave")->group(function () {
+    Route::middleware("restringir")->group(function () {
+
 
 Route::get('/home', [GraficoController::class, 'welcome'])->name('welcome');
 
@@ -544,6 +545,7 @@ Route::put('/vacaciones/editar/{id}',[VacacionesController::class, 'update'])
 Route::get('/vacaciones/reintegrar/{id}',[VacacionesController::class, 'reintegrar'])
 ->name('vacaciones.reintegrar');
 
+});
 });
 });
 

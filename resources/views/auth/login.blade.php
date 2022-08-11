@@ -4,6 +4,22 @@
   <div id="container">
       <br>
     <h3>Iniciar Sesión</h3>
+
+    @if(session('a'))
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+      <script>
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'El usuario esta de vacaciones',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      </script>
+    @endif
   
     <form method="POST" action="{{ route('login') }}">
         @csrf

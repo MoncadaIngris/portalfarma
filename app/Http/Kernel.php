@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'primeraclave' => \App\Http\Middleware\PrimeraClave::class,
         'restringirclave' => \App\Http\Middleware\RestringirClave::class,
+        'restringir' => \App\Http\Middleware\Restringir::class,
     ];
 }

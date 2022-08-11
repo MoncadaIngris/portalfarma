@@ -20,4 +20,8 @@ class Empleado extends Model
         return $this->belongsTo(Cargo::class, 'cargo', 'id');
     }
 
+    public function vacaciones(){
+        return $this->belongsTo(Vacaciones::class, 'id', 'id_empleado');
+    }
+
 }
