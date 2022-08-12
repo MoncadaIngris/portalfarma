@@ -53,7 +53,7 @@ Asignar vacaciones
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="date" id="inicio" name="inicio" required="required" class="form-control"  min="<?php echo date('Y-m-d',strtotime($fecha_actual));?>"
-                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 65 year"));?>" value="{{old('inicio')}}">
+                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 3 month"));?>" value="{{old('inicio')}}">
             </div>
         </div>
         <div class="item form-group">
@@ -61,7 +61,7 @@ Asignar vacaciones
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="date" id="final" name="final" required="required" class="form-control"  min="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 1 day"));?>"
-                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 65 year"));?>" value="{{old('final')}}">
+                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 4 month"));?>" value="{{old('final')}}">
             </div>
         </div>
         <div class="item form-group">
