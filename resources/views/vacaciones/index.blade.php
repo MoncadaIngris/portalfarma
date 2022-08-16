@@ -39,7 +39,7 @@ Listado de Empleados en vacaciones
                 <td>{{$empleado->telefono_personal}}</td>
                 <td>{{\Carbon\Carbon::parse($empleado->inicio)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
                 <td>{{\Carbon\Carbon::parse($empleado->final)->locale("es")->isoFormat("DD MMMM YYYY")}}</td>
-                <td>{{$empleado->dias}} dias</td>
+                <td>{{$empleado->dias}} días</td>
                 <td>
                         <center>
                 <a class="btn btn-editar" href="{{route("vacaciones.edit",["id"=>$empleado->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>

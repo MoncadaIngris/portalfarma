@@ -71,7 +71,7 @@ Editar vacaciones
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="date" id="inicio" name="inicio" required="required" class="form-control"  min="<?php echo date('Y-m-d',strtotime($fecha_actual));?>"
-                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 65 year"));?>" readonly 
+                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 3 month"));?>" readonly 
                 @if(old("inicio"))
                     value="{{old("inicio")}}"
                     @else
@@ -81,11 +81,11 @@ Editar vacaciones
         </div>
         @endif
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fecha de final: <span class="required">*</span>
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Fecha final: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="date" id="final" name="final" required="required" class="form-control"  min="<?php echo date('Y-m-d',strtotime($empleado->inicio."+ 1 day"));?>"
-                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 65 year"));?>" 
+                max="<?php echo date('Y-m-d',strtotime($fecha_actual."+ 4 month"));?>" 
                 @if(old("final"))
                     value="{{old("final")}}"
                     @else
@@ -95,7 +95,7 @@ Editar vacaciones
         </div>
         <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-3">
-                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('empleados.index')}}'">Cancelar</button>
+                <button class="btn btn-regresar" type="button" onclick="window.location='{{route('vacaciones.index')}}'">Cancelar</button>
                 <a type="button" href="javascript:location.reload()" class="btn btn-limpiar">Limpiar</a>
                 <button type="submit" class="btn btn-guardar">Guardar</button>
             </div>

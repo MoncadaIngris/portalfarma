@@ -14,7 +14,7 @@ class VacacionesController extends Controller
 {
     public function historico()
     {
-        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","inicio","final")
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","inicio","final",DB::raw("TIMESTAMPDIFF(DAY, inicio, final) AS dias"))
         ->join("vacaciones_pasadas","vacaciones_pasadas.id_empleado","=","empleados.id")
         ->get();
 
@@ -124,11 +124,17 @@ class VacacionesController extends Controller
      */
     public function update($id, Request $request)
     {
+        $vacaciones = Vacaciones::where("id_empleado",$id)->first();
+
         $fecha_actual = date("d-m-Y");
         $maxima = date('d-m-Y',strtotime($request->input('inicio')."+ 30 day"));
         $maxima2 = date("d-m-Y",strtotime($request->input('final')."- 1 day"));
-        $minima = date("d-m-Y",strtotime($fecha_actual."- 1 day"));
+        $minima = date("d-m-Y",strtotime($fecha_actual."+ 1 day"));
         $minima2 = date("d-m-Y",strtotime($request->input('inicio')."+ 1 day"));
+
+        if (date("d-m-Y",strtotime($vacaciones->inicio)) <= date("d-m-Y",strtotime($minima))) {
+            $minima = date("d-m-Y",strtotime($vacaciones->inicio."- 1 day"));
+        }
 
         $rules=[
             'inicio'=>'required|date|before:'.$maxima2.'|after:'.$minima,
@@ -148,7 +154,7 @@ class VacacionesController extends Controller
 
         $this->validate($request,$rules,$mensaje);
 
-        $vacaciones = Vacaciones::where("id_empleado",$id)->first();
+
         $vacaciones->id_empleado = $id;
         $vacaciones->inicio= $request->input('inicio');
         $vacaciones->final = $request->input('final');
