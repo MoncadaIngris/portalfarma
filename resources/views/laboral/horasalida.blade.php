@@ -22,7 +22,7 @@ Registrar hora entrada
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombre empleado: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" class="form-control" 
+                <input  type="text" id="nombres" name="nombres" class="form-control" 
                 value="{{$laboral->empleado->nombres}} {{$laboral->empleado->apellidos}}" readonly>
             </div>
         </div>
@@ -31,7 +31,7 @@ Registrar hora entrada
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Identidad empleado: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" class="form-control" 
+                <input  type="text" id="nombres" name="nombres" class="form-control" 
                 value="{{$laboral->empleado->DNI}}" readonly>
             </div>
         </div>
@@ -40,7 +40,7 @@ Registrar hora entrada
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Fecha actual: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" class="form-control" 
+                <input type="text" id="nombres" name="nombres" class="form-control" 
                 value="{{date("d-m-Y", strtotime($laboral->fecha))}}" readonly>
             </div>
         </div>

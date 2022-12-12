@@ -76,8 +76,7 @@ class JornadaController extends Controller
         $creado = $jornada->save();
 
         if ($creado) {
-            return redirect()->route('jornada.index')
-                ->with('mensaje', 'La jornada fue creada exitosamente');
+            return redirect()->route('jornada.index')->with('mensaje', 'La jornada fue creada exitosamente');
         } else {
 
         }

@@ -38,7 +38,8 @@ Añadir salario hora
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" class="form-control" name="semanal" id="semanal" placeholder="Ingrese el salario semanal"
-                min="0" max="999999.99" maxlength="10" type="number" step="any" required title="Formato de precio incorrecto">
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                min="1" max="999999.99" maxlength="5" type="number" step="any" required title="Formato de precio incorrecto">
             </div>
         </div>
 

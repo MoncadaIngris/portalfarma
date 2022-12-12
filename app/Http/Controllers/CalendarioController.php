@@ -41,10 +41,7 @@ class CalendarioController extends Controller
         $calendarios= Calendario::findOrFail($id);
         $empleados = Calendario_detalle::where('id_calendario', $calendarios->id)->get();
         $jornada = Jornada::all();
-        return view("Calendario.show")
-        ->with("calendario", $calendarios)
-        ->with("empleados", $empleados)
-        ->with("jornadas", $jornada);
+        return view("Calendario.show")->with("calendario", $calendarios)->with("empleados", $empleados)->with("jornadas", $jornada);
     }
 
     /**
@@ -81,7 +78,7 @@ class CalendarioController extends Controller
 
         $empleados = Empleado::where('estado',0)->where('empleados.id','>',1)
         ->where("id_empleado",null)
-        ->select("empleados.id","nombres", "apellidos", "DNI")
+        ->select("empleados.id as id","nombres", "apellidos", "DNI")
         ->leftjoin("vacaciones","vacaciones.id_empleado","=","empleados.id")
         ->get();
 

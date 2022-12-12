@@ -58,8 +58,7 @@ class HoraSalidaController extends Controller
         $creado2 = $laborales->save();
 
         if ($creado && $creado2) {
-            return redirect()->route('laborales.index')
-                ->with('mensaje', 'La hora de salida fue agregada exitosamente');
+            return redirect()->route('laborales.index')->with('mensaje', 'La hora de salida fue agregada exitosamente');
         }
 
     }
