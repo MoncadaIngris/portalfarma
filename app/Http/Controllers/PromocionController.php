@@ -35,8 +35,8 @@ class PromocionController extends Controller
         ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
         ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
         ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
-        ->groupby("inventario.id")
-        ->where("vencer_entradas.id",$id)->first();
+        ->groupby("inventario.id")->where("vencer_entradas.id",$id)->first();
+
         return view("promocion/create")->with("promocion",$promocion);
     }
 
@@ -69,8 +69,7 @@ class PromocionController extends Controller
         ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
         ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
         ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
-        ->groupby("inventario.id")
-        ->where("vencer_entradas.id",$id)->first();
+        ->groupby("inventario.id")->where("vencer_entradas.id",$id)->first();
 
         $prom = new Promocion();
 
@@ -78,11 +77,9 @@ class PromocionController extends Controller
         $prom->anterior = $promocion->total/$promocion->cantidad;
         $prom->nuevo = $request->input('precionuevo');
 
-
         $creado = $prom->save();
 
-        return redirect()->route('promociones.index')
-                ->with('mensaje', 'La promoción fue creado exitosamente');
+        return redirect()->route('promociones.index')->with('mensaje', 'La promoción fue creado exitosamente');
     }
 
     /**
@@ -93,14 +90,12 @@ class PromocionController extends Controller
      */
     public function show($id)
     {
-        $promocion = Promocion::select(DB::raw('min(vencimiento) AS vencimiento'), 'promocions.id_producto', 
+        $promocion = Promocion::select(DB::raw('min(vencimiento) AS vencimiento'), 'promocions.id_producto as id_producto', 
         'anterior', 'nuevo', 'promocions.created_at')
         ->join('producto__comprados','promocions.id_producto', '=', 'producto__comprados.id_producto')
         ->join('vencer_entradas','producto__comprados.id', '=', 'vencer_entradas.id_compra')
         ->groupby('promocions.id_producto')
-        ->where('promocions.id',$id)
-        ->where('vencimiento','>=',date("Y-m-d"))
-        ->first();
+        ->where('promocions.id',$id)->where('vencimiento','>=',date("Y-m-d"))->first();
         return view("promocion.show")->with("promocion", $promocion);
         
         //
@@ -116,15 +111,14 @@ class PromocionController extends Controller
     {
         
             $promocion = DB::table('inventario')->select("inventario.id AS id","nombre", "codigo",
-            "producto__comprados.id_producto", "promocions.id AS id_promocion","anterior", "nuevo",
+            "producto__comprados.id_producto as id_producto", "promocions.id AS id_promocion","anterior", "nuevo",
             DB::raw("MAX(inventario.venta) AS venta, SUM(inventario.cantidad) - SUM(vendido) AS cantidad, 
             ((SUM(inventario.cantidad) - SUM(vendido))*MAX(inventario.venta)) AS total"), "vencimiento")
             ->join("productos", "productos.id","=","inventario.id")->groupby("inventario.id")
             ->join("producto__comprados", "producto__comprados.id_producto","=","productos.id")
             ->join("vencer_entradas", "vencer_entradas.id_compra","=","producto__comprados.id")
             ->join("promocions", "promocions.id_producto","=","productos.id")
-            ->groupby("inventario.id","vencimiento")
-            ->where("promocions.id",$id)->first();
+            ->groupby("inventario.id","vencimiento")->where("promocions.id",$id)->first();
             return view("promocion/update")->with("promocion",$promocion);
     
     }

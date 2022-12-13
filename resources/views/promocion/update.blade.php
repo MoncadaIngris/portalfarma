@@ -55,7 +55,7 @@ Editar promoción
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" class="form-control" name="descuento" id="descuento" style="width: 90%;float: left;"
-                value="{{number_format(100-(($promocion->nuevo/$promocion->anterior)*100),0)}}"  style="text-align: right">
+                value="{{number_format(100-(($promocion->nuevo/$promocion->anterior)*100),0)}}" min="1"  style="text-align: right">
                 
                 <input type="text" class="form-control" value="%" readonly style="width: 10%;float: left;">
             </div>
@@ -66,7 +66,7 @@ Editar promoción
 
             <div class="col-md-6 col-sm-6 ">
                 <input type="text" class="form-control" value="L." readonly style="width: 10%;float: left;" >
-                <input type="text"class="form-control" value="{{old('desc')}}" 
+                <input type="text"class="form-control" value="{{old('desc')}}" reandoly
                 name="desc" id="desc" style="width: 90%;float: left;">
             </div>
         </div>
@@ -78,7 +78,8 @@ Editar promoción
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="text" class="form-control" value="L" readonly style="width: 10%;float: left;">
-                <input type="text"class="form-control" value="{{old('precionuevo')}}" name="precionuevo" id="precionuevo" style="width: 90%;float: left;">
+                <input type="text"class="form-control" value="{{old('precionuevo')}}" name="precionuevo" 
+                id="precionuevo" style="width: 90%;float: left;" reandoly>
             </div>
         </div>
 
