@@ -24,7 +24,7 @@ Añadir Permisos
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control"
-                value="{{old('nombres')}}"
+                value="{{old('nombres')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                 placeholder="Ingrese el nombre">
             </div>
         </div>

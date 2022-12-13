@@ -26,6 +26,7 @@ Editar Permisos
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                        @if(old("nombres"))
                        value="{{old("nombres")}}"
                        @else

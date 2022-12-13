@@ -60,7 +60,7 @@ class RoleController extends Controller
         // $role->permissions()->sync($request->input('permissions', []));
         $role->syncPermissions($request->input('permissions', []));
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index') ->with('mensaje', 'La funcion fue creada exitosamente');
     }
 
     /**
@@ -102,15 +102,21 @@ class RoleController extends Controller
     public function update(Role $role, Request $request)
     {
         abort_if(Gate::denies('roles_editar'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
-        $this->validate($request, [
-            'name' => 'required',
+        $rules=[
+            'name' => 'required|max:100|unique:roles,name,'.$role->id,
             'permission' => 'required',
-        ]);
+        ];
+        $mensaje=[
+            'name.required' => 'El nombre no puede estar vacío',
+            'name.max' => 'El nombre es muy extenso',
+            'name.unique' => 'El nombre ya esta siendo utilizado',
+        ];
+        $this->validate($request,$rules,$mensaje);
 
         $role->update($request->only('name'));
         $role->syncPermissions($request->get('permission'));
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('mensaje', 'La funcion fue editado exitosamente');
     }
     /**
      * Remove the specified resource from storage.

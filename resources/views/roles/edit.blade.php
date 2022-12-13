@@ -5,6 +5,17 @@
 @section('contenido')
     <div class="content">
         <div class="container-fluid">
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
             <div class="row">
                 <div class="col-md-12">
                         <form id="form_permissions" enctype="multipart/form-data"
@@ -19,6 +30,7 @@
                                     <div class="col-sm-7">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="name" autocomplete="off" autofocus
+                                            onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50"
                                                    @if(old('name'))
                                                    value="{{old('name')}}"
                                                    @else
