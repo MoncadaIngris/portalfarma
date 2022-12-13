@@ -67,10 +67,10 @@ class CompraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($proveedor=0, $producto = " ", $producto_id=0)
+    public function create(Request $request,$proveedor=0, $producto = " ", $producto_id=0)
     {
         abort_if(Gate::denies('compras_nuevo'),redirect()->route('welcome')->with('denegar','No tiene acceso a esta sección'));
-
+        $productoseleccionado = $request->get('producto');
         $prov = Proveedor::find($proveedor);
         $proveedors = Proveedor::all();
         $productos = Producto::all();
@@ -83,7 +83,8 @@ class CompraController extends Controller
         ->with('impuestos', $impuestos)
         ->with('temporal', $temporal)
         ->with('producto_name', $producto)
-        ->with('producto_id', $producto_id);
+        ->with('producto_id', $producto_id)
+        ->with('productoseleccionado', $productoseleccionado);
     }
 
     /**

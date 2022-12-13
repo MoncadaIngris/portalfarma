@@ -22,6 +22,7 @@ class CreateProductosTable extends Migration
             $table->unsignedBigInteger('concentracion');
             $table->foreign("concentracion")->references("id")->on("concentracions");
             $table->timestamps();
+            $table->collation = 'utf8_spanish_ci';
 
     
         });

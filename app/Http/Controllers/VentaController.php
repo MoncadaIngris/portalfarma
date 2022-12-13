@@ -175,7 +175,7 @@ class VentaController extends Controller
             'venta.min' => 'El precio de venta debe de ser mayor al precio de compra',
             'cantidad.required' => 'La cantidad es obligatorio',
             'cantidad.max' => 'La cantidad ingresada es demasiado grande actualmente tiene en existencia '.$cantidad.' unidades de ese producto',
-            'cantidad.min' => 'La cantidad no puede ser negativa',
+            'cantidad.min' => 'La cantidad no puede ser menor a 1',
             'cantidad.numeric' => 'La cantidad debe de ser un valor numérico',
             'impuesto.required' => 'El impuesto es obligatorio',
             'impuesto.exists' => 'El impuesto seleccionado es invalido',

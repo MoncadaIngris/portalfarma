@@ -19,7 +19,7 @@ class ProveedorFactory extends Factory
             'telefono_repartidor' => $this-> faker -> randomElement([2,3,8,9]).$this-> faker ->unique() -> numerify('#######'),
             'nombre_proveedor'=> $this -> faker -> name(),
             'telefono_proveedor'=> $this-> faker -> randomElement([2,3,8,9]).$this-> faker ->unique() -> numerify('#######'),
-            'dia_de_entrega'=> $this->faker ->randomElement(['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']),
+            'dia_de_entrega'=> $this->faker ->randomElement(['Lunes','Martes','Miércoles','Jueves','Viernes','Sabado','Domingo']),
             'estado' => $this->faker ->randomElement([0,1]),
         ];
     }

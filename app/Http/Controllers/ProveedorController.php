@@ -180,7 +180,7 @@ class ProveedorController extends Controller
             'dia_de_entrega.required' => 'El dia de entrega es obligatorio',
             'dia_de_entrega.in' => 'El dia de entrega no es valido',
         ];
-
+        $this->validate($request,$rules,$mensaje);
 
         $proveedor= Proveedor::findOrFail($id);
 
