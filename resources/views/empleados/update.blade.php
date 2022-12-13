@@ -139,7 +139,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input id="ingreso" name="ingreso" class="date-picker form-control" placeholder="dd-mm-yyyy" 
                     max="<?php echo date('Y-m-d',strtotime($fecha_actual));?>"
-                    min="<?php echo date('Y-m-d',strtotime($fecha_actual."- 1 month"));?>"
+                    min="<?php echo date('Y-m-d',strtotime($empleado->fecha_de_ingreso));?>"
                     @if(old("ingreso"))
                            value="{{old("ingreso")}}"
                            @else
@@ -184,7 +184,7 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
+                    <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="7" required="required" class="form-control"
                     >@if(old("direccion")){{old("direccion")}}@else{{$empleado->direccion}}@endif</textarea>
 
                 </div>

@@ -25,7 +25,7 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input onkeydown="return /[a-z, ]/i.test(event.key)" maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                <input onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
                 @if(old("nombres"))
                            value="{{old("nombres")}}"
                            @else
@@ -39,7 +39,7 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Apellidos: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input onkeydown="return /[a-z, ]/i.test(event.key)" maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
+                <input onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
                 @if(old("apellidos"))
                            value="{{old("apellidos")}}"
                            @else
@@ -81,7 +81,7 @@ Editar Clientes
                            value="{{$clientes->DNI}}"
                            @endif
                            pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
-                           title="Ingrese un numero de identidad valido"
+                           title="Recuerde que la identidad inicia con un numero entre 01 y 19 seguido por el numero del municipio"
                            placeholder="Ingrese la identidad sin guiones"
                            >
                 
@@ -91,7 +91,7 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-            <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
+            <textarea maxlength="200" minlength="3" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
                     >@if(old("direccion")){{old("direccion")}}@else{{$clientes->direccion}}@endif</textarea>
             </div>
         </div>

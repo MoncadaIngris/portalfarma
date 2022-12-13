@@ -57,7 +57,7 @@ Añadir Proveedor
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
-                value="{{old('nombre_repartidor')}}"
+                value="{{old('nombre_repartidor')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                 placeholder="Ingrese el nombre del repartidor">
             </div>
         </div>

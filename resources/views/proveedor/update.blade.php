@@ -58,7 +58,7 @@
                 <div class="col-md-6 col-sm-6 ">
                     <input maxlength="8" type="tel" id="telefono_proveedor" name="telefono_proveedor" required="required" class="form-control"
                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                    pattern="[9,8,3,2]{1}[0-9]{7}"
+                    pattern="[9,8,3,2]{1}[0-9]{7}" 
                     title="Ingrese un numero telefónico valido que inicie con 2,3,8 o 9 y que contenga 8 digitos"
                     placeholder="Ingrese el teléfono del proveedor"
                     @if(old('telefono_proveedor'))
@@ -74,7 +74,7 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombre_repartidor" name="nombre_repartidor" required="required" class="form-control "
-                placeholder="Ingrese el nombre del repartidor"
+                placeholder="Ingrese el nombre del repartidor" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                 @if(old('nombre_repartidor'))
                     value="{{old('nombre_repartidor')}}"
                 @else

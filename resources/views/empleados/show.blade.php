@@ -29,8 +29,9 @@
                         <p style="color: black; margin-left: 20px">Fecha de Nacimiento: <strong style="color: black">{{\Carbon\Carbon::parse($empleado->fecha_de_nacimiento)->locale("es")->isoFormat("DD MMMM, YYYY")}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Fecha de Ingreso: <strong style="color: black">{{\Carbon\Carbon::parse($empleado->fecha_de_ingreso)->locale("es")->isoFormat("DD MMMM, YYYY")}} </strong> </p>
                         <p style="color: black; margin-left: 20px">Identidad: <strong style="color: black">{{$empleado->DNI}} </strong> </p>
+                        <div style="width: 50px; height: 100px">
                         <p style="color: black; margin-left: 20px">Dirección: <strong style="color: black">{{$empleado->direccion}} </strong> </p>
-
+                        </div>
                     </div>
 
                 </div>

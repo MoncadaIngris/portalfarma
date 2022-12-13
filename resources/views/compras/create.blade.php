@@ -65,24 +65,32 @@ onchange="seleccionar()" data-live-search="true">
             <select name="productos" id="productos" class="form-control selectpicker" 
             data-live-search="true">
             @if(old('productos'))
-            @foreach ($productos as $p)
-                @if (old('productos') == $p->id)
-                    <option value="{{$p->id}}">{{$p->nombre}}</option>
-                @endif
-            @endforeach
-            @else
-                <option style="display: none" value="">Seleccione el producto</option>
-            @endif
                 @foreach ($productos as $p)
-                    <option value="{{$p->id}}">{{$p->nombre}}</option>
+                    @if (old('productos') == $p->id)
+                        <option value="{{$p->id}}">{{$p->nombre}}</option>
+                    @endif
                 @endforeach
+            @else
+                @if($productoseleccionado)
+                    @foreach ($productos as $p)
+                        @if ($productoseleccionado== $p->id)
+                            <option value="{{$p->id}}">{{$p->nombre}}</option>
+                        @endif
+                    @endforeach
+                @else
+                    <option style="display: none" value="">Seleccione el producto</option>
+                @endif
+            @endif
+            @foreach ($productos as $p)
+                <option value="{{$p->id}}">{{$p->nombre}}</option>
+            @endforeach
             </select>
         </div>
         
         <div style="width: 12%; float: left;margin-right: 1%">
             <center><label for="" >Precio de Compra:</label></center>
             <input placeholder="0.00" class="form-control" id="compra" name="compra"
-            min="0" max="999999.99" maxlength="10" type="number" step="any" required
+            min="1" max="999999.99" maxlength="10" type="number" step="any" required
             title="Formato de precio incorrecto" value="{{old("compra")}}"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
@@ -90,7 +98,7 @@ onchange="seleccionar()" data-live-search="true">
         <div style="width: 12%; float: left;margin-right: 1%">
             <center><label for="" >Precio de Venta:</label></center>
             <input placeholder="0.00" class="form-control" id="venta" name="venta"
-            min="0" max="999999.99" maxlength="10" type="number" step="any" required
+            min="1" max="999999.99" maxlength="10" type="number" step="any" required
             title="Formato de precio incorrecto" value="{{old("venta")}}"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
@@ -98,7 +106,7 @@ onchange="seleccionar()" data-live-search="true">
         <div style="width: 10%; float: left;margin-right: 1%">
             <center><label for="" >Cantidad:</label></center>
             <input type="number" placeholder="0" class="form-control" id="cantidad" name="cantidad"
-            min="0" maxlength="7" max="999999999" required value="{{old("cantidad")}}"
+            min="1" maxlength="7" max="999999999" required value="{{old("cantidad")}}"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
         <?php $fecha_actual = date("d-m-Y");?>

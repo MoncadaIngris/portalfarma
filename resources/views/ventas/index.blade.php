@@ -41,7 +41,7 @@
     @foreach ($ventas as $venta)
         <tr>
             <td>{{date_format($venta->created_at,"d/m/Y")}}</td>
-            <td>{{$venta->clientes->nombres}}</td>
+            <td>{{$venta->clientes->nombres}} {{$venta->clientes->apellidos}}</td>
             <td style="text-align: right">L.{{ number_format($venta->subtotal,2)}}</td>
             <td style="text-align: right">L.{{ number_format($venta->impuesto,2)}}</td>
             <td style="text-align: right">L.{{ number_format($venta->total,2)}}</td>

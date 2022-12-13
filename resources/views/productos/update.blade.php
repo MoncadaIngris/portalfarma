@@ -25,7 +25,8 @@ Editar Producto
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nombre Del Producto: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombre" name="nombre" required="required" class="form-control"
+                <input maxlength="50" type="text" id="nombre" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
+                 name="nombre" required="required" class="form-control"
                     @if(old("nombre"))
                     value="{{old("nombre")}}"
                     @else

@@ -23,8 +23,8 @@ Añadir Empleado
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
-                value="{{old('nombres')}}" onkeydown="return /[a-z, ]/i.test(event.key)"
-                placeholder="Ingrese los nombres">
+                value="{{old('nombres')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
+                placeholder="Ingresar solo letras alfabeticas">
             </div>
         </div>
         <div class="item form-group">
@@ -32,7 +32,7 @@ Añadir Empleado
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
-                value="{{old('apellidos')}}" onkeydown="return /[a-z, ]/i.test(event.key)"
+                value="{{old('apellidos')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                 placeholder="Ingrese los apellidos">
             </div>
         </div>
@@ -129,7 +129,7 @@ Añadir Empleado
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('dni')}}"
                 pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
-                title="Ingrese un numero de identidad valido"
+                title="Recuerde que la identidad inicia con un numero entre 01 y 19 seguido por el numero del municipio"
                 placeholder="Ingrese la identidad sin guiones">
             </div>
         </div>
@@ -146,7 +146,7 @@ Añadir Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion" name="direccion" cols="1" rows="3" required="required" class="form-control">{{old('direccion')}}</textarea>
+                <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion" name="direccion" cols="1" rows="7" required="required" class="form-control">{{old('direccion')}}</textarea>
             </div>
         </div>
         <div class="ln_solid"></div>

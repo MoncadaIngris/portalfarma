@@ -69,7 +69,7 @@ Listado de Empleados Desactivados
         }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
-            'Desactivado',
+            'Activado',
             'El empleado fue activado exitosamente',
             'success'
             )

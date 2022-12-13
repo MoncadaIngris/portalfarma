@@ -88,6 +88,8 @@ onchange="seleccionar()" data-live-search="true">
 
                 @foreach ($productos as $p)
                     if(valor == {{$p->id}}){
+                        var y = document.getElementById("activar").disabled = false;
+                        
                         var inputNombre = document.getElementById("venta");
                         inputNombre.value = "L.{{ number_format($p->venta,2)}}";
 
@@ -133,7 +135,7 @@ onchange="seleccionar()" data-live-search="true">
         <div style="width: 15%; float: left;margin-right: 1%">
             <center><label for="" >Cantidad:</label></center>
             <input type="number" placeholder="0" class="form-control" id="cantidad" name="cantidad"
-            min="0" maxlength="7" max="999999999" required value="{{old("cantidad")}}"
+            min="1" maxlength="7" max="999999999" required value="{{old("cantidad")}}"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
         </div>
 
@@ -149,7 +151,7 @@ onchange="seleccionar()" data-live-search="true">
         </div>
         <div style="width: 15%; float: left">
             <label for="" style="color: white">boton</label>
-            <button class="btn btn-guardar" type="submit" style="width: 100%">Agregar</button>
+            <button class="btn btn-guardar" type="submit" id="activar" style="width: 100%" disabled>Agregar</button>
         </div>
     </form>
     <br>
