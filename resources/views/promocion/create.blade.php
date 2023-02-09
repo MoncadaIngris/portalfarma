@@ -53,7 +53,7 @@ Crear promoción {{$promocion->nombre}}
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="number" class="form-control" name="descuento" id="descuento" style="width: 90%;float: left;"
-                value="{{old('descuento')}}" style="text-align: right" min="1">
+                value="{{old('descuento')}}" style="text-align: right">
                 <input type="text" class="form-control" value="%" readonly style="width: 10%;float: left;">
             </div>
         </div>
@@ -61,18 +61,16 @@ Crear promoción {{$promocion->nombre}}
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Descuento: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text" class="form-control" value="L" readonly style="width: 10%;float: left;" >
-                <input type="text" class="form-control" value="{{old('desc')}}" name="desc" id="desc" 
-                style="width: 90%;float: left;" reandoly>
+                <input type="text" class="form-control" value="L" readonly style="width: 10%;float: left;">
+                <input type="text"class="form-control" value="{{old('desc')}}" name="desc" id="desc" style="width: 90%;float: left;">
             </div>
         </div>
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nuevo precio: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text" class="form-control" value="L" readonly style="width: 10%;float: left;" >
-                <input type="text"class="form-control" value="{{old('precionuevo')}}" name="precionuevo" 
-                id="precionuevo" style="width: 90%;float: left;" reandoly>
+                <input type="text" class="form-control" value="L" readonly style="width: 10%;float: left;">
+                <input type="text"class="form-control" value="{{old('precionuevo')}}" name="precionuevo" id="precionuevo" style="width: 90%;float: left;">
             </div>
         </div>
 

@@ -28,6 +28,9 @@ Detalle de la promoción de: {{$promocion->productos->nombre}}
          
                     </p>
         
+
+
+
                     </div>
                     </div>
                     <hr>

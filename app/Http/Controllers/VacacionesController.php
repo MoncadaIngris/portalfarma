@@ -14,7 +14,7 @@ class VacacionesController extends Controller
 {
     public function historico()
     {
-        $empleados = Empleado::select("empleados.id as id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","inicio","final",DB::raw("TIMESTAMPDIFF(DAY, inicio, final) AS dias"))
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","inicio","final",DB::raw("TIMESTAMPDIFF(DAY, inicio, final) AS dias"))
         ->join("vacaciones_pasadas","vacaciones_pasadas.id_empleado","=","empleados.id")
         ->get();
 
@@ -27,7 +27,7 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::select("empleados.id as id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","vacaciones.inicio","vacaciones.final",DB::raw("TIMESTAMPDIFF(DAY, inicio, final) AS dias"))
+        $empleados = Empleado::select("empleados.id","nombres", "apellidos", "DNI","telefono_personal","correo_electronico","vacaciones.inicio","vacaciones.final",DB::raw("TIMESTAMPDIFF(DAY, inicio, final) AS dias"))
         ->join("vacaciones","vacaciones.id_empleado","=","empleados.id")
         ->get();
 

@@ -35,7 +35,8 @@ class PromocionVencidaController extends Controller
     public function venta($id)
     {
         $promocion = Promocion::where('id', $id)->first();
-        $ventas = Producto_Vendido::where('id_producto',$promocion->id_producto)->where('created_at','>=',$promocion->created_at)->get();
+        $ventas = Producto_Vendido::where('id_producto',$promocion->id_producto)
+        ->where('created_at','>=',$promocion->created_at)->get();
 
         return view('promocion/venta')->with('ventas', $ventas)->with('promocion', $promocion);
     }
