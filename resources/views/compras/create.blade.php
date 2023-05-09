@@ -156,15 +156,25 @@ onchange="seleccionar()" data-live-search="true">
         @forelse ($temporal as $p)
             <tr>
                 <td>
-                    <form method="post" action="{{route('compras.borrar',['id'=>$p->id,"proveedor"=>$proveedor])}}">
+                    <script>
+                        function confirmarBorrar() {
+                          if (confirm("¿Está seguro de que desea borrar la compra?")) {
+                            document.getElementById("miFormulario").submit();
+                          }
+                        }
+                      </script>
+                      
+                      <form id="miFormulario" method="post" action="{{ route('compras.borrar',['id' => $p->id, 'proveedor' => $proveedor]) }}">
                         @csrf
                         @method('delete')
                         <center>
-                            <button type="submit" class="btn-desactivar">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
+                          <button type="button" class="btn-desactivar" onclick="confirmarBorrar()">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </button>
                         </center>
-                    </form>
+                      </form>
+                      
+                      
                 </td>
                 <td>{{$p->productos->nombre}}</td>
                 <td style="text-align: center">{{$p->productos->codigo}}</td>
@@ -202,12 +212,21 @@ method="post">
 <button class="btn btn-regresar" type="submit">Cancelar</button>
 </form>
 
-<form style="float: left" action="{{route('compras.limpiar',["proveedor"=>$proveedor])}}"
-method="post">
-@method("PUT")
-@csrf
-<button type="submit" class="btn btn-limpiar">Borrar todo</button>
-</form>
+<script>
+    function confirmarBorrar2() {
+      if (confirm("¿Está seguro de que desea borrar todo?")) {
+        document.getElementById("miFormulario2").submit();
+      }
+    }
+  </script>
+  
+  <form id="miFormulario2" style="float: left" action="{{route('compras.limpiar',["proveedor"=>$proveedor])}}"
+  method="post">
+  @method("PUT")
+  @csrf
+  <button type="button" class="btn btn-limpiar" onclick="confirmarBorrar2()">Borrar todo</button>
+  </form>
+  
 
 <form style="float: left" action="{{route('compras.save',["proveedor"=>$proveedor])}}"
 method="post">

@@ -127,8 +127,6 @@ class EstanteController extends Controller
         $rules=[
             'nombres' => 'required|max:50|unique:estantes,nombre,'.$id,
             'descripcion' => 'required|max:100',
-            'fila' => 'required|numeric|min:0|max:100',
-            'columna' => 'required|numeric|min:1|max:100',
         ];
         $mensaje=[
             'nombres.required' => 'El nombre no puede estar vacío',

@@ -22,7 +22,7 @@ Añadir Cliente
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                <input maxlength="50" type="text" id="nombres" name="nombres" class="form-control "
                 value="{{old('nombres')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                 placeholder="Ingrese los nombres">
             </div>
@@ -31,7 +31,7 @@ Añadir Cliente
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Apellidos: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
+                <input maxlength="50" type="text" id="apellidos" name="apellidos" class="form-control"
                 value="{{old('apellidos')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
                 placeholder="Ingrese los apellidos">
             </div>
@@ -40,7 +40,7 @@ Añadir Cliente
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="tel" id="personal" name="personal" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="personal" name="personal" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('personal')}}"
                 pattern="[9,8,3,2]{1}[0-9]{7}"
@@ -53,7 +53,7 @@ Añadir Cliente
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="13" type="text" id="dni" name="dni" required="required" class="form-control"
+                <input maxlength="13" type="text" id="dni" name="dni" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 value="{{old('dni')}}"
                 pattern="[0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9}"
@@ -65,7 +65,8 @@ Añadir Cliente
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <textarea maxlength="200" minlength="3" placeholder="Ingrese la dirección" name="direccion" id="direccion" name="direccion" cols="1" rows="3" required="required" class="form-control">{{old('direccion')}}</textarea>
+                <textarea maxlength="200" minlength="3" placeholder="Ingrese la dirección" name="direccion" id="direccion" name="direccion" 
+                cols="1" rows="3" class="form-control">{{old('direccion')}}</textarea>
             </div>
         </div>
         <div class="ln_solid"></div>

@@ -12,6 +12,9 @@
         #prueba {
             overflow:auto;
         }
+        .dt-buttons{
+            float: right !important;
+        }
       </style>
     @can('empleados_nuevo')
     <button class="btn btn-nuevo" onclick="window.location='{{route('empleados.create')}}'"><i class="fa-solid fa-folder-plus"></i> Agregar Empleado</button>

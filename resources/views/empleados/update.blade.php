@@ -184,8 +184,8 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="7" required="required" class="form-control"
-                    >@if(old("direccion")){{old("direccion")}}@else{{$empleado->direccion}}@endif</textarea>
+                    <textarea maxlength="200" minlength="35" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="7" required="required" class="form-control"
+                    pattern=".*[a-zA-Z]+.*">@if(old("direccion")){{old("direccion")}}@else{{$empleado->direccion}}@endif</textarea>
 
                 </div>
 

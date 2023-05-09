@@ -84,7 +84,7 @@ class VacacionesController extends Controller
         $creado = $vacaciones->save();
 
         return redirect()->route('empleados.index')
-                ->with('mensaje', 'El empleado se le asignaron vacaciones exitosamente');
+                ->with('mensaje', 'Al empleado se le asignaron vacaciones exitosamente');
 
     }
 
@@ -154,14 +154,19 @@ class VacacionesController extends Controller
 
         $this->validate($request,$rules,$mensaje);
 
+        if ($vacaciones->inicio!= $request->input('inicio') || $vacaciones->final != $request->input('final')) {
+            $vacaciones->id_empleado = $id;
+            $vacaciones->inicio= $request->input('inicio');
+            $vacaciones->final = $request->input('final');
+            $creado = $vacaciones->save();
 
-        $vacaciones->id_empleado = $id;
-        $vacaciones->inicio= $request->input('inicio');
-        $vacaciones->final = $request->input('final');
-        $creado = $vacaciones->save();
+            return redirect()->route('vacaciones.index')
+                    ->with('mensaje', 'Al empleado se le modificaron las vacaciones exitosamente');
+        } else {
+            return redirect()->route('vacaciones.index');
+        }
 
-        return redirect()->route('vacaciones.index')
-                ->with('mensaje', 'El empleado se le modificaron las vacaciones exitosamente');
+        
     }
 
     /**

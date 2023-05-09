@@ -61,6 +61,106 @@
             <div class="navbar nav_title" style="border: 0;">
               <a href="/" class="site_title"><i class="fa fa-heartbeat"></i> <span>Portal Farma</span></a>
             </div>
+            <style>
+              .mi-clase {
+                font-size: 14px !important;
+              }
+
+            </style>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+              window.addEventListener('load', function() {
+                const botonescopy = document.querySelectorAll('.buttons-copy');
+                const botonescsv = document.querySelectorAll('.buttons-csv');
+                const botonesexcel = document.querySelectorAll('.buttons-excel');
+                const botonespdf = document.querySelectorAll('.buttons-pdf');
+                const botonesprint = document.querySelectorAll('.buttons-print');
+
+                botonescopy.forEach(boton => {
+                  boton.addEventListener('click', () => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Los datos han sido copiados',
+                        showConfirmButton: false,
+                        toast: true,
+                        timer: 3500,
+                        customClass: {
+                          title: 'mi-clase'
+                        }
+                    })
+                  });
+                });
+
+                
+                botonescsv.forEach(boton => {
+                  boton.addEventListener('click', () => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'El archivo esta siendo descargado',
+                        showConfirmButton: false,
+                        toast: true,
+                        timer: 3500,
+                        customClass: {
+                          title: 'mi-clase'
+                        }
+                    })
+                  });
+                });
+
+                
+                botonesexcel.forEach(boton => {
+                  boton.addEventListener('click', () => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'El archivo esta siendo descargado',
+                        showConfirmButton: false,
+                        toast: true,
+                        timer: 3500,
+                        customClass: {
+                          title: 'mi-clase'
+                        }
+                    })
+                  });
+                });
+
+                
+                botonespdf.forEach(boton => {
+                  boton.addEventListener('click', () => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'El archivo esta siendo descargado',
+                        showConfirmButton: false,
+                        toast: true,
+                        timer: 3500,
+                        customClass: {
+                          title: 'mi-clase'
+                        }
+                    })
+                  });
+                });
+
+                
+                botonesprint.forEach(boton => {
+                  boton.addEventListener('click', () => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'El archivo esta siendo descargado',
+                        showConfirmButton: false,
+                        toast: true,
+                        timer: 3500,
+                        customClass: {
+                          title: 'mi-clase'
+                        }
+                    })
+                  });
+                });
+              });
+            </script>
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">

@@ -146,7 +146,9 @@ Añadir Empleado
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <textarea maxlength="200" placeholder="Ingrese la dirección" name="direccion" id="direccion" name="direccion" cols="1" rows="7" required="required" class="form-control">{{old('direccion')}}</textarea>
+                <textarea maxlength="200" minlength="35" placeholder="Ingrese la dirección" name="direccion" 
+                id="direccion" name="direccion" cols="1" rows="7" required="required" class="form-control"
+                pattern=".*[a-zA-Z]+.*">{{old('direccion')}}</textarea>
             </div>
         </div>
         <div class="ln_solid"></div>

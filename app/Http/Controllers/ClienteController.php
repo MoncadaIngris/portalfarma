@@ -50,7 +50,7 @@ class ClienteController extends Controller
             'apellidos' => 'required|max:100',
             'personal'=> 'required|unique:clientes,telefono|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'dni'=> 'required|unique:clientes,DNI|numeric|regex:([0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9})',
-            'direccion'=>'required|max:200',
+            'direccion'=>'required|max:200|regex:/^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9\s]*$/',
         ];
 
         $mensaje=[
@@ -142,7 +142,7 @@ class ClienteController extends Controller
             'apellidos' => 'required|max:100',
             'personal'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:clientes,telefono,'.$id,
             "dni" => "required|numeric|regex:([0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9})|unique:clientes,dni," . $id,
-            'direccion'=>'required|max:200',
+            'direccion'=>'required|max:200|regex:/^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9\s]*$/',
         ];
 
         $mensaje=[

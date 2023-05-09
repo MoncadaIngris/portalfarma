@@ -27,7 +27,7 @@
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nombre Proveedor: <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input maxlength="50" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
+                    <input maxlength="50" minlength="3" type="text" id="nombre_proveedor" name="nombre_proveedor" required="required" class="form-control"
                     placeholder="Ingrese el nombre del proveedor"
                     @if(old('nombre_proveedor'))
                         value="{{old('nombre_proveedor')}}"

@@ -24,7 +24,8 @@ Añadir Producto
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input maxlength="50" type="text" id="nombre" name="nombre" required="required" class="form-control"
-                value="{{old('nombre')}}" onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3"
+                value="{{old('nombre')}}" onkeydown="return /[a-zA-ZñÑáéíóúÁÉÍÓÚ ]/i.test(event.key) || event.keyCode === 8 || event.keyCode === 46"
+                  minlength="3"
                 placeholder="Ingrese el nombre del producto">
             </div>
         </div>

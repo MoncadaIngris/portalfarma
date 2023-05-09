@@ -67,7 +67,7 @@ class EmpleadoController extends Controller
             'birthday'=>'required|date|before:'.$maxima.'|after:'.$minima,
             'dni'=> 'required|unique:empleados,DNI|numeric|regex:([0-1]{1}[0-9]{1}[0-2]{1}[0-8]{1}[0-9]{9})',
             'foto' => 'required|mimes:jpeg,bmp,png',
-            'direccion'=>'required|max:200',
+            'direccion'=>'required|max:200|min:35|regex:/^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9\s]*$/',
             'cargo'=>'required|exists:cargos,id',
         ];
 
@@ -103,6 +103,7 @@ class EmpleadoController extends Controller
             'foto.mimes' => 'Debe de subir una fotografía',
             'direccion.required' => 'La dirección no puede ser vacía',
             'direccion.max' => 'La dirección es muy extenso',
+            'direccion.min' => 'La dirección es muy corta',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -193,7 +194,7 @@ class EmpleadoController extends Controller
             'fecha_de_nacimiento'=>'required|date|before:'.$maxima.'|after:'.$minima,
             "DNI" => "required|numeric|regex:([0-1]{1}[0-8]{1}[0-2]{1}[0-8]{1}[0-9]{9})|unique:empleados,DNI," . $id,
             'foto' => 'sometimes|mimes:jpeg,bmp,png',
-            'direccion'=>'required|max:200',
+            'direccion'=>'required|max:200|min:35|regex:/^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9\s]*$/',
             'cargo'=>'required|exists:cargos,id',
         ], [
             'cargo.required' => 'El cargo no puede estar vacío',
@@ -227,6 +228,7 @@ class EmpleadoController extends Controller
             'foto.mimes' => 'Debe de subir una fotografía',
             'direccion.required' => 'La dirección no puede ser vacía',
             'direccion.max' => 'La dirección es muy extenso',
+            'direccion.min' => 'La dirección es muy corta',
         ]);
 
         $empleado= Empleado::findOrFail($id);

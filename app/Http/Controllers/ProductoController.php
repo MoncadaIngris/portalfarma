@@ -55,7 +55,7 @@ class ProductoController extends Controller
                 'codigo' => 'required|numeric|regex:([0-9]{8})|unique:productos,codigo',
                 'concentracion' => 'required|exists:concentracions,id',
                 'receta'=> 'required|in:0,1',
-                'descripcion'=> 'required|max:200',
+                'descripcion'=> 'required|max:200|min:35',
 
 
 
@@ -74,10 +74,7 @@ class ProductoController extends Controller
             'receta.in' => 'La receta es invalida',
             'descripcion.required' => 'El descripción no puede estar vacío',
             'descripcion.max' => 'El descripción es muy extensa',
-
-
-
-
+            'descripcion.max' => 'El descripción es muy corta',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -153,7 +150,7 @@ class ProductoController extends Controller
             'codigo' => 'required|numeric|regex:([0-9]{8})|unique:productos,codigo,'.$id,
             'concentracion' => 'required|exists:concentracions,id',
             'receta'=> 'required|in:0,1',
-            'descripcion'=> 'required|max:200 ,'.$id
+            'descripcion'=> 'required|max:200|min:35'
         ];
         $mensaje=[
             'nombre.required' => 'El nombre no puede estar vacío',
@@ -169,6 +166,7 @@ class ProductoController extends Controller
             'receta.in' => 'La receta es invalida',
             'descripcion.required' => 'El descripción no puede estar vacío',
             'descripcion.max' => 'El descripción es muy extensa',
+            'descripcion.max' => 'El descripción es muy corta',
         ];
 
         $this->validate($request,$rules,$mensaje);

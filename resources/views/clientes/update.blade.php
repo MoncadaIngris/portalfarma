@@ -25,7 +25,8 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nombres: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50" type="text" id="nombres" name="nombres" required="required" class="form-control "
+                <input onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50" type="text" id="nombres" name="nombres"
+                 class="form-control "
                 @if(old("nombres"))
                            value="{{old("nombres")}}"
                            @else
@@ -39,7 +40,8 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Apellidos: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50" type="text" id="apellidos" name="apellidos" required="required" class="form-control"
+                <input onkeydown="return /[a-zñÑ ]/i.test(event.key)"  minlength="3" maxlength="50" type="text" id="apellidos" 
+                name="apellidos"  class="form-control"
                 @if(old("apellidos"))
                            value="{{old("apellidos")}}"
                            @else
@@ -52,7 +54,7 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Teléfono: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="8" type="tel" id="personal" name="personal" required="required" class="form-control"
+                <input maxlength="8" type="tel" id="personal" name="personal" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 placeholder="Ingrese el teléfono"
                 @if(old("personal"))
@@ -71,7 +73,7 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Identidad: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input maxlength="13" type="text" id="dni" name="dni" required="required" class="form-control"
+                <input maxlength="13" type="text" id="dni" name="dni" class="form-control"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 
                 
@@ -91,7 +93,8 @@ Editar Clientes
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Dirección: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-            <textarea maxlength="200" minlength="3" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" required="required" class="form-control"
+            <textarea maxlength="200" minlength="3" placeholder="Ingrese la dirección" name="direccion" id="direccion"  rows="3" 
+             class="form-control"
                     >@if(old("direccion")){{old("direccion")}}@else{{$clientes->direccion}}@endif</textarea>
             </div>
         </div>

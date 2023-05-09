@@ -50,7 +50,7 @@ class ProveedorController extends Controller
 
         $rules=[
             'nombre_repartidor' => 'required|max:100',
-            'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor',
+            'nombre_proveedor' => 'required|max:100|min:3|unique:proveedors,nombre_proveedor|regex:/^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9\s]*$/',
             'correo_electronico' => 'required|max:100|email|unique:proveedors,correo_electronico',
             'telefono_repartidor'=> 'required|unique:proveedors,telefono_repartidor|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
             'telefono_proveedor'=> 'required|unique:proveedors,telefono_proveedor|numeric|regex:([9,8,3,2]{1}[0-9]{7})',
@@ -61,8 +61,10 @@ class ProveedorController extends Controller
             'nombre_repartidor.required' => 'El nombre del repartidor no puede ser vacío',
             'nombre_repartidor.max' => 'El nombre del repartidor es muy extenso',
             'nombre_proveedor.unique' => 'El nombre del proveedor ya esta en uso',
+            'nombre_proveedor.min' => 'El nombre del proveedor es muy corto',
             'nombre_proveedor.required' => 'El nombre del proveedor no puede ser vacío',
             'nombre_proveedor.max' => 'El nombre del proveedor es muy extenso',
+            'nombre_proveedor.regex' => 'El nombre del proveedor debe incluir letras.',
             'correo_electronico.required' => 'El correo electrónico no puede ser vacío',
             'correo_electronico.regex' => 'El correo electrónico tiene un formato invalido',
             'correo_electronico.max' => 'El correo electrónico es muy extenso',
@@ -151,7 +153,7 @@ class ProveedorController extends Controller
 
         $rules=[
             'nombre_repartidor' => 'required|max:100',
-            'nombre_proveedor' => 'required|max:100|unique:proveedors,nombre_proveedor,'.$id,
+            'nombre_proveedor' => 'required|max:100|min:3|regex:/^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9\s]*$/|unique:proveedors,nombre_proveedor,'.$id,
             'correo_electronico' => 'required|max:100|email|unique:proveedors,correo_electronico,'.$id,
             'telefono_repartidor'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:proveedors,telefono_repartidor,'.$id,
             'telefono_proveedor'=> 'required|numeric|regex:([9,8,3,2]{1}[0-9]{7})|unique:proveedors,telefono_proveedor,'.$id,
@@ -163,7 +165,9 @@ class ProveedorController extends Controller
             'nombre_repartidor.max' => 'El nombre del repartidor es muy extenso',
             'nombre_proveedor.required' => 'El nombre del proveedor no puede ser vacío',
             'nombre_proveedor.unique' => 'El nombre del proveedor ya esta en uso',
+            'nombre_proveedor.min' => 'El nombre del proveedor es muy corto',
             'nombre_proveedor.max' => 'El nombre del proveedor es muy extenso',
+            'nombre_proveedor.regex' => 'El nombre del proveedor debe incluir letras.',
             'correo_electronico.required' => 'El correo electrónico no puede ser vacío',
             'correo_electronico.regex' => 'El correo electrónico tiene un formato invalido',
             'correo_electronico.max' => 'El correo electrónico es muy extenso',
